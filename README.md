@@ -1,1 +1,2 @@
-# LeetCodeAlgorithm
+# LeetCode Solution
+Only a training.
