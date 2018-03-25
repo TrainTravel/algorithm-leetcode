@@ -14,6 +14,16 @@ import java.util.UnknownFormatConversionException;
 
 class LengthOfLongestSubstring {
     /**
+     * key - char
+     * value - next position
+     *
+     * When char IS NOT found in map, the value that key store is NEXT position.
+     * In this way, when char IS found in map,
+     * what get() method will obtain is the next position,
+     * which will avoid to include duplicated char in sub-string
+     *
+     * Then, compare to old max sub length.
+     *
      * @param s input string
      * @return max sub-string length
      */
@@ -30,7 +40,6 @@ class LengthOfLongestSubstring {
             return 1;
         }
 
-        /* Search every char in string */
         for (int i = 0; i < s.length(); i++) {
 
             char currentChar = s.charAt(i);
@@ -39,6 +48,8 @@ class LengthOfLongestSubstring {
                 subStart = Math.max(thisMap.get(currentChar), subStart);
             }
             result = Math.max(result, i - subStart + 1);
+
+            /* In this way, when repetition is found, the calculation will be next char. */
             thisMap.put(s.charAt(i), i + 1);
         }
 
