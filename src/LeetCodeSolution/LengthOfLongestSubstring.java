@@ -29,9 +29,6 @@ class LengthOfLongestSubstring {
         if (s.length() == 1) {
             return 1;
         }
-        if (s.length() == 0) {
-            return 0;
-        }
 
         /* Search every char in string */
         for (int i = 0; i < s.length(); i++) {
