@@ -1,18 +1,22 @@
 package LeetCodeSolution;
 
+import java.util.HashMap;
+
 /**
  * Created by borismirage on 2017/6/17.
  */
 class TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> arrayMap = new HashMap<>();
+
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (target - nums[i] == nums[j]) {
-                    return new int[] {i,j};
-                }
+            if (arrayMap.containsKey(target - nums[i])){
+                return new int[] {i, arrayMap.get(target - nums[i])};
             }
+            arrayMap.put(nums[i], i);
         }
+
         throw new IllegalArgumentException("No solution. \n");
     }
 
