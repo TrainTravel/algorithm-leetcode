@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 12:39
  */
 
-class ReverseInteger {
+public class ReverseInteger {
     /**
      * Reverse integer
      * @param x integer to be reversed

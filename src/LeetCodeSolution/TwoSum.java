@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * Created by borismirage on 2017/6/17.
  */
-class TwoSum {
+public class TwoSum {
 
     /** Find if there are two numbers in array that their sum is target number
      * @param nums integer number array

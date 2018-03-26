@@ -7,7 +7,7 @@ package LeetCodeSolution;
  * Time: 12:17
  */
 
-class FindMedianSortedArrays {
+public class FindMedianSortedArrays {
     /**
      * Two arrays are both SORTED.
      * The object is to find the median of the two sorted arrays.

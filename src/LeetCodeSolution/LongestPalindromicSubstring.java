@@ -7,7 +7,7 @@ package LeetCodeSolution;
  * Time: 13:37
  */
 
-class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring {
     /**
      * Find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
      * @param s given string

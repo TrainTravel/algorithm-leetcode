@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 
-class LengthOfLongestSubstring {
+public class LengthOfLongestSubstring {
     /**
      * key - char
      * value - next position

@@ -23,7 +23,7 @@ package LeetCodeSolution;
 
 
 /* Sum two nodes and return the sum node. Until List is empty */
-class AddTwoNumbers {
+public class AddTwoNumbers {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
