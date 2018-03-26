@@ -29,8 +29,8 @@ public class Test {
 //        AddTwoNumbers addTwoNumbersTest = new AddTwoNumbers();
 
         /* Find median test */
-        int[] num1 = {1, 1};
-        int[] num2 = {1, 2};
+        int[] num1 = {};
+        int[] num2 = {2, 3};
 
         FindMedianSortedArrays findMedianSortedArraysTest = new FindMedianSortedArrays();
         System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
