@@ -29,7 +29,7 @@ class ReverseInteger {
             numArray.remove(numArray.size() - 1);
         }
 
-        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
+        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE){
             return 0;
         }
         return (int) result;
