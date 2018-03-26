@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 public class LengthOfLongestSubstring {
+
     /**
      * key - char
      * value - next position
@@ -26,6 +27,7 @@ public class LengthOfLongestSubstring {
      * @param s input string
      * @return max sub-string length
      */
+    
     public int lengthOfLongestSubstring(String s) {
 
         /* Init variables */

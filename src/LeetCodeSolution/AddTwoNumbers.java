@@ -16,15 +16,9 @@ package LeetCodeSolution;
  * }
  */
 
-
-//Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-//        Output: 7 -> 0 -> 8
-//        Explanation: 342 + 465 = 807.
-
-
-/* Sum two nodes and return the sum node. Until List is empty */
 public class AddTwoNumbers {
 
+    /* Sum two nodes and return the sum node. Until List is empty */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         ListNode result = new ListNode(0);
@@ -68,9 +62,6 @@ public class AddTwoNumbers {
         }
 
         return result.next;
-    }
-
-    public static void main(String[] args) {
     }
 }
 
