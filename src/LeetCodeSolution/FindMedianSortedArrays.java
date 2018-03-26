@@ -63,7 +63,6 @@ class FindMedianSortedArrays {
                 if (i == useArray.length / 2) {
                     return useArray[i];
                 }
-
             } else {
                 if (i == useArray.length / 2) {
                     return (float) (useArray[i] - useArray[i - 1]) / (float) 2 + useArray[i - 1];
@@ -71,7 +70,7 @@ class FindMedianSortedArrays {
             }
 
         }
-        return -1;
+        throw new IllegalArgumentException("No solution. \n");
     }
 
     public double findMid(int[] a) {
