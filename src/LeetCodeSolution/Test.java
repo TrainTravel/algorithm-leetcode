@@ -20,20 +20,19 @@ public class Test {
 //        int[] testArray = {3, 5, 6, 8, 7};
 //        int num = 8;
 //        System.out.println(Arrays.toString(twoSumTest.twoSum(testArray, num)));
-//
+
 //        /* Longest substring test */
 //        LengthOfLongestSubstring lengthOfLongestSubstringTest = new LengthOfLongestSubstring();
 //        System.out.println(lengthOfLongestSubstringTest.lengthOfLongestSubstring("tmmzuxt"));
-//
+
 //        /* Add 2 numbers test */
 //        AddTwoNumbers addTwoNumbersTest = new AddTwoNumbers();
 
-        /* Find median test */
-        int[] num1 = {};
-        int[] num2 = {2, 3};
-
-        FindMedianSortedArrays findMedianSortedArraysTest = new FindMedianSortedArrays();
-        System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
+//        /* Find median test */
+//        int[] num1 = {};
+//        int[] num2 = {2, 3};
+//        FindMedianSortedArrays findMedianSortedArraysTest = new FindMedianSortedArrays();
+//        System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
 
     }
 
