@@ -8,6 +8,11 @@ import java.util.HashMap;
  */
 class TwoSum {
 
+    /** Find if there are two numbers in array that their sum is target number
+     * @param nums integer number array
+     * @param target target sum number
+     * @return int array that contains two numbers which sum is target number
+     */
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> arrayMap = new HashMap<>();
 
