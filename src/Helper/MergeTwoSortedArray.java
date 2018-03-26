@@ -18,6 +18,7 @@ public class MergeTwoSortedArray {
             return a1;
         }
 
+        /* Make sure nums1 is longer array */
         if (a1.length < a2.length) {
             int[] temp = a2;
             a2 = a1;
@@ -29,16 +30,17 @@ public class MergeTwoSortedArray {
         int[] mergeArray = new int[a1.length + a2.length];
 
         for (int i = 0; i < mergeArray.length; i++) {
-            if (i2 == a1.length) {
+
+            if (i1 == a1.length) {
                 mergeArray[i] = a2[i2];
                 i2 += 1;
             } else if (i2 == a2.length) {
-                mergeArray[i] = a1[i2];
-                i2 += 1;
+                mergeArray[i] = a1[i1];
+                i1 += 1;
             } else {
-                mergeArray[i] = Math.min(a1[i2], a2[i2]);
-                if (mergeArray[i] == a1[i2]) {
-                    i2 += 1;
+                mergeArray[i] = Math.min(a1[i1], a2[i2]);
+                if (mergeArray[i] == a1[i1]) {
+                    i1 += 1;
                 } else {
                     i2 += 1;
                 }
