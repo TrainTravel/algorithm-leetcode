@@ -48,7 +48,10 @@ public class TestCase {
 
 //        /* Longest Palindromic Substring Test*/
 //        LongestPalindromicSubstring longestPalindromicSubstringTest = new LongestPalindromicSubstring();
-//        System.out.println(longestPalindromicSubstringTest.longestPalindrome("s"));
+//        System.out.println(longestPalindromicSubstringTest.longestPalindrome("s"));\
 
+//        /* Atoi test */
+//        MyAtoi myAtoiTest =  new MyAtoi();
+//        System.out.println(myAtoiTest.myAtoi("   - 321"));
     }
 }
