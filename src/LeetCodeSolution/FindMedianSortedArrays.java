@@ -1,8 +1,5 @@
 package LeetCodeSolution;
 
-
-import java.time.OffsetDateTime;
-
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
@@ -22,60 +19,77 @@ class FindMedianSortedArrays {
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
-        int[] mergeResult = merge(nums1, nums2);
+        int[] useArray = new int[nums1.length + nums2.length];
+        boolean isOdd = (useArray.length) % 2 == 1;
 
-        /* Check whether total length is odd or even */
-        boolean isOdd = (mergeResult.length) % 2 == 1;
-
-        double result;
-        if (isOdd) {
-            result = mergeResult[(mergeResult.length - 1) / 2];
-        } else {
-            result = (float) (mergeResult[mergeResult.length / 2] - mergeResult[mergeResult.length / 2 - 1]) / (float) 2 + (float) mergeResult[mergeResult.length / 2 - 1];
+        /* If there is an empty array */
+        if (nums1.length == 0) {
+            useArray = nums2;
+        }
+        if (nums2.length == 0) {
+            useArray = nums1;
+        }
+        if (nums1.length == 0 || nums2.length == 0) {
+            return findMid(useArray);
         }
 
-        return result;
-    }
-
-    public int[] merge(int[] a1, int[] a2) {
-
-        if (a1.length == 0) {
-            return a2;
-        }
-        if (a2.length == 0) {
-            return a1;
-        }
-
-        if (a1.length < a2.length) {
-            int[] temp = a2;
-            a2 = a1;
-            a1 = temp;
+        /* Make sure nums1 is longer array */
+        if (nums1.length < nums2.length) {
+            int[] temp = nums2;
+            nums2 = nums1;
+            nums1 = temp;
         }
 
         int index1 = 0;
         int index2 = 0;
-        int[] mergeArray = new int[a1.length + a2.length];
 
-        for (int i = 0; i < mergeArray.length; i++) {
-
-            if (index1 == a1.length) {
-                mergeArray[i] = a2[index2];
+        /* Find length is even or odd */
+        for (int i = 0; i < useArray.length; i++) {
+            if (index1 == nums1.length) {
+                useArray[i] = nums2[index2];
                 index2 += 1;
-            } else if (index2 == a2.length) {
-                mergeArray[i] = a1[index1];
+            } else if (index2 == nums2.length) {
+                useArray[i] = nums1[index1];
                 index1 += 1;
             } else {
-                mergeArray[i] = Math.min(a1[index1], a2[index2]);
-                if (mergeArray[i] == a1[index1]) {
+                useArray[i] = Math.min(nums1[index1], nums2[index2]);
+                if (useArray[i] == nums1[index1]) {
                     index1 += 1;
                 } else {
                     index2 += 1;
                 }
             }
+            if (isOdd) {
+                if (i == useArray.length / 2) {
+                    return useArray[i];
+                }
+
+            } else {
+                if (i == useArray.length / 2) {
+                    return (float) (useArray[i] - useArray[i - 1]) / (float) 2 + useArray[i - 1];
+                }
+            }
+
         }
-        return mergeArray;
+        return -1;
     }
 
+    public double findMid(int[] a) {
+        boolean isOdd = (a.length) % 2 == 1;
+        double result;
+        if (a.length == 1) {
+            return a[0];
+        } else if (a.length == 2) {
+            return (float)(a[1] - a[0]) / (float)2 + a[0];
+        } else {
+            if (isOdd) {
+                result = a[a.length / 2];
+            } else {
+                result = (float) (a[a.length / 2] - a[a.length / 2 - 1]) / (float) 2 + a[a.length / 2 - 1];
+            }
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         FindMedianSortedArrays test = new FindMedianSortedArrays();
