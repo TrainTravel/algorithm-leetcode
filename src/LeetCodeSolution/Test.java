@@ -34,6 +34,10 @@ public class Test {
 //        FindMedianSortedArrays findMedianSortedArraysTest = new FindMedianSortedArrays();
 //        System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
 
+        /* Reverse int test */
+        ReverseInteger reverseIntegerTest = new ReverseInteger();
+        System.out.println(reverseIntegerTest.reverseInteger(1534236469));
+
     }
 
 
