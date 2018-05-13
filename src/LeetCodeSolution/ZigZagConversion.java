@@ -13,8 +13,15 @@ public class ZigZagConversion {
         return s;
     }
 
-    public String[][] trans(String s, int numRows) {
+    public String trans(String s, int numRows) {
         String result[][] = new String[s.length()][numRows];
+
+        /* Init array */
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < numRows; j++) {
+                result[i][j] = null;
+            }
+        }
         int strCount = 0;
         int row = 0;
         int column = 0;
@@ -27,7 +34,7 @@ public class ZigZagConversion {
             if (row == numRows - 1) {
                 touchBottom = 1;
             }
-            if (row == 0 && column != 0) {
+            if (row == 0) {
                 touchBottom = 0;
             }
             if (touchBottom == 0) {
@@ -37,7 +44,16 @@ public class ZigZagConversion {
                 column += 1;
             }
         }
+        String resultStr = "";
 
-        return result;
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < numRows; j++) {
+                if (result[i][j] != null) {
+                    resultStr += result[i][j];
+                }
+            }
+        }
+        return resultStr;
     }
 }
