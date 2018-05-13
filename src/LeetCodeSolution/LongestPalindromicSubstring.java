@@ -3,8 +3,8 @@ package LeetCodeSolution;
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
- * Date: 3/26/18
- * Time: 13:37
+ * Date: 5/12/18
+ * Time: 16:43
  */
 
 public class LongestPalindromicSubstring {
@@ -15,7 +15,10 @@ public class LongestPalindromicSubstring {
      */
     public String longestPalindrome(String s) {
 
+        return s;
+    }
 
+    public String findPalindrome(String s){
 
         return s;
     }
