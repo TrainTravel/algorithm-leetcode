@@ -1,6 +1,7 @@
 package Test;
 
 import java.util.Arrays;
+
 import Helper.MergeTwoSortedArray;
 import LeetCodeSolution.*;
 
@@ -57,6 +58,14 @@ public class TestCase {
 //        System.out.println(myAtoiTest.myAtoi("   +0 123"));
 //        System.out.println(myAtoiTest.myAtoi("    010"));
 
+//        /* Zig Zag test */
+//        ZigZagConversion zigZagConversionTest = new ZigZagConversion();
+//        String testS = "asdkjalksjdfhjsdfh";
+//        int numRow = 3;
+//        System.out.println(zigZagConversionTest.convert(testS, numRow));
+        /* Palindrome Number Test*/
+        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
+        System.out.println(palindromeNumberTest.isPalindrome(0000));
 
     }
 }
