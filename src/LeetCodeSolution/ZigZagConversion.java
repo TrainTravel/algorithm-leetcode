@@ -9,8 +9,7 @@ package LeetCodeSolution;
 
 public class ZigZagConversion {
     public String convert(String s, int numRows) {
-        trans(s, numRows);
-        return s;
+        return trans(s, numRows);
     }
 
     public String trans(String s, int numRows) {
@@ -22,13 +21,13 @@ public class ZigZagConversion {
                 result[i][j] = null;
             }
         }
-        int strCount = 0;
         int row = 0;
         int column = 0;
         int touchBottom = 0;
 
         for (int i = 0; i < s.length(); i++) {
             char current = s.toCharArray()[i];
+            System.out.println(current);
             result[row][column] = Character.toString(current);
 
             if (row == numRows - 1) {
@@ -44,16 +43,17 @@ public class ZigZagConversion {
                 column += 1;
             }
         }
-        String resultStr = "";
 
+        StringBuilder resultStrBuilder = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
             for (int j = 0; j < numRows; j++) {
                 if (result[i][j] != null) {
-                    resultStr += result[i][j];
+                    resultStrBuilder.append(result[i][j]);
                 }
             }
         }
-        return resultStr;
+
+        return resultStrBuilder.toString();
     }
 }

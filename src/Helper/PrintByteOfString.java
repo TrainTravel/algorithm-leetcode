@@ -13,6 +13,7 @@ public class PrintByteOfString {
     private byte[] str;
     public PrintByteOfString(String s){
         str = s.getBytes();
+
     }
 
     public void printByteArray(){
