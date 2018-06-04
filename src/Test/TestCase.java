@@ -1,8 +1,5 @@
 package Test;
 
-import java.util.Arrays;
-
-import Helper.MergeTwoSortedArray;
 import LeetCodeSolution.*;
 
 /**
@@ -63,9 +60,15 @@ public class TestCase {
 //        String testS = "asdkjalksjdfhjsdfh";
 //        int numRow = 3;
 //        System.out.println(zigZagConversionTest.convert(testS, numRow));
-        /* Palindrome Number Test*/
-        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
-        System.out.println(palindromeNumberTest.isPalindrome(0000));
+
+//        /* Palindrome Number Test*/
+//        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
+//        System.out.println(palindromeNumberTest.isPalindrome(0000));
+
+        /* Max Area Test */
+        int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
+        MaxArea MaxAreaTest = new MaxArea();
+        System.out.println(MaxAreaTest.MaxArea(height));
 
     }
 }
