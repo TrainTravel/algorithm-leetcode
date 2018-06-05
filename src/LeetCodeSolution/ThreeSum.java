@@ -14,30 +14,29 @@ import java.util.List;
 
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new LinkedList<>();
-
-        /* Sort input array */
-        Arrays.sort(nums);
+        List<List<Integer>> threeSumResult = new LinkedList<>();
 
         /* Special Case */
         if (nums.length < 2) {
-            return result;
-        }
-        if (nums[0] > 0 || nums[nums.length - 1] < 0) {
-            return result;
+            return threeSumResult;
         }
         if (nums.length == 3) {
             if (nums[0] + nums[1] + nums[2] == 0) {
-                result.add(findList(nums[0], nums[1], nums[2]));
-                return result;
+                threeSumResult.add(findList(nums[0], nums[1], nums[2]));
+                return threeSumResult;
             } else {
-                return result;
+                return threeSumResult;
             }
         }
+        /* Sort input array */
+        Arrays.sort(nums);
+        if (nums[0] > 0 || nums[nums.length - 1] < 0) {
+            return threeSumResult;
+        }
 
-        HashMap<Integer, Integer> arrayMap = new HashMap<>();
         /* Avoid duplicate */
         HashMap<List<Integer>, Integer> findMap = new HashMap<>();
+        HashMap<Integer, Integer> arrayMap = new HashMap<>();
 
         int bound = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -55,22 +54,14 @@ public class ThreeSum {
                 if (arrayMap.containsKey(target) && arrayMap.get(target) != i && arrayMap.get(target) != j) {
                     List<Integer> find = findList(nums[i], nums[j], target);
                     if (!findMap.containsKey(find)) {
-                        result.add(find);
+                        threeSumResult.add(find);
                         findMap.put(find, target);
                     }
                 }
             }
             i++;
         }
-        return result;
-    }
-
-    public List<Integer> arrayToList(int[] array) {
-        List<Integer> intList = new LinkedList<>();
-        for (int anArray : array) {
-            intList.add(anArray);
-        }
-        return intList;
+        return threeSumResult;
     }
 
     public List<Integer> findList(int a, int b, int c) {
