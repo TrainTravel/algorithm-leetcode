@@ -65,10 +65,15 @@ public class TestCase {
 //        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
 //        System.out.println(palindromeNumberTest.isPalindrome(0000));
 
-        /* Max Area Test */
-        int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
-        MaxArea MaxAreaTest = new MaxArea();
-        System.out.println(MaxAreaTest.MaxArea(height));
+//        /* Max Area Test */
+//        int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
+//        MaxArea MaxAreaTest = new MaxArea();
+//        System.out.println(MaxAreaTest.MaxArea(height));
+
+        /* Three sum test*/
+        int[] test = {-1, -2, 0, 1, 2};
+        ThreeSum threeSumTest = new ThreeSum();
+        System.out.println(threeSumTest.threeSum(test));
 
     }
 }
