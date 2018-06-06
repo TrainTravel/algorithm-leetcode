@@ -71,7 +71,7 @@ public class TestCase {
 //        System.out.println(MaxAreaTest.MaxArea(height));
 
         /* Three sum test*/
-        int[] test = {-1, -2, 0, 1, 2};
+        int[] test = {0, 0, 0, 0};
         ThreeSum threeSumTest = new ThreeSum();
         System.out.println(threeSumTest.threeSum(test));
 

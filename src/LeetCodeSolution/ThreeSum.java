@@ -17,25 +17,16 @@ public class ThreeSum {
         List<List<Integer>> threeSumResult = new LinkedList<>();
 
         /* Special Case */
-        if (nums.length < 2) {
+        if (nums.length < 3) {
             return threeSumResult;
         }
-        if (nums.length == 3) {
-            if (nums[0] + nums[1] + nums[2] == 0) {
-                threeSumResult.add(findList(nums[0], nums[1], nums[2]));
-                return threeSumResult;
-            } else {
-                return threeSumResult;
-            }
-        }
-        /* Sort input array */
+
+        /* Sort and check */
         Arrays.sort(nums);
         if (nums[0] > 0 || nums[nums.length - 1] < 0) {
             return threeSumResult;
         }
-
-        /* Avoid duplicate */
-        HashMap<List<Integer>, Integer> findMap = new HashMap<>();
+        
         HashMap<Integer, Integer> arrayMap = new HashMap<>();
 
         int bound = 0;
@@ -47,17 +38,49 @@ public class ThreeSum {
             arrayMap.put(nums[i], i);
         }
 
+        /* First number index*/
         int i = 0;
         while (i <= bound) {
-            for (int j = i + 1; j < nums.length; j++) {
-                int target = -(nums[i] + nums[j]);
-                if (arrayMap.containsKey(target) && arrayMap.get(target) != i && arrayMap.get(target) != j) {
-                    List<Integer> find = findList(nums[i], nums[j], target);
-                    if (!findMap.containsKey(find)) {
-                        threeSumResult.add(find);
-                        findMap.put(find, target);
+            if (i != 0) {
+                while (nums[i] == nums[i - 1]) {
+                    i++;
+                    if (i == nums.length - 1) {
+                        break;
                     }
                 }
+
+            }
+
+            /* Second number index, always started next to i */
+            int j = i + 1;
+
+            while (j < nums.length - 1) {
+
+                if (j != i + 1) {
+                    while (nums[j] == nums[j - 1]) {
+                        j++;
+                        if (j == nums.length) {
+                            break;
+                        }
+                    }
+                }
+                if (j == nums.length) {
+                    break;
+                }
+
+                /* num[i] is the smallest number in 3 sum numbers */
+                int target = -(nums[i] + nums[j]);
+
+                if (arrayMap.containsKey(target) && arrayMap.get(target) > j) {
+
+                    /* If target's index is between i and j, switch them */
+                    if (target < nums[j]) {
+                        threeSumResult.add(findList(nums[i], target, nums[j]));
+                    } else {
+                        threeSumResult.add(findList(nums[i], nums[j], target));
+                    }
+                }
+                j++;
             }
             i++;
         }
@@ -65,12 +88,10 @@ public class ThreeSum {
     }
 
     public List<Integer> findList(int a, int b, int c) {
-        int[] intArray = {a, b, c};
-        Arrays.sort(intArray);
         List<Integer> findList = new LinkedList<>();
-        for (int i = 0; i < 3; i++) {
-            findList.add(intArray[i]);
-        }
+        findList.add(a);
+        findList.add(b);
+        findList.add(c);
         return findList;
     }
 }
