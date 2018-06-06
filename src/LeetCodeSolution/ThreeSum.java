@@ -1,7 +1,6 @@
 package LeetCodeSolution;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,72 +25,43 @@ public class ThreeSum {
         if (nums[0] > 0 || nums[nums.length - 1] < 0) {
             return threeSumResult;
         }
-        
-        HashMap<Integer, Integer> arrayMap = new HashMap<>();
 
-        int bound = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= 0 && bound == 0) {
-                bound = i;
+        for (int i = 0; nums[i] <= 0 && i < nums.length - 2; i++) {
+
+            /* Avoid duplicate */
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
             }
-            /* Hash map key - array value; hash map value - array index */
-            arrayMap.put(nums[i], i);
-        }
+            int target = -nums[i];
+            int leftIndex = i + 1;
+            int rightIndex = nums.length - 1;
 
-        /* First number index*/
-        int i = 0;
-        while (i <= bound) {
-            if (i != 0) {
-                while (nums[i] == nums[i - 1]) {
-                    i++;
-                    if (i == nums.length - 1) {
-                        break;
+            while (leftIndex < rightIndex) {
+                if (nums[leftIndex] + nums[rightIndex] < target) {
+                    leftIndex++;
+                } else if (nums[leftIndex] + nums[rightIndex] > target) {
+                    rightIndex--;
+                } else {
+
+                    /* Find one element */
+                    List<Integer> findList = new LinkedList<>();
+                    findList.add(nums[i]);
+                    findList.add(nums[leftIndex]);
+                    findList.add(nums[rightIndex]);
+                    threeSumResult.add(findList);
+                    leftIndex++;
+                    rightIndex--;
+
+                    /* Avoid duplicate */
+                    while (leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex - 1]) {
+                        leftIndex++;
+                    }
+                    while (leftIndex < rightIndex && nums[rightIndex] == nums[rightIndex + 1]) {
+                        rightIndex--;
                     }
                 }
-
             }
-
-            /* Second number index, always started next to i */
-            int j = i + 1;
-
-            while (j < nums.length - 1) {
-
-                if (j != i + 1) {
-                    while (nums[j] == nums[j - 1]) {
-                        j++;
-                        if (j == nums.length) {
-                            break;
-                        }
-                    }
-                }
-                if (j == nums.length) {
-                    break;
-                }
-
-                /* num[i] is the smallest number in 3 sum numbers */
-                int target = -(nums[i] + nums[j]);
-
-                if (arrayMap.containsKey(target) && arrayMap.get(target) > j) {
-
-                    /* If target's index is between i and j, switch them */
-                    if (target < nums[j]) {
-                        threeSumResult.add(findList(nums[i], target, nums[j]));
-                    } else {
-                        threeSumResult.add(findList(nums[i], nums[j], target));
-                    }
-                }
-                j++;
-            }
-            i++;
         }
         return threeSumResult;
-    }
-
-    public List<Integer> findList(int a, int b, int c) {
-        List<Integer> findList = new LinkedList<>();
-        findList.add(a);
-        findList.add(b);
-        findList.add(c);
-        return findList;
     }
 }
