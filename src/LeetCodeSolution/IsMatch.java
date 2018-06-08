@@ -13,6 +13,7 @@ public class IsMatch {
      * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
      * '.' Matches ANY single character.
      * '*' Matches zero or more of the PRECEDING element. (Which means "*" will not be first element of string)
+     * The matching should cover the entire input string (not partial).
      *
      * @param s input String
      * @param p input Pattern
@@ -21,33 +22,52 @@ public class IsMatch {
     public boolean isMatch(String s, String p) {
 
         /* Special case */
-        if (s.length() == 0 && p.length() == 0) {
-            return true;
+        if (s.length() == 0) {
+            if (p.length() == 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
-
-        int j = 0;
-        char[] sChar = s.toCharArray();
-        char[] pChar = p.toCharArray();
-
-        /* Traverse string and pattern */
         for (int i = 0; i < s.length(); i++) {
-            int a = i;
-            boolean isCurrentEqual;
-            if (sChar[i] == '*') {
-                while (sChar[a] == '*') {
-                    a--;
-                }
-                isCurrentEqual = isEqual(sChar[a], pChar[j]);
-            } else {
-                isCurrentEqual = isEqual(sChar[i], pChar[j]);
-            }
-            if (isCurrentEqual) {
-                j++;
-            } else {
-                j = 0;
-            }
-            // todo: Condition that "*" is the last char of Pattern
+            
         }
+
+
+//        int j = 0;a
+//        char[] sChar = s.toCharArray();
+//        char[] pChar = p.toCharArray();
+//
+//        /* Traverse string and pattern */
+//        for (int i = 0; i < s.length(); i++) {
+//            if (pChar[j] == '*' && j != 0) {
+//
+//                /* If current pattern char is '*' then pattern move forward one char */
+//                if (!isEqual(sChar[i], pChar[j - 1])) {
+//                    if (j == p.length() - 1) {
+//                        return true;
+//                    } else if (isEqual(sChar[i], pChar[j + 1])) {
+//                        j++;
+//                    } else {
+//                        j = 0;
+//                    }
+//                }
+//                if (j == p.length() - 1 && isEqual(sChar[i], pChar[j])) {
+//                    return true;
+//                }
+//            } else {
+//                /* Normal condition */
+//                if (isEqual(sChar[i], pChar[j])){
+//                    if (j == p.length() - 1){
+//                        return true;
+//                    }else {
+//                        j++;
+//                    }
+//                }else {
+//                    j=0;
+//                }
+//            }
+//        }
         return false;
     }
 
@@ -61,11 +81,10 @@ public class IsMatch {
      * @return whether they are matched.
      */
     public boolean isEqual(char stringChar, char patternChar) {
-        if (stringChar == patternChar) {
+        if (patternChar == '.') {
             return true;
-        } else if (patternChar == '*') {
-            return true;
+        } else {
+            return stringChar == patternChar;
         }
-        return false;
     }
 }

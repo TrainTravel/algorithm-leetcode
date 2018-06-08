@@ -70,10 +70,14 @@ public class TestCase {
 //        MaxArea MaxAreaTest = new MaxArea();
 //        System.out.println(MaxAreaTest.MaxArea(height));
 
-        /* Three sum test*/
-        int[] test = {0,-4,-1,-4,-2,-3,2};
-        ThreeSum threeSumTest = new ThreeSum();
-        System.out.println(threeSumTest.threeSum(test));
+//        /* Three sum test*/
+//        int[] test = {0,-4,-1,-4,-2,-3,2};
+//        ThreeSum threeSumTest = new ThreeSum();
+//        System.out.println(threeSumTest.threeSum(test));
+
+        /* IsMatch Test*/
+        IsMatch isMatchTest = new IsMatch();
+        System.out.println(isMatchTest.isMatch("aabc", "a*"));
 
     }
 }
