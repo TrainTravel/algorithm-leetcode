@@ -55,11 +55,11 @@ public class TestCase {
 //        System.out.println(myAtoiTest.myAtoi("   +0 123"));
 //        System.out.println(myAtoiTest.myAtoi("    010"));
 
-//        /* Zig Zag test */
-//        ZigZagConversion zigZagConversionTest = new ZigZagConversion();
-//        String testS = "asdkjalksjdfhjsdfh";
-//        int numRow = 3;
-//        System.out.println(zigZagConversionTest.convert(testS, numRow));
+        /* Zig Zag test */
+        ZigZagConversion zigZagConversionTest = new ZigZagConversion();
+        String testS = "abcdefghijk";
+        int numRow = 4;
+        System.out.println(zigZagConversionTest.convert(testS, numRow));
 
 //        /* Palindrome Number Test*/
 //        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
@@ -74,10 +74,10 @@ public class TestCase {
 //        int[] test = {0,-4,-1,-4,-2,-3,2};
 //        ThreeSum threeSumTest = new ThreeSum();
 //        System.out.println(threeSumTest.threeSum(test));
-
-        /* IsMatch Test*/
-        IsMatch isMatchTest = new IsMatch();
-        System.out.println(isMatchTest.isMatch("ab", ".*"));
+//
+//        /* IsMatch Test*/
+//        IsMatch isMatchTest = new IsMatch();
+//        System.out.println(isMatchTest.isMatch("ab", ".*"));
 
     }
 }

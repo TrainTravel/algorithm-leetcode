@@ -9,51 +9,52 @@ package LeetCodeSolution;
 
 public class ZigZagConversion {
     public String convert(String s, int numRows) {
-        return trans(s, numRows);
-    }
-
-    public String trans(String s, int numRows) {
-        String result[][] = new String[s.length()][numRows];
-
-        /* Init array */
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < numRows; j++) {
-                result[i][j] = null;
-            }
+        if (s.length() == 0) {
+            return s;
         }
-        int row = 0;
-        int column = 0;
-        int touchBottom = 0;
+        if (s.length() == 1) {
+            return s;
+        }
+        if (numRows==1){
+            return s;
+        }
 
+        int numColumn = ((s.length() + 1) / 2) + numRows - 2;
+        char[][] charArray = new char[numColumn][numRows];
+        char[] sChar = s.toCharArray();
+        int rowIndex = 0;
+        int columnIndex = 0;
+        int moveDown = 1;
         for (int i = 0; i < s.length(); i++) {
-            char current = s.toCharArray()[i];
-            System.out.println(current);
-            result[row][column] = Character.toString(current);
-
-            if (row == numRows - 1) {
-                touchBottom = 1;
-            }
-            if (row == 0) {
-                touchBottom = 0;
-            }
-            if (touchBottom == 0) {
-                row += 1;
+            charArray[columnIndex][rowIndex] = sChar[i];
+            if (moveDown == 1) {
+                if (rowIndex == numRows - 1) {
+                    moveDown = 0;
+                    rowIndex--;
+                    columnIndex++;
+                } else {
+                    rowIndex++;
+                }
             } else {
-                row -= 1;
-                column += 1;
+                if (rowIndex == 0) {
+                    moveDown = 1;
+                    rowIndex++;
+                } else {
+                    rowIndex--;
+                    columnIndex++;
+                }
+
             }
         }
+        StringBuilder zigzag = new StringBuilder();
+        for (int m = 0; m < numRows; m++) {
+            for (int n = 0; n < numColumn; n++) {
+                if (charArray[n][m] != '\u0000') {
+                    zigzag.append(Character.toString(charArray[n][m]));
 
-        StringBuilder resultStrBuilder = new StringBuilder();
-
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < numRows; j++) {
-                if (result[i][j] != null) {
-                    resultStrBuilder.append(result[i][j]);
                 }
             }
         }
-
-        return resultStrBuilder.toString();
+        return zigzag.toString();
     }
 }
