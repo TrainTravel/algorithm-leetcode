@@ -77,7 +77,7 @@ public class TestCase {
 
         /* IsMatch Test*/
         IsMatch isMatchTest = new IsMatch();
-        System.out.println(isMatchTest.isMatch("aabc", "a*"));
+        System.out.println(isMatchTest.isMatch("ab", ".*"));
 
     }
 }

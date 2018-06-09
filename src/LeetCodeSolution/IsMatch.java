@@ -38,51 +38,44 @@ public class IsMatch {
         int j = 0;
 
         /* Traverse string and pattern, if pattern and string ending at same time, then return true */
-        for (int i = 0; i < s.length(); i++) {
+        int i = 0;
+        while (i < s.length()) {
 
-            if (i == sChar.length && j == pChar.length && pChar[j] != '*') {
-                return isEqual(sChar[i], pChar[j]);
+            /* Last char */
+            if (i == s.length() - 1) {
+
+                /* If both char is normal */
+                if (j != p.length() - 1 && pChar[j] != '*') {
+                    return false;
+                } else if (pChar[j] != '*') {
+                    return isEqual(sChar[i], pChar[j - 1]);
+                } else {
+                    return isEqual(sChar[i], pChar[j]);
+                }
             } else {
 
-                if (pChar[j]=='*'){
-                    
+                /* If pattern char is '*' */
+                if (pChar[j] == '*') {
+
+                    /* Compare char before and next to current pattern char (0 time and N times) */
+                    if (!isEqual(sChar[i], pChar[j - 1]) && !isEqual(sChar[i], pChar[j + 1])) {
+
+                        /* If previous and next pattern char is not equal, then return false */
+                        return false;
+                    }
+                } else {
+
+                    /* Normal case */
+                    if (isEqual(sChar[i], pChar[j])) {
+                        j++;
+                    } else {
+                        return false;
+                    }
                 }
             }
-
+            i++;
         }
         return false;
-
-//
-//        /* Traverse string and pattern */
-//        for (int i = 0; i < s.length(); i++) {
-//            if (pChar[j] == '*' && j != 0) {
-//
-//                /* If current pattern char is '*' then pattern move forward one char */
-//                if (!isEqual(sChar[i], pChar[j - 1])) {
-//                    if (j == p.length() - 1) {
-//                        return true;
-//                    } else if (isEqual(sChar[i], pChar[j + 1])) {
-//                        j++;
-//                    } else {
-//                        j = 0;
-//                    }
-//                }
-//                if (j == p.length() - 1 && isEqual(sChar[i], pChar[j])) {
-//                    return true;
-//                }
-//            } else {
-//                /* Normal condition */
-//                if (isEqual(sChar[i], pChar[j])){
-//                    if (j == p.length() - 1){
-//                        return true;
-//                    }else {
-//                        j++;
-//                    }
-//                }else {
-//                    j=0;
-//                }
-//            }
-//        }
     }
 
     /**
