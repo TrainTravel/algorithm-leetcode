@@ -40,16 +40,17 @@ public class IsMatch {
         /* Traverse string and pattern, if pattern and string ending at same time, then return true */
         for (int i = 0; i < s.length(); i++) {
 
-            /* Base case: two char is exactly same */
-            if (j!=pChar.length-1){
-                if (sChar[i]==pChar[j]){
-                    j++;
+            if (i == sChar.length && j == pChar.length && pChar[j] != '*') {
+                return isEqual(sChar[i], pChar[j]);
+            } else {
+
+                if (pChar[j]=='*'){
+                    
                 }
-                if ()
             }
 
         }
-
+        return false;
 
 //
 //        /* Traverse string and pattern */
@@ -82,7 +83,6 @@ public class IsMatch {
 //                }
 //            }
 //        }
-        return false;
     }
 
     /**
