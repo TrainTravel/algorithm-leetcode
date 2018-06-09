@@ -8,53 +8,41 @@ package LeetCodeSolution;
  */
 
 public class ZigZagConversion {
+    /**
+     * Convert input string into zigzag format
+     * Base on zig zag division, input string can be divide into blocks based on index.
+     * Blocks that contains chars that placed in same column and place in same diagonal.
+     * For instance, string = "abcdefghijk", numRows = 4,
+     * then string can be divied into abcd|ef|ghij|k
+     * These blocks' indexes reflect to represented row, which is the output basis.
+     *
+     * @param s       input string
+     * @param numRows number of rows that divide sting into
+     * @return string in zigzag format
+     */
     public String convert(String s, int numRows) {
-        if (s.length() == 0) {
+        if (s.length() <= 1 || numRows <= 1) {
             return s;
-        }
-        if (s.length() == 1) {
-            return s;
-        }
-        if (numRows==1){
-            return s;
-        }
-
-        int numColumn = ((s.length() + 1) / 2) + numRows - 2;
-        char[][] charArray = new char[numColumn][numRows];
-        char[] sChar = s.toCharArray();
-        int rowIndex = 0;
-        int columnIndex = 0;
-        int moveDown = 1;
-        for (int i = 0; i < s.length(); i++) {
-            charArray[columnIndex][rowIndex] = sChar[i];
-            if (moveDown == 1) {
-                if (rowIndex == numRows - 1) {
-                    moveDown = 0;
-                    rowIndex--;
-                    columnIndex++;
-                } else {
-                    rowIndex++;
-                }
-            } else {
-                if (rowIndex == 0) {
-                    moveDown = 1;
-                    rowIndex++;
-                } else {
-                    rowIndex--;
-                    columnIndex++;
-                }
-
-            }
         }
         StringBuilder zigzag = new StringBuilder();
-        for (int m = 0; m < numRows; m++) {
-            for (int n = 0; n < numColumn; n++) {
-                if (charArray[n][m] != '\u0000') {
-                    zigzag.append(Character.toString(charArray[n][m]));
 
+        /* Build output string in the order of row */
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j + i < s.length(); j = j + 2 * numRows - 2) {
+                zigzag.append(s.charAt(j + i));
+
+                /* First row and last row does not contain chars from diagonal */
+                if (i == 0 || i == numRows - 1){
+                    continue;
+                }
+
+                /* Rest rows contain chars from diagonal, hence needs to be added */
+                if (j + 2 * numRows - 2 - i < s.length()){
+                    zigzag.append(s.charAt(j + 2 * numRows - 2 - i));
                 }
             }
         }
+
         return zigzag.toString();
     }
 }
