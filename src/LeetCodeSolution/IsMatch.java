@@ -29,14 +29,28 @@ public class IsMatch {
                 return false;
             }
         }
+
+        /* Convert to array */
+        char[] sChar = s.toCharArray();
+        char[] pChar = p.toCharArray();
+
+        /* Pattern Index */
+        int j = 0;
+
+        /* Traverse string and pattern, if pattern and string ending at same time, then return true */
         for (int i = 0; i < s.length(); i++) {
-            
+
+            /* Base case: two char is exactly same */
+            if (j!=pChar.length-1){
+                if (sChar[i]==pChar[j]){
+                    j++;
+                }
+                if ()
+            }
+
         }
 
 
-//        int j = 0;a
-//        char[] sChar = s.toCharArray();
-//        char[] pChar = p.toCharArray();
 //
 //        /* Traverse string and pattern */
 //        for (int i = 0; i < s.length(); i++) {
