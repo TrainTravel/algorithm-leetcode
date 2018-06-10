@@ -1,7 +1,5 @@
 package LeetCodeSolution;
 
-import java.util.ArrayList;
-
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
