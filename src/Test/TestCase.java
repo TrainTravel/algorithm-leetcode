@@ -83,8 +83,14 @@ public class TestCase {
 //        RomanToInt romanIntTest = new RomanToInt();
 //        System.out.println(romanIntTest.romanToInt("MCMXCIV"));
 
-        /* IntToRoman Test */
-        IntToRoman intToRomanTest = new IntToRoman();
-        System.out.println(intToRomanTest.intToRoman(100));
+//        /* IntToRoman Test */
+//        IntToRoman intToRomanTest = new IntToRoman();
+//        System.out.println(intToRomanTest.intToRoman(100));
+
+        /* 3 Sum Closest Test*/
+        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
+//        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
+        int[] test = {-1, 2, 1, -4};
+        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
     }
 }
