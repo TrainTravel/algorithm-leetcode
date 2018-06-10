@@ -79,8 +79,8 @@ public class TestCase {
 //        IsMatch isMatchTest = new IsMatch();
 //        System.out.println(isMatchTest.isMatch("ab", ".*"));
 
-        /* RomanInt Test */
-        RomanInt romanIntTest = new RomanInt();
+        /* RomanToInt Test */
+        RomanToInt romanIntTest = new RomanToInt();
         System.out.println(romanIntTest.romanToInt("MCMXCIV"));
 
     }
