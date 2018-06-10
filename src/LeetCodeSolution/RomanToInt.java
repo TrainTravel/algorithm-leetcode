@@ -32,14 +32,14 @@ public class RomanToInt {
         int result = 0;
 
         /* Construct Roman numerals to int map */
-        HashMap<Character, Integer> romanMap=new HashMap<Character, Integer>();
+        HashMap<Character, Integer> romanMap = new HashMap<>();
         romanMap.put('M', 1000);
         romanMap.put('D', 500);
         romanMap.put('C', 100);
         romanMap.put('L', 50);
         romanMap.put('X', 10);
         romanMap.put('V', 5);
-        romanMap.put('I',1);
+        romanMap.put('I', 1);
 
         char[] sChar = s.toCharArray();
         int i = s.length() - 1;
