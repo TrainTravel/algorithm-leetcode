@@ -15,6 +15,9 @@ public class ThreeSumClosest {
      * find three integers in nums such that the sum is closest to target.
      * Return the sum of the three integers.
      * You may assume that each input would have exactly one solution.
+     * <p>
+     * Similar to 3sum problem, the difference is the bound when selecting elements from array.
+     * And the compare number that is found in each round is not -nums[i], it is target - nums[i].
      *
      * @param nums   input numbers
      * @param target target number

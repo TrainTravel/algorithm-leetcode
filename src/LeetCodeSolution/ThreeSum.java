@@ -15,9 +15,11 @@ public class ThreeSum {
     /**
      * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0.
      * Find all unique triplets in the array which gives the sum of zero.
-     *
+     * <p>
      * Sort the array first, then start from the smallest (or largerest) element.
-     * When one element is selected, start from the 
+     * When one element is selected, start from the next element and the last element in this array.
+     * Compare the sum of these two elements, if it is smaller than -nums[i], then move the left element to its right.
+     * If the sum is larger than 0, then move the right element to its left
      *
      * @param nums
      * @return
@@ -43,7 +45,7 @@ public class ThreeSum {
                 continue;
             }
 
-            int target = -nums[i];
+            int find = -nums[i];
 
             /* Include all possible elements (i + 1 to last) */
             int leftIndex = i + 1;
@@ -52,9 +54,9 @@ public class ThreeSum {
             while (leftIndex < rightIndex) {
 
                 /* If sum > target, narrow left index (increase sum); otherwise, narrow right index */
-                if (nums[leftIndex] + nums[rightIndex] < target) {
+                if (nums[leftIndex] + nums[rightIndex] < find) {
                     leftIndex++;
-                } else if (nums[leftIndex] + nums[rightIndex] > target) {
+                } else if (nums[leftIndex] + nums[rightIndex] > find) {
                     rightIndex--;
                 } else {
 
