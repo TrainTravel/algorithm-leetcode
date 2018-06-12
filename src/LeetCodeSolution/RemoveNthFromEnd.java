@@ -37,6 +37,5 @@ public class RemoveNthFromEnd {
         back.next = back.next.next;
         return cache.next;
     }
-
 }
 
