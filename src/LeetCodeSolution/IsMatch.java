@@ -22,58 +22,48 @@ public class IsMatch {
     public boolean isMatch(String s, String p) {
 
         /* Special case */
-        if (s.length() == 0) {
-            if (p.length() == 0) {
-                return true;
-            } else {
+        if (s.length() == 0 || p.length() == 0) {
+            if (s.length() + p.length() != 0) {
                 return false;
             }
         }
 
-        /* Convert to array */
-        char[] sChar = s.toCharArray();
-        char[] pChar = p.toCharArray();
-
-        /* Pattern Index */
-        int j = 0;
-
-        /* Traverse string and pattern, if pattern and string ending at same time, then return true */
         int i = 0;
-        while (i < s.length()) {
+        int j = 0;
+        while (i < s.length() && j < p.length()) {
 
-            /* Last char */
-            if (i == s.length() - 1) {
-
-                /* If both char is normal */
-                if (j != p.length() - 1 && pChar[j] != '*') {
-                    return false;
-                } else if (pChar[j] != '*') {
-                    return isEqual(sChar[i], pChar[j - 1]);
+            /* Normal chars and '.' */
+            if (isEqual(s.charAt(i), p.charAt(j))) {
+                if (i == s.length() - 1 && j == p.length() - 1) {
+                    return true;
                 } else {
-                    return isEqual(sChar[i], pChar[j]);
+                    i++;
+                    j++;
                 }
-            } else {
+                if (i == s.length() && j == p.length() - 2 && p.charAt(j + 1) == '*') {
+                    return true;
+                }
+            } else if (p.charAt(j) == '*') {
 
-                /* If pattern char is '*' */
-                if (pChar[j] == '*') {
 
-                    /* Compare char before and next to current pattern char (0 time and N times) */
-                    if (!isEqual(sChar[i], pChar[j - 1]) && !isEqual(sChar[i], pChar[j + 1])) {
+                if (isEqual(s.charAt(i), p.charAt(j - 1))) {
 
-                        /* If previous and next pattern char is not equal, then return false */
-                        return false;
-                    }
-                } else {
 
-                    /* Normal case */
-                    if (isEqual(sChar[i], pChar[j])) {
+                    if (i == s.length() - 1 && j == p.length() - 1) {
+                        return true;
+                    } else if (i == s.length() - 1 && j != p.length() - 1) {
                         j++;
                     } else {
-                        return false;
+                        i++;
                     }
+                } else {
+                    j++;
                 }
+            } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
+                j += 2;
+            } else {
+                return false;
             }
-            i++;
         }
         return false;
     }

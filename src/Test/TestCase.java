@@ -20,8 +20,7 @@ public class TestCase {
 
 //        TwoSum twoSumTest = new TwoSum();
 //        int[] testArray = {3, 5, 6, 8, 7};
-//        int num = 8;
-//        System.out.println(Arrays.toString(twoSumTest.twoSum(testArray, num)));
+//        System.out.println(Arrays.toString(twoSumTest.twoSum(testArray, 8)));
 
 //        /* Longest substring Test */
 //        LengthOfLongestSubstring lengthOfLongestSubstringTest = new LengthOfLongestSubstring();
@@ -75,9 +74,19 @@ public class TestCase {
 //        ThreeSum threeSumTest = new ThreeSum();
 //        System.out.println(threeSumTest.threeSum(test));
 //
-//        /* IsMatch Test*/
-//        IsMatch isMatchTest = new IsMatch();
-//        System.out.println(isMatchTest.isMatch("ab", ".*"));
+        /* IsMatch Test*/
+        IsMatch isMatchTest = new IsMatch();
+        System.out.println(isMatchTest.isMatch("bbbba", ".*a*a"));
+//        System.out.println(isMatchTest.isMatch("aaa", "ab*ac*a"));
+//        System.out.println(isMatchTest.isMatch("aaa", "a*a"));
+//        System.out.println(isMatchTest.isMatch("mississippi", "mis*is*ip*."));
+//        System.out.println(isMatchTest.isMatch("aaba", "ab*a*c*a"));
+//        System.out.println(isMatchTest.isMatch("baaa", ".c"));
+//        System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
+//        System.out.println(isMatchTest.isMatch("aa", "a"));
+//        System.out.println(isMatchTest.isMatch("a", "ab*"));
+
+
 
 //        /* RomanToInt Test */
 //        RomanToInt romanIntTest = new RomanToInt();
@@ -87,10 +96,10 @@ public class TestCase {
 //        IntToRoman intToRomanTest = new IntToRoman();
 //        System.out.println(intToRomanTest.intToRoman(100));
 
-        /* 3 Sum Closest Test*/
-        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
-//        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
-        int[] test = {-1, 2, 1, -4};
-        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
+//        /* 3 Sum Closest Test*/
+//        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
+////        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
+//        int[] test = {-1, 2, 1, -4};
+//        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
     }
 }

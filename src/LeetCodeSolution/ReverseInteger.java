@@ -12,9 +12,10 @@ import java.util.ArrayList;
 public class ReverseInteger {
     /**
      * Reverse integer
+     *
      * @param x integer to be reversed
      * @return reversed number
-     *         if reverse result is larger than Integer.MAX_VALUE, return 0
+     * if reverse result is larger than Integer.MAX_VALUE, return 0
      */
     public int reverseInteger(int x) {
         ArrayList<Integer> numArray = new ArrayList<>();
@@ -35,7 +36,7 @@ public class ReverseInteger {
             numArray.remove(numArray.size() - 1);
         }
 
-        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE){
+        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
             return 0;
         }
         return (int) result;

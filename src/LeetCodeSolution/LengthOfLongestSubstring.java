@@ -14,11 +14,13 @@ import java.util.Map;
 public class LengthOfLongestSubstring {
 
     /**
+     * Given a string, find the length of the longest substring without repeating characters.
+     *
      * key - char
      * value - next position
      *
-     * When char IS NOT found in map, the value that key store is NEXT position.
-     * In this way, when char IS found in map,
+     * When char is NOT found in map, the value that key store is NEXT position.
+     * In this way, when char is FOUND in map,
      * what get() method will obtain is the next position,
      * which will avoid to include duplicated char in sub-string
      *
