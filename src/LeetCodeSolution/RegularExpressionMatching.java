@@ -21,7 +21,7 @@ public class RegularExpressionMatching {
      * @param p input Pattern
      * @return true if found match, false if not
      */
-    public boolean isMatch(String s, String p) {
+    public boolean regularExpressionMatching(String s, String p) {
 
         /* Special case */
         if (p.length() == 0) {
