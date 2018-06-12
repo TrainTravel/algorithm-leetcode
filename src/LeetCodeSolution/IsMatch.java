@@ -44,6 +44,7 @@ public class IsMatch {
     }
 
     public boolean isMatch_2(String s, String p) {
+
         if (p.length() == 0) {
             return s.length() == 0;
         }
