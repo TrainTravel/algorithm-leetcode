@@ -7,7 +7,7 @@ package LeetCodeSolution;
  * Time: 19:41
  */
 
-public class IsMatch {
+public class RegularExpressionMatching {
 
     /**
      * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
@@ -21,7 +21,7 @@ public class IsMatch {
      * @param p input Pattern
      * @return true if found match, false if not
      */
-    public boolean isMatch(String s, String p) {
+    public boolean regularExpressionMatching(String s, String p) {
 
         /* Special case */
         if (p.length() == 0) {
