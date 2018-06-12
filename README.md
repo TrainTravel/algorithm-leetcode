@@ -1,2 +1,3 @@
 # LeetCode Solution
-Only a training.
+
+Solution of LeetCode algorithm porblems.
