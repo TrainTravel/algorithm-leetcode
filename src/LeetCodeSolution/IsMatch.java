@@ -27,38 +27,52 @@ public class IsMatch {
                 return false;
             }
         }
+        if (p.equals(".*")) {
+            return true;
+        }
+        if (p.length() == 1) {
+            if (s.length() > 1) {
+                return false;
+            }
+        }
 
         int i = 0;
         int j = 0;
-        while (i < s.length() && j < p.length()) {
 
-            /* Normal chars and '.' */
+        while (j < p.length()) {
+
+            if (i == s.length() - 1 && j == p.length() - 1) {
+                if (isEqual(s.charAt(i), p.charAt(j))) {
+                    return true;
+                } else return p.charAt(j) == '*' && isEqual(s.charAt(i), p.charAt(j - 1));
+            }
+
+            /* Normal situation - two chars are the same */
             if (isEqual(s.charAt(i), p.charAt(j))) {
-                if (i == s.length() - 1 && j == p.length() - 1) {
-                    return true;
-                } else {
+                if (i != s.length() - 1) {
                     i++;
-                    j++;
                 }
-                if (i == s.length() && j == p.length() - 2 && p.charAt(j + 1) == '*') {
-                    return true;
+                j++;
+
+                if (i == s.length() - 1 && j != p.length()) {
+
+                    if (j == p.length() - 2 && p.charAt(j + 1) != '*' && p.charAt(j) != '*') {
+                        return false;
+                    }
+                    if (p.charAt(j + 1) == '*' && j < p.length() - 2) {
+                        return false;
+                    }
                 }
             } else if (p.charAt(j) == '*') {
-
-
-                if (isEqual(s.charAt(i), p.charAt(j - 1))) {
-
-
-                    if (i == s.length() - 1 && j == p.length() - 1) {
-                        return true;
-                    } else if (i == s.length() - 1 && j != p.length() - 1) {
-                        j++;
-                    } else {
-                        i++;
-                    }
+                if (isEqual(s.charAt(i), p.charAt(j - 1)) && i != s.length() - 1) {
+                    i++;
                 } else {
                     j++;
                 }
+            } else if (j == p.length() - 2 && p.charAt(j + 1) == '*') {
+                if (isEqual(s.charAt(i), p.charAt(j))) {
+                    return true;
+                } else return p.length() > 2 && isEqual(s.charAt(i), p.charAt(j - 1));
             } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
                 j += 2;
             } else {

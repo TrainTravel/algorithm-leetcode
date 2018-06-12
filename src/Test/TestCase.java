@@ -76,16 +76,23 @@ public class TestCase {
 //
         /* IsMatch Test*/
         IsMatch isMatchTest = new IsMatch();
-        System.out.println(isMatchTest.isMatch("bbbba", ".*a*a"));
-//        System.out.println(isMatchTest.isMatch("aaa", "ab*ac*a"));
-//        System.out.println(isMatchTest.isMatch("aaa", "a*a"));
-//        System.out.println(isMatchTest.isMatch("mississippi", "mis*is*ip*."));
-//        System.out.println(isMatchTest.isMatch("aaba", "ab*a*c*a"));
-//        System.out.println(isMatchTest.isMatch("baaa", ".c"));
-//        System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
-//        System.out.println(isMatchTest.isMatch("aa", "a"));
-//        System.out.println(isMatchTest.isMatch("a", "ab*"));
-
+//        System.out.println(isMatchTest.isMatch("bbbba", ".*a*a"));              // true
+        System.out.println(isMatchTest.isMatch("aaa", "ab*ac*a"));              // true
+        System.out.println(isMatchTest.isMatch("aaa", "a*a"));                  // true
+        System.out.println(isMatchTest.isMatch("mississippi", "mis*is*ip*."));  // true
+        System.out.println(isMatchTest.isMatch("a", "ab*"));                    // true
+        System.out.println(isMatchTest.isMatch("aab", "c*a*b"));                // true
+        System.out.println(isMatchTest.isMatch("aaaa", "a*"));                    // true
+        System.out.println();
+        System.out.println(isMatchTest.isMatch("baaa", ".c"));          // false
+        System.out.println(isMatchTest.isMatch("aa", "a"));             // false
+        System.out.println(isMatchTest.isMatch("aaaaaa", "aa"));        // false
+        System.out.println(isMatchTest.isMatch("aaba", "ab*a*c*a"));    // false
+        System.out.println(isMatchTest.isMatch("mississippi", "mis*is*p*."));    // false
+        System.out.println(isMatchTest.isMatch("abcd", "d*"));          // false
+        System.out.println(isMatchTest.isMatch("aaa", "aaaa"));         // false
+        System.out.println(isMatchTest.isMatch("aaa", "aa"));           // false
+        System.out.println(isMatchTest.isMatch("a", "ab*a"));           // false
 
 
 //        /* RomanToInt Test */
