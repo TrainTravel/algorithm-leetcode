@@ -1,0 +1,77 @@
+package LeetCodeSolution;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Created with IntelliJ IDEA
+ * Author: BorisMirage
+ * Date: 6/11/18
+ * Time: 19:47
+ */
+
+public class FourSum {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+
+        List<List<Integer>> fourSum = new LinkedList<>();
+
+        /* If array contains less that 4 elements, directly return empty list */
+        if (nums.length < 4) {
+            return fourSum;
+        }
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 3; i++) {
+
+            /* Avoid duplicate */
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;
+                }
+                int sum = target - nums[i] - nums[j];
+
+                /* Include all possible elements (j + 1 to last) */
+                int leftIndex = j + 1;
+                int rightIndex = nums.length - 1;
+
+                while (leftIndex < rightIndex) {
+
+                    /* If sum > target, narrow left index (increase sum); otherwise, narrow right index */
+                    if (nums[leftIndex] + nums[rightIndex] < sum) {
+                        leftIndex++;
+                    } else if (nums[leftIndex] + nums[rightIndex] > sum) {
+                        rightIndex--;
+                    } else {
+
+                        /* Find one */
+                        List<Integer> findList = new LinkedList<>();
+                        findList.add(nums[i]);
+                        findList.add(nums[j]);
+                        findList.add(nums[leftIndex]);
+                        findList.add(nums[rightIndex]);
+                        fourSum.add(findList);
+
+                        /* Keep finding 4sum in this round */
+                        leftIndex++;
+                        rightIndex--;
+
+                        /* Avoid duplicate */
+                        while (leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex - 1]) {
+                            leftIndex++;
+                        }
+                        while (leftIndex < rightIndex && nums[rightIndex] == nums[rightIndex + 1]) {
+                            rightIndex--;
+                        }
+                    }
+                }
+            }
+
+        }
+        return fourSum;
+    }
+}
