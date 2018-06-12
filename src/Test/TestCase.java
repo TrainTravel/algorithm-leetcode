@@ -109,8 +109,9 @@ public class TestCase {
 //        int[] test = {-1, 2, 1, -4};
 //        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
 
-        /* Parentheses Test */
-        IsValid isValidTest = new IsValid();
-        System.out.println(isValidTest.isValid("()[]{}"));
+//        /* Parentheses Test */
+//        IsValid isValidTest = new IsValid();
+//        System.out.println(isValidTest.isValid("()[]{}"));
+
     }
 }
