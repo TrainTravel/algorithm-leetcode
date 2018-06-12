@@ -16,6 +16,10 @@ public class IntToRoman {
      * I can be placed before V (5) and X (10) to make 4(IV) and 9(IX).
      * X can be placed before L (50) and C (100) to make 40(XL) and 90(XC).
      * C can be placed before D (500) and M (1000) to make 400(CD) and 900(CM).
+     *
+     * Started from the largest int(1000), subtract the largest that is not larger than current num.
+     * Combine represented Roman numerals each subtraction.
+     *
      * <p>
      * Symbol       Value
      * I             1

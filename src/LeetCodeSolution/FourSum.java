@@ -12,6 +12,16 @@ import java.util.List;
  */
 
 public class FourSum {
+    /**
+     * Given an array nums of n integers and an integer target, find elements in nums such that a + b + c + d = target.
+     * Find all unique quadruplets in the array which gives the sum of target.
+     *
+     * Similar to 3 sum and 3 sum closest, the only difference is to modify the bound when searching array
+     *
+     * @param nums input integer array
+     * @param target target sum
+     * @return linked list that contains all unique quadruplets
+     */
     public List<List<Integer>> fourSum(int[] nums, int target) {
 
         List<List<Integer>> fourSum = new LinkedList<>();

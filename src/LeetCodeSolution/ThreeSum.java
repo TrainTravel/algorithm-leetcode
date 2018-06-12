@@ -12,6 +12,16 @@ import java.util.List;
  */
 
 public class ThreeSum {
+    /**
+     * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0.
+     * Find all unique triplets in the array which gives the sum of zero.
+     *
+     * Sort the array first, then start from the smallest (or largerest) element.
+     * When one element is selected, start from the 
+     *
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> threeSumResult = new LinkedList<>();
 
