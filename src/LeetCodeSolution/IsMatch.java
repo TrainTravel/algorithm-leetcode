@@ -22,80 +22,48 @@ public class IsMatch {
     public boolean isMatch(String s, String p) {
 
         /* Special case */
-        if (s.length() == 0 || p.length() == 0) {
-            if (s.length() + p.length() != 0) {
-                return false;
-            }
-        }
-        if (p.equals(".*")) {
-            return true;
+        if (p.length() == 0) {
+            return s.length() == 0;
         }
         if (p.length() == 1) {
-            if (s.length() > 1) {
+            if (s.length() != 1) {
                 return false;
             }
+            return (s.charAt(0) == p.charAt(0)) || (p.charAt(0) == '.');
         }
 
-        int i = 0;
-        int j = 0;
-
-        while (j < p.length()) {
-
-            if (i == s.length() - 1 && j == p.length() - 1) {
-                if (isEqual(s.charAt(i), p.charAt(j))) {
-                    return true;
-                } else return p.charAt(j) == '*' && isEqual(s.charAt(i), p.charAt(j - 1));
+        if (s.length() != 0 && (p.charAt(0) == s.charAt(0) || (p.charAt(0) == '.'))) {
+            if (p.charAt(1) == '*') {
+                return isMatch_2(s.substring(1), p) || isMatch_2(s, p.substring(2));
             }
-
-            /* Normal situation - two chars are the same */
-            if (isEqual(s.charAt(i), p.charAt(j))) {
-                if (i != s.length() - 1) {
-                    i++;
-                }
-                j++;
-
-                if (i == s.length() - 1 && j != p.length()) {
-
-                    if (j == p.length() - 2 && p.charAt(j + 1) != '*' && p.charAt(j) != '*') {
-                        return false;
-                    }
-                    if (p.charAt(j + 1) == '*' && j < p.length() - 2) {
-                        return false;
-                    }
-                }
-            } else if (p.charAt(j) == '*') {
-                if (isEqual(s.charAt(i), p.charAt(j - 1)) && i != s.length() - 1) {
-                    i++;
-                } else {
-                    j++;
-                }
-            } else if (j == p.length() - 2 && p.charAt(j + 1) == '*') {
-                if (isEqual(s.charAt(i), p.charAt(j))) {
-                    return true;
-                } else return p.length() > 2 && isEqual(s.charAt(i), p.charAt(j - 1));
-            } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
-                j += 2;
-            } else {
-                return false;
-            }
+            return isMatch_2(s.substring(1), p.substring(1));
         }
-        return false;
+        return p.charAt(1) == '*' && isMatch_2(s, p.substring(2));
     }
 
-    /**
-     * Check if input char is equal or not.
-     * If patternChar is '.', then always return true.
-     * Based on the code in isMatch, '*' will not be passed in isEqual as patternChar.
-     *
-     * @param stringChar  char from input string
-     * @param patternChar char from input pattern
-     * @return whether they are matched.
-     */
-    public boolean isEqual(char stringChar, char patternChar) {
-        if (patternChar == '.') {
-            return true;
-        } else {
-            return stringChar == patternChar;
+    public boolean isMatch_2(String s, String p) {
+        if (p.length() == 0) {
+            return s.length() == 0;
         }
+        int sLen = s.length(), pLen = p.length();
+        boolean[][] dp = new boolean[sLen + 1][pLen + 1];
+        dp[0][0] = true;
+        for (int i = 2; i <= pLen; ++i) {
+            dp[0][i] = dp[0][i - 2] && p.charAt(i - 1) == '*';
+        }
+        for (int i = 1; i <= sLen; ++i) {
+            for (int j = 1; j <= pLen; ++j) {
+                char ch1 = s.charAt(i - 1), ch2 = p.charAt(j - 1);
+                if (ch2 != '*') {
+                    dp[i][j] = dp[i - 1][j - 1] && (ch1 == ch2 || ch2 == '.');
+                }
+                else {
+                    dp[i][j] = dp[i][j - 2];
+                    if (ch1 == p.charAt(j - 2) || p.charAt(j - 2) == '.')
+                        dp[i][j] = dp[i][j] | dp[i - 1][j];
+                }
+            }
+        }
+        return dp[sLen][pLen];
     }
 }
