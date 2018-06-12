@@ -15,6 +15,8 @@ public class IsMatch {
      * '*' Matches zero or more of the PRECEDING element. (Which means "*" will not be first element of string)
      * The matching should cover the entire input string (not partial).
      *
+     * Use dynamic programming to solve this problem
+     *
      * @param s input String
      * @param p input Pattern
      * @return true if found match, false if not
