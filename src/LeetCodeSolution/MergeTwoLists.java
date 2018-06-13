@@ -14,6 +14,13 @@ public class MergeTwoLists {
      * The new list should be made by splicing together the nodes of the first two lists.
      * <p>
      * Simply compare value in two ListNode. Point smaller one as next node.
+     * <p>
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
      *
      * @param l1 first node
      * @param l2 second node
