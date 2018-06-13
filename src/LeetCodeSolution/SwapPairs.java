@@ -42,10 +42,19 @@ public class SwapPairs {
 
         while (cur.next != null && cur.next.next != null) {
 
+            /* Store current ListNode's next two node */
             ListNode cache = cur.next.next;
+
+            /* Replace current ListNode's next two node's next pointer to current ListNode's next pointer */
             cur.next.next = cache.next;
+
+            /* Replace cache ListNode's next pointer to currnent's next pointer */
             cache.next = cur.next;
+
+            /* Link next round's current ListNode */
             cur.next = cache;
+
+            /* Switch current ListNode's position */
             cur = cache.next;
         }
         return dummy.next;
