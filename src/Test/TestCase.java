@@ -113,5 +113,9 @@ public class TestCase {
 //        IsValid isValidTest = new IsValid();
 //        System.out.println(isValidTest.isValid("()[]{}"));
 
+        /* Generate Parentheses Test */
+        GenerateParenthesis generateParenthesisTest = new GenerateParenthesis();
+        System.out.println(generateParenthesisTest.generateParenthesis(3));
+
     }
 }
