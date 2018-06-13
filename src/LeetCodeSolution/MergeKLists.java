@@ -1,6 +1,5 @@
 package LeetCodeSolution;
 
-
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
@@ -39,20 +38,48 @@ public class MergeKLists {
         return divide(lists, 0, lists.length - 1);
     }
 
-    public ListNode divide(ListNode[] partList, int start, int end) {
+
+    /**
+     * Divide input lists from mid and put into two subpart recursively, until each subpart only has one element.
+     * Then merge these two lists using mergeTwoLists method.
+     * Finally, the whole ListNode list will be merged and this merged list will be returned.
+     *
+     * @param list  input list
+     * @param start strat index
+     * @param end   end index
+     * @return merged result
+     */
+    public ListNode divide(ListNode[] list, int start, int end) {
         if (start == end) {
-            return partList[start];
+            return list[start];
         }
         if (start < end) {
             int mid = (end + start) / 2;
-            ListNode l1 = divide(partList, start, mid);
-            ListNode l2 = divide(partList, mid + 1, end);
+            ListNode l1 = divide(list, start, mid);
+            ListNode l2 = divide(list, mid + 1, end);
             return mergeTwoLists(l1, l2);
         } else {
             return null;
         }
     }
 
+    /**
+     * Merge two sorted linked lists and return it as a new list.
+     * The new list should be made by splicing together the nodes of the first two lists.
+     * <p>
+     * Simply compare value in two ListNode. Point smaller one as next node.
+     * <p>
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     *
+     * @param l1 first node
+     * @param l2 second node
+     * @return next smaller node
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
