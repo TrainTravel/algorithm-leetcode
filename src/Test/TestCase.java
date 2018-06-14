@@ -1,6 +1,7 @@
 package Test;
 
-import LeetCodeSolution.*;
+
+import LeetCodeSolution.StrStr;
 
 /**
  * Created with IntelliJ IDEA
@@ -121,6 +122,10 @@ public class TestCase {
 //        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
 //        int[] test = {1,2,3,4};
 //        System.out.println(removeDuplicatesTest.removeDuplicates(test));
+
+        /* StrStr Test*/
+        StrStr strStrTest = new StrStr();
+        System.out.println(strStrTest.strStr("mississippi", "issip"));
 
     }
 }
