@@ -117,10 +117,10 @@ public class TestCase {
 //        GenerateParenthesis generateParenthesisTest = new GenerateParenthesis();
 //        System.out.println(generateParenthesisTest.generateParenthesis(3));
 
-        /* RemoveDuplicates Test */
-        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
-        int[] test = {1,2,3,4};
-        System.out.println(removeDuplicatesTest.removeDuplicates(test));
+//        /* RemoveDuplicates Test */
+//        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
+//        int[] test = {1,2,3,4};
+//        System.out.println(removeDuplicatesTest.removeDuplicates(test));
 
     }
 }

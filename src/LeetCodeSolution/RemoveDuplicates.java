@@ -13,8 +13,18 @@ public class RemoveDuplicates {
      * Remove the duplicates in-place such that each element appear only once and return the new length.
      * Do not allocate extra space for another array.
      * It must be done by modifying the input array in-place with O(1) extra memory.
+     * <p>
+     * Note: Input array is passed in by reference, modification to it will be known to the caller as well.
      *
-     * Note: The duplicated elements should be replace by non-duplicated elements.
+     * Output sample:
+     * // nums is passed in by reference. (i.e., without making a copy)
+     * int len = removeElement(nums, val);
+     *
+     * // any modification to nums in your function would be known by the caller.
+     * // using the length returned by your function, it prints the first len elements.
+     * for (int i = 0; i < len; i++) {
+     *     print(nums[i]);
+     * }
      *
      * @param nums input int sorted array
      * @return length
@@ -27,6 +37,7 @@ public class RemoveDuplicates {
 
                 /* Switch array elements so that this array can be divided in the end */
                 nums[length++] = nums[i];
+
             }
         }
         return length;
