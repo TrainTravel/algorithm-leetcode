@@ -7,46 +7,48 @@ package LeetCodeSolution;
  * Time: 12:26
  */
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) { val = x; }
- * }
- */
 
 public class AddTwoNumbers {
 
+    /**
+     * You are given two non-empty linked lists representing two non-negative integers.
+     * The digits are stored in reverse order and each of their nodes contain a single digit.
+     * Add the two numbers and return it as a linked list.
+     * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+     * <p>
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     *
+     * @param l1 first int contains in ListNode
+     * @param l2 second int contains in ListNode
+     * @return result in ListNode
+     */
     /* Sum two nodes and return the sum node. Until List is empty */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
-        ListNode result = new ListNode(0);
-        ListNode current = result;
-
-        int nodeValue1;
-        int nodeValue2;
-        int sum;
+        ListNode head = new ListNode(0);
+        ListNode current = head;
         int carry = 0;
 
         while (l1 != null || l2 != null) {
 
-            /* Find value in node */
+            /* Get value for addition. */
             if (l1 != null) {
-                nodeValue1 = l1.val;
-            } else {
-                nodeValue1 = 0;
+                carry = carry + l1.val;
+
             }
             if (l2 != null) {
-                nodeValue2 = l2.val;
-            } else {
-                nodeValue2 = 0;
+                carry = carry + l2.val;
+
             }
 
-            /* Sum them and check carry */
-            sum = carry + nodeValue1 + nodeValue2;
-            carry = sum / 10;
-            current.next = new ListNode(sum % 10);
+            /* Sum and check carry */
+            current.next = new ListNode(carry % 10);
+            carry = carry / 10;
             current = current.next;
 
             if (l1 != null) {
@@ -60,8 +62,7 @@ public class AddTwoNumbers {
         if (carry > 0) {
             current.next = new ListNode(carry);
         }
-
-        return result.next;
+        return head.next;
     }
 }
 
