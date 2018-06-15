@@ -32,8 +32,8 @@ public class StrStr {
         }
 
         for (int i = 0; i < haystack.length() - needle.length() + 1; i++) {
-            String part = haystack.substring(i, i+needle.length());
-            if (part.equals(needle)){
+            String part = haystack.substring(i, i + needle.length());
+            if (part.equals(needle)) {
                 return i;
             }
         }
