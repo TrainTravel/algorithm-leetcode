@@ -29,40 +29,26 @@ public class AddTwoNumbers {
      */
     /* Sum two nodes and return the sum node. Until List is empty */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        return recursiveAdding(l1, l2, 0);
+    }
 
-        ListNode head = new ListNode(0);
-        ListNode current = head;
-        int carry = 0;
+    public ListNode recursiveAdding(ListNode l1, ListNode l2, int sum) {
 
-        while (l1 != null || l2 != null) {
-
-            /* Get value for addition. */
-            if (l1 != null) {
-                carry = carry + l1.val;
-
-            }
-            if (l2 != null) {
-                carry = carry + l2.val;
-
-            }
-
-            /* Sum and check carry */
-            current.next = new ListNode(carry % 10);
-            carry = carry / 10;
-            current = current.next;
-
-            if (l1 != null) {
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                l2 = l2.next;
-            }
-
+        /* Special case and end point */
+        if (l1 == null && l2 == null && sum == 0) {
+            return null;
         }
-        if (carry > 0) {
-            current.next = new ListNode(carry);
+
+        if (l1 != null) {
+            sum += l1.val;
         }
-        return head.next;
+        if (l2 != null) {
+            sum += l2.val;
+        }
+
+        ListNode current = new ListNode(sum % 10);
+        current.next = recursiveAdding(l1 == null ? null : l1.next, l2 == null ? null : l2.next, sum / 10);
+        return current;
     }
 }
 
@@ -71,8 +57,7 @@ public class AddTwoNumbers {
  * ListNode contains one single value.
  * This class has "link" function, which is "next".
  * <p>
- * However, it DO NOT SAVE node, just virtually "link" current node to next node.
- * That is to say, it only "link" CURRENT status to NEXT status, and it is also a ListNode.
+ * However, it DOES NOT save node, just virtually "link" current node to next node.
  */
 class ListNode {
 
