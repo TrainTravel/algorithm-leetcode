@@ -17,8 +17,7 @@ public class TestCase {
 
     public static void main(String[] args) {
 
-        /* Two Sum Test */
-
+//        /* Two Sum Test */
 //        TwoSum twoSumTest = new TwoSum();
 //        int[] testArray = {3, 5, 6, 8, 7};
 //        System.out.println(Arrays.toString(twoSumTest.twoSum(testArray, 8)));
@@ -123,9 +122,9 @@ public class TestCase {
 //        int[] test = {1,2,3,4};
 //        System.out.println(removeDuplicatesTest.removeDuplicates(test));
 
-        /* StrStr Test*/
-        StrStr strStrTest = new StrStr();
-        System.out.println(strStrTest.strStr("mississippi", "issip"));
+//        /* StrStr Test*/
+//        StrStr strStrTest = new StrStr();
+//        System.out.println(strStrTest.strStr("mississippi", "issip"));
 
     }
 }
