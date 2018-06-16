@@ -8,64 +8,72 @@ package Helper;
  */
 
 public class QuickSort {
-    private int[] toSort;
+    private int[] arr;
 
-    public QuickSort(int[] sortArray) {
-        toSort = sortArray;
+    /**
+     * Quick sort implementation.
+     *
+     * @param sortArray array to be sort
+     */
+    public int[] QuickSort(int[] sortArray) {
+
+        /* Special Case */
+        if (sortArray.length == 0 || sortArray.length == 1) {
+            return sortArray;
+        }
+        arr = sortArray;
+        partition(0, arr.length - 1);
+        return arr;
     }
 
     /**
      * Quick sort with recursively partition. Sort target array from small to large.
      *
-     * @param left  left bound INDEX
-     * @param right right bound INDEX
-     * @return partitioned array
+     * @param leftIndex  left bound INDEX
+     * @param rightIndex right bound INDEX
      */
-    public int[] sort(int left, int right) {
+    public void partition(int leftIndex, int rightIndex) {
 
-        if (toSort.length == 1) {
-            return toSort;
+        /* Special case and end point for recursion */
+        if (leftIndex == rightIndex || arr == null) {
+            return;
         }
-        if (toSort.length == 2) {
-            if (toSort[0] == toSort[1]) {
-                return toSort;
-            } else if (toSort[0] > toSort[1]) {
-                switchElement(0, 1);
+        if (leftIndex == rightIndex - 1) {
+            if (leftIndex > rightIndex) {
+                int temp = arr[leftIndex];
+                arr[leftIndex] = arr[rightIndex];
+                arr[rightIndex] = temp;
             }
-            return toSort;
+            return;
         }
 
-        /* Select pivot and index. Switch pivot and first element in array */
-        int pivotIndex = toSort[(right - left) / 2];
-        switchElement(left, pivotIndex);
-        int i = left;
-        int j = right;
+        int l = leftIndex;
+        int r = rightIndex;
 
-        /* Move pivot, if element next to pivot smaller than pivot, then swith them */
-        while (i < j) {
-            if (toSort[i] < toSort[i + 1]) {
-                switchElement(i, i + 1);
-                i++;
-            } else {
-                /* Pick element from right to left that is smaller than pivot and switch */
-                while (j > i) {
-                    if (toSort[j] > toSort[i + 1]) {
-                        j--;
-                    } else {
-                        switchElement(i + 1, j);
-                        break;
-                    }
-                }
+        /* Select pivot */
+        int pivot = arr[l + (r - l) / 2];
+
+        /* Partition: move elements smaller than pivot to pivot's left, rest to pivot's right */
+        while (l < r) {
+
+            /* Pass elements that smaller*/
+            while (arr[l] < pivot) {
+                l++;
             }
-        }
-        sort(left, i);
-        sort(j, right);
-        return toSort;
-    }
+            while (arr[r] > pivot) {
+                r--;
+            }
 
-    private void switchElement(int index1, int index2) {
-        toSort[index1] = toSort[index1] + toSort[index2];
-        toSort[index2] = toSort[index1] - toSort[index2];
-        toSort[index1] = toSort[index1] - toSort[index2];
+            /* Switch elements */
+            int temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+            l++;
+            r--;
+        }
+
+        /* Recursion: repeat this process into sub array until reach end point */
+        partition(leftIndex, r);
+        partition(l, rightIndex);
     }
 }
