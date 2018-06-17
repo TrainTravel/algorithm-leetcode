@@ -45,10 +45,10 @@ public class LengthOfLongestSubstring {
 
         for (int i = 0; i < s.length(); i++) {
 
-            char currentChar = s.charAt(i);
+//            char currentChar = s.charAt(i);
 
-            if (thisMap.containsKey(currentChar)) {
-                subStart = Math.max(thisMap.get(currentChar), subStart);
+            if (thisMap.containsKey(s.charAt(i))) {
+                subStart = Math.max(thisMap.get(s.charAt(i)), subStart);
             }
             result = Math.max(result, i - subStart + 1);
 
