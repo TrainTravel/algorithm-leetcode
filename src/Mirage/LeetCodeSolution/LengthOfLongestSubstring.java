@@ -15,22 +15,24 @@ public class LengthOfLongestSubstring {
 
     /**
      * Given a string, find the length of the longest substring without repeating characters.
-     *
+     * <p>
+     * Construct a new map to store previous chars.
      * key - char
      * value - next position
-     *
-     * When char is NOT found in map, the value that key store is NEXT position.
-     * In this way, when char is FOUND in map,
-     * what get() method will obtain is the next position,
-     * which will avoid to include duplicated char in sub-string
-     *
-     * Then, compare to old max sub length.
+     * <p>
+     * When current char does not exist in map, then store this char and its next position.
+     * When current char exists in map, reset the position to current char's next. (No duplication)
+     * Compare current non-repeating substring length to max length, switch them if current length is longer.
      *
      * @param s input string
      * @return max sub-string length
      */
-    
+
     public int lengthOfLongestSubstring(String s) {
+
+        if (s.length() == 0 || s.length() == 1) {
+            return s.length();
+        }
 
         /* Init variables */
         int result = 0;
@@ -39,13 +41,8 @@ public class LengthOfLongestSubstring {
         /* Init new map */
         Map<Character, Integer> thisMap = new HashMap<>();
 
-        if (s.length() == 1) {
-            return 1;
-        }
 
         for (int i = 0; i < s.length(); i++) {
-
-//            char currentChar = s.charAt(i);
 
             if (thisMap.containsKey(s.charAt(i))) {
                 subStart = Math.max(thisMap.get(s.charAt(i)), subStart);
