@@ -41,7 +41,7 @@ public class LengthOfLongestSubstring {
         /* Init new map */
         Map<Character, Integer> thisMap = new HashMap<>();
 
-
+        /* Traverse string */
         for (int i = 0; i < s.length(); i++) {
 
             if (thisMap.containsKey(s.charAt(i))) {
