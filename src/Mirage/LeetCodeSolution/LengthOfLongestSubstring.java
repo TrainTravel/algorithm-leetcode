@@ -59,6 +59,7 @@ public class LengthOfLongestSubstring {
     public static void main(String[] args) {
         LengthOfLongestSubstring test = new LengthOfLongestSubstring();
         System.out.println(test.lengthOfLongestSubstring("tmmzuxt"));
+        System.out.println(test.lengthOfLongestSubstring("a"));
     }
 }
 
