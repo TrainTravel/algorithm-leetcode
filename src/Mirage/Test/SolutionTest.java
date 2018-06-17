@@ -9,9 +9,7 @@ package Mirage.Test;
  */
 
 public class SolutionTest {
-    public void testCase() {
 
-    }
 
     public static void main(String[] args) {
 

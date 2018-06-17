@@ -1,6 +1,5 @@
 package Mirage.Helper;
 
-
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
@@ -9,10 +8,8 @@ package Mirage.Helper;
  */
 
 public class LongestCommonSubstring {
-    private int[][] lengthTable;
     private String str1;
     private String str2;
-
 
     /**
      * Find longest common substring between two strings.
@@ -21,48 +18,47 @@ public class LongestCommonSubstring {
      * @param strA first input string
      * @param strB second input string
      */
-    public LongestCommonSubstring(String strA, String strB) {
-        str1 = strA;
-        if (strA.equals(strB)) {
-            str2 = reverseStr(strA);
-        } else {
-            str2 = strB;
+    public String longestCommonSubstring(String strA, String strB) {
+
+        /* Special Case */
+        if (str1.length() == 0 || strB.length() == 0) {
+            return strA.length() == 0 ? strA : strB;
         }
-        int[][] lengthTable = new int[str1.length()][str2.length()];
+
+        str1 = strA;
+        str2 = strB;
+        return setTable();
     }
-
-    public int[][] findLCS() {
-        char[] char_str1 = str1.toCharArray();
-        char[] char_str2 = str2.toCharArray();
-
-
-        return lengthTable;
-    }
-
 
     /**
-     * Reverse string.
-     * This is a private method for same string.
+     * Fill the table that contains the length of common substring.
+     * Note that the string length is longer than 0.
      *
-     * @param toReverse string to be reversed
-     * @return reversed string.
+     * @return longest common substring
      */
-    private String reverseStr(String toReverse) {
-        char[] reverse = toReverse.toCharArray();
-        for (int i = 0; i < reverse.length / 2; i++) {
-            char cache = reverse[i];
-            reverse[i] = reverse[reverse.length - 1 - i];
-            reverse[reverse.length - 1 - i] = cache;
+    private String setTable() {
+        String result = "";
+
+        /* str1: 2D array's column; str2: 2D array's row.
+         * First column and row filled with 0 for avoiding out of index error. */
+        int[][] table = new int[str1.length() + 1][str2.length() + 1];
+
+        for (int row = 1; row < str2.length() + 1; row++) {
+            for (int column = 1; column < str1.length() + 1; column++) {
+                if (str2.charAt(row) == str1.charAt(column)) {
+                    table[column][row] = table[column - 1][row - 1] + 1;
+                } else {
+                    table[column][row] = Math.max(table[column - 1][row], table[column][row - 1]);
+
+                }
+            }
         }
 
-        /* Convert char[] to string. */
-        return String.valueOf(reverse);
+        /* Trace back */
+
+
+        return result;
     }
 
-    public static void main(String[] args) {
-        String str1 = "abcd";
-        String str2 = "abcdefg";
-        LongestCommonSubstring longestCommonSubstringTest = new LongestCommonSubstring(str1, str2);
-        System.out.println(longestCommonSubstringTest.reverseStr(str1));
-    }
+
 }
