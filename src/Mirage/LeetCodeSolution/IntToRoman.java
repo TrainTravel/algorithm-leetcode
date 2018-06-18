@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA
