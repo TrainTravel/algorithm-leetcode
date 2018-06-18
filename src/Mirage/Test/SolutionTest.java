@@ -1,6 +1,12 @@
 package Mirage.Test;
 
 
+import Mirage.LeetCodeSolution.NextPermutation;
+
+import java.util.Arrays;
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
@@ -121,6 +127,12 @@ public class SolutionTest {
 //        /* StrStr Test*/
 //        StrStr strStrTest = new StrStr();
 //        System.out.println(strStrTest.strStr("mississippi", "issip"));
+
+        /* Next Permutation */
+        NextPermutation nextPermutationTest = new NextPermutation();
+        int[] a = {1,3,2};
+        nextPermutationTest.nextPermutation(a);
+        System.out.println(Arrays.toString(a));
 
     }
 }
