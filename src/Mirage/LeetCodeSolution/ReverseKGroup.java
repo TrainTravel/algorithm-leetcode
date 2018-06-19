@@ -1,0 +1,63 @@
+package Mirage.LeetCodeSolution;
+
+/**
+ * Created with IntelliJ IDEA
+ * Author: BorisMirage
+ * Date: 6/18/18
+ * Time: 21:09
+ */
+
+public class ReverseKGroup {
+    /**
+     * Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+     * k is a positive integer and is less than or equal to the length of the linked list.
+     * If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
+     *
+     * @param head head ListNode
+     * @param k
+     * @return
+     */
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+        /* Special Case */
+        if (k <= 1 || head == null) {
+            return head;
+        }
+
+        ListNode current = head;
+        int count = 0;
+
+        /* Find current reverse part */
+        while (current != null && count != k) {
+            current = current.next;
+            count++;
+        }
+
+        /* If current part is not remaining part of linked list */
+        if (count == k) {
+
+            /* In each recursion, the return value is next recursion's start ListNode */
+            current = reverseKGroup(current, k);
+
+            /* When all individual part is found, start reversing */
+            while (count > 0) {
+
+                /* Set a cache to store next node that will be relinked */
+                ListNode cache = head.next;
+
+                /* Link origin next pointer to previous node for reverse */
+                head.next = current;
+                current = head;
+
+                /* Set next reverse node */
+                head = cache;
+
+                count--;
+            }
+            head = current;
+        }
+
+        /* Result and recursion return value */
+        return head;
+    }
+}
