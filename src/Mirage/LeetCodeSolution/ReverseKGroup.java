@@ -39,7 +39,10 @@ public class ReverseKGroup {
             /* In each recursion, the return value is next recursion's start ListNode */
             current = reverseKGroup(current, k);
 
-            /* When all individual part is found, start reversing */
+            /* Reverse example:
+             * 1 -> 2 -> 3 -> 4 -> 5 ->
+             * <- 1 <- 2 <- 3 <- 4 <- 5
+             * 5 -> 4 -> 3 -> 2 -> 1 -> */
             while (count > 0) {
 
                 /* Set a cache to store next node that will be relinked */
