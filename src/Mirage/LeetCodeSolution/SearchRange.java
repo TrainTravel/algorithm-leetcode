@@ -8,6 +8,15 @@ package Mirage.LeetCodeSolution;
  */
 
 public class SearchRange {
+    /**
+     * Given an array of int sorted in ascending order, find the starting and ending position of a given target value.
+     * Your algorithm's runtime complexity must be in the order of O(log n).
+     * If the target is not found in the array, return [-1, -1].
+     *
+     * @param nums input int array
+     * @param target target int
+     * @return starting and ending position, return [-1, -1] if target is not found
+     */
     public int[] searchRange(int[] nums, int target) {
         int[] res = {-1, -1};
 
@@ -23,10 +32,14 @@ public class SearchRange {
 
             /* If target found, search all target in array */
             if (nums[mid] == target) {
+
+                /* Search for first index */
                 while (mid > 0 && nums[mid - 1] == target) {
                     mid--;
                 }
                 res[0] = mid;
+
+                /* Search for last index */
                 while (mid < nums.length - 1 && nums[mid + 1] == target) {
                     mid++;
                 }
