@@ -2,6 +2,8 @@ package Mirage.Test;
 
 
 import Mirage.LeetCodeSolution.NextPermutation;
+import Mirage.LeetCodeSolution.Search;
+import Mirage.LeetCodeSolution.SearchRange;
 
 import java.util.Arrays;
 import java.util.IdentityHashMap;
@@ -129,10 +131,19 @@ public class SolutionTest {
 //        System.out.println(strStrTest.strStr("mississippi", "issip"));
 
         /* Next Permutation */
-        NextPermutation nextPermutationTest = new NextPermutation();
-        int[] a = {1,3,2};
-        nextPermutationTest.nextPermutation(a);
-        System.out.println(Arrays.toString(a));
+//        NextPermutation nextPermutationTest = new NextPermutation();
+//        int[] a = {1,3,2};
+//        nextPermutationTest.nextPermutation(a);
+//        System.out.println(Arrays.toString(a));
 
+        /* Search */
+//        Search searchTest = new Search();
+//        int[] nums = {1, 2, 3, 4, 5, 6};
+//        System.out.println(searchTest.search(nums, 4));
+
+        /* Search Range */
+        SearchRange searchRangeTest = new SearchRange();
+        int[] nums = {2, 3, 4, 5, 6, 6, 6, 6, 6};
+        System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
     }
 }
