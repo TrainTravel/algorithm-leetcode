@@ -15,7 +15,7 @@ public class Search {
      * You may assume no duplicate exists in the array.
      * Your algorithm's runtime complexity must be in the order of O(log n).
      * <p>
-     * Use binary search. Only one sub-array in each search will possibly not be in ascending order.
+     * Use modified binary search. Only one sub-array in each search will possibly not be in ascending order.
      * Hence, in each binary search iteration, find sub-array that is not in ascending order.
      * If target is not in normal ascending sub-array, compare target to the rest sub-array's mid and end.
      * If sub-array [mid, end] is normal array, compare target to this array to see if in this range.
@@ -54,7 +54,7 @@ public class Search {
                 }
             } else {
 
-                /* In this condition, the */
+                /* Find the normal ascending part and continue search as above */
                 if (target <= nums[endIndex] && target > nums[mid]) {
                     startIndex = mid + 1;
                 } else {
@@ -68,7 +68,6 @@ public class Search {
         if (nums[startIndex] == target) {
             return startIndex;
         }
-
         return -1;
     }
 }
