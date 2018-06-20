@@ -30,7 +30,7 @@ public class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
 
-        if (s.length() == 0 || s.length() == 1) {
+        if (s.length() < 2) {
             return s.length();
         }
 
@@ -38,19 +38,19 @@ public class LengthOfLongestSubstring {
         int result = 0;
         int subStart = 0;
 
-        /* Init new map */
-        Map<Character, Integer> thisMap = new HashMap<>();
+        Map<Character, Integer> stringMap = new HashMap<>();
 
         /* Traverse string */
         for (int i = 0; i < s.length(); i++) {
 
-            if (thisMap.containsKey(s.charAt(i))) {
-                subStart = Math.max(thisMap.get(s.charAt(i)), subStart);
+            /* If current char is in map, compare current index to previous index, set substring start to later one */
+            if (stringMap.containsKey(s.charAt(i))) {
+                subStart = Math.max(stringMap.get(s.charAt(i)), subStart);
             }
             result = Math.max(result, i - subStart + 1);
 
             /* In this way, when repetition is found, the calculation will be next char. */
-            thisMap.put(s.charAt(i), i + 1);
+            stringMap.put(s.charAt(i), i + 1);
         }
 
         return result;
