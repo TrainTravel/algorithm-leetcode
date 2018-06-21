@@ -39,9 +39,8 @@ public class FindSubstring {
         for (String word : words) {
             wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
         }
-
+        Map<String, Integer> stringMap = new HashMap<>();
         for (int i = 0; i < s.length() - words[0].length() * words.length + 1; i++) {
-            Map<String, Integer> stringMap = new HashMap<>();
             int j = 0;
             while (j < words.length) {
 
@@ -52,7 +51,7 @@ public class FindSubstring {
                 if (wordMap.containsKey(currentSubstring)) {
 
                     stringMap.put(currentSubstring, stringMap.getOrDefault(currentSubstring, 0) + 1);
-                    if (stringMap.get(currentSubstring) > wordMap.getOrDefault(currentSubstring, 0)) {
+                    if (stringMap.get(currentSubstring) > wordMap.get(currentSubstring)) {
                         break;
                     }
                 } else {
@@ -63,9 +62,8 @@ public class FindSubstring {
             if (j == words.length) {
                 res.add(i);
             }
+            stringMap.clear();
         }
         return res;
-
-
     }
 }
