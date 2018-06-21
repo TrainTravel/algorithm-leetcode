@@ -1,10 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.FindSubstring;
-import Mirage.LeetCodeSolution.NextPermutation;
-import Mirage.LeetCodeSolution.Search;
-import Mirage.LeetCodeSolution.SearchRange;
+import Mirage.LeetCodeSolution.*;
 
 import java.util.Arrays;
 import java.util.IdentityHashMap;
@@ -148,16 +145,22 @@ public class SolutionTest {
 //        int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
 //        System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
 
-        /* Substring with Concatenation of All Words */
-        String s = "barfoothefoobarman";
-        String[] words = {"bar", "foo"};
+//        /* Substring with Concatenation of All Words */
+//        String s = "barfoothefoobarman";
+//        String[] words = {"bar", "foo"};
+//
+//        final long startTime = System.currentTimeMillis();  // Timer
+//
+//        FindSubstring findSubstringTest = new FindSubstring();
+//        System.out.println(findSubstringTest.findSubstring(s, words));
+//
+//        final long endTime = System.currentTimeMillis();    // Timer
+//        System.out.println("Time: " + (endTime - startTime) + "ms");
 
-        final long startTime = System.currentTimeMillis();  // Timer
+        /* Search Insert Position */
+        SearchInsert searchInsertTest = new SearchInsert();
+        int[] nums = {1,3};
 
-        FindSubstring findSubstringTest = new FindSubstring();
-        System.out.println(findSubstringTest.findSubstring(s, words));
-
-        final long endTime = System.currentTimeMillis();    // Timer
-        System.out.println("Time: " + (endTime - startTime) + "ms");
+        System.out.println(searchInsertTest.searchInsert(nums, 2));
     }
 }
