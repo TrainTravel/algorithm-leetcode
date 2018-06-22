@@ -1,4 +1,4 @@
-package Mirage.Helper;
+package Mirage.Playground;
 
 /**
  * Created with IntelliJ IDEA

@@ -1,6 +1,6 @@
 package Mirage.Test;
 
-import Mirage.Helper.QuickSort;
+import Mirage.Playground.QuickSort;
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ import java.util.Arrays;
  * Time: 21:25
  */
 
-public class HelperTest {
+public class PlaygroundTest {
     public static void main(String[] args) {
         QuickSort quickSortTest = new QuickSort();
         int[] test = {0, 0, 0, 0, 1};
