@@ -156,11 +156,24 @@ public class SolutionTest {
 //
 //        final long endTime = System.currentTimeMillis();    // Timer
 //        System.out.println("Time: " + (endTime - startTime) + "ms");
+//
+//        /* Search Insert Position */
+//        SearchInsert searchInsertTest = new SearchInsert();
+//        int[] nums = {1,3};
+//
+//        System.out.println(searchInsertTest.searchInsert(nums, 2));
 
-        /* Search Insert Position */
-        SearchInsert searchInsertTest = new SearchInsert();
-        int[] nums = {1,3};
-
-        System.out.println(searchInsertTest.searchInsert(nums, 2));
+        /* Valid Sudoku */
+        IsValidSudoku isValidSudoku = new IsValidSudoku();
+        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+        System.out.println(isValidSudoku.isValidSudoku(board));
     }
 }
