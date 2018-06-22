@@ -163,8 +163,21 @@ public class SolutionTest {
 //
 //        System.out.println(searchInsertTest.searchInsert(nums, 2));
 
-        /* Valid Sudoku */
-        IsValidSudoku isValidSudoku = new IsValidSudoku();
+//        /* Valid Sudoku */
+//        IsValidSudoku isValidSudoku = new IsValidSudoku();
+//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+//        System.out.println(isValidSudoku.isValidSudoku(board));
+
+        /* Solve Sudoku */
+        SolveSudoku solveSudokuTest = new SolveSudoku();
         char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
@@ -174,6 +187,8 @@ public class SolutionTest {
                 {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
                 {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
                 {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
-        System.out.println(isValidSudoku.isValidSudoku(board));
+        solveSudokuTest.solveSudoku(board);
+        System.out.println(Arrays.deepToString(board));
+
     }
 }
