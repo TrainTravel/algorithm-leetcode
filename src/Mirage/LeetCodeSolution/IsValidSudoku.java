@@ -36,6 +36,8 @@ public class IsValidSudoku {
         /* Traverse each element in board */
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
+
+                /* Check every position in board */
                 if (board[i][j] != '.') {
 
                     /* board record format(in String): column(char), (char)row, block(char)block */
