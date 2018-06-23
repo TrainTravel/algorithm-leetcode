@@ -176,19 +176,30 @@ public class SolutionTest {
 //                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
 //        System.out.println(isValidSudoku.isValidSudoku(board));
 
-        /* Solve Sudoku */
-        SolveSudoku solveSudokuTest = new SolveSudoku();
-        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
-        solveSudokuTest.solveSudoku(board);
-        System.out.println(Arrays.deepToString(board));
+//        /* Solve Sudoku */
+//        SolveSudoku solveSudokuTest = new SolveSudoku();
+//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+//        solveSudokuTest.solveSudoku(board);
+//        System.out.println(Arrays.deepToString(board));
+
+//        /* Count and Say */
+//        CountAndSay countAndSayTest = new CountAndSay();
+//        System.out.println(countAndSayTest.countAndSay(6));
+
+        /* Combination Sum */
+        int[] candidate = {2, 3, 6, 7};
+        CombinationSum combinationSumTest = new CombinationSum();
+        System.out.println(combinationSumTest.combinationSum(candidate, 7));
+        candidate = new int[]{2, 3, 5};
+        System.out.println(combinationSumTest.combinationSum(candidate, 8));
 
     }
 }
