@@ -235,10 +235,15 @@ public class SolutionTest {
 //        String a1 = "123";
 //        String a2 = "456";
 //        System.out.println(multiplyTest.multiply(a1, a2));
+//
+//        /* Permutations */
+//        Permute permuteTest = new Permute();
+//        int[] c = {1};
+//        System.out.println(permuteTest.permute(c));
 
-        /* Permutations */
-        Permute permuteTest = new Permute();
+        /* Permutations II */
+        PermuteUnique permuteUniqueTest = new PermuteUnique();
         int[] c = {1};
-        System.out.println(permuteTest.permute(c));
+        System.out.println(permuteUniqueTest.permuteUnique(c));
     }
 }
