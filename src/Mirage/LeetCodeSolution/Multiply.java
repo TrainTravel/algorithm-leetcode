@@ -43,6 +43,7 @@ public class Multiply {
             }
         }
 
+        /* Traverse all elements in array and construct result string */
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < index.length; i++) {
             if (!(i == 0 && index[i] == 0)) {

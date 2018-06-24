@@ -35,12 +35,11 @@ public class CombinationSum2 {
         if (candidates.length == 0 || (candidates.length == 1 && target % candidates[0] != 0)) {
             return res;
         }
-        List<Integer> temp = new ArrayList<>();
 
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
         System.out.println(Arrays.toString(candidates));
-        backtracking(res, temp, candidates, target, 0);
+        backtracking(res, new ArrayList<>(), candidates, target, 0);
         return res;
     }
 
