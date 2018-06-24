@@ -201,14 +201,33 @@ public class SolutionTest {
 //        candidate = new int[]{2, 3, 5};
 //        System.out.println(combinationSumTest.combinationSum(candidate, 8));
 
-        /* Combination Sum 2 */
-        CombinationSum2 combinationSum2Test = new CombinationSum2();
-        int[] candidate = {10, 1, 2, 7, 6, 1, 5};
-        System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
-        candidate = new int[]{2, 5, 2, 1, 2};
-        System.out.println(combinationSum2Test.combinationSum2(candidate, 10));
-        candidate = new int[]{2, 5, 2, 1, 2};
-        System.out.println(combinationSum2Test.combinationSum2(candidate, 5));
+//        /* Combination Sum 2 */
+//        CombinationSum2 combinationSum2Test = new CombinationSum2();
+//        int[] candidate = {10, 1, 2, 7, 6, 1, 5};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
+//        candidate = new int[]{2, 5, 2, 1, 2};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 10));
+//        candidate = new int[]{2, 5, 2, 1, 2};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 5));
 
+        /* First Missing Positive */
+        FirstMissingPositive firstMissingPositiveTest = new FirstMissingPositive();
+
+        int[] c = {2, 3, 6, 7};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 1
+        c = new int[]{3, 4, -1, 1};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 2
+        c = new int[]{7, 8, 9, 11, 12};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 1
+        c = new int[]{1, 2, 0};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 3
+        c = new int[]{2, 5, 2, 1, 2, 3};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 4
+        c = new int[]{3, 4, 0, 1};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 2
+        c = new int[]{1, 2, 3, 4, 5, 6, 7};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 8
+        c = new int[]{7, 10, 12, 11, 9, 6, 5, 1, 2, 3};
+        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 4
     }
 }
