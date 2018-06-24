@@ -1,7 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.Arrays;
-
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
