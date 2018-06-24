@@ -194,12 +194,21 @@ public class SolutionTest {
 //        CountAndSay countAndSayTest = new CountAndSay();
 //        System.out.println(countAndSayTest.countAndSay(6));
 
-        /* Combination Sum */
-        int[] candidate = {2, 3, 6, 7};
-        CombinationSum combinationSumTest = new CombinationSum();
-        System.out.println(combinationSumTest.combinationSum(candidate, 7));
-        candidate = new int[]{2, 3, 5};
-        System.out.println(combinationSumTest.combinationSum(candidate, 8));
+//        /* Combination Sum */
+//        int[] candidate = {2, 3, 6, 7};
+//        CombinationSum combinationSumTest = new CombinationSum();
+//        System.out.println(combinationSumTest.combinationSum(candidate, 7));
+//        candidate = new int[]{2, 3, 5};
+//        System.out.println(combinationSumTest.combinationSum(candidate, 8));
+
+        /* Combination Sum 2 */
+        CombinationSum2 combinationSum2Test = new CombinationSum2();
+        int[] candidate = {10, 1, 2, 7, 6, 1, 5};
+        System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
+        candidate = new int[]{2, 5, 2, 1, 2};
+        System.out.println(combinationSum2Test.combinationSum2(candidate, 10));
+        candidate = new int[]{2, 5, 2, 1, 2};
+        System.out.println(combinationSum2Test.combinationSum2(candidate, 5));
 
     }
 }

@@ -8,15 +8,15 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
- * Date: 6/22/18
- * Time: 21:56
+ * Date: 6/23/18
+ * Time: 20:02
  */
 
-public class CombinationSum {
+public class CombinationSum2 {
     /**
-     * Given a set of candidate numbers (candidates) (without duplicates) and a target number (target).
+     * Given a collection of candidate numbers (candidates) and a target number (target).
      * Find all unique combinations in candidates where the candidate numbers sums to target.
-     * The same repeated number may be chosen from candidates unlimited number of times.
+     * Each number in candidates may only be used ONCE in the combination.
      * <p>
      * Note:
      * All numbers (including target) will be positive integers.
@@ -28,7 +28,7 @@ public class CombinationSum {
      * @param target     target numbers
      * @return result int list
      */
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
 
         /* Special Case */
@@ -39,6 +39,7 @@ public class CombinationSum {
 
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
+        System.out.println(Arrays.toString(candidates));
         backtracking(res, temp, candidates, target, 0);
         return res;
     }
@@ -62,14 +63,16 @@ public class CombinationSum {
                 result.add(new ArrayList<>(temp));
             } else {
 
-                /* If current sum is smaller than target, traverse all elements in array include candidates[i] itself */
+                /* Same recursion as CombinationSum except one more step to avoid duplicate */
                 for (int i = start; i < candidates.length; i++) {
 
-                    /* Add current candidate to temp list */
-                    temp.add(candidates[i]);
-                    backtracking(result, temp, candidates, remain - candidates[i], i);
+                    /* Remove duplicate elements in output */
+                    if (i > start && candidates[i] == candidates[i - 1]) {
+                        continue;
+                    }
 
-                    /* If current sum is larger than target, remove last element */
+                    temp.add(candidates[i]);
+                    backtracking(result, temp, candidates, remain - candidates[i], i + 1);
                     temp.remove(temp.size() - 1);
                 }
             }
