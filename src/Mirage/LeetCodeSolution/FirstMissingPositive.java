@@ -14,9 +14,14 @@ public class FirstMissingPositive {
      * Given an unsorted integer array, find the smallest missing positive integer.
      * <p>
      * Note:
-     * Your algorithm should run in O(n) time and uses constant extra space.
+     * Algorithm should run in O(n) time and uses constant extra space.
      * <p>
-     * Use swapping to switch elements.
+     * Traverse array three times.
+     * First, replace all non-negative numbers to array's length.
+     * In second traversal, find nums[i] that absolute value is smaller than array's length.
+     * Mark its representative index's value to negative.
+     * i.e, abs(nums[i])=5, then nums[4] = - nums[4]
+     * The reason to use absolute value is to save while loop compare to swapping method.
      *
      * @param nums input int array
      * @return smallest missing positive int
@@ -28,38 +33,27 @@ public class FirstMissingPositive {
             return 1;
         }
 
-        int c = 0;
-
-
-        while (c < nums.length) {
-            if (nums[c] > 0 && nums[c] < nums.length && nums[nums[c] - 1] != nums[c] - 1) {
-                int temp = nums[nums[c] - 1];
-                nums[nums[c] - 1] = nums[c];
-                nums[c] = temp;
-            } else {
-                c++;
+        /* Remove all negative elements */
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= 0) {
+                nums[i] = nums.length + 1;
             }
         }
-        System.out.println(Arrays.toString(nums));
 
-//        for (int i = 0; i < nums.length; i++) {
-//
-//            /* Condition:
-//             *  1. nums[i] > 0: positive number
-//             *  2. nums[i] - 1 < nums.length: in index range of nums
-//             *  3. nums[nums[i] - 1] != nums[i]: avoid duplicate swapping
-//             *  4. nums[i] - 1 != i: avoid swap itself
-//             *  Use while loop to find correct number or other int that is longer than nums.length - 1 (if exist)*/
-//            while (nums[i] > 0 && nums[i] - 1 < nums.length && nums[nums[i] - 1] != nums[i] && nums[i] - 1 != i) {
-//                int temp = nums[nums[i] - 1];
-//                nums[nums[i] - 1] = nums[i];
-//                nums[i] = temp;
-//            }
-//        }
-        int i = 0;
-        while (i < nums.length && nums[i] == i + 1) {
-            i++;
+        /* Mark each element that is smaller than length of array to negative value
+         * To avoid unnecessary move in swapping, use absolute value and mark respective position in negative number */
+        for (int i = 0; i < nums.length; ++i) {
+            if (Math.abs(nums[i]) <= nums.length) {
+                nums[Math.abs(nums[i]) - 1] = -Math.abs(nums[Math.abs(nums[i]) - 1]);
+            }
         }
-        return i + 1;
+
+        /* Finally, traverse array and return first positive index, which is first missing positive number */
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+        return nums.length + 1;
     }
 }
