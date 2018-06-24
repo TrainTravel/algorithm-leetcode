@@ -230,10 +230,15 @@ public class SolutionTest {
 //        c = new int[]{7, 10, 12, 11, 9, 6, 5, 1, 2, 3};
 //        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 4
 
-        /* Multiply */
-        Multiply multiplyTest = new Multiply();
-        String a1 = "123";
-        String a2 = "456";
-        System.out.println(multiplyTest.multiply(a1, a2));
+//        /* Multiply */
+//        Multiply multiplyTest = new Multiply();
+//        String a1 = "123";
+//        String a2 = "456";
+//        System.out.println(multiplyTest.multiply(a1, a2));
+
+        /* Permutations */
+        Permute permuteTest = new Permute();
+        int[] c = {1};
+        System.out.println(permuteTest.permute(c));
     }
 }
