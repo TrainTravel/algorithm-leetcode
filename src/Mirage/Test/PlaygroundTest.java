@@ -1,6 +1,8 @@
 package Mirage.Test;
 
+import Mirage.LeetCodeSolution.*;
 import Mirage.Playground.QuickSort;
+import Mirage.Playground.RotateMatrix;
 
 import java.util.Arrays;
 
@@ -18,7 +20,7 @@ public class PlaygroundTest {
         int[] test = {0, 0, 0, 0, 1};
         int[] x = {9, 2, 4, 7, 3, 7, 10};
         int[] x1 = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-        int[] x2 = {0, 0, 0, 0,0, 0, 0, 0};
+        int[] x2 = {0, 0, 0, 0, 0, 0, 0, 0};
         int[] x3 = {23, 6, 1, 9, 5, 3, 64, 3, 45, 6, 7, 8};
         int[] x4 = {1};
         int[] x5 = {};
@@ -43,5 +45,11 @@ public class PlaygroundTest {
         System.out.println();
         System.out.println(Arrays.toString(x5));
         System.out.println(Arrays.toString(quickSortTest.QuickSort(x5)));
+
+
+        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        RotateMatrix rotateMatrixTest = new RotateMatrix();
+        rotateMatrixTest.rotateAntiClockwise(r);
+        System.out.println(r);
     }
 }
