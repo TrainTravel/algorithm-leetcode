@@ -241,9 +241,15 @@ public class SolutionTest {
 //        int[] c = {1};
 //        System.out.println(permuteTest.permute(c));
 
-        /* Permutations II */
-        PermuteUnique permuteUniqueTest = new PermuteUnique();
-        int[] c = {1};
-        System.out.println(permuteUniqueTest.permuteUnique(c));
+//        /* Permutations II */
+//        PermuteUnique permuteUniqueTest = new PermuteUnique();
+//        int[] c = {1};
+//        System.out.println(permuteUniqueTest.permuteUnique(c));
+
+        /* Rotation */
+        Rotate rotateTest = new Rotate();
+        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        rotateTest.rotate(r);
+        System.out.println(Arrays.deepToString(r));
     }
 }
