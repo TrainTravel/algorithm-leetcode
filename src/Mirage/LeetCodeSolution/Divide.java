@@ -25,14 +25,15 @@ public class Divide {
      */
     public int divide(int dividend, int divisor) {
 
-
         long dividendLong = Math.abs((long) dividend);
         long divisorLong = Math.abs((long) divisor);
 
-        /* Special Case */
+        /* If input overflow */
         if (divisorLong == 0) {
             return Integer.MAX_VALUE;
         }
+
+        /* Special Case */
         if (dividendLong < divisorLong || dividendLong == 0) {
             return 0;
         }
@@ -40,12 +41,10 @@ public class Divide {
             return dividend;
         }
 
-        long result = 0;
-        long cache = divisorLong;
-        while (dividendLong > divisorLong) {
-            result++;
-            divisorLong += cache;
-        }
+        /* Use recursion to find result */
+        long result = fastDivide(dividendLong, divisorLong);
+
+        /* Avoid overflow */
         if (result > Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;
         }
@@ -55,4 +54,20 @@ public class Divide {
         }
         return (int) result;
     }
+
+    private long fastDivide(long dividend, long divisor) {
+
+        /* Recursion exit point */
+        if (dividend < divisor) {
+            return 0;
+        }
+        long cache = divisor;
+        long multi = 1;
+        while ((cache + cache) <= dividend) {
+            cache += cache;
+            multi += multi;
+        }
+        return multi + fastDivide(dividend - cache, divisor);
+    }
+
 }

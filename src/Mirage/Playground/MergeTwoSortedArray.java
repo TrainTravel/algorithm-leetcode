@@ -1,4 +1,6 @@
-package Mirage.Helper;
+package Mirage.Playground;
+
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA
@@ -16,13 +18,6 @@ public class MergeTwoSortedArray {
         }
         if (a2.length == 0) {
             return a1;
-        }
-
-        /* Make sure nums1 is longer array */
-        if (a1.length < a2.length) {
-            int[] temp = a2;
-            a2 = a1;
-            a1 = temp;
         }
 
         int i1 = 0;

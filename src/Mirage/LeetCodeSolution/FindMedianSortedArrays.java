@@ -79,7 +79,7 @@ public class FindMedianSortedArrays {
         if (a.length == 1) {
             return a[0];
         } else if (a.length == 2) {
-            return (float)(a[1] - a[0]) / (float)2 + a[0];
+            return (float) (a[1] - a[0]) / (float) 2 + a[0];
         } else {
             if (isOdd) {
                 result = a[a.length / 2];

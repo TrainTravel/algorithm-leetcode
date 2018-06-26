@@ -1,6 +1,12 @@
 package Mirage.Test;
 
 
+import Mirage.LeetCodeSolution.*;
+
+import java.util.Arrays;
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
@@ -122,5 +128,128 @@ public class SolutionTest {
 //        StrStr strStrTest = new StrStr();
 //        System.out.println(strStrTest.strStr("mississippi", "issip"));
 
+        /* Next Permutation */
+//        NextPermutation nextPermutationTest = new NextPermutation();
+//        int[] a = {1,3,2};
+//        nextPermutationTest.nextPermutation(a);
+//        System.out.println(Arrays.toString(a));
+
+        /* Search */
+//        Search searchTest = new Search();
+//        int[] nums = {1, 2, 3, 4, 5, 6};
+//        System.out.println(searchTest.search(nums, 4));
+
+//        /* Search Range */
+//
+//        SearchRange searchRangeTest = new SearchRange();
+//        int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
+//        System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
+
+//        /* Substring with Concatenation of All Words */
+//        String s = "barfoothefoobarman";
+//        String[] words = {"bar", "foo"};
+//
+//        final long startTime = System.currentTimeMillis();  // Timer
+//
+//        FindSubstring findSubstringTest = new FindSubstring();
+//        System.out.println(findSubstringTest.findSubstring(s, words));
+//
+//        final long endTime = System.currentTimeMillis();    // Timer
+//        System.out.println("Time: " + (endTime - startTime) + "ms");
+//
+//        /* Search Insert Position */
+//        SearchInsert searchInsertTest = new SearchInsert();
+//        int[] nums = {1,3};
+//
+//        System.out.println(searchInsertTest.searchInsert(nums, 2));
+
+//        /* Valid Sudoku */
+//        IsValidSudoku isValidSudoku = new IsValidSudoku();
+//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+//        System.out.println(isValidSudoku.isValidSudoku(board));
+
+//        /* Solve Sudoku */
+//        SolveSudoku solveSudokuTest = new SolveSudoku();
+//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+//        solveSudokuTest.solveSudoku(board);
+//        System.out.println(Arrays.deepToString(board));
+
+//        /* Count and Say */
+//        CountAndSay countAndSayTest = new CountAndSay();
+//        System.out.println(countAndSayTest.countAndSay(6));
+
+//        /* Combination Sum */
+//        int[] candidate = {2, 3, 6, 7};
+//        CombinationSum combinationSumTest = new CombinationSum();
+//        System.out.println(combinationSumTest.combinationSum(candidate, 7));
+//        candidate = new int[]{2, 3, 5};
+//        System.out.println(combinationSumTest.combinationSum(candidate, 8));
+
+//        /* Combination Sum 2 */
+//        CombinationSum2 combinationSum2Test = new CombinationSum2();
+//        int[] candidate = {10, 1, 2, 7, 6, 1, 5};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
+//        candidate = new int[]{2, 5, 2, 1, 2};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 10));
+//        candidate = new int[]{2, 5, 2, 1, 2};
+//        System.out.println(combinationSum2Test.combinationSum2(candidate, 5));
+
+//        /* First Missing Positive */
+//        FirstMissingPositive firstMissingPositiveTest = new FirstMissingPositive();
+//
+//        int[] c = {2, 3, 6, 7};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 1
+//        c = new int[]{3, 4, -1, 1};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 2
+//        c = new int[]{7, 8, 9, 11, 12};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 1
+//        c = new int[]{1, 2, 0};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 3
+//        c = new int[]{2, 5, 2, 1, 2, 3};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 4
+//        c = new int[]{3, 4, 0, 1};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 2
+//        c = new int[]{1, 2, 3, 4, 5, 6, 7};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 8
+//        c = new int[]{7, 10, 12, 11, 9, 6, 5, 1, 2, 3};
+//        System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 4
+
+//        /* Multiply */
+//        Multiply multiplyTest = new Multiply();
+//        String a1 = "123";
+//        String a2 = "456";
+//        System.out.println(multiplyTest.multiply(a1, a2));
+//
+//        /* Permutations */
+//        Permute permuteTest = new Permute();
+//        int[] c = {1};
+//        System.out.println(permuteTest.permute(c));
+
+//        /* Permutations II */
+//        PermuteUnique permuteUniqueTest = new PermuteUnique();
+//        int[] c = {1};
+//        System.out.println(permuteUniqueTest.permuteUnique(c));
+
+        /* Rotation */
+        Rotate rotateTest = new Rotate();
+        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        rotateTest.rotate(r);
+        System.out.println(Arrays.deepToString(r));
     }
 }
