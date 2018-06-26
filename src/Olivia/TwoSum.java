@@ -7,8 +7,9 @@ package Olivia;
  * Time: 21:08
  */
 
-public class TwoSum {
 
+public class TwoSum {
+    //Original one
     public int[] twoSum(int[] nums, int target)
     {
         int[] result = new int[2];
@@ -26,4 +27,16 @@ public class TwoSum {
         }
         return null;
     }
+    //Try two pass hash table
+    public int[] twoSum1(int[] nums, int target)
+    {
+      int[] result = new int[2];
+      Map<Integer,Integer> map = new HashMap<>();
+
+    }
+
+    //Try one pass hash table
 }
+
+
+
