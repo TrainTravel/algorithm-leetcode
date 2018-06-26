@@ -35,7 +35,7 @@ public class AnagramCheck {
         /* Array index stands for 26 letter's ASCII, and array value stands for their appear time*/
         int[] store = new int[26];
 
-        /* Add */
+        /* +1 if char appeared in s, -1 otherwise. In this way to record each char's appearance */
         for (int i = 0; i < s.length(); i++) {
             store[s.charAt(i) - 97] += 1;
             store[t.charAt(i) - 97] -= 1;
