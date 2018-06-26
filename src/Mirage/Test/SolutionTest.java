@@ -26,7 +26,7 @@ public class SolutionTest {
 
 //        /* Longest substring Test */
 //        LengthOfLongestSubstring lengthOfLongestSubstringTest = new LengthOfLongestSubstring();
-//        System.out.println(lengthOfLongestSubstringTest.lengthOfLongestSubstring("tmmzuxt"));
+//        System.out.println(lengthOfLongestSubstringTest.LengthOfLongestSubstring.java("tmmzuxt"));
 
 //        /* Add 2 numbers Test */
 //        AddTwoNumbers addTwoNumbersTest = new AddTwoNumbers();
