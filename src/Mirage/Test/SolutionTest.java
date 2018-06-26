@@ -246,10 +246,22 @@ public class SolutionTest {
 //        int[] c = {1};
 //        System.out.println(permuteUniqueTest.permuteUnique(c));
 
-        /* Rotation */
-        Rotate rotateTest = new Rotate();
-        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        rotateTest.rotate(r);
-        System.out.println(Arrays.deepToString(r));
+//        /* Rotation */
+//        Rotate rotateTest = new Rotate();
+//        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+//        rotateTest.rotate(r);
+//        System.out.println(Arrays.deepToString(r));
+
+//        /* Valid Anagram */
+//        IsAnagram isAnagramTest = new IsAnagram();
+//        String s = "anagram";
+//        String t = "nagaram";
+//        System.out.println(isAnagramTest.isAnagram_1(s, t));
+
+        /* Group Anagram */
+        GroupAnagrams groupAnagramsTest = new GroupAnagrams();
+        String[] strs = {"god", "dog", "abc", "cba", "cat", "tac", ""};
+        System.out.println(groupAnagramsTest.groupAnagrams(strs));
+
     }
 }
