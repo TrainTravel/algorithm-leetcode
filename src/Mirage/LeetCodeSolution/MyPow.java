@@ -17,7 +17,7 @@ public class MyPow {
      * @param n power
      * @return Returns a double containing the results of the power operation.
      */
-    
+
     public double myPow(double x, int n) {
 
         /* Special Case */
