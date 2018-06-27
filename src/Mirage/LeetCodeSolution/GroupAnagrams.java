@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -13,9 +12,10 @@ import java.util.*;
 public class GroupAnagrams {
     /**
      * Given an array of strings, group anagrams together.
-     *
+     * <p>
      * Use hash map to identify.
-     * First
+     * Iterate strs. Convert word to char array and sort it.
+     * Use this as key of map and a list to store all words has same key (anagram).
      *
      * @param strs input words array
      * @return linked list that contains each group of anagrams
