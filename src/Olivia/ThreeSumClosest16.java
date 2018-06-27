@@ -1,7 +1,7 @@
-package src.Olivia;
+package Olivia;
 import java.util.Arrays;
 
-public class threeSumClosest16 {
+public class ThreeSumClosest16 {
     public int threeSumClosest(int[] nums, int target) {
         int cur = nums[0]+nums[1]+nums[nums.length-1];
         Arrays.sort(nums);
