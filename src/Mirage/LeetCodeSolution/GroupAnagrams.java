@@ -1,5 +1,6 @@
 package Mirage.LeetCodeSolution;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -12,6 +13,9 @@ import java.util.*;
 public class GroupAnagrams {
     /**
      * Given an array of strings, group anagrams together.
+     *
+     * Use hash map to identify.
+     * First
      *
      * @param strs input words array
      * @return linked list that contains each group of anagrams
@@ -28,27 +32,22 @@ public class GroupAnagrams {
         /* Iterate each word in strs */
         for (int i = 0; i < strs.length; i++) {
 
-            /* Count each char's appearance in each word of strs */
-            int[] count = new int[26];
-            for (int j = 0; j < strs[i].length(); j++) {
-                count[strs[i].charAt(j) - 'a'] += 1;
-            }
+            /* Sort current word in char array format and store this array as hashcode */
+            char[] sortWord = strs[i].toCharArray();
+            Arrays.sort(sortWord);
+            String key = String.valueOf(sortWord);
 
-            StringBuilder charAppearance = new StringBuilder();
-            for (int k = 0; k < count.length; k++) {
-                if (count[k] != 0) {
-                    charAppearance.append((char) (k + 'a')).append(count[k]);
-                }
-            }
-
-            if (store.containsKey(charAppearance.toString())) {
-                store.get(charAppearance.toString()).add(strs[i]);
+            /* If key is in map, append current word to map's value, otherwise put new key and new list*/
+            if (store.containsKey(key)) {
+                store.get(key).add(strs[i]);
             } else {
-                List<String> temp = new ArrayList<>();
+                List<String> temp = new LinkedList<>();
                 temp.add(strs[i]);
-                store.put(charAppearance.toString(), temp);
+                store.put(key, temp);
             }
         }
+
+        /* Put all anagrams group into output list */
         res.addAll(store.values());
         return res;
     }
