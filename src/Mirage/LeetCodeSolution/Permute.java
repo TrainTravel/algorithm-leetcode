@@ -25,7 +25,7 @@ public class Permute {
         List<List<Integer>> res = new LinkedList<>();
 
         /* Special Case */
-        if (nums.length ==0) {
+        if (nums.length == 0) {
             return res;
         }
 
