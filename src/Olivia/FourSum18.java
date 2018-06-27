@@ -1,8 +1,8 @@
-package src.Olivia;
+package Olivia;
 
 import java.util.*;
 
-public class fourSum18 {
+public class FourSum18 {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> cur = new ArrayList<>();
         Arrays.sort(nums);
@@ -22,6 +22,7 @@ public class fourSum18 {
             }
         }
 
-
+        // TODO: Complete this class. Return cur is temporary solution.
+        return cur;
     }
 }
