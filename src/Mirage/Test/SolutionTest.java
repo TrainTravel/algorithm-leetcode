@@ -260,7 +260,9 @@ public class SolutionTest {
 
         /* Group Anagram */
         GroupAnagrams groupAnagramsTest = new GroupAnagrams();
-        String[] strs = {"god", "dog", "abc", "cba", "cat", "tac", ""};
+//        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+
         System.out.println(groupAnagramsTest.groupAnagrams(strs));
 
     }

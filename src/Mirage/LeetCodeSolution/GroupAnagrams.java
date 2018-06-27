@@ -1,7 +1,6 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA
@@ -24,7 +23,33 @@ public class GroupAnagrams {
         if (strs.length == 0) {
             return res;
         }
+        HashMap<String, List<String>> store = new HashMap<>();
 
+        /* Iterate each word in strs */
+        for (int i = 0; i < strs.length; i++) {
+
+            /* Count each char's appearance in each word of strs */
+            int[] count = new int[26];
+            for (int j = 0; j < strs[i].length(); j++) {
+                count[strs[i].charAt(j) - 'a'] += 1;
+            }
+
+            StringBuilder charAppearance = new StringBuilder();
+            for (int k = 0; k < count.length; k++) {
+                if (count[k] != 0) {
+                    charAppearance.append((char) (k + 'a')).append(count[k]);
+                }
+            }
+
+            if (store.containsKey(charAppearance.toString())) {
+                store.get(charAppearance.toString()).add(strs[i]);
+            } else {
+                List<String> temp = new ArrayList<>();
+                temp.add(strs[i]);
+                store.put(charAppearance.toString(), temp);
+            }
+        }
+        res.addAll(store.values());
         return res;
     }
 }
