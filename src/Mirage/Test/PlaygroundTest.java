@@ -52,14 +52,17 @@ public class PlaygroundTest {
 //        System.out.println(r);
 
         AnagramCheck anagramCheckTest = new AnagramCheck();
-        String s = "anagram";
+        String s = "dog";
         String t = "nagaram";
-        System.out.println(anagramCheckTest.anagramCheck(s, t));
+//        System.out.println(anagramCheckTest.anagramCheck(s, t));
 
-//        GenerateAnagram generateAnagramTest = new GenerateAnagram(s);
+//        Anagram generateAnagramTest = new Anagram(s);
 //        System.out.println(generateAnagramTest.findAll());
 
-        AnagramCheckWithHashMap anagramCheckWithHashMap = new AnagramCheckWithHashMap();
-        System.out.println(anagramCheckWithHashMap.isAnagram(s, t));
+//        AnagramCheckWithHashMap anagramCheckWithHashMap = new AnagramCheckWithHashMap();
+//        System.out.println(anagramCheckWithHashMap.isAnagram(s, t));
+
+        Anagram anagramTest = new Anagram(s);
+        System.out.println(anagramTest.findAnagram());
     }
 }
