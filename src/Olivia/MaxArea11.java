@@ -1,6 +1,6 @@
 package Olivia;
 
-public class maxArea11 {
+public class MaxArea11 {
     public int maxArea(int[] height) {
         int startLoc = 0;
         int endLoc = height.length - 1;

@@ -2,7 +2,7 @@ package src.Olivia;
 
 import java.util.Stack;
 
-public class isValid20 {
+public class IsValid20 {
     public boolean isValid(String s) {
         if (s.isEmpty())
             return true;
