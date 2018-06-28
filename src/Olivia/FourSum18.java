@@ -1,7 +1,6 @@
 package Olivia;
 
 import java.util.*;
-
 public class FourSum18 {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> cur = new ArrayList<>();
@@ -16,13 +15,30 @@ public class FourSum18 {
                             int now = nums[i] + nums[j] + nums[startLoc] + nums[endLoc];
                             if (now == target) {
                                 List<Integer> part = new ArrayList<>();
+                                part.add(nums[i]);
+                                part.add(nums[j]);
+                                part.add(nums[startLoc]);
+                                part.add(nums[endLoc]);
+                                cur.add(part);
+                                while(startLoc<endLoc&&nums[startLoc]==nums[startLoc+1]){
+                                    startLoc++;
+                                }
+                                while(startLoc<endLoc&&nums[endLoc]==nums[endLoc-1]){
+                                    endLoc--;
+                                }
+                                startLoc++;
+                                endLoc--;
+                            }
+                            else if(now<target){
+                                startLoc++;
+                            }
+                            else{
+                                endLoc--;
                             }
                         }
                     }
             }
         }
-
-        // TODO: Complete this class. Return cur is temporary solution.
         return cur;
     }
 }
