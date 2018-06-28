@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -26,7 +25,7 @@ public class IsValid {
      * @return boolean value that whether this input string is valid
      */
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
 
         /* Every char in s */
         for (char c : s.toCharArray()) {
