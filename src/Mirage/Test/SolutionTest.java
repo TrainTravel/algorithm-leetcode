@@ -258,12 +258,17 @@ public class SolutionTest {
 //        String t = "nagaram";
 //        System.out.println(isAnagramTest.isAnagram_1(s, t));
 
-        /* Group Anagram */
-        GroupAnagrams groupAnagramsTest = new GroupAnagrams();
-//        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
-        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+//        /* Group Anagram */
+//        GroupAnagrams groupAnagramsTest = new GroupAnagrams();
+////        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
+//        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+//
+//        System.out.println(groupAnagramsTest.groupAnagrams(strs));
 
-        System.out.println(groupAnagramsTest.groupAnagrams(strs));
+        /* Trapping Rain Water */
+        Trap trapTest = new Trap();
+        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        System.out.println(trapTest.trap(height));
 
     }
 }
