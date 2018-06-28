@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.Stack;
 
 /**
  * Created with IntelliJ IDEA
@@ -52,6 +51,11 @@ public class Trap {
 
             /* If left is smaller than right, then move left pointer since container is depended by smaller height */
             if (leftValue < rightValue) {
+
+                /* Note: height[indexLeft + 1] can be replaced as height[++indexLeft].
+                 * And the indexLeft++ needs to be removed.
+                 * But only ++left rather than anything else.
+                 * The reason is that ++indexLeft increments the number before the current expression is evaluated */
                 while (indexLeft < indexRight && leftValue > height[indexLeft + 1]) {
                     res += leftValue - height[indexLeft + 1];
                     indexLeft++;
