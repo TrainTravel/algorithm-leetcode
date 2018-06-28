@@ -276,8 +276,6 @@ public class SolutionTest {
         System.out.println("Min step: " + jumpTest.jump(jump));
         jump = new int[]{1, 3, 2};
         System.out.println("Min step: " + jumpTest.jump(jump));
-        jump = new int[]{2, 3, 1, 1, 4};
-        System.out.println("Min step: " + jumpTest.jump(jump));
         jump = new int[]{1, 1, 1, 1};
         System.out.println("Min step: " + jumpTest.jump(jump));
         jump = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0};

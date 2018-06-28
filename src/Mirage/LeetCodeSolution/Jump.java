@@ -26,10 +26,9 @@ public class Jump {
             return 0;
         }
 
-        int minSteps = 0;
-
         /* Start position in each step */
         int startIndex = 0;
+        int minSteps = 0;
 
         while (startIndex < nums.length) {
 
