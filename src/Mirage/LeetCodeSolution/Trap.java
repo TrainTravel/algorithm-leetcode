@@ -13,7 +13,8 @@ public class Trap {
      * Given n non-negative integers representing an elevation map where the width of each bar is 1.
      * Compute how much water it is able to trap after raining.
      * <p>
-     * Use two int as pointer, to find bound of each "pit" and add to result.
+     * Use two int as left start pointer and right start pointer.
+     * Move pointer toward center in iteration and add valid value to result.
      *
      * @param height int array that store map
      * @return trap space
