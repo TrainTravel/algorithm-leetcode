@@ -19,19 +19,16 @@ public class FindMedianSortedArrays {
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
-        int[] useArray = new int[nums1.length + nums2.length];
-        boolean isOdd = (useArray.length) % 2 == 1;
-
         /* If there is an empty array */
         if (nums1.length == 0) {
-            useArray = nums2;
+            return findMid(nums2);
         }
         if (nums2.length == 0) {
-            useArray = nums1;
+            return findMid(nums1);
         }
-        if (nums1.length == 0 || nums2.length == 0) {
-            return findMid(useArray);
-        }
+
+        int[] useArray = new int[nums1.length + nums2.length];
+        boolean isOdd = (useArray.length) % 2 == 1;
 
         /* Make sure nums1 is longer array */
         if (nums1.length < nums2.length) {
@@ -73,7 +70,7 @@ public class FindMedianSortedArrays {
         throw new IllegalArgumentException("No solution. \n");
     }
 
-    public double findMid(int[] a) {
+    private double findMid(int[] a) {
         boolean isOdd = (a.length) % 2 == 1;
         double result;
         if (a.length == 1) {
@@ -89,5 +86,4 @@ public class FindMedianSortedArrays {
         }
         return result;
     }
-
 }
