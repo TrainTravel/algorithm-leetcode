@@ -1,5 +1,8 @@
 package Olivia;
 
+import sun.security.krb5.internal.crypto.HmacSha1Aes128CksumType;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,27 +11,15 @@ class LengthOfLongestSubstring {
         if (s == null) {
             return 0;
         }
-        int longestLen = 1;
-        int startLoc = 0;
-        int endLoc = 0;
-        Set<Character> tmp = new HashSet<Character>();
-        for (int i = 0; i < s.length(); i++) {
-            char cur = s.charAt(i);
-            if (!tmp.contains(cur)) {
-                tmp.add(cur);
-                endLoc++;
-                if (i == s.length() - 1) {
-
-                }
-            } else {
-                if (endLoc - startLoc > longestLen) {
-                    longestLen = endLoc - startLoc;
-                }
-                startLoc = i;
-                endLoc = i;
-                tmp = new HashSet<Character>();
+        HashMap<Character,Integer> map = new HashMap<>();
+        int curMax = 0;
+        for(int i =0,j=0;i<s.length();i++){
+            if(map.containsKey(s.charAt(i))){
+                j = Math.max(j,map.get(s.charAt(i))+1);
             }
+            map.put(s.charAt(i),i);
+            curMax = Math.max(curMax,i-j+1);
         }
-        return longestLen;
+        return curMax;
     }
 }

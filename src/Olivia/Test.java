@@ -10,5 +10,9 @@ public class Test {
 //        System.out.println(test.maxArea(height));
 
 
+        String s = "pwwkew";
+        LengthOfLongestSubstring test = new LengthOfLongestSubstring();
+        System.out.println(test.lengthOfLongestSubstring(s));
+
     }
 }
