@@ -283,9 +283,14 @@ public class SolutionTest {
 //        jump = new int[]{4, 1, 1, 3, 1, 1, 1};
 //        System.out.println("Min step: " + jumpTest.jump(jump));
 
-        /* Maximum Subarray */
-        MaxSubArray maxSubArrayTest = new MaxSubArray();
-        int[] m = {1,1,1,1,1};
-        System.out.println(maxSubArrayTest.maxSubArray(m));
+//        /* Maximum Subarray */
+//        MaxSubArray maxSubArrayTest = new MaxSubArray();
+//        int[] m = {1,1,1,1,1};
+//        System.out.println(maxSubArrayTest.maxSubArray(m));
+
+        /* Jump Game */
+        CanJump canJumpTest = new CanJump();
+        int[] jump = {3, 1, 1, 0, 1, 0};
+        System.out.println(canJumpTest.canJump(jump));
     }
 }
