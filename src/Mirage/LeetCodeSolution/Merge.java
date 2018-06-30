@@ -1,7 +1,7 @@
 package Mirage.LeetCodeSolution;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,38 +15,39 @@ public class Merge {
     /**
      * Given a collection of intervals, merge all overlapping intervals.
      *
+     * Using two arrays to store each interval's start and end. Sort each array respectively.
+     * Traverse these two arrays and add new Interval into result based on this:
+     * Current Interval's end will be smaller than next Interval's start.
+     * Hence, if start in start array is smaller than end array, move to next.
+     *
      * @param intervals input Interval list
      * @return merged result
      */
     public List<Interval> merge(List<Interval> intervals) {
-        List<Interval> res = new ArrayList<>();
 
         /* Special Case */
         if (intervals.size() < 2) {
             return intervals;
         }
 
-        /* Sort list by start point */
-        intervals.sort(Comparator.comparingInt(i -> i.start));        // Java 8 Lambda Comparator
-        int start = intervals.get(0).start;
-        int end = intervals.get(0).end;
+        List<Interval> res = new ArrayList<>();
+        int[] startArray = new int[intervals.size()];
+        int[] endArray = new int[intervals.size()];
+        for (int i = 0; i < intervals.size(); i++) {
+            startArray[i] = intervals.get(i).start;
+            endArray[i] = intervals.get(i).end;
+        }
+        Arrays.sort(startArray);
+        Arrays.sort(endArray);
 
-        for (Interval interval : intervals) {
-
-            /* Overlapping intervals.
-             * Replace current end to new end */
-            if (interval.start <= end) {
-                end = Integer.max(end, interval.end);
-            } else {
-
-                /* Normal case, two intervals have no intersection or overlapping intervals has passed.
-                 * Simply add current interval and set new start and end */
-                res.add(new Interval(start, end));
-                start = interval.start;
-                end = interval.end;
+        /* In each interval in result, the next interval's start must be larger than current interval's end */
+        for (int startIndex = 0, endIndex = 0; endIndex < intervals.size(); endIndex++) {
+            if (endIndex == intervals.size() - 1 || startArray[endIndex + 1] > endArray[endIndex]) {
+                res.add(new Interval(startArray[startIndex], endArray[endIndex]));
+                startIndex = endIndex + 1;
             }
         }
-        res.add(new Interval(start, end));
+
         return res;
     }
 
