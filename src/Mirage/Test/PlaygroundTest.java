@@ -51,6 +51,11 @@ public class PlaygroundTest {
 //        rotateMatrixTest.rotateAntiClockwise(r);
 //        System.out.println(r);
 
+//    public static void main(String[] args) {
+//        int[] sampleArray = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
+//        ExpandArray sampleExpandArray = new ExpandArray();
+//    }
+
         AnagramCheck anagramCheckTest = new AnagramCheck();
         String s = "dog";
         String t = "nagaram";
