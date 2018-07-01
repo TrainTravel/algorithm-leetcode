@@ -30,7 +30,7 @@ public class FindSubstring {
         List<Integer> res = new LinkedList<>();
 
         /* Special Case */
-        if (s.length() == 0 || words.length == 0) {
+        if (s.length() < 1 || words.length == 0) {
             return res;
         }
 
