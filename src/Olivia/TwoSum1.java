@@ -10,7 +10,7 @@ import java.util.*;
  */
 
 
-public class TwoSum {
+public class TwoSum1 {
     //Original one
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];

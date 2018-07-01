@@ -2,7 +2,7 @@ package Olivia;
 
 import java.util.HashMap;
 
-class LengthOfLongestSubstring {
+class LengthOfLongestSubstring3 {
     public int lengthOfLongestSubstring(String s) {
         if (s == null) {
             return 0;

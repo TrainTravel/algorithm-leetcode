@@ -12,7 +12,7 @@ public class Test {
 
 
       //  String s = "pwwkew";
-        //LengthOfLongestSubstring test = new LengthOfLongestSubstring();
+        //LengthOfLongestSubstring3 test = new LengthOfLongestSubstring3();
        // System.out.println(test.lengthOfLongestSubstring(s));
 
         String s = "barfoothefoobarman" ;
