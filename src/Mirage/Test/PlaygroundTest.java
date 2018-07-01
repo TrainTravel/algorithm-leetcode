@@ -56,9 +56,9 @@ public class PlaygroundTest {
 //        ExpandArray sampleExpandArray = new ExpandArray();
 //    }
 
-        AnagramCheck anagramCheckTest = new AnagramCheck();
-        String s = "dog";
-        String t = "nagaram";
+//        AnagramCheck anagramCheckTest = new AnagramCheck();
+//        String s = "dog";
+//        String t = "nagaram";
 //        System.out.println(anagramCheckTest.anagramCheck(s, t));
 
 //        Anagram generateAnagramTest = new Anagram(s);
@@ -66,8 +66,14 @@ public class PlaygroundTest {
 
 //        AnagramCheckWithHashMap anagramCheckWithHashMap = new AnagramCheckWithHashMap();
 //        System.out.println(anagramCheckWithHashMap.isAnagram(s, t));
+//
+//        Anagram anagramTest = new Anagram(s);
+//        System.out.println(anagramTest.findAnagram());
+        int[] t = {2, 4, 6, 8, 10};
+        BinarySearch binarySearchTest = new BinarySearch(t, 8);
+        System.out.println(binarySearchTest.search());
+        System.out.println(binarySearchTest.where());
 
-        Anagram anagramTest = new Anagram(s);
-        System.out.println(anagramTest.findAnagram());
+
     }
 }
