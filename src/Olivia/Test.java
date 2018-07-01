@@ -1,6 +1,7 @@
 package Olivia;
 
 
+import Mirage.LeetCodeSolution.FindSubstring;
 
 public class Test {
     public static void main(String[] args) {
@@ -10,9 +11,15 @@ public class Test {
 //        System.out.println(test.maxArea(height));
 
 
-        String s = "pwwkew";
-        LengthOfLongestSubstring test = new LengthOfLongestSubstring();
-        System.out.println(test.lengthOfLongestSubstring(s));
+      //  String s = "pwwkew";
+        //LengthOfLongestSubstring test = new LengthOfLongestSubstring();
+       // System.out.println(test.lengthOfLongestSubstring(s));
+
+        String s = "barfoothefoobarman" ;
+        String [] words = new String[]{"foo", "bar"};
+        FindSubstring30 test = new FindSubstring30();
+        System.out.println(test.findSubstring(s,words));
+
 
     }
 }
