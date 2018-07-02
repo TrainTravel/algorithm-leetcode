@@ -15,10 +15,22 @@ public class Test {
         //LengthOfLongestSubstring3 test = new LengthOfLongestSubstring3();
        // System.out.println(test.lengthOfLongestSubstring(s));
 
-        String s = "barfoothefoobarman" ;
-        String [] words = new String[]{"foo", "bar"};
-        FindSubstring30 test = new FindSubstring30();
-        System.out.println(test.findSubstring(s,words));
+      //  String s = "barfoothefoobarman" ;
+      //  String [] words = new String[]{"foo", "bar"};
+      //  FindSubstring30 test = new FindSubstring30();
+      //  System.out.println(test.findSubstring(s,words));
+        /* Valid Sudoku */
+      IsValidSudoku36 isValidSudoku = new IsValidSudoku36();
+      char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+               {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+        System.out.println(isValidSudoku.isValidSudoku(board));
 
 
     }
