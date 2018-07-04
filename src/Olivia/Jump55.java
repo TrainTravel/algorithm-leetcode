@@ -12,9 +12,6 @@ public class Jump55 {
                 end = cur_max;
             }
         }
-        if (end < nums.length - 1)
-            return false;
-        else
-            return true;
+        return end >= nums.length - 1;
     }
 }
