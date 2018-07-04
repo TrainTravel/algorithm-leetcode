@@ -1,7 +1,6 @@
 package Mirage.Playground;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,6 +16,7 @@ public class ExpandArray {
 
     private int[] expandArray;
     private HashMap<Integer, List<Integer>> arrayMap = new HashMap<>();
+    private int end;
 
     /**
      * This class is based on array object, which contains some basic method of an array.
@@ -27,6 +27,7 @@ public class ExpandArray {
     public ExpandArray(int[] array) {
         expandArray = array;
         arrayMap();
+        end = array.length;
     }
 
     /**
@@ -36,7 +37,7 @@ public class ExpandArray {
      */
     private void arrayMap() {
         for (int i = 0; i < expandArray.length; i++) {
-            List<Integer> cur = arrayMap.getOrDefault(i, new ArrayList<>());
+            List<Integer> cur = arrayMap.getOrDefault(expandArray[i], new ArrayList<>());
             cur.add(i);
             arrayMap.put(expandArray[i], cur);
         }
@@ -64,15 +65,24 @@ public class ExpandArray {
 
     /**
      * Obtain value based on index
+     *
      * @param index given index
-     * @return 
+     * @return index matched value
      */
     private int getValue(int index) {
         return expandArray[index];
     }
 
+    /**
+     * Add value to last of array.
+     *
+     * @param value value to be added
+     */
     private void addValueToLast(int value) {
-
+        end = end + 1;
+        List<Integer> cur = arrayMap.getOrDefault(value, new ArrayList<>());
+        cur.add(end);
+        arrayMap.put(value, cur);
     }
 
 }
