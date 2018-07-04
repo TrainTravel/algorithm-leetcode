@@ -295,7 +295,7 @@ public class SolutionTest {
 
         /* Length of Last Word */
         LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
-        String s = "Hello World";
+        String s = "aa bb";
         System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
     }
 }

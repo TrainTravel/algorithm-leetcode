@@ -15,6 +15,9 @@ public class LengthOfLastWord {
      * <p>
      * Note: A word is defined as a character sequence consists of non-space characters only.
      *
+     * Traverse from last to start of s and use a int to record start position.
+     * When find second space, return length.
+     *
      * @param s input string
      * @return length of last word
      */
@@ -22,15 +25,18 @@ public class LengthOfLastWord {
         if (s.length() == 0) {
             return 0;
         }
-        int length = s.length() - 1;
-        while (length > -1 && s.charAt(length) == ' ') {
-            length--;
+        int position = s.length() - 1;
+        while (position > -1 && s.charAt(position) == ' ') {
+            position--;
         }
-        System.out.println(length);
-        while (length > -1 && s.charAt(length) != ' ') {
-            length--;
+        int start = position;
+        if (position > -1) {
+            while (position > -1 && s.charAt(position) != ' ') {
+                position--;
+            }
+            return start - position;
+        } else {
+            return 0;
         }
-        System.out.println(length);
-        return s.length() - length;
     }
 }
