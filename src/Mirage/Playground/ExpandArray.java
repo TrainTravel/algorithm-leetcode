@@ -3,6 +3,7 @@ package Mirage.Playground;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA
@@ -83,6 +84,23 @@ public class ExpandArray {
         List<Integer> cur = arrayMap.getOrDefault(value, new ArrayList<>());
         cur.add(end);
         arrayMap.put(value, cur);
+    }
+
+    /**
+     * Return array.
+     *
+     * @return array
+     */
+    public int[] thisArray() {
+        int[] res = new int[arrayMap.size()];
+        Set<Integer> allKey = arrayMap.keySet();
+        for (Integer key : allKey) {
+            List<Integer> currentPosition = arrayMap.get(key);
+            for (Integer positionInArray : currentPosition) {
+                res[positionInArray] = key;
+            }
+        }
+        return res;
     }
 
 }
