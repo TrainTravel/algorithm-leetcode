@@ -45,6 +45,7 @@ public class LongestValidParentheses {
                 left = 0;
                 right = 0;
             }
+
         }
 
         /* Next traverse */

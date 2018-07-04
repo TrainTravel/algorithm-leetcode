@@ -288,9 +288,14 @@ public class SolutionTest {
 //        int[] m = {1,1,1,1,1};
 //        System.out.println(maxSubArrayTest.maxSubArray(m));
 
-        /* Jump Game */
-        CanJump canJumpTest = new CanJump();
-        int[] jump = {3, 1, 1, 0, 1, 0};
-        System.out.println(canJumpTest.canJump(jump));
+//        /* Jump Game */
+//        CanJump canJumpTest = new CanJump();
+//        int[] jump = {3, 1, 1, 0, 1, 0};
+//        System.out.println(canJumpTest.canJump(jump));
+
+        /* Length of Last Word */
+        LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
+        String s = "Hello World";
+        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
     }
 }
