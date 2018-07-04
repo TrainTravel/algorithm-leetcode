@@ -1,91 +1,78 @@
 package Mirage.Playground;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA
  * Author: BorisMirage
  * Date: 2/26/18
  * Time: 15:16
- *
- * This class is based on array object, which contains some basic method of an array.
- * And it has some expanded function, such as quick sort, append a new element.
  */
 
 
 public class ExpandArray {
 
-    /**
-     * Local variable here.
-     *
-     * @param expandArray: basic array that contains the origin array and will be modified.
-     * */
     private int[] expandArray;
+    private HashMap<Integer, List<Integer>> arrayMap = new HashMap<>();
 
-    /* Initialize the class */
-    ExpandArray(int[] array) {
+    /**
+     * This class is based on array object, which contains some basic method of an array.
+     * And it has some expanded function, such as quick sort, append a new element.
+     *
+     * @param array input array
+     */
+    public ExpandArray(int[] array) {
         expandArray = array;
+        arrayMap();
     }
 
-    public int selectValue(int index) {
+    /**
+     * Store array index and value into map
+     * key - array item
+     * value - position (in ArrayList)
+     */
+    private void arrayMap() {
+        for (int i = 0; i < expandArray.length; i++) {
+            List<Integer> cur = arrayMap.getOrDefault(i, new ArrayList<>());
+            cur.add(i);
+            arrayMap.put(expandArray[i], cur);
+        }
+    }
+
+    /**
+     * Check whether value is in array.
+     *
+     * @param value target value
+     * @return true if in array
+     */
+    private boolean isExist(int value) {
+        return arrayMap.containsKey(value);
+    }
+
+    /**
+     * Obtain position based on given value.
+     *
+     * @param value given value
+     * @return position list
+     */
+    private List<Integer> getPosition(int value) {
+        return arrayMap.get(value);
+    }
+
+    /**
+     * Obtain value based on index
+     * @param index given index
+     * @return 
+     */
+    private int getValue(int index) {
         return expandArray[index];
     }
 
-    public int[] showArray() {
-        return expandArray;
+    private void addValueToLast(int value) {
+
     }
 
-    /**
-     * This can be improved when quick sort is completed.
-     * */
-    public boolean isExist(int num) {
-        for (int i = 0; i < expandArray.length; i++) {
-            if (num == expandArray[i])
-                return true;
-        }
-        return false;
-    }
-
-    public void sort(int[] array, int start, int end) {
-        int pivot = array.length / 2;
-
-        if (end - start < 0 || array.length == 1) {
-            System.out.println(Arrays.toString(array));
-        } else {
-
-            /* Switch pivot to the last */
-            switchPosition(array, pivot, array.length - 1);
-
-            /* Search from left to right */
-            while (start <= end) {
-                while (array[start] < pivot) {
-                    start++;
-                }
-                while (array[end] > pivot) {
-                    end--;
-                }
-                if (start < end) {
-                    array = switchPosition(array, start, end);
-                    start++;
-                    end--;
-                } else if (start == end) {
-                    start++;
-                }
-            }
-        }
-        sort(array, start, pivot);
-        sort(array, pivot, end);
-    }
-
-    public int[] switchPosition(int[] array, int index1, int index2) {
-        array[index1] = array[index2] + array[index1];
-        array[index2] = array[index1] - array[index2];
-        array[index1] = array[index1] - array[index2];
-        return array;
-    }
-
-//    public static void main(String[] args) {
-//        int[] sampleArray = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
-//        ExpandArray sample = new ExpandArray();
-//    }
 }
