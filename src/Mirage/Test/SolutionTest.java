@@ -8,10 +8,11 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 /**
+ * This is a test class for unit test in package LeetCodeSolution.
+ *
+ * @author BorisMirage
+ * Date: 3/26/18 14:40
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 3/26/18
- * Time: 14:40
  */
 
 public class SolutionTest {

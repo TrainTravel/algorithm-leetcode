@@ -1,17 +1,17 @@
 package Mirage.Playground;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 2/26/18
- * Time: 15:16
- */
 
+/**
+ * @author BorisMirage
+ * Create Date: 2/26/18 15:16
+ * Created with IntelliJ IDEA
+ */
 
 public class ExpandArray {
 
