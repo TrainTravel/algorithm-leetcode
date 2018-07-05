@@ -293,10 +293,13 @@ public class SolutionTest {
 //        CanJump canJumpTest = new CanJump();
 //        int[] jump = {3, 1, 1, 0, 1, 0};
 //        System.out.println(canJumpTest.canJump(jump));
+//
+//        /* Length of Last Word */
+//        LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
+//        String s = "aa bb";
+//        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
 
-        /* Length of Last Word */
-        LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
-        String s = "aa bb";
-        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
+
+
     }
 }

@@ -1,8 +1,10 @@
 package Mirage.LeetCodeSolution;
 
+import java.util.Stack;
+
 /**
  * @author BorisMirage
- * Time: 6/21/18 13:19
+ * Time: 2018/06/21 13:19
  * Created with IntelliJ IDEA
  */
 
@@ -65,5 +67,46 @@ public class LongestValidParentheses {
             }
         }
         return maxValid;
+    }
+
+    /**
+     * Another solution of this problem.
+     * This class uses stack to store left parentheses' position.
+     * If encounter right parenthesis, pop stack's top index and compare i - index to max length.
+     * If stack is empty and encounter right parenthesis, push current index into stack as next valid length's start.
+     * <p>
+     * Time complexity: O(n). Single traversal of string to fill dp array is done.
+     * Space complexity: O(n). stack at most store string's length
+     *
+     * @param s input parentheses string
+     * @return longest valid parentheses length
+     */
+    public int longestValidParenthesesStack(String s) {
+        if (s.length() < 2) {
+            return 0;
+        }
+
+        Stack<Integer> leftStack = new Stack<>();
+
+        /* -1 can be regarded as dummy head position */
+        leftStack.push(-1);
+
+        int maxLength = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                leftStack.push(i);
+            } else {
+                leftStack.pop();
+                if (leftStack.size() == 0) {
+
+                    /* Dummy head for next valid parentheses length counting */
+                    leftStack.push(i);
+                } else {
+                    maxLength = Math.max(maxLength, i - leftStack.peek());
+                }
+            }
+        }
+        return maxLength;
     }
 }
