@@ -6,19 +6,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Generate anagram of given string.
+ *
+ * @author BorisMirage
+ * Time: 6/26/18 17:10
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/26/18
- * Time: 17:10
  */
 
 public class Anagram {
     private String find;
 
+    /**
+     * Find anagrams based on given string s.
+     *
+     * @param s given string
+     */
     public Anagram(String s) {
         find = s;
     }
 
+    /**
+     * Find anagrams via backtracking.
+     *
+     * @return anagrams store in list
+     */
     public List<String> findAnagram() {
         List<String> res = new LinkedList<>();
 
@@ -33,6 +44,14 @@ public class Anagram {
         return res;
     }
 
+    /**
+     * Use backtracking to find all anagrams of given string.
+     *
+     * @param charArray given string into char array
+     * @param cache     temp list
+     * @param res       result anagram list
+     * @param used      positions have been visited
+     */
     private void backtracking(char[] charArray, List<Character> cache, List<String> res, boolean[] used) {
         if (cache.size() == charArray.length) {
             StringBuilder temp = new StringBuilder();
