@@ -19,6 +19,9 @@ public class LongestValidParentheses {
      * When first traverse completed, traverse string from right to left with same process.
      * Final max length is the result.
      *
+     * Time complexity: O(n). Single traversal of string to fill dp array is done.
+     * Space complexity: O(1). Three local variables are used.
+     *
      * @param s input string
      * @return length of the longest valid (well-formed) parentheses substring
      */
@@ -76,7 +79,7 @@ public class LongestValidParentheses {
      * If stack is empty and encounter right parenthesis, push current index into stack as next valid length's start.
      * <p>
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
-     * Space complexity: O(n). stack at most store string's length
+     * Space complexity: O(n). Stack at most store string's length
      *
      * @param s input parentheses string
      * @return longest valid parentheses length
