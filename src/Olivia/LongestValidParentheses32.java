@@ -17,6 +17,9 @@ public class LongestValidParentheses32 {
                         s1.push(i);
                     }
                 }
+                else{
+                    s1.push(i);
+                }
             }
         }
         if (s1.isEmpty()) {
