@@ -1,6 +1,10 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Given a sorted array and a target value, return the index if the target is found.
+ * If not, return the index where it would be if it were inserted in order.
+ * No duplication in the array.
+ *
  * @author BorisMirage
  * Time: 2018/06/21 11:14
  * Created with IntelliJ IDEA
@@ -8,9 +12,7 @@ package Mirage.LeetCodeSolution;
 
 public class SearchInsert {
     /**
-     * Given a sorted array and a target value, return the index if the target is found.
-     * If not, return the index where it would be if it were inserted in order.
-     * No duplication in the array.
+     * Use binary search.
      *
      * @param nums   input int array
      * @param target target int
@@ -46,7 +48,7 @@ public class SearchInsert {
         if (target == nums[left]) {
             return left;
         } else if (target > nums[mid]) {
-            return mid+ 1;
+            return mid + 1;
         } else {
             return mid;
         }

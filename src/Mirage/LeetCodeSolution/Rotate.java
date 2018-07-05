@@ -2,6 +2,13 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * An n x n 2D matrix representing an image is given.
+ * Rotate the image by 90 degrees (clockwise).
+ * <p>
+ * Note:
+ * You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
+ * DO NOT allocate another 2D matrix and do the rotation.
+ *
  * @author BorisMirage
  * Time: 2018/06/24 20:07
  * Created with IntelliJ IDEA
@@ -9,12 +16,6 @@ package Mirage.LeetCodeSolution;
 
 public class Rotate {
     /**
-     * You are given an n x n 2D matrix representing an image.
-     * Rotate the image by 90 degrees (clockwise).
-     * <p>
-     * Note:
-     * You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
-     * DO NOT allocate another 2D matrix and do the rotation.
      * <p>
      * Rotate image in clockwise:
      * 1. Flip each row along with mid row of matrix (matrix.length / 2).

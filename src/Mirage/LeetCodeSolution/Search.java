@@ -1,6 +1,12 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+ * (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+ * You are given a target value to search. If found in the array return its index, otherwise return -1.
+ * You may assume no duplicate exists in the array.
+ * Algorithm's runtime complexity must be in the order of O(log n).
+ *
  * @author BorisMirage
  * Time: 2018/06/19 15:57
  * Created with IntelliJ IDEA
@@ -8,12 +14,6 @@ package Mirage.LeetCodeSolution;
 
 public class Search {
     /**
-     * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
-     * (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
-     * You are given a target value to search. If found in the array return its index, otherwise return -1.
-     * You may assume no duplicate exists in the array.
-     * Your algorithm's runtime complexity must be in the order of O(log n).
-     * <p>
      * Use modified binary search. Only one sub-array in each search will possibly not be in ascending order.
      * Hence, in each binary search iteration, find sub-array that is not in ascending order.
      * If target is not in normal ascending sub-array, compare target to the rest sub-array's mid and end.
