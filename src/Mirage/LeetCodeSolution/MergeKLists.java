@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/13/18 12:48
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/13/18
- * Time: 12:48
  */
 
 public class MergeKLists {

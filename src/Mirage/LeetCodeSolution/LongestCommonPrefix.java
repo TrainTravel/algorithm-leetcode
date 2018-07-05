@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/10/18 15:34
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/10/18
- * Time: 15:34
  */
 
 public class LongestCommonPrefix {

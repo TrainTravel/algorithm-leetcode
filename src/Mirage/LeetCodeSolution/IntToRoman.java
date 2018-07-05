@@ -2,10 +2,9 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * @author BorisMirage
+ * Time: 6/10/18 15:04
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/10/18
- * Time: 15:04
  */
 
 public class IntToRoman {

@@ -2,17 +2,16 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * Given n non-negative integers representing an elevation map where the width of each bar is 1.
+ * Compute how much water it is able to trap after raining.
+ *
+ * @author BorisMirage
+ * Time: 2018/06/27 14:18
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/27/18
- * Time: 14:18
  */
 
 public class Trap {
     /**
-     * Given n non-negative integers representing an elevation map where the width of each bar is 1.
-     * Compute how much water it is able to trap after raining.
-     * <p>
      * Use two int as left start pointer and right start pointer.
      * Move pointer toward center in iteration and add valid value to result.
      *

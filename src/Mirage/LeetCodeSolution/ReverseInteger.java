@@ -3,15 +3,16 @@ package Mirage.LeetCodeSolution;
 import java.util.ArrayList;
 
 /**
+ * Given a 32-bit signed integer, reverse digits of an integer.
+ *
+ * @author BorisMirage
+ * Time: 3/26/18 12:39
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 3/26/18
- * Time: 12:39
  */
 
 public class ReverseInteger {
     /**
-     * Reverse integer
+     * Reverse digits of an integer.
      *
      * @param x integer to be reversed
      * @return reversed number

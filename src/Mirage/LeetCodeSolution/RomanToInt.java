@@ -3,10 +3,18 @@ package Mirage.LeetCodeSolution;
 import java.util.HashMap;
 
 /**
+ * Symbol       Value
+ * I             1
+ * V             5
+ * X             10
+ * L             50
+ * C             100
+ * D             500
+ * M             1000
+ *
+ * @author BorisMirage
+ * Time: 6/10/18 14:30
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/10/18
- * Time: 14:30
  */
 
 public class RomanToInt {
@@ -16,14 +24,6 @@ public class RomanToInt {
      * X can be placed before L (50) and C (100) to make 40(XL) and 90(XC).
      * C can be placed before D (500) and M (1000) to make 400(CD) and 900(CM).
      * <p>
-     * Symbol       Value
-     * I             1
-     * V             5
-     * X             10
-     * L             50
-     * C             100
-     * D             500
-     * M             1000
      *
      * @param s input Roman numerals
      * @return converted int

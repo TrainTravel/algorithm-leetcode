@@ -3,10 +3,9 @@ package Mirage.LeetCodeSolution;
 import java.util.Arrays;
 
 /**
+ * @author BorisMirage
+ * Time: 6/10/18 17:46
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/10/18
- * Time: 17:46
  */
 
 public class ThreeSumClosest {

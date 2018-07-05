@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/6/18 18:29
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/6/18
- * Time: 18:29
  */
 
 public class LetterCombinations {

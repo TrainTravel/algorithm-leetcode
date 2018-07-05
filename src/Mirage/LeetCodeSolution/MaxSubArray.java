@@ -2,10 +2,9 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * @author BorisMirage
+ * Time: 6/29/18 19:34
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/29/18
- * Time: 19:34
  */
 
 public class MaxSubArray {

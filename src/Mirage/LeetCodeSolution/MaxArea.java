@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/4/18 10:20
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/4/18
- * Time: 10:20
  */
 
 public class MaxArea {

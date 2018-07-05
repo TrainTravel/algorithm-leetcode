@@ -6,10 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/22/18 21:56
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/22/18
- * Time: 21:56
  */
 
 public class CombinationSum {

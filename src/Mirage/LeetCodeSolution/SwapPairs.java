@@ -2,10 +2,9 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * @author BorisMirage
+ * Time: 6/13/18 15:56
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/13/18
- * Time: 15:56
  */
 
 public class SwapPairs {

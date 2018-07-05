@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/18/18 21:09
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/18/18
- * Time: 21:09
  */
 
 public class ReverseKGroup {
@@ -15,7 +14,7 @@ public class ReverseKGroup {
      *
      * @param head head ListNode
      * @param k
-     * @return
+     * @return ListNode that is reversed
      */
     public ListNode reverseKGroup(ListNode head, int k) {
 

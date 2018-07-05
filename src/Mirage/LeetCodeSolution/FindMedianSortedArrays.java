@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 3/25/18 12:17
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 3/25/18
- * Time: 12:17
  */
 
 public class FindMedianSortedArrays {

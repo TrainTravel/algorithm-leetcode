@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/12/18 17:33
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/12/18
- * Time: 17:33
  */
 
 public class RemoveNthFromEnd {

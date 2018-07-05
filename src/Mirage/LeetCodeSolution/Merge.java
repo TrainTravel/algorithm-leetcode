@@ -5,10 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/30/18 17:19
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/30/18
- * Time: 17:19
  */
 
 public class Merge {

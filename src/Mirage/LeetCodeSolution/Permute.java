@@ -6,10 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/24/18 15:15
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/24/18
- * Time: 15:15
  */
 
 public class Permute {

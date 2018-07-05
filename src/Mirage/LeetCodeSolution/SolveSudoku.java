@@ -1,13 +1,10 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.HashSet;
-import java.util.Set;
 
 /**
+ * @author BorisMirage
+ * Time: 6/22/18 13:01
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/22/18
- * Time: 13:01
  */
 
 public class SolveSudoku {

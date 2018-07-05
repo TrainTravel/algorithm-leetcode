@@ -1,15 +1,15 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Convert input string into zigzag format
+ *
+ * @author BorisMirage
+ * Time: 2018/05/12 20:40
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 5/12/18
- * Time: 20:40
  */
 
 public class ZigZagConversion {
     /**
-     * Convert input string into zigzag format
      * Base on zig zag division, input string can be divided into blocks based on index.
      * Blocks that contains chars that placed in same column and place in same diagonal.
      * For instance, string = "abcdefghijk", numRows = 4,
@@ -32,12 +32,12 @@ public class ZigZagConversion {
                 zigzag.append(s.charAt(j + i));
 
                 /* First row and last row does not contain chars from diagonal */
-                if (i == 0 || i == numRows - 1){
+                if (i == 0 || i == numRows - 1) {
                     continue;
                 }
 
                 /* Rest rows contain chars from diagonal, hence needs to be added */
-                if (j + 2 * numRows - 2 - i < s.length()){
+                if (j + 2 * numRows - 2 - i < s.length()) {
                     zigzag.append(s.charAt(j + 2 * numRows - 2 - i));
                 }
             }

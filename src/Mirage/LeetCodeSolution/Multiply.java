@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/24/18 14:16
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/24/18
- * Time: 14:16
  */
 
 public class Multiply {

@@ -5,10 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/11/18 19:47
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/11/18
- * Time: 19:47
  */
 
 public class FourSum {

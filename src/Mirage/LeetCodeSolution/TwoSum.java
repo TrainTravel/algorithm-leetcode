@@ -4,14 +4,19 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * Created by borismirage on 2017/6/17.
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+ * It may be assumed that each input would have exactly one solution, and same element can not be used twice.
+ *
+ * @author BorisMirage
+ * Date: 2017/6/17
+ * Created with IntelliJ IDEA
  */
 public class TwoSum {
 
     /**
-     * Find if there are two numbers in array that their sum is target number
+     * Use map to store input and to find out if there exist an number that is target.
      *
-     * @param nums integer number array
+     * @param nums   integer number array
      * @param target target sum number
      * @return int array that contains two numbers which sum is target number
      */

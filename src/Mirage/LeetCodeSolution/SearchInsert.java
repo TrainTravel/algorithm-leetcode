@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/21/18 11:14
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/21/18
- * Time: 11:14
  */
 
 public class SearchInsert {

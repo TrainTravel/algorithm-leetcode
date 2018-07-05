@@ -4,10 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * @author BorisMirage
+ * Time: 6/21/18 17:09
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/21/18
- * Time: 17:09
  */
 
 public class IsValidSudoku {

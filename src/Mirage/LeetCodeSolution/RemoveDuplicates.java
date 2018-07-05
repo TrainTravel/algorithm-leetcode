@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/13/18 18:00
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/13/18
- * Time: 18:00
  */
 
 public class RemoveDuplicates {

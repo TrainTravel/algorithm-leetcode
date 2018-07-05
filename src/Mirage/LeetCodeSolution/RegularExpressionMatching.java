@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/7/18 19:41
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/7/18
- * Time: 19:41
  */
 
 public class RegularExpressionMatching {

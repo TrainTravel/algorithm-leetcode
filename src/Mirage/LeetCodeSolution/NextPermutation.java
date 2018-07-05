@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/18/18 16:55
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/18/18
- * Time: 16:55
  */
 
 public class NextPermutation {

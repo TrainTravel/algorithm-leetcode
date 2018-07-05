@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 5/12/18 16:43
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 5/12/18
- * Time: 16:43
  */
 
 public class LongestPalindromicSubstring {

@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/26/18 11:39
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/26/18
- * Time: 11:39
  */
 
 public class IsAnagram {

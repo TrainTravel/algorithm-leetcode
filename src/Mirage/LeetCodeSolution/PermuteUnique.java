@@ -5,10 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/24/18 16:36
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/24/18
- * Time: 16:36
  */
 
 public class PermuteUnique {

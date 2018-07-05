@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/13/18 22:41
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/13/18
- * Time: 22:41
  */
 
 public class StrStr {

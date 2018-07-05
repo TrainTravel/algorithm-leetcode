@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/23/18 20:35
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/23/18
- * Time: 20:35
  */
 
 public class FirstMissingPositive {

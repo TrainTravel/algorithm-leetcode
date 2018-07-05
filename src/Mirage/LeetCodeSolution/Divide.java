@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/16/18 23:24
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/16/18
- * Time: 23:24
  */
 
 public class Divide {

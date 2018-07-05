@@ -3,10 +3,9 @@ package Mirage.LeetCodeSolution;
 import java.util.Stack;
 
 /**
+ * @author BorisMirage
+ * Time: 6/12/18 17:52
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/12/18
- * Time: 17:52
  */
 
 public class IsValid {

@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 7/4/18 15:48
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 7/4/18
- * Time: 15:48
  */
 
 public class LengthOfLastWord {

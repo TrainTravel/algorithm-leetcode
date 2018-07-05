@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/22/18 15:18
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/22/18
- * Time: 15:18
  */
 
 public class CountAndSay {

@@ -2,10 +2,9 @@ package Mirage.LeetCodeSolution;
 
 
 /**
+ * @author BorisMirage
+ * Time: 6/24/18 20:07
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/24/18
- * Time: 20:07
  */
 
 public class Rotate {

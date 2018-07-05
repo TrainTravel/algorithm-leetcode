@@ -4,10 +4,9 @@ package Mirage.LeetCodeSolution;
 import java.util.*;
 
 /**
+ * @author BorisMirage
+ * Time: 6/17/18 17:55
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/17/18
- * Time: 17:55
  */
 
 public class FindSubstring {

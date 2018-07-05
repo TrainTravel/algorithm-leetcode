@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * @author BorisMirage
+ * Time: 3/23/18 12:27
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 3/23/18
- * Time: 12:27
  */
 
 

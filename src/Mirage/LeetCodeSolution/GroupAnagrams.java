@@ -3,10 +3,9 @@ package Mirage.LeetCodeSolution;
 import java.util.*;
 
 /**
+ * @author BorisMirage
+ * Time: 6/25/18 10:14
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/25/18
- * Time: 10:14
  */
 
 public class GroupAnagrams {

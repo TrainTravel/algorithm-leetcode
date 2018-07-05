@@ -4,10 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * @author BorisMirage
+ * Time: 6/13/18 10:21
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/13/18
- * Time: 10:21
  */
 
 public class GenerateParenthesis {

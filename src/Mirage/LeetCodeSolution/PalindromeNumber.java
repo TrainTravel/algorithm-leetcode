@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 5/19/18 17:25
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 5/19/18
- * Time: 17:25
  */
 
 public class PalindromeNumber {

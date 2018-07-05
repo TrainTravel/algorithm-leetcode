@@ -1,10 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * @author BorisMirage
+ * Time: 6/28/18 10:40
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/28/18
- * Time: 10:40
  */
 
 public class Jump {
