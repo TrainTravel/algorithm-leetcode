@@ -5,15 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Given a collection of numbers that might contain duplicates, return all possible UNIQUE permutations.
+ *
  * @author BorisMirage
- * Time: 6/24/18 16:36
+ * Time: 2018/06/24 16:36
  * Created with IntelliJ IDEA
  */
 
 public class PermuteUnique {
     /**
-     * Given a collection of numbers that might contain duplicates, return all possible UNIQUE permutations.
-     * <p>
      * Backtracking.
      * The difference between permute problem is that one boolean array is added during backtracking process.
      * This boolean array is to record if current element is used (for uniqueness).

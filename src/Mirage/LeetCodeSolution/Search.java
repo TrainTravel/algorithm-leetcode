@@ -2,7 +2,7 @@ package Mirage.LeetCodeSolution;
 
 /**
  * @author BorisMirage
- * Time: 6/19/18 15:57
+ * Time: 2018/06/19 15:57
  * Created with IntelliJ IDEA
  */
 

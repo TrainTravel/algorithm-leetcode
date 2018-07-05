@@ -7,7 +7,7 @@ package Mirage.LeetCodeSolution;
  * Input array length will not be 0.
  *
  * @author BorisMirage
- * Time: 6/29/18 20:09
+ * Time: 2018/06/29 20:09
  * Created with IntelliJ IDEA
  */
 

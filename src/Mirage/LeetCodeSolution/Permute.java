@@ -6,16 +6,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Given a collection of DISTINCT integers, return all possible permutations.
+ *
  * @author BorisMirage
- * Time: 6/24/18 15:15
+ * Time: 2018/06/24 15:15
  * Created with IntelliJ IDEA
  */
 
 public class Permute {
     /**
-     * Given a collection of DISTINCT integers, return all possible permutations.
-     * <p>
-     * Backtracking.
+     * Use backtracking to traverse each possibility.
      *
      * @param nums input array
      * @return all possible permutations
@@ -38,9 +38,11 @@ public class Permute {
         if (cache.size() == nums.length) {
             res.add(new ArrayList<>(cache));
         } else {
-            for (int i = 0; i < nums.length; i++) {
-                if (!cache.contains(nums[i])) {
-                    cache.add(nums[i]);
+
+            /* Traverse elements in array */
+            for (int num : nums) {
+                if (!cache.contains(num)) {
+                    cache.add(num);
                     backtracking(nums, cache, res);
                     cache.remove(cache.size() - 1);
                 }

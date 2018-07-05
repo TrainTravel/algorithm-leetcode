@@ -24,13 +24,11 @@ public class SolutionTest {
 //        TwoSum twoSumTest = new TwoSum();
 //        int[] testArray = {3, 5, 6, 8, 7};
 //        System.out.println(Arrays.toString(twoSumTest.twoSum(testArray, 8)));
-
+//
 //        /* Longest substring Test */
 //        LengthOfLongestSubstring lengthOfLongestSubstringTest = new LengthOfLongestSubstring();
-//        System.out.println(lengthOfLongestSubstringTest.LengthOfLongestSubstring.java("tmmzuxt"));
-
-//        /* Add 2 numbers Test */
-//        AddTwoNumbers addTwoNumbersTest = new AddTwoNumbers();
+//        System.out.println(lengthOfLongestSubstringTest.lengthOfLongestSubstring("tmmzuxt"));
+//        System.out.println(lengthOfLongestSubstringTest.lengthOfLongestSubstring("a"));
 
 //        /* Find median Test */
 //        int[] num1 = {1, 2, 3};
@@ -76,7 +74,7 @@ public class SolutionTest {
 //        int[] test = {0,-4,-1,-4,-2,-3,2};
 //        ThreeSum threeSumTest = new ThreeSum();
 //        System.out.println(threeSumTest.threeSum(test));
-//
+
 //        /* RegularExpressionMatching Test*/
 //        RegularExpressionMatching regularExpressionMatchingTest = new RegularExpressionMatching();
 //        System.out.println(regularExpressionMatchingTest.isMatch("bbbba", ".*a*a"));              // true
@@ -108,7 +106,7 @@ public class SolutionTest {
 
 //        /* 3 Sum Closest Test*/
 //        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
-////        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
+//        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
 //        int[] test = {-1, 2, 1, -4};
 //        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
 
@@ -261,7 +259,7 @@ public class SolutionTest {
 
 //        /* Group Anagram */
 //        GroupAnagrams groupAnagramsTest = new GroupAnagrams();
-////        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
+//        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
 //        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
 //
 //        System.out.println(groupAnagramsTest.groupAnagrams(strs));
@@ -298,7 +296,6 @@ public class SolutionTest {
 //        LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
 //        String s = "aa bb";
 //        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
-
 
 
     }

@@ -1,21 +1,21 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Determine whether an integer is a palindrome.
+ * An integer is a palindrome when it reads the same backward as forward.
+ *
  * @author BorisMirage
- * Time: 5/19/18 17:25
+ * Time: 2018/05/19 17:25
  * Created with IntelliJ IDEA
  */
 
 public class PalindromeNumber {
     /**
-     * Determine whether an integer is a palindrome.
-     * An integer is a palindrome when it reads the same backward as forward.
-     *
      * Search starts from the first and last element, each time move forward/backward respectively.
      * If there is a mismatch during the process, then it is not palindrome.
      *
-     * @param x
-     * @return
+     * @param x input int
+     * @return true if number is palindrome
      */
     public boolean isPalindrome(int x) {
         char[] charInt = Integer.toString(x).toCharArray();
