@@ -1,6 +1,11 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Given an array of non-negative integers, you are initially positioned at the first index of the array.
+ * Each element in the array represents your maximum jump length at that position.
+ * Determine if you are able to reach the last index.
+ * Input array length will not be 0.
+ *
  * @author BorisMirage
  * Time: 6/29/18 20:09
  * Created with IntelliJ IDEA
@@ -8,11 +13,6 @@ package Mirage.LeetCodeSolution;
 
 public class CanJump {
     /**
-     * Given an array of non-negative integers, you are initially positioned at the first index of the array.
-     * Each element in the array represents your maximum jump length at that position.
-     * Determine if you are able to reach the last index.
-     * Input array length will not be 0.
-     *
      * To find max jump each time, it is needed to compare current move and next move.
      * Hence, if max jump results in a position that max length is 0, then this array can not reach the end of it.
      *

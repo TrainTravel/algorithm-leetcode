@@ -5,23 +5,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0.
+ * Find all unique triplets in the array which gives the sum of zero.
+ *
  * @author BorisMirage
- * Time: 6/4/18 18:11
+ * Time: 2018/06/04 18:11
  * Created with IntelliJ IDEA
  */
 
 public class ThreeSum {
     /**
-     * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0.
-     * Find all unique triplets in the array which gives the sum of zero.
-     * <p>
      * Sort the array first, then start from the smallest (or largerest) element.
      * When one element is selected, start from the next element and the last element in this array.
      * Compare the sum of these two elements, if it is smaller than -nums[i], then move the left element to its right.
      * If the sum is larger than 0, then move the right element to its left
      *
-     * @param nums
-     * @return
+     * @param nums input array
+     * @return LinkedList that contain results
      */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> threeSumResult = new LinkedList<>();

@@ -8,7 +8,7 @@ import java.util.HashMap;
  * It may be assumed that each input would have exactly one solution, and same element can not be used twice.
  *
  * @author BorisMirage
- * Date: 2017/6/17
+ * Date: 2017/06/17
  * Created with IntelliJ IDEA
  */
 public class TwoSum {
