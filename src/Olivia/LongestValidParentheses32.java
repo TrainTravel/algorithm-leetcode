@@ -35,4 +35,35 @@ public class LongestValidParentheses32 {
         return max_length;
 
     }
+
+
+    public int longestValidParenthesesStack(String s) {
+        if (s.length() < 2) {
+            return 0;
+        }
+
+        Stack<Integer> leftStack = new Stack<>();
+
+        /* -1 can be regarded as dummy head position */
+        leftStack.push(-1);
+
+        int maxLength = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                leftStack.push(i);
+            } else {
+                leftStack.pop();
+                if (leftStack.size() == 0) {
+
+                    /* Dummy head for next valid parentheses length counting */
+                    leftStack.push(i);
+                } else {
+                    maxLength = Math.max(maxLength, i - leftStack.peek());
+                }
+            }
+        }
+        return maxLength;
+    }
+
 }
