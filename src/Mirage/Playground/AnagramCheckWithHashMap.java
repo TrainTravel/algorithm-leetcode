@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA
- * Author: BorisMirage
+ * @author BorisMirage
  * Date: 6/26/18
  * Time: 17:32
  */

@@ -2,7 +2,8 @@ package Mirage.Playground;
 
 /**
  * Created with IntelliJ IDEA
- * Author: BorisMirage
+ *
+ * @author BorisMirage
  * Date: 4/9/18
  * Time: 16:37
  */
@@ -17,8 +18,6 @@ public class MinimumEditDistance {
     }
 
     public String alignment() {
-
-
 
         return "";
     }

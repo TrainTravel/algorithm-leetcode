@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA
- * Author: BorisMirage
+ * @author BorisMirage
  * Date: 2/12/18
  * Time: 10:20
  */

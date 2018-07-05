@@ -2,7 +2,7 @@ package Mirage.Playground;
 
 /**
  * Created with IntelliJ IDEA
- * Author: BorisMirage
+ * @author BorisMirage
  * Date: 5/26/18
  * Time: 19:15
  */

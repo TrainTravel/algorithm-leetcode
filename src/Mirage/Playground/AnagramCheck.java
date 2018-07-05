@@ -1,16 +1,15 @@
 package Mirage.Playground;
 
 /**
+ * Given two strings s and t , write a function to determine if t is an anagram of s.
+ *
+ * @author BorisMirage
+ * Time: 2018/06/26 16:12
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/26/18
- * Time: 16:12
  */
 
 public class AnagramCheck {
     /**
-     * Given two strings s and t , write a function to determine if t is an anagram of s.
-     * <p>
      * Use an array to store each char's appearance in string in alphabet order.
      * If one char appeared in first string, then +1 in array's represented position.
      * If one char appeared in second string, -1 in array's represented position.

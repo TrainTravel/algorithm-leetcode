@@ -1,10 +1,11 @@
 package Mirage.Playground;
 
 /**
+ * Rotate a 2D matrix in clockwise or anti clockwise.
+ *
+ * @author BorisMirage
+ * Date: 2018/06/24 23:59
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/24/18
- * Time: 23:59
  */
 
 public class RotateMatrix {

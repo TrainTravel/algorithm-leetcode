@@ -7,10 +7,11 @@ import java.util.Arrays;
 
 
 /**
+ * Unit test class for Playground package.
+ *
+ * @author BorisMirage
+ * Date: 2018/06/15 21:25
  * Created with IntelliJ IDEA
- * Author: BorisMirage
- * Date: 6/15/18
- * Time: 21:25
  */
 
 public class PlaygroundTest {
