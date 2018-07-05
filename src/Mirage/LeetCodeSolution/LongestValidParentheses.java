@@ -3,6 +3,9 @@ package Mirage.LeetCodeSolution;
 import java.util.Stack;
 
 /**
+ * Given a string containing just the characters '(' and ')'.
+ * Find the length of the longest valid (well-formed) parentheses substring.
+ *
  * @author BorisMirage
  * Time: 2018/06/21 13:19
  * Created with IntelliJ IDEA
@@ -10,15 +13,12 @@ import java.util.Stack;
 
 public class LongestValidParentheses {
     /**
-     * Given a string containing just the characters '(' and ')'.
-     * Find the length of the longest valid (well-formed) parentheses substring.
-     * <p>
      * Traverse s for two times, set two counter "left" and "right" to count "(", ")" respectively.
      * First from left to right, if left equals to right and none of them are 0, then one valid length is found.
      * Compare current length to max length. If larger then switch it. Then reset both counters.
      * When first traverse completed, traverse string from right to left with same process.
      * Final max length is the result.
-     *
+     * <p>
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
      * Space complexity: O(1). Three local variables are used.
      *
@@ -73,8 +73,7 @@ public class LongestValidParentheses {
     }
 
     /**
-     * Another solution of this problem.
-     * This class uses stack to store left parentheses' position.
+     * Another solution of this problem that uses stack to store left parentheses' position.
      * If encounter right parenthesis, pop stack's top index and compare i - index to max length.
      * If stack is empty and encounter right parenthesis, push current index into stack as next valid length's start.
      * <p>

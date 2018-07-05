@@ -4,16 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA
+ * Given two strings s and t, use hash map to store char and determine if t is an anagram of s.
+ *
  * @author BorisMirage
- * Date: 6/26/18
- * Time: 17:32
+ * Time: 2018/06/26 17:32
+ * Created with IntelliJ IDEA
  */
 
 public class AnagramCheckWithHashMap {
     /**
-     * Given two strings s and t , write a function to determine if t is an anagram of s.
-     * <p>
      * In this class the method to check anagram is to use hash map to store each char's appearance.
      * This approach is slower than only array is used. However, it is more flexiable and can be used to check Unicode.
      *

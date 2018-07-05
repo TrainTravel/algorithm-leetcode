@@ -4,10 +4,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created with IntelliJ IDEA
  * @author BorisMirage
- * Date: 2/12/18
- * Time: 10:20
+ * Time: 2018/02/02 10:20
+ * Created with IntelliJ IDEA
  */
 
 public class LongestSubArray {

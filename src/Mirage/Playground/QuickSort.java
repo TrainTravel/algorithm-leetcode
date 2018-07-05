@@ -1,17 +1,18 @@
 package Mirage.Playground;
 
 /**
- * Created with IntelliJ IDEA
+ * Quick sort implementation.
+ *
  * @author BorisMirage
- * Date: 3/25/18
- * Time: 23:33
+ * Time: 2018/03/25 23:33
+ * Created with IntelliJ IDEA
  */
 
 public class QuickSort {
     private int[] arr;
 
     /**
-     * Quick sort implementation.
+     * Put array into class and check length.
      *
      * @param sortArray array to be sort
      */
@@ -27,7 +28,8 @@ public class QuickSort {
     }
 
     /**
-     * Quick sort with recursively partition. Sort target array from small to large.
+     * Quick sort with recursively partition.
+     * Sort target array from small to large.
      *
      * @param leftIndex  left bound INDEX
      * @param rightIndex right bound INDEX

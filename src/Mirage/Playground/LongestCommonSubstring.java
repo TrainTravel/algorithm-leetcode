@@ -1,10 +1,9 @@
 package Mirage.Playground;
 
 /**
- * Created with IntelliJ IDEA
  * @author BorisMirage
- * Date: 5/26/18
- * Time: 19:15
+ * Time: 2018/05/26 19:15
+ * Created with IntelliJ IDEA
  */
 
 public class LongestCommonSubstring {

@@ -2,10 +2,11 @@ package Mirage.Playground;
 
 
 /**
- * Created with IntelliJ IDEA
+ * Binary search implement.
+ *
  * @author BorisMirage
- * Date: 2/25/18
- * Time: 14:38
+ * Time: 2018/02/25 14:38
+ * Created with IntelliJ IDEA
  */
 
 public class BinarySearch {

@@ -1,12 +1,10 @@
 package Mirage.Playground;
 
-import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA
  * @author BorisMirage
- * Date: 3/26/18
- * Time: 11:40
+ * Time: 2018/03/26 11:40
+ * Created with IntelliJ IDEA
  */
 
 public class MergeTwoSortedArray {

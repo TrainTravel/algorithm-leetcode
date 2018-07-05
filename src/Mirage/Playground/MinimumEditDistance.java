@@ -1,11 +1,9 @@
 package Mirage.Playground;
 
 /**
- * Created with IntelliJ IDEA
- *
  * @author BorisMirage
- * Date: 4/9/18
- * Time: 16:37
+ * Time: 2018/04/09 16:37
+ * Created with IntelliJ IDEA
  */
 
 public class MinimumEditDistance {
