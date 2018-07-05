@@ -84,13 +84,16 @@ public class LongestValidParentheses {
      * @return longest valid parentheses length
      */
     public int longestValidParenthesesStack(String s) {
+
+		/* Special Case */
         if (s.length() < 2) {
             return 0;
         }
-
+		
+		/* Stack that store left parentheses */
         Stack<Integer> leftStack = new Stack<>();
 
-        /* -1 can be regarded as dummy head position */
+        /* -1 can be regarded as “extended” start position */
         leftStack.push(-1);
 
         int maxLength = 0;
@@ -102,7 +105,7 @@ public class LongestValidParentheses {
                 leftStack.pop();
                 if (leftStack.size() == 0) {
 
-                    /* Dummy head for next valid parentheses length counting */
+                    /* Start position for next valid parentheses length counting */
                     leftStack.push(i);
                 } else {
                     maxLength = Math.max(maxLength, i - leftStack.peek());
