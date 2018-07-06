@@ -300,7 +300,7 @@ public class SolutionTest {
         /* Missing Number */
         MissingNumber missingNumberTest = new MissingNumber();
         int[] jump = {2, 3, 1, 0, 5};
-        System.out.println(missingNumberTest.missingNumber(jump));
+        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
 
     }
 }
