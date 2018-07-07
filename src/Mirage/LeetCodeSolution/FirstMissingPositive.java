@@ -14,7 +14,7 @@ public class FirstMissingPositive {
      * Algorithm should run in O(n) time and uses constant extra space.
      * <p>
      * Traverse array three times.
-     * First, replace all non-negative numbers to array's length.
+     * First, replace all non-positive numbers to array's length.
      * In second traversal, find nums[i] that absolute value is smaller than array's length.
      * Mark its representative index's value to negative.
      * i.e, abs(nums[i])=5, then nums[4] = - nums[4]

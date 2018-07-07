@@ -3,6 +3,8 @@ package Olivia;
 
 import Mirage.LeetCodeSolution.FindSubstring;
 
+import java.sql.SQLOutput;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -35,9 +37,13 @@ public class Test {
 
 
         /* Longest Valid Parentheses */
-        LongestValidParentheses32 longestValidParentheses32Test = new LongestValidParentheses32();
-        String s = ")()())";
-        System.out.println(longestValidParentheses32Test.longestValidParenthesesStack(s));
+      //  LongestValidParentheses32 longestValidParentheses32Test = new LongestValidParentheses32();
+      //  String s = ")()())";
+      //  System.out.println(longestValidParentheses32Test.longestValidParenthesesStack(s));
+
+        FirstMissingPositive41 test = new FirstMissingPositive41();
+        int[] nums = new int[]{3,4,-1,1};
+        System.out.println(test.firstMissingPositive(nums));
 
     }
 }
