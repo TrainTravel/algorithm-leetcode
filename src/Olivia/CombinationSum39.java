@@ -22,7 +22,7 @@ public class CombinationSum39 {
                 cur.remove(cur.size() - 1);
             }
         } else if (target == 0) {
-            
+
             //should add new arrarylist not cur
             result.add(new ArrayList<Integer>(cur));
         }
