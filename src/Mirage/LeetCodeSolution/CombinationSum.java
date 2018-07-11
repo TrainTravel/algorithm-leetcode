@@ -30,15 +30,9 @@ public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
 
-        /* Special Case */
-        if (candidates.length == 0 || (candidates.length == 1 && target % candidates[0] != 0)) {
-            return res;
-        }
-        List<Integer> temp = new ArrayList<>();
-
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
-        backtracking(res, temp, candidates, target, 0);
+        backtracking(res, new ArrayList<>(), candidates, target, 0);
         return res;
     }
 

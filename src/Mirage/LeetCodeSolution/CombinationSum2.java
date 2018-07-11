@@ -30,11 +30,6 @@ public class CombinationSum2 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
 
-        /* Special Case */
-        if (candidates.length == 0 || (candidates.length == 1 && target % candidates[0] != 0)) {
-            return res;
-        }
-
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
         System.out.println(Arrays.toString(candidates));
