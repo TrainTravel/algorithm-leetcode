@@ -242,7 +242,7 @@ public class SolutionTest {
 
 //        /* Permutations II */
 //        PermuteUnique permuteUniqueTest = new PermuteUnique();
-//        int[] c = {1};
+//        int[] c = {1, 2, 2, 3};
 //        System.out.println(permuteUniqueTest.permuteUnique(c));
 
 //        /* Rotation */
@@ -297,10 +297,10 @@ public class SolutionTest {
 //        String s = "aa bb";
 //        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
 
-        /* Missing Number */
-        MissingNumber missingNumberTest = new MissingNumber();
-        int[] jump = {2, 3, 1, 0, 5};
-        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
+//        /* Missing Number */
+//        MissingNumber missingNumberTest = new MissingNumber();
+//        int[] jump = {2, 3, 1, 0, 5};
+//        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
 
     }
 }
