@@ -1,7 +1,9 @@
 package Mirage.LeetCodeSolution;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
@@ -39,8 +41,13 @@ public class SolveNQueens {
      */
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();
+        int[][] chessboard = new int[n][n];
+        backtracking(res, new ArrayList<>(), chessboard);
         return res;
     }
 
-    public void backtracking(List<List<String>> res, List<String> cache, int[][] checkboard)
+    public void backtracking(List<List<String>> res, List<String> cache, int[][] chessboard) {
+        
+
+    }
 }
