@@ -41,4 +41,6 @@ public class SolveNQueens {
         List<List<String>> res = new ArrayList<>();
         return res;
     }
+
+    public void backtracking(List<List<String>> res, List<String> cache, int[][] checkboard)
 }
