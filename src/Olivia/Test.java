@@ -4,6 +4,7 @@ package Olivia;
 import Mirage.LeetCodeSolution.FindSubstring;
 
 import java.sql.SQLOutput;
+import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
@@ -41,9 +42,13 @@ public class Test {
       //  String s = ")()())";
       //  System.out.println(longestValidParentheses32Test.longestValidParenthesesStack(s));
 
-        FirstMissingPositive41 test = new FirstMissingPositive41();
-        int[] nums = new int[]{3,4,-1,1};
-        System.out.println(test.firstMissingPositive(nums));
+      //  FirstMissingPositive41 test = new FirstMissingPositive41();
+       // int[] nums = new int[]{3,4,-1,1};
+       // System.out.println(test.firstMissingPositive(nums));
+
+        QuickSort test = new QuickSort();
+        int[] sortArray = new int[]{1,2,5,-1,0};
+        System.out.println(Arrays.toString(test.QuickSort(sortArray)));
 
     }
 }
