@@ -117,6 +117,7 @@ public class LongestValidParentheses {
 
     /**
      * Using dynamic programming to solve this problem.
+     * This approach is faster than previous one.
      * <p>
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
      * Space complexity: O(n). dp array of size n is used.
