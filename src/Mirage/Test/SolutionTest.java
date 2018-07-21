@@ -302,5 +302,9 @@ public class SolutionTest {
 //        int[] jump = {2, 3, 1, 0, 5};
 //        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
 
+        /* Longest Valid Parentheses */
+        LongestValidParentheses longestValidParenthesesTest = new LongestValidParentheses();
+        System.out.println(longestValidParenthesesTest.longestValidParenthesesDP(")()())"));
+
     }
 }
