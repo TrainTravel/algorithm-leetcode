@@ -85,12 +85,12 @@ public class LongestValidParentheses {
      */
     public int longestValidParenthesesStack(String s) {
 
-		/* Special Case */
+        /* Special Case */
         if (s.length() < 2) {
             return 0;
         }
-		
-		/* Stack that store left parentheses */
+
+        /* Stack that store left parentheses */
         Stack<Integer> leftStack = new Stack<>();
 
         /* -1 can be regarded as “extended” start position */
@@ -114,4 +114,45 @@ public class LongestValidParentheses {
         }
         return maxLength;
     }
+
+    /**
+     * Using dynamic programming to solve this problem.
+     * <p>
+     * Time complexity: O(n). Single traversal of string to fill dp array is done.
+     * Space complexity: O(n). dp array of size n is used.
+     *
+     * @param s input string
+     * @return longest valid parentheses length
+     */
+    public int longestValidParenthesesDP(String s) {
+
+        /* Record temp max length result */
+        int arr[] = new int[s.length()];
+        int maxParentheses = 0;
+
+        for (int i = 1; i < s.length(); i++) {
+
+            /* If current char is ')', then find previous state */
+            if (s.charAt(i) == ')') {
+                if (s.charAt(i - 1) == '(') {
+                    if (i > 1) {
+                        arr[i] = arr[i - 2] + 2;
+                    } else {
+                        arr[i] = 2;
+                    }
+                } else if (i > arr[i - 1] && s.charAt(i - arr[i - 1] - 1) == '(') {
+
+                    /* i - arr[i - 1] - 1: find first '(' */
+                    if (i - arr[i - 1] > 1) {
+                        arr[i] = arr[i - 1] + arr[i - arr[i - 1] - 2] + 2;
+                    } else {
+                        arr[i] = arr[i - 1] + 2;
+                    }
+                }
+                maxParentheses = Math.max(maxParentheses, arr[i]);
+            }
+        }
+        return maxParentheses;
+    }
+
 }
