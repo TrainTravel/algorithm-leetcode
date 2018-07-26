@@ -75,7 +75,7 @@ public class SolveNQueens {
         if (current == n) {
             res.add(cache);
         } else if (current < n) {
-
+            backtracking(res, cache, current, n);
         }
     }
 }
