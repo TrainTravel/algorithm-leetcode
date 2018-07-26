@@ -41,13 +41,41 @@ public class SolveNQueens {
      */
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();
-        int[][] chessboard = new int[n][n];
-        backtracking(res, new ArrayList<>(), chessboard);
+
+        /* New chess board */
+        List<String> temp = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            StringBuilder tempStr = new StringBuilder();
+            for (int j = 0; j < n; j++) {
+                tempStr.append('.');
+            }
+            temp.add(tempStr.toString());
+        }
+
+        /* Special Case */
+        if (n == 0) {
+            res.add(temp);
+            return res;
+        }
+
+        backtracking(res, temp, 0, n);
         return res;
     }
 
-    public void backtracking(List<List<String>> res, List<String> cache, int[][] chessboard) {
+    /**
+     * Use backtracking to traversal each position.
+     * If the chess board has already placed n queens, return.
+     *
+     * @param res     result LinkedList
+     * @param cache   temp List
+     * @param current currently placed queen
+     * @param n       n queens need to be placed.
+     */
+    private void backtracking(List<List<String>> res, List<String> cache, int current, int n) {
+        if (current == n) {
+            res.add(cache);
+        } else if (current < n) {
 
-
+        }
     }
 }
