@@ -84,5 +84,4 @@ public class LongestValidParentheses32 {
         }
         return max;
     }
-
 }
