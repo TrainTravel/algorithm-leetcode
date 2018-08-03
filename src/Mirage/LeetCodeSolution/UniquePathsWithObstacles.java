@@ -15,6 +15,7 @@ public class UniquePathsWithObstacles {
     /**
      * Similar to find path without obstacle.
      * The only difference is that when searching path the block with obstacle needs to be excluded.
+     * Use a new int array to record path number since the obstacle exists.
      * Fill each grid row, simply check left block of current block, if there is obstacle at left, set 0.
      *
      * @param obstacleGrid input grid with obstacle
