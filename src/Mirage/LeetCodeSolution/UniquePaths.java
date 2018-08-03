@@ -12,7 +12,9 @@ package Mirage.LeetCodeSolution;
 
 public class UniquePaths {
     /**
-     * Find total paths.
+     * Find total paths via fill m x n table.
+     * If block is in first row or first column, fill 1.
+     * Otherwise, fill the sum of left block and upper block.
      * Start point: (0,0)
      * End point: (m-1, n-1)
      *
@@ -30,15 +32,14 @@ public class UniquePaths {
         int[][] paths = new int[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (i==0||j==0){
-                    paths[i][j]=1;
-                }
-                else {
-                    paths[i][j]=paths[i-1][j]+paths[i][j-1];
+                if (i == 0 || j == 0) {
+                    paths[i][j] = 1;
+                } else {
+                    paths[i][j] = paths[i - 1][j] + paths[i][j - 1];
                 }
             }
         }
 
-        return paths[m-1][n-1];
+        return paths[m - 1][n - 1];
     }
 }
