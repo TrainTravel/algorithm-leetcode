@@ -69,7 +69,7 @@ public class LongestValidParentheses32 {
     }
 
     //Dynamic Programming
-    public int longestValidParentheses(String s) {
+    public int longestValidParenthesesWithDP(String s) {
         int max = 0;
         int[] dp = new int[s.length()];
         for(int i=1;i<s.length();i++){
