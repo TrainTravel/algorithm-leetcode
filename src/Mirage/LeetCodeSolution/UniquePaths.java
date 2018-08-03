@@ -3,7 +3,7 @@ package Mirage.LeetCodeSolution;
 /**
  * From top-left corner to bottom right of a m x n grid .
  * In each move, only either down or right at any point can be made.
- * Find total number of possible unique paths?
+ * Find total number of possible unique paths.
  *
  * @author BorisMirage
  * Time: 2018/08/03 12:37

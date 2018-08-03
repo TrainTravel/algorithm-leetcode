@@ -302,9 +302,13 @@ public class SolutionTest {
 //        int[] jump = {2, 3, 1, 0, 5};
 //        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
 
-        /* Longest Valid Parentheses */
-        LongestValidParentheses longestValidParenthesesTest = new LongestValidParentheses();
-        System.out.println(longestValidParenthesesTest.longestValidParenthesesDP(")()())"));
+//        /* Longest Valid Parentheses */
+//        LongestValidParentheses longestValidParenthesesTest = new LongestValidParentheses();
+//        System.out.println(longestValidParenthesesTest.longestValidParenthesesDP(")()())"));
 
+        /* Unique Paths II */
+        UniquePathsWithObstacles uniquePathsWithObstaclesTest = new UniquePathsWithObstacles();
+        int[][] rrrrrrr = {{0, 0}, {1, 1}, {0, 0}};
+        System.out.println(uniquePathsWithObstaclesTest.uniquePathsWithObstacles(rrrrrrr));
     }
 }
