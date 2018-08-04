@@ -5,27 +5,25 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TotalNQueens52 {
+    int count = 0;
     public int totalNQueens(int n) {
             List<List<String>> result = new ArrayList<>();
             char[][]cur = new char[n][n];
-            //fill can only fill one-dimensional
-            for(int i=0;i<n;i++){
-                Arrays.fill(cur[i],'.');
-            }
-            nQueensHelper(n, cur, result, 0);
-            return result.size();
+            nQueensHelper(n, cur, 0);
+            return count;
         }
         /* helper function
          *  using recursive to fill queen */
-        private void nQueensHelper (int n, char[][] cur, List<List<String>> result, int quantity ){
+        private void nQueensHelper (int n, char[][] cur, int quantity){
             if(quantity==n){
-                result.add(transform(cur));
+                count++;
             }
             for(int i=0; i<n;i++){
                 /* to check this place is validate or not */
                 if(validate(cur,i,quantity)){
                     cur[i][quantity] = 'Q';
-                    nQueensHelper(n,cur,result,quantity+1);
+                    nQueensHelper(n,cur,quantity+1);
+                    //back to original
                     cur[i][quantity] = '.';
                 }
             }
@@ -45,15 +43,4 @@ public class TotalNQueens52 {
             return true;
         }
 
-        /* transform function
-         *  to transform char[][] to List<String>
-         *      return List<String> */
-        private List<String> transform(char[][]cur){
-            List<String> result = new ArrayList<>();
-            for(int i=0; i<cur.length;i++){
-                String tmp = new String(cur[i]);
-                result.add(tmp);
-            }
-            return result;
-        }
     }
