@@ -4,11 +4,11 @@ import sun.security.util.Length;
 
 public class UniquePathsWithObstacles63 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        /*special case for no grid*/
+        /* special case for no grid */
         if(obstacleGrid.length==0){
             return 0;
         }
-        /*special case for exit and entry has block*/
+        /* special case for exit and entry has block */
         if(obstacleGrid[0][0]==1||obstacleGrid[obstacleGrid.length-1][obstacleGrid[0].length-1]==1){
             return 0;
         }
