@@ -306,9 +306,13 @@ public class SolutionTest {
 //        LongestValidParentheses longestValidParenthesesTest = new LongestValidParentheses();
 //        System.out.println(longestValidParenthesesTest.longestValidParenthesesDP(")()())"));
 
-        /* Unique Paths II */
-        UniquePathsWithObstacles uniquePathsWithObstaclesTest = new UniquePathsWithObstacles();
-        int[][] rrrrrrr = {{0, 0}, {1, 1}, {0, 0}};
-        System.out.println(uniquePathsWithObstaclesTest.uniquePathsWithObstacles(rrrrrrr));
+//        /* Unique Paths II */
+//        UniquePathsWithObstacles uniquePathsWithObstaclesTest = new UniquePathsWithObstacles();
+//        int[][] rrrrrrr = {{0, 0}, {1, 1}, {0, 0}};
+//        System.out.println(uniquePathsWithObstaclesTest.uniquePathsWithObstacles(rrrrrrr));
+
+        /* N Queens */
+        SolveNQueens solveNQueensTest = new SolveNQueens();
+        System.out.println(solveNQueensTest.solveNQueens(5));
     }
 }

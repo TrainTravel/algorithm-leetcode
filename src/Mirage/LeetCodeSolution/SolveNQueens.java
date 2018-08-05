@@ -1,18 +1,16 @@
 package Mirage.LeetCodeSolution;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
- * The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+ * Placing n queens on an n × n chessboard such that no two queens attack each other.
  * Given an integer n, return all distinct solutions to the n-queens puzzle.
  * Each solution contains a distinct board configuration of the n-queens' placement.
  * 'Q' and '.' both indicate a queen and an empty space respectively.
  * <p>
- * Example:
- * Input: 4
+ * Example: Input: 4
  * Output: [
  * [".Q..",  // Solution 1
  * "...Q",
@@ -24,7 +22,6 @@ import java.util.Set;
  * "...Q",
  * ".Q.."]
  * ]
- * Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
  *
  * @author BorisMirage
  * Time: 2018/07/10 22:26
@@ -32,50 +29,81 @@ import java.util.Set;
  */
 
 public class SolveNQueens {
+
     /**
-     * Use backtracking to solve n queens puzzle.
-     * Exit recursion if there exist more than n queens.
+     * Based on special property of queen, search can be done column by column (or row by row).
      *
      * @param n placing n queens
      * @return List contains all solutions that distinct board configuration of the n-queens' placement
      */
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();
-
-        /* New chess board */
-        List<String> temp = new ArrayList<>();
+        char[][] chessBoard = new char[n][n];
         for (int i = 0; i < n; i++) {
-            StringBuilder tempStr = new StringBuilder();
             for (int j = 0; j < n; j++) {
-                tempStr.append('.');
+                chessBoard[i][j] = '.';
             }
-            temp.add(tempStr.toString());
         }
 
-        /* Special Case */
-        if (n == 0) {
-            res.add(temp);
-            return res;
-        }
-
-        backtracking(res, temp, 0, n);
+        backtracking(res, chessBoard, 0);
         return res;
     }
 
     /**
-     * Use backtracking to traversal each position.
-     * If the chess board has already placed n queens, return.
+     * Use backtracking to traverse each possible place in chess board
      *
-     * @param res     result LinkedList
-     * @param cache   temp List
-     * @param current currently placed queen
-     * @param n       n queens need to be placed.
+     * @param res        result List
+     * @param chessBoard char array that represent chess board
+     * @param c          column number of current position
      */
-    private void backtracking(List<List<String>> res, List<String> cache, int current, int n) {
-        if (current == n) {
-            res.add(cache);
-        } else if (current < n) {
-            backtracking(res, cache, current, n);
+    private void backtracking(List<List<String>> res, char[][] chessBoard, int c) {
+        if (c == chessBoard.length) {
+            res.add(output(chessBoard));
         }
+        for (int i = 0; i < chessBoard.length; i++) {
+            if (isValid(chessBoard, i, c)) {
+                chessBoard[i][c] = 'Q';
+                backtracking(res, chessBoard, c + 1);
+                chessBoard[i][c] = '.';
+            }
+        }
+
+    }
+
+    /**
+     * Check if current position is valid to put queen.
+     * If two queen is at same diagram, then there row num and column num will:
+     * 1. r1 + c2 == r2 + c1
+     * 2. r1 + c1 == r2 + c2
+     * And also, two position should not be in same row and column.
+     *
+     * @param temp chess board
+     * @param r    current row
+     * @param c    current column
+     * @return true if valid, false otherwise
+     */
+    private boolean isValid(char[][] temp, int r, int c) {
+        for (int i = 0; i < temp.length; i++) {
+            for (int j = 0; j < c; j++) {
+                if (temp[i][j] == 'Q' && (r + j == c + i || r + c == i + j || i == r))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Convert 2D char array into string list for final output.
+     *
+     * @param board chess board
+     * @return List contains output chess board
+     */
+    private List<String> output(char[][] board) {
+        List<String> res = new LinkedList<>();
+        for (char[] aBoard : board) {
+            String s = new String(aBoard);
+            res.add(s);
+        }
+        return res;
     }
 }
