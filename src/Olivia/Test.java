@@ -46,9 +46,17 @@ public class Test {
        // int[] nums = new int[]{3,4,-1,1};
        // System.out.println(test.firstMissingPositive(nums));
 
+/*
         QuickSort test = new QuickSort();
         int[] sortArray = new int[]{1,2,5,-1,0};
         System.out.println(Arrays.toString(test.QuickSort(sortArray)));
+*/
+
+       /* RotateRight61 test = new RotateRight61();
+        RotateRight61.ListNode head = new RotateRight61.ListNode(0);
+        RotateRight61.ListNode p = head;
+        p.next = new RotateRight61.ListNode(1);*/
+
 
     }
 }
