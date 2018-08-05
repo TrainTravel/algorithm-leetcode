@@ -64,7 +64,6 @@ public class AddTwoNumbers {
 /**
  * ListNode contains one single value.
  * "next" works as link function.
- * <p>
  * However, it DOES NOT save node, just virtually "link" current node to next node.
  */
 class ListNode {
