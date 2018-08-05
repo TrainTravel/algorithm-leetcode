@@ -1,11 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.*;
-
-import java.util.Arrays;
-import java.util.IdentityHashMap;
-import java.util.Map;
+import Mirage.LeetCodeSolution.TotalNQueens;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -311,8 +307,12 @@ public class SolutionTest {
 //        int[][] rrrrrrr = {{0, 0}, {1, 1}, {0, 0}};
 //        System.out.println(uniquePathsWithObstaclesTest.uniquePathsWithObstacles(rrrrrrr));
 
-        /* N Queens */
-        SolveNQueens solveNQueensTest = new SolveNQueens();
-        System.out.println(solveNQueensTest.solveNQueens(5));
+//        /* N Queens */
+//        SolveNQueens solveNQueensTest = new SolveNQueens();
+//        System.out.println(solveNQueensTest.solveNQueens(5));
+
+        /* N-Queens II */
+        TotalNQueens totalNQueensTest = new TotalNQueens();
+        System.out.println(totalNQueensTest.totalNQueens(5));
     }
 }
