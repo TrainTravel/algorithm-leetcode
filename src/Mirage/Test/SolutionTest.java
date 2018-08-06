@@ -1,9 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.PlusOne;
-
-import java.util.Arrays;
+import Mirage.LeetCodeSolution.GetPermutation;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -317,9 +315,14 @@ public class SolutionTest {
 //        TotalNQueens totalNQueensTest = new TotalNQueens();
 //        System.out.println(totalNQueensTest.totalNQueens(5));
 
-        /* Plus One */
-        PlusOne plusOneTest = new PlusOne();
-        int[] tt = {4,3,2,1};
-        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
+//        /* Plus One */
+//        PlusOne plusOneTest = new PlusOne();
+//        int[] tt = {4,3,2,1};
+//        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
+
+        /* Permutation Sequence */
+        int[] ttt = {1, 2, 3};
+        GetPermutation getPermutationTest = new GetPermutation();
+        System.out.println(getPermutationTest.getPermutation(4, 9));
     }
 }
