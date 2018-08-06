@@ -6,6 +6,14 @@ import java.util.List;
 
 /**
  * Given a collection of numbers that might contain duplicates, return all possible UNIQUE permutations.
+ * Example:
+ * Input: [1,1,2]
+ * Output:
+ * [
+ * [1,1,2],
+ * [1,2,1],
+ * [2,1,1]
+ * ]
  *
  * @author BorisMirage
  * Time: 2018/06/24 16:36
