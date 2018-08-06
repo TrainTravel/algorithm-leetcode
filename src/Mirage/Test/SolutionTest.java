@@ -1,7 +1,9 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.TotalNQueens;
+import Mirage.LeetCodeSolution.PlusOne;
+
+import java.util.Arrays;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -311,8 +313,13 @@ public class SolutionTest {
 //        SolveNQueens solveNQueensTest = new SolveNQueens();
 //        System.out.println(solveNQueensTest.solveNQueens(5));
 
-        /* N-Queens II */
-        TotalNQueens totalNQueensTest = new TotalNQueens();
-        System.out.println(totalNQueensTest.totalNQueens(5));
+//        /* N-Queens II */
+//        TotalNQueens totalNQueensTest = new TotalNQueens();
+//        System.out.println(totalNQueensTest.totalNQueens(5));
+
+        /* Plus One */
+        PlusOne plusOneTest = new PlusOne();
+        int[] tt = {4,3,2,1};
+        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
     }
 }
