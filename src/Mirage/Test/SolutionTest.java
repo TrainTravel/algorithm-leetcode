@@ -1,6 +1,7 @@
 package Mirage.Test;
 
 
+import Mirage.LeetCodeSolution.ClimbStairs;
 import Mirage.LeetCodeSolution.MinPathSum;
 
 /**
@@ -329,5 +330,9 @@ public class SolutionTest {
 //        MinPathSum minPathSumTest = new MinPathSum();
 //        int[][] grid = {{1, 2}, {5, 6}, {1, 1}};
 //        System.out.println(minPathSumTest.minPathSum(grid));
+
+        /* Climbing Stairs */
+        ClimbStairs climbStairsTest = new ClimbStairs();
+        System.out.println(climbStairsTest.climbStairs(5));
     }
 }
