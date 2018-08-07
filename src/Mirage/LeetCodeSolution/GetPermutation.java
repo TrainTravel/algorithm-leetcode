@@ -41,12 +41,12 @@ public class GetPermutation {
             factorial[i] = i * factorial[i - 1];
         }
 
+        /* Subset index starts from 0 */
         k = k - 1;
         StringBuilder out = new StringBuilder();
 
         for (int i = n; i > 0; i--) {
 
-            /* Subset index starts from 0 */
             int temp = k / factorial[i - 1];
             k = k % factorial[i - 1];
             out.append(set.get(temp));
