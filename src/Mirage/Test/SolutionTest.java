@@ -1,7 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.GetPermutation;
+import Mirage.LeetCodeSolution.MinPathSum;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -320,9 +320,14 @@ public class SolutionTest {
 //        int[] tt = {4,3,2,1};
 //        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
 
-        /* Permutation Sequence */
-        int[] ttt = {1, 2, 3};
-        GetPermutation getPermutationTest = new GetPermutation();
-        System.out.println(getPermutationTest.getPermutation(4, 9));
+//        /* Permutation Sequence */
+//        int[] ttt = {1, 2, 3};
+//        GetPermutation getPermutationTest = new GetPermutation();
+//        System.out.println(getPermutationTest.getPermutation(4, 9));
+
+//        /* Minimum Path Sum */
+//        MinPathSum minPathSumTest = new MinPathSum();
+//        int[][] grid = {{1, 2}, {5, 6}, {1, 1}};
+//        System.out.println(minPathSumTest.minPathSum(grid));
     }
 }
