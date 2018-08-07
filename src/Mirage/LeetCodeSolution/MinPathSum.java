@@ -15,35 +15,29 @@ public class MinPathSum {
     /**
      * Dynamic programming with table filling.
      * (i,j) = min((i-1, j), (i, j-1)) + grid(i,j)
-     * Since only one down or right move can be made, first row and column can be filled at beginning with sum of previous point.
+     * First row and column can be filled at beginning since only one down or right move can be made each time.
      *
      * @param grid input 2D array grid
      * @return min path length from top left to bottom right
      */
     public int minPathSum(int[][] grid) {
 
-        /* Store path */
-        int[][] store = new int[grid.length][grid[0].length];
-
-        /* Start position */
-        store[0][0] = grid[0][0];
-
         /* First column */
         for (int i = 1; i < grid.length; i++) {
-            store[i][0] = store[i - 1][0] + grid[i][0];
+            grid[i][0] = grid[i - 1][0] + grid[i][0];
         }
 
         /* First line */
         for (int i = 1; i < grid[0].length; i++) {
-            store[0][i] = store[0][i - 1] + grid[0][i];
+            grid[0][i] = grid[0][i - 1] + grid[0][i];
         }
 
-        for (int i = 1; i < store.length; i++) {
-            for (int j = 1; j < store[0].length; j++) {
-                store[i][j] = Math.min(store[i - 1][j], store[i][j - 1]) + grid[i][j];
+        for (int i = 1; i < grid.length; i++) {
+            for (int j = 1; j < grid[0].length; j++) {
+                grid[i][j] = Math.min(grid[i - 1][j], grid[i][j - 1]) + grid[i][j];
             }
         }
 
-        return store[store.length - 1][store[0].length - 1];
+        return grid[grid.length - 1][grid[0].length - 1];
     }
 }
