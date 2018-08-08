@@ -57,7 +57,6 @@ public class SetZeroes {
                 matrix[i][0] = 0;
             }
         }
-
         if (col0) {
             for (int i = 0; i < matrix[0].length; i++) {
                 matrix[0][i] = 0;
