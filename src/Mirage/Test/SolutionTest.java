@@ -1,9 +1,6 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.ClimbStairs;
-import Mirage.LeetCodeSolution.MinPathSum;
-
 /**
  * This is a test class for unit test in package LeetCodeSolution.
  *
@@ -331,8 +328,16 @@ public class SolutionTest {
 //        int[][] grid = {{1, 2}, {5, 6}, {1, 1}};
 //        System.out.println(minPathSumTest.minPathSum(grid));
 
-        /* Climbing Stairs */
-        ClimbStairs climbStairsTest = new ClimbStairs();
-        System.out.println(climbStairsTest.climbStairs(5));
+//        /* Climbing Stairs */
+//        ClimbStairs climbStairsTest = new ClimbStairs();
+//        System.out.println(climbStairsTest.climbStairs(5));
+
+//        /* Set Matrix Zeroes */
+////        int[][] zeros = {{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
+////        int[][] zeros = {{0}};
+//        int[][] zeros = {{1, 0, 3}};
+//
+//        SetZeroes setZeroesTest = new SetZeroes();
+//        setZeroesTest.setZeroes(zeros);
     }
 }
