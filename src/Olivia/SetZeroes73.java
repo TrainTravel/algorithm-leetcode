@@ -4,6 +4,7 @@ public class SetZeroes73 {
     public void setZeroes(int[][] matrix) {
         boolean clearRow = false;
         boolean clearCol = false;
+
         /* check the col and col */
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -20,6 +21,7 @@ public class SetZeroes73 {
                 }
             }
         }
+
         /* set zeros */
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[0].length; j++) {
