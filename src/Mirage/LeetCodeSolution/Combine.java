@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,39 +13,36 @@ import java.util.List;
 
 public class Combine {
     /**
-     * Backtracking.
+     * This problem can be solved in backtracking method.
+     * However, there is another approach that can solve this problem in a faster way.
+     * This is based on C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
+     * The problem itself is C(n, k), hence, break this problem into C(n - 1, k - 1) + C(n - 1, k), which is recursion.
      *
      * @param n set from 1 to n
      * @param k each combination length
      * @return List contains all combinations
      */
     public List<List<Integer>> combine(int n, int k) {
+
+        /* C(n, k) = C(n - 1, k - 1) + C(n - 1, k) */
         List<List<Integer>> res = new LinkedList<>();
-        List<Integer> cache = new LinkedList<>();
-        backtracking(res, cache, n, k, 1);
-        return res;
-    }
-
-    /**
-     * Backtracking.
-     *
-     * @param res   output List
-     * @param cache temp List
-     * @param n     set from 1 to n
-     * @param k     each combination length
-     * @param cur   current added int
-     */
-    private void backtracking(List<List<Integer>> res, List<Integer> cache, int n, int k, int cur) {
-        if (cache.size() == k) {
-            res.add(new ArrayList<>(cache));
-        } else {
-            for (int i = cur; i < n + 1; i++) {
-                cache.add(i);
-
-                /* cur set to i + 1 to avoid duplication */
-                backtracking(res, cache, n, k, i + 1);
-                cache.remove(cache.size() - 1);
-            }
+        if (n < k || k == 0) {
+            return res;
         }
+
+        /* C(n - 1, k - 1) */
+        res = combine(n - 1, k - 1);
+
+        /* Add int to list */
+        if (res.isEmpty()) {
+            res.add(new LinkedList<>());
+        }
+        for (List<Integer> list : res) {
+            list.add(n);
+        }
+
+        /* C(n - 1, k) */
+        res.addAll(combine(n - 1, k));
+        return res;
     }
 }
