@@ -1,7 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.SubsetsWithDup;
+import Mirage.LeetCodeSolution.Exist;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -359,10 +359,16 @@ public class SolutionTest {
 //        Combine combineTest = new Combine();
 //        System.out.println(combineTest.combine(4, 3));
 
-        /* Subsets */
-        SubsetsWithDup subsetsWithDupTest = new SubsetsWithDup();
-        int[] sbs = {1, 2, 3};
-        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
+//        /* Subsets */
+//        SubsetsWithDup subsetsWithDupTest = new SubsetsWithDup();
+//        int[] sbs = {1, 2, 3};
+//        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
+
+        /* Word Search */
+        Exist existTest = new Exist();
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+//        char[][] board = {{'A'}};
+        System.out.println(existTest.exist(board, "ABCZZ"));
 
     }
 }
