@@ -1,9 +1,6 @@
 package Olivia;
 
 
-import Mirage.LeetCodeSolution.FindSubstring;
-
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Test {
@@ -38,13 +35,13 @@ public class Test {
 
 
         /* Longest Valid Parentheses */
-      //  LongestValidParentheses32 longestValidParentheses32Test = new LongestValidParentheses32();
-      //  String s = ")()())";
-      //  System.out.println(longestValidParentheses32Test.longestValidParenthesesStack(s));
+        //  LongestValidParentheses32 longestValidParentheses32Test = new LongestValidParentheses32();
+        //  String s = ")()())";
+        //  System.out.println(longestValidParentheses32Test.longestValidParenthesesStack(s));
 
-      //  FirstMissingPositive41 test = new FirstMissingPositive41();
-       // int[] nums = new int[]{3,4,-1,1};
-       // System.out.println(test.firstMissingPositive(nums));
+        //  FirstMissingPositive41 test = new FirstMissingPositive41();
+        // int[] nums = new int[]{3,4,-1,1};
+        // System.out.println(test.firstMissingPositive(nums));
 
 /*
         QuickSort test = new QuickSort();
@@ -56,7 +53,10 @@ public class Test {
         RotateRight61.ListNode head = new RotateRight61.ListNode(0);
         RotateRight61.ListNode p = head;
         p.next = new RotateRight61.ListNode(1);*/
-
+        SortColors75 sortColors75Test = new SortColors75();
+        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
+        sortColors75Test.sortColors(sss);
+        System.out.println(Arrays.toString(sss));
 
     }
 }

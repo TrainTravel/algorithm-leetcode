@@ -1,7 +1,9 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.SearchMatrix;
+import Mirage.LeetCodeSolution.SortColors;
+
+import java.util.Arrays;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -342,11 +344,17 @@ public class SolutionTest {
 //        SetZeroes setZeroesTest = new SetZeroes();
 //        setZeroesTest.setZeroes(zeros);
 
-        /* Search a 2D Matrix */
-        SearchMatrix searchMatrixTest = new SearchMatrix();
+//        /* Search a 2D Matrix */
+//        SearchMatrix searchMatrixTest = new SearchMatrix();
 //        int[][] mmmmmm = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
 //        int[][] mmmmmm = {{1}};
-        int[][] mmmmmm = {};
-        System.out.println(searchMatrixTest.searchMatrix(mmmmmm, 1));
+//        int[][] mmmmmm = {};
+//        System.out.println(searchMatrixTest.searchMatrix(mmmmmm, 1));
+
+        /* Sort Colors */
+        SortColors sortColorsTest = new SortColors();
+        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
+        sortColorsTest.sortColors(sss);
+        System.out.println(Arrays.toString(sss));
     }
 }
