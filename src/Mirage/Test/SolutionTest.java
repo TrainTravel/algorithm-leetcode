@@ -1,9 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.SortColors;
-
-import java.util.Arrays;
+import Mirage.LeetCodeSolution.SubsetsWithDup;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -351,10 +349,20 @@ public class SolutionTest {
 //        int[][] mmmmmm = {};
 //        System.out.println(searchMatrixTest.searchMatrix(mmmmmm, 1));
 
-        /* Sort Colors */
-        SortColors sortColorsTest = new SortColors();
-        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
-        sortColorsTest.sortColors(sss);
-        System.out.println(Arrays.toString(sss));
+//        /* Sort Colors */
+//        SortColors sortColorsTest = new SortColors();
+//        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
+//        sortColorsTest.sortColors(sss);
+//        System.out.println(Arrays.toString(sss));
+
+//        /* Combinations */
+//        Combine combineTest = new Combine();
+//        System.out.println(combineTest.combine(4, 3));
+
+        /* Subsets */
+        SubsetsWithDup subsetsWithDupTest = new SubsetsWithDup();
+        int[] sbs = {1, 2, 3};
+        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
+
     }
 }
