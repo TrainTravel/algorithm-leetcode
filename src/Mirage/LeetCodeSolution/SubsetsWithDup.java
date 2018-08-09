@@ -6,6 +6,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Given a array of integers that might contain duplicates int.
+ * Return all possible subsets (the power set).
+ * Note: The solution set must not contain duplicate subsets.
+ * Example:
+ * Input: [1,2,2]
+ * Output:
+ * [
+ * [2],
+ * [1],
+ * [1,2,2],
+ * [2,2],
+ * [1,2],
+ * []
+ * ]
+ *
  * @author BorisMirage
  * Time: 2018/08/09 13:57
  * Created with IntelliJ IDEA
