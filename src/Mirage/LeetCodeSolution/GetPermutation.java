@@ -43,18 +43,18 @@ public class GetPermutation {
 
         /* Subset index starts from 0 */
         k = k - 1;
-        StringBuilder out = new StringBuilder();
+        StringBuilder output = new StringBuilder();
 
         for (int i = n; i > 0; i--) {
 
             int temp = k / factorial[i - 1];
             k = k % factorial[i - 1];
-            out.append(set.get(temp));
+            output.append(set.get(temp));
 
             /* Find digits in subset that do not contains previous selected digit */
             set.remove(temp);
         }
 
-        return out.toString();
+        return output.toString();
     }
 }
