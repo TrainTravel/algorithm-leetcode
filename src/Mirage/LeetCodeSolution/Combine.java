@@ -33,7 +33,7 @@ public class Combine {
         /* C(n - 1, k - 1) */
         res = combine(n - 1, k - 1);
 
-        /* Add int to list */
+        /* Add int to list in each sub problem */
         if (res.isEmpty()) {
             res.add(new LinkedList<>());
         }
