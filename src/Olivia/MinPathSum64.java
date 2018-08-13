@@ -6,6 +6,7 @@ public class MinPathSum64 {
         int n = grid[0].length;
         int[][] dp = new int[m][n];
         dp[0][0] = grid[0][0];
+
         /* using dp */
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {

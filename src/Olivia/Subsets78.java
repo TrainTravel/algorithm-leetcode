@@ -10,15 +10,16 @@ public class Subsets78 {
         if (nums.length == 0)
             return result;
         Arrays.sort(nums);
-        subsetHelper(nums,result,new ArrayList<>(),0);
+        subsetHelper(nums, result, new ArrayList<>(), 0);
         return result;
     }
-    private void subsetHelper(int[] nums, List<List<Integer>> result, List<Integer> tmp, int startLoc){
+
+    private void subsetHelper(int[] nums, List<List<Integer>> result, List<Integer> tmp, int startLoc) {
         result.add(new ArrayList<>(tmp));
-        for(int i=startLoc; i<nums.length;i++){
+        for (int i = startLoc; i < nums.length; i++) {
             tmp.add(nums[i]);
-            subsetHelper(nums,result,tmp,i+1);
-            tmp.remove(tmp.size()-1);
+            subsetHelper(nums, result, tmp, i + 1);
+            tmp.remove(tmp.size() - 1);
         }
     }
 }
