@@ -1,6 +1,11 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * There are two sorted arrays nums1 and nums2 of size m and n respectively.
+ * Find the median of the two sorted arrays.
+ * The overall run time complexity should be O(log (m+n)).
+ * It can be assumed that nums1 and nums2 cannot be both empty.
+ *
  * @author BorisMirage
  * Time: 2018/03/25 12:17
  * Created with IntelliJ IDEA
@@ -9,8 +14,6 @@ package Mirage.LeetCodeSolution;
 public class FindMedianSortedArrays {
     /**
      * Two arrays are both SORTED.
-     * The object is to find the median of the two sorted arrays.
-     * The overall run time complexity should be O(log (m+n)).
      *
      * @param nums1 first sorted array with length m
      * @param nums2 second sorted array with length n
