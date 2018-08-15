@@ -1,0 +1,42 @@
+package Mirage.LeetCodeSolution;
+
+/**
+ * Given a sorted array nums, remove the duplicates in-place.
+ * Duplicates appeared at most twice and return the new length.
+ * Do not allocate extra space for another array.
+ * It must be done by modifying the input array in-place with O(1) extra memory.
+ * <p>
+ * Example 1:
+ * Given nums = [1,1,1,2,2,3],
+ * Function should return length = 5, with nums being 1, 1, 2, 2 and 3 respectively.
+ * It doesn't matter what you leave beyond the returned length.
+ * Example 2:
+ * Given nums = [0,0,1,1,1,1,2,3,3],
+ * Function should return length = 7, with nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
+ * It doesn't matter what values are set beyond the returned length.
+ * <p>
+ * // nums is passed in by reference. (i.e., without making a copy)
+ * int len = removeDuplicates(nums);
+ * // any modification to nums in your function would be known by the caller.
+ * // using the length returned by your function, it prints the first len elements.
+ * for (int i = 0; i < len; i++) {
+ * print(nums[i]);
+ * }
+ *
+ * @author BorisMirage
+ * Time: 2018/08/14 13:49
+ * Created with IntelliJ IDEA
+ */
+
+public class RemoveDuplicatesII {
+    public int removeDuplicatesII(int[] nums) {
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 1 && nums[i] == nums[i - 1] && nums[i - 1] == nums[i - 2]) {
+
+            }
+        }
+
+        return nums.length;
+    }
+}
