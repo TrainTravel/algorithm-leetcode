@@ -1,5 +1,7 @@
 package Mirage.LeetCodeSolution;
 
+import java.util.Arrays;
+
 /**
  * Given a sorted array nums, remove the duplicates in-place.
  * Duplicates appeared at most twice and return the new length.
@@ -29,14 +31,27 @@ package Mirage.LeetCodeSolution;
  */
 
 public class RemoveDuplicatesII {
+    /**
+     * Two int as pointers.
+     * First pointer is the "i" in for loop. It represent the position in traverse.
+     * The other pointer points to the last element in array that is non-duplicate.
+     * When more than 2 same int is found, the second pointer stop moving until next non-duplicate int is found.
+     * Then next element in nums is that non-duplicate int.
+     *
+     * @param nums input sorted int array
+     * @return length of array that removed duplicate element
+     */
     public int removeDuplicatesII(int[] nums) {
 
-        for (int i = 0; i < nums.length; i++) {
-            if (i > 1 && nums[i] == nums[i - 1] && nums[i - 1] == nums[i - 2]) {
+        /* Non-duplicate int pointer */
+        int n = 0;
 
+        for (int i = 0; i < nums.length; i++) {
+            if (i < 2 || nums[i] > nums[n - 2]) {
+                nums[n++] = nums[i];
             }
         }
-
-        return nums.length;
+//        System.out.println(Arrays.toString(nums));
+        return n;
     }
 }

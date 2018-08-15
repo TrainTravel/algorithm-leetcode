@@ -1,7 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.Exist;
+import Mirage.LeetCodeSolution.RemoveDuplicatesII;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -364,11 +364,18 @@ public class SolutionTest {
 //        int[] sbs = {1, 2, 3};
 //        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
 
-        /* Word Search */
-        Exist existTest = new Exist();
-        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+//        /* Word Search */
+//        Exist existTest = new Exist();
+//        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
 //        char[][] board = {{'A'}};
-        System.out.println(existTest.exist(board, "ABCZZ"));
+//        System.out.println(existTest.exist(board, "ABCZZ"));
+
+        /* Remove Duplicates from Sorted Array II */
+        RemoveDuplicatesII removeDuplicatesIITest = new RemoveDuplicatesII();
+        int[] dup = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4};
+//        int[] dup = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
+//        int[] dup = {1};
+        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
 
     }
 }
