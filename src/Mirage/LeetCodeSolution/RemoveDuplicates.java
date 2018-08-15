@@ -27,14 +27,12 @@ public class RemoveDuplicates {
      * @return length
      */
     public int removeDuplicates(int[] nums) {
-        int l = nums.length;
         int length = 0;
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (i == 0 || nums[i] != nums[i - 1]) {
 
                 /* Switch array elements so that this array can be divided in the end */
                 nums[length++] = nums[i];
-
             }
         }
 //        System.out.println(Arrays.toString(nums));
