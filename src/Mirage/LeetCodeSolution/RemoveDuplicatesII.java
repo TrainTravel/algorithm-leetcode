@@ -32,6 +32,7 @@ import java.util.Arrays;
 
 public class RemoveDuplicatesII {
     /**
+     * Similar to RemoveDuplicates, simply modify pointer moving condition.
      * Two int as pointers.
      * First pointer is the "i" in for loop. It represent the position in traverse.
      * The other pointer points to the last element in array that is non-duplicate.
