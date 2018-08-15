@@ -1,9 +1,16 @@
 package Mirage.LeetCodeSolution;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
+ * You are given a string, s, and a list of words, words, that are all of the SAME LENGTH.
+ * Find all starting indices of substring(s) in s
+ * These indices are a concatenation of each word in words exactly once and without any intervening characters.
+ *
  * @author BorisMirage
  * Time: 2018/06/17 17:55
  * Created with IntelliJ IDEA
@@ -11,12 +18,8 @@ import java.util.*;
 
 public class FindSubstring {
     /**
-     * You are given a string, s, and a list of words, words, that are all of the SAME LENGTH.
-     * Find all starting indices of substring(s) in s
-     * These indices are a concatenation of each word in words exactly once and without any intervening characters.
-     * <p>
-     * Use two map.
-     * One map to record the expected times of each word and another map to record the times words have been seen.
+     * Use two maps to store expected appearance times and appeared times.
+     * One map to record the expected times of each word, the other map to record the times words have been seen.
      * Then check for every possible position of i.
      * Once an unexpected word was met or the times of some word is larger than its expected times, stop the check.
      * If check is finished successfully, push i to the result indexes.
