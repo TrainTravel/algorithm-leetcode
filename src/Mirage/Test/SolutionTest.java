@@ -1,7 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.RemoveDuplicatesII;
+import Mirage.LeetCodeSolution.SearchII;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -370,12 +370,17 @@ public class SolutionTest {
 //        char[][] board = {{'A'}};
 //        System.out.println(existTest.exist(board, "ABCZZ"));
 
-        /* Remove Duplicates from Sorted Array II */
-        RemoveDuplicatesII removeDuplicatesIITest = new RemoveDuplicatesII();
-        int[] dup = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4};
-//        int[] dup = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
-//        int[] dup = {1};
-        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
+//        /* Remove Duplicates from Sorted Array II */
+//        RemoveDuplicatesII removeDuplicatesIITest = new RemoveDuplicatesII();
+//        int[] dup = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4};
+////        int[] dup = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
+////        int[] dup = {1};
+//        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
+
+        /* Search in Rotated Sorted Array II */
+        SearchII searchIITest = new SearchII();
+        int[] ss = {1, 1, 3, 1};
+        System.out.println(searchIITest.searchII(ss, 3));
 
     }
 }
