@@ -1,7 +1,7 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.SearchII;
+import Mirage.LeetCodeSolution.LargestRectangleArea;
 
 /**
  * This is a test class for unit test in package LeetCodeSolution.
@@ -377,10 +377,15 @@ public class SolutionTest {
 ////        int[] dup = {1};
 //        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
 
-        /* Search in Rotated Sorted Array II */
-        SearchII searchIITest = new SearchII();
-        int[] ss = {1, 1, 3, 1};
-        System.out.println(searchIITest.searchII(ss, 3));
+//        /* Search in Rotated Sorted Array II */
+//        SearchII searchIITest = new SearchII();
+//        int[] ss = {1, 1, 3, 1};
+//        System.out.println(searchIITest.searchII(ss, 3));
+
+        /* Largest Rectangle in Histogram */
+        LargestRectangleArea largestRectangleAreaTest = new LargestRectangleArea();
+        int[] djsdk = {2, 1, 5, 6, 2, 3};
+        System.out.println(largestRectangleAreaTest.largestRectangleArea(djsdk));
 
     }
 }
