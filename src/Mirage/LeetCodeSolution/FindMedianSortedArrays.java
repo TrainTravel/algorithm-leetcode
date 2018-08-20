@@ -88,4 +88,13 @@ public class FindMedianSortedArrays {
         }
         return result;
     }
+
+    public static void main(String[] args) {
+
+        /* Find median Test */
+        int[] num1 = {1, 2, 3};
+        int[] num2 = {4, 5, 6};
+        FindMedianSortedArrays findMedianSortedArraysTest = new FindMedianSortedArrays();
+        System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
+    }
 }

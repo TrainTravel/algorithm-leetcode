@@ -68,4 +68,25 @@ public class FindSubstring {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+
+        /* Substring with Concatenation of All Words */
+        String s = "barfoothefoobarman";
+        String[] words = {"bar", "foo"};
+
+        final long startTime = System.currentTimeMillis();  // Timer
+
+        FindSubstring findSubstringTest = new FindSubstring();
+        System.out.println(findSubstringTest.findSubstring(s, words));
+
+        final long endTime = System.currentTimeMillis();    // Timer
+        System.out.println("Time: " + (endTime - startTime) + "ms");
+
+        /* Search Insert Position */
+        SearchInsert searchInsertTest = new SearchInsert();
+        int[] nums = {1, 3};
+
+        System.out.println(searchInsertTest.searchInsert(nums, 2));
+    }
 }

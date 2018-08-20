@@ -42,4 +42,11 @@ public class ReverseInteger {
         }
         return (int) result;
     }
+
+    public static void main(String[] args) {
+
+        /* Reverse int Test */
+        ReverseInteger reverseIntegerTest = new ReverseInteger();
+        System.out.println(reverseIntegerTest.reverseInteger(1534236469));
+    }
 }

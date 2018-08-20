@@ -11,7 +11,7 @@ public class LongestPalindromicSubstring {
      * Find the longest palindromic substring in s.
      * You may assume that the maximum length of s is 1000.
      * If there does not exist a palindromic substring, then return first letter.
-     *
+     * <p>
      * There are two conditions of palindromic substring.
      * First is that the center only contains one letter, such as "aba".
      * Second is that the center contains two letters, such as "abba".
@@ -56,5 +56,12 @@ public class LongestPalindromicSubstring {
             right++;
         }
         return right - left - 1;
+    }
+
+    public static void main(String[] args) {
+
+        /* Longest Palindromic Substring Test*/
+        LongestPalindromicSubstring longestPalindromicSubstringTest = new LongestPalindromicSubstring();
+        System.out.println(longestPalindromicSubstringTest.longestPalindrome("s"));
     }
 }

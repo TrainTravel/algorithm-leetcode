@@ -54,4 +54,21 @@ public class Jump {
         }
         return minSteps;
     }
+
+    public static void main(String[] args) {
+
+        /* Jump Game II */
+        Jump jumpTest = new Jump();
+        int[] jump = {2, 3, 1, 1, 1};
+        System.out.println("Min step: " + jumpTest.jump(jump));
+        jump = new int[]{1, 3, 2};
+        System.out.println("Min step: " + jumpTest.jump(jump));
+        jump = new int[]{1, 1, 1, 1};
+        System.out.println("Min step: " + jumpTest.jump(jump));
+        jump = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0};
+        System.out.println("Min step: " + jumpTest.jump(jump));
+        jump = new int[]{4, 1, 1, 3, 1, 1, 1};
+        System.out.println("Min step: " + jumpTest.jump(jump));
+
+    }
 }
