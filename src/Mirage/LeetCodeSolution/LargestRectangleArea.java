@@ -23,7 +23,7 @@ public class LargestRectangleArea {
      * @param heights input histogram's bar height array
      * @return area of largest rectangle
      */
-    private int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea(int[] heights) {
         Stack<Integer> temp = new Stack<>();
         int maxArea = 0;
         int h;
@@ -36,12 +36,12 @@ public class LargestRectangleArea {
 
                 /* Push index into stack to record position */
                 temp.push(i);
-                
+
             } else {
                 int top = temp.pop();
                 maxArea = Math.max(maxArea, heights[top] * (temp.empty() ? i : i - 1 - temp.peek()));
 
-                /* Make sure all elements was pop */
+                /* i - 1 so that the highest bar can be pushed to the end of stack */
                 i--;
             }
         }
