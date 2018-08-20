@@ -1,8 +1,6 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.LargestRectangleArea;
-
 /**
  * This is a test class for unit test in package LeetCodeSolution.
  *
@@ -44,12 +42,6 @@ public class SolutionTest {
 //        LongestPalindromicSubstring longestPalindromicSubstringTest = new LongestPalindromicSubstring();
 //        System.out.println(longestPalindromicSubstringTest.longestPalindrome("s"));\
 
-//        /* Atoi test */
-//        MyAtoi myAtoiTest =  new MyAtoi();
-//        System.out.println(myAtoiTest.myAtoi("   - 321"));
-//        System.out.println(myAtoiTest.myAtoi("  -0012a42"));
-//        System.out.println(myAtoiTest.myAtoi("   +0 123"));
-//        System.out.println(myAtoiTest.myAtoi("    010"));
 
 //        /* Zig Zag test */
 //        ZigZagConversion zigZagConversionTest = new ZigZagConversion();
@@ -70,26 +62,6 @@ public class SolutionTest {
 //        int[] test = {0,-4,-1,-4,-2,-3,2};
 //        ThreeSum threeSumTest = new ThreeSum();
 //        System.out.println(threeSumTest.threeSum(test));
-
-//        /* RegularExpressionMatching Test*/
-//        RegularExpressionMatching regularExpressionMatchingTest = new RegularExpressionMatching();
-//        System.out.println(regularExpressionMatchingTest.isMatch("bbbba", ".*a*a"));              // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "ab*ac*a"));              // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "a*a"));                  // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("mississippi", "mis*is*ip*."));  // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("a", "ab*"));                    // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aab", "c*a*b"));                // true
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaaa", "a*"));                    // true
-//        System.out.println();
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("baaa", ".c"));          // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aa", "a"));             // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaaaaa", "aa"));        // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaba", "ab*a*c*a"));    // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("mississippi", "mis*is*p*."));    // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("abcd", "d*"));          // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "aaaa"));         // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "aa"));           // false
-//        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("a", "ab*a"));           // false
 
 
 //        /* RomanToInt Test */
@@ -157,33 +129,6 @@ public class SolutionTest {
 //        int[] nums = {1,3};
 //
 //        System.out.println(searchInsertTest.searchInsert(nums, 2));
-
-//        /* Valid Sudoku */
-//        IsValidSudoku isValidSudoku = new IsValidSudoku();
-//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
-//        System.out.println(isValidSudoku.isValidSudoku(board));
-
-//        /* Solve Sudoku */
-//        SolveSudoku solveSudokuTest = new SolveSudoku();
-//        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-//                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-//                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-//                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-//                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
-//        solveSudokuTest.solveSudoku(board);
-//        System.out.println(Arrays.deepToString(board));
 
 //        /* Count and Say */
 //        CountAndSay countAndSayTest = new CountAndSay();
@@ -381,11 +326,6 @@ public class SolutionTest {
 //        SearchII searchIITest = new SearchII();
 //        int[] ss = {1, 1, 3, 1};
 //        System.out.println(searchIITest.searchII(ss, 3));
-
-        /* Largest Rectangle in Histogram */
-        LargestRectangleArea largestRectangleAreaTest = new LargestRectangleArea();
-        int[] djsdk = {2, 1, 5, 6, 2, 3};
-        System.out.println(largestRectangleAreaTest.largestRectangleArea(djsdk));
 
     }
 }

@@ -90,4 +90,14 @@ public class MyAtoi {
 
         return (int) result;
     }
+
+    public static void main(String[] args) {
+
+        /* Atoi test */
+        MyAtoi myAtoiTest = new MyAtoi();
+        System.out.println(myAtoiTest.myAtoi("   - 321"));
+        System.out.println(myAtoiTest.myAtoi("  -0012a42"));
+        System.out.println(myAtoiTest.myAtoi("   +0 123"));
+        System.out.println(myAtoiTest.myAtoi("    010"));
+    }
 }

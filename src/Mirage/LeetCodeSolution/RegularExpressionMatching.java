@@ -13,7 +13,7 @@ public class RegularExpressionMatching {
      * '.' Matches ANY single character.
      * '*' Matches zero or more of the PRECEDING element. (Which means "*" will not be first element of string)
      * The matching should cover the entire input string (not partial).
-     *
+     * <p>
      * Use dynamic programming to solve this problem
      *
      * @param s input String
@@ -58,8 +58,7 @@ public class RegularExpressionMatching {
                 char ch1 = s.charAt(i - 1), ch2 = p.charAt(j - 1);
                 if (ch2 != '*') {
                     dp[i][j] = dp[i - 1][j - 1] && (ch1 == ch2 || ch2 == '.');
-                }
-                else {
+                } else {
                     dp[i][j] = dp[i][j - 2];
                     if (ch1 == p.charAt(j - 2) || p.charAt(j - 2) == '.')
                         dp[i][j] = dp[i][j] | dp[i - 1][j];
@@ -67,5 +66,27 @@ public class RegularExpressionMatching {
             }
         }
         return dp[sLen][pLen];
+    }
+
+    public static void main(String[] args) {
+        /* RegularExpressionMatching Test*/
+        RegularExpressionMatching regularExpressionMatchingTest = new RegularExpressionMatching();
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("bbbba", ".*a*a"));              // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "ab*ac*a"));              // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "a*a"));                  // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("mississippi", "mis*is*ip*."));  // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("a", "ab*"));                    // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aab", "c*a*b"));                // true
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaaa", "a*"));                    // true
+        System.out.println();
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("baaa", ".c"));          // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aa", "a"));             // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaaaaa", "aa"));        // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaba", "ab*a*c*a"));    // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("mississippi", "mis*is*p*."));    // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("abcd", "d*"));          // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "aaaa"));         // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("aaa", "aa"));           // false
+        System.out.println(regularExpressionMatchingTest.regularExpressionMatching("a", "ab*a"));           // false
     }
 }

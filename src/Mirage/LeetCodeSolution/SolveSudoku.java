@@ -1,6 +1,8 @@
 package Mirage.LeetCodeSolution;
 
 
+import java.util.Arrays;
+
 /**
  * Solve a Sudoku puzzle by filling the empty cells.
  * A sudoku solution must satisfy all of the following rules:
@@ -84,5 +86,22 @@ public class SolveSudoku {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+
+        /* Solve Sudoku */
+        SolveSudoku solveSudokuTest = new SolveSudoku();
+        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+        solveSudokuTest.solveSudoku(board);
+        System.out.println(Arrays.deepToString(board));
     }
 }
