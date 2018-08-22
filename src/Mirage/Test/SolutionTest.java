@@ -14,95 +14,12 @@ public class SolutionTest {
 
     public static void main(String[] args) {
 
-//        /* Palindrome Number Test*/
-//        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
-//        System.out.println(palindromeNumberTest.isPalindrome(0000));
-
-//        /* Max Area Test */
-//        int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
-//        MaxArea MaxAreaTest = new MaxArea();
-//        System.out.println(MaxAreaTest.MaxArea(height));
-
-//        /* Three sum test*/
-//        int[] test = {0,-4,-1,-4,-2,-3,2};
-//        ThreeSum threeSumTest = new ThreeSum();
-//        System.out.println(threeSumTest.threeSum(test));
-
-
-//        /* RomanToInt Test */
-//        RomanToInt romanIntTest = new RomanToInt();
-//        System.out.println(romanIntTest.romanToInt("MCMXCIV"));
-
-//        /* IntToRoman Test */
-//        IntToRoman intToRomanTest = new IntToRoman();
-//        System.out.println(intToRomanTest.intToRoman(100));
-
-//        /* 3 Sum Closest Test*/
-//        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
-//        int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
-//        int[] test = {-1, 2, 1, -4};
-//        System.out.println(threeSumClosestTest.threeSumClosest(test, 1));
-
-//        /* Parentheses Test */
-//        IsValid isValidTest = new IsValid();
-//        System.out.println(isValidTest.isValid("()[]{}"));
-
-//        /* Generate Parentheses Test */
-//        GenerateParenthesis generateParenthesisTest = new GenerateParenthesis();
-//        System.out.println(generateParenthesisTest.generateParenthesis(3));
-
-//        /* RemoveDuplicates Test */
-//        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
-//        int[] test = {1,2,3,4};
-//        System.out.println(removeDuplicatesTest.removeDuplicates(test));
-
-//        /* StrStr Test*/
-//        StrStr strStrTest = new StrStr();
-//        System.out.println(strStrTest.strStr("mississippi", "issip"));
-
-        /* Next Permutation */
-//        NextPermutation nextPermutationTest = new NextPermutation();
-//        int[] a = {1,3,2};
-//        nextPermutationTest.nextPermutation(a);
-//        System.out.println(Arrays.toString(a));
-
-        /* Search */
-//        Search searchTest = new Search();
-//        int[] nums = {1, 2, 3, 4, 5, 6};
-//        System.out.println(searchTest.search(nums, 4));
-
-//        /* Search Range */
-//
-//        SearchRange searchRangeTest = new SearchRange();
-//        int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
-//        System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
-
-//        /* Count and Say */
-//        CountAndSay countAndSayTest = new CountAndSay();
-//        System.out.println(countAndSayTest.countAndSay(6));
-
-//        /* Combination Sum */
-//        int[] candidate = {2, 3, 6, 7};
-//        CombinationSum combinationSumTest = new CombinationSum();
-//        System.out.println(combinationSumTest.combinationSum(candidate, 7));
-//        candidate = new int[]{2, 3, 5};
-//        System.out.println(combinationSumTest.combinationSum(candidate, 8));
-
-//        /* Combination Sum 2 */
-//        CombinationSum2 combinationSum2Test = new CombinationSum2();
-//        int[] candidate = {10, 1, 2, 7, 6, 1, 5};
-//        System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
-//        candidate = new int[]{2, 5, 2, 1, 2};
-//        System.out.println(combinationSum2Test.combinationSum2(candidate, 10));
-//        candidate = new int[]{2, 5, 2, 1, 2};
-//        System.out.println(combinationSum2Test.combinationSum2(candidate, 5));
-
 //        /* Multiply */
 //        Multiply multiplyTest = new Multiply();
 //        String a1 = "123";
 //        String a2 = "456";
 //        System.out.println(multiplyTest.multiply(a1, a2));
-//
+
 //        /* Permutations */
 //        Permute permuteTest = new Permute();
 //        int[] c = {1};

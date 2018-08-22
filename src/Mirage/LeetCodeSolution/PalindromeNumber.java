@@ -26,4 +26,11 @@ public class PalindromeNumber {
         }
         return true;
     }
+
+    public static void main(String[] args) {
+
+        /* Palindrome Number Test*/
+        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
+        System.out.println(palindromeNumberTest.isPalindrome(0000));
+    }
 }

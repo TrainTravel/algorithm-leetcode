@@ -16,7 +16,7 @@ public class IsValid {
      * Open brackets must be closed by the same type of brackets.
      * Open brackets must be closed in the correct order.
      * Note that an empty string is also considered valid.
-     *
+     * <p>
      * Use stack to solve this problem. While char is left part of parentheses, push its right part to stack.
      * When char is right part, pop stack and compare.
      *
@@ -38,5 +38,12 @@ public class IsValid {
                 return false;
         }
         return stack.isEmpty();
+    }
+
+    public static void main(String[] args) {
+
+        /* Parentheses Test */
+        IsValid isValidTest = new IsValid();
+        System.out.println(isValidTest.isValid("()[]{}"));
     }
 }

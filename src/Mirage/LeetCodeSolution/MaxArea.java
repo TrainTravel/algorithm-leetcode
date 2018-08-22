@@ -11,7 +11,7 @@ public class MaxArea {
      * Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai).
      * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).
      * Find two lines, which together with x-axis forms a container, such that the container contains the most water.
-     *
+     * <p>
      * Since the max area is limited by the smaller int and the subtraction of two point's x coordinate,
      * then start from the left and right two point.
      * When shorter value is found, compare two area and find the larger one.
@@ -30,8 +30,16 @@ public class MaxArea {
             } else {
                 right -= 1;
             }
-            maxArea = Integer.max(maxArea, Integer.min(height[left], height[right])* (right - left));
+            maxArea = Integer.max(maxArea, Integer.min(height[left], height[right]) * (right - left));
         }
         return maxArea;
+    }
+
+    public static void main(String[] args) {
+
+        /* Max Area Test */
+        int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
+        MaxArea MaxAreaTest = new MaxArea();
+        System.out.println(MaxAreaTest.MaxArea(height));
     }
 }

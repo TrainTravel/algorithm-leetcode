@@ -45,4 +45,11 @@ public class CountAndSay {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+
+        /* Count and Say */
+        CountAndSay countAndSayTest = new CountAndSay();
+        System.out.println(countAndSayTest.countAndSay(6));
+    }
 }

@@ -82,4 +82,12 @@ public class ThreeSum {
         }
         return threeSumResult;
     }
+
+    public static void main(String[] args) {
+
+        /* Three sum test*/
+        int[] test = {0, -4, -1, -4, -2, -3, 2};
+        ThreeSum threeSumTest = new ThreeSum();
+        System.out.println(threeSumTest.threeSum(test));
+    }
 }

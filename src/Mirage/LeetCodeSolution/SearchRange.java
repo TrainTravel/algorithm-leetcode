@@ -1,5 +1,7 @@
 package Mirage.LeetCodeSolution;
 
+import java.util.Arrays;
+
 /**
  * Given an array of int sorted in ascending order, find the starting and ending position of a given target value.
  * Your algorithm's runtime complexity must be in the order of O(log n).
@@ -62,5 +64,13 @@ public class SearchRange {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+
+//        /* Search Range */
+        SearchRange searchRangeTest = new SearchRange();
+        int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
+        System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
     }
 }

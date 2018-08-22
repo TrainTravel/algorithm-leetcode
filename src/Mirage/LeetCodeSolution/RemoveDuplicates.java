@@ -47,4 +47,12 @@ public class RemoveDuplicates {
 //        System.out.println(Arrays.toString(nums));
         return n;
     }
+
+    public static void main(String[] args) {
+
+        /* RemoveDuplicates Test */
+        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
+        int[] test = {1, 2, 3, 4};
+        System.out.println(removeDuplicatesTest.removeDuplicates(test));
+    }
 }

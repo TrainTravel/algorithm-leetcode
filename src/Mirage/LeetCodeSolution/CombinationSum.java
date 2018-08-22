@@ -68,4 +68,14 @@ public class CombinationSum {
             }
         }
     }
+
+    public static void main(String[] args) {
+
+        /* Combination Sum */
+        int[] candidate = {2, 3, 6, 7};
+        CombinationSum combinationSumTest = new CombinationSum();
+        System.out.println(combinationSumTest.combinationSum(candidate, 7));
+        candidate = new int[]{2, 3, 5};
+        System.out.println(combinationSumTest.combinationSum(candidate, 8));
+    }
 }

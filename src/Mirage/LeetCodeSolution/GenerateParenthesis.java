@@ -12,7 +12,7 @@ import java.util.List;
 public class GenerateParenthesis {
     /**
      * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
-     *
+     * <p>
      * Use recursion to insert pair of parentheses in one pair of parentheses's left and right, respectively.
      *
      * @param n pairs of parentheses
@@ -36,5 +36,12 @@ public class GenerateParenthesis {
                 }
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+
+        /* Generate Parentheses Test */
+        GenerateParenthesis generateParenthesisTest = new GenerateParenthesis();
+        System.out.println(generateParenthesisTest.generateParenthesis(3));
     }
 }

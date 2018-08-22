@@ -69,4 +69,12 @@ public class Search {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+
+        /* Search */
+        Search searchTest = new Search();
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        System.out.println(searchTest.search(nums, 4));
+    }
 }

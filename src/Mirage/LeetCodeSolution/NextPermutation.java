@@ -1,5 +1,7 @@
 package Mirage.LeetCodeSolution;
 
+import java.util.Arrays;
+
 /**
  * @author BorisMirage
  * Time: 2018/06/18 16:55
@@ -52,5 +54,14 @@ public class NextPermutation {
             a++;
             b--;
         }
+    }
+
+    public static void main(String[] args) {
+
+        /* Next Permutation */
+        NextPermutation nextPermutationTest = new NextPermutation();
+        int[] a = {1, 3, 2};
+        nextPermutationTest.nextPermutation(a);
+        System.out.println(Arrays.toString(a));
     }
 }

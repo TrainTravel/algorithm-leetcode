@@ -38,4 +38,11 @@ public class StrStr {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+
+        /* StrStr Test */
+        StrStr strStrTest = new StrStr();
+        System.out.println(strStrTest.strStr("mississippi", "issip"));
+    }
 }
