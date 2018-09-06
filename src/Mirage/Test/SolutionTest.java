@@ -13,6 +13,7 @@ public class SolutionTest {
 
 
     public static void main(String[] args) {
+        System.out.println("Test Complete. ");
 
 //        /* Multiply */
 //        Multiply multiplyTest = new Multiply();
