@@ -144,8 +144,22 @@ public class LRUCache {
         this.removeNode(old);
         return old;
     }
-}
 
+    public static void main(String[] args) {
+        LRUCache testCache = new LRUCache(2);
+
+        testCache.put(1, 1);
+        testCache.put(2, 2);
+        System.out.println(testCache.get(1));
+        testCache.put(3, 3);
+        System.out.println(testCache.get(2));
+        testCache.put(4, 4);
+        System.out.println(testCache.get(1));
+        System.out.println(testCache.get(3));
+        System.out.println(testCache.get(4));
+        System.out.println(testCache);
+    }
+}
 
 /**
  * Definition of Node.

@@ -1,6 +1,8 @@
 package Mirage.Test;
 
 
+import Mirage.LeetCodeSolution.LRUCache;
+
 /**
  * This is a test class for unit test in package LeetCodeSolution.
  *
@@ -14,6 +16,8 @@ public class SolutionTest {
 
     public static void main(String[] args) {
         System.out.println("Test Complete. ");
+
+
 
 //        /* Multiply */
 //        Multiply multiplyTest = new Multiply();
