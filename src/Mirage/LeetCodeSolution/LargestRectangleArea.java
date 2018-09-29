@@ -49,7 +49,6 @@ public class LargestRectangleArea {
         return maxArea;
     }
 
-
     /**
      * Slow yet plain solution.
      * Traverse all elements in array.
