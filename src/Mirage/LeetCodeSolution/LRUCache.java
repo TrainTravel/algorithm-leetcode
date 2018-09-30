@@ -94,7 +94,7 @@ public class LRUCache {
             }
         } else {
             cache.get(key).val = value;
-            this.lastUsed(cache.get(key));
+            lastUsed(cache.get(key));
         }
     }
 
@@ -141,7 +141,7 @@ public class LRUCache {
      */
     private Node popEnd() {
         Node old = end.previous;
-        removeNode(old);
+        this.removeNode(old);
         return old;
     }
 
