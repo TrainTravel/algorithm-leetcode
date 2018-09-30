@@ -54,9 +54,11 @@ public class FullJustify {
      */
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> res = new LinkedList<>();
-        for (int i = 0; i < words.length; i++) {
-            String s = words[i];
-        }
+
         return res;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
