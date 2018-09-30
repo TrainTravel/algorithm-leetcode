@@ -117,8 +117,8 @@ public class LRUCache {
      * @param node
      */
     private void lastUsed(Node node) {
-        this.removeNode(node);
-        this.addNode(node);
+        removeNode(node);
+        addNode(node);
     }
 
     /**
@@ -141,7 +141,7 @@ public class LRUCache {
      */
     private Node popEnd() {
         Node old = end.previous;
-        this.removeNode(old);
+        removeNode(old);
         return old;
     }
 
