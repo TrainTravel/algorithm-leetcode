@@ -23,6 +23,9 @@ public class LFUCache {
     private int min = -1;
     private int capacity;
 
+    /**
+     * @param capacity cache capacity
+     */
     public LFUCache(int capacity) {
         this.capacity = capacity;
         pair = new HashMap<>();
@@ -32,6 +35,12 @@ public class LFUCache {
 
     }
 
+    /**
+     * <code>get</code> operation. Return -1 if key is not found in cache.
+     *
+     * @param key requesting key
+     * @return corresponding value, or -1.
+     */
     public int get(int key) {
 
         /* Key does not exist */
@@ -56,6 +65,13 @@ public class LFUCache {
         return pair.get(key);
     }
 
+    /**
+     * <code>put</code> operation, put new key-value pair into cache.
+     * If cache is oversize, it will remove Least Recently Used (LRU) Node store in cache.
+     *
+     * @param key   new key
+     * @param value new value
+     */
     public void put(int key, int value) {
 
         if (capacity < 1) {
