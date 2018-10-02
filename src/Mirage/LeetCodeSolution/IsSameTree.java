@@ -31,23 +31,22 @@ public class IsSameTree {
         }
         return false;
     }
-
-    /**
-     * TreeNode structure
-     */
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        /**
-         * Value in TreeNode
-         *
-         * @param x value
-         */
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }
 
+/**
+ * TreeNode structure
+ */
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    /**
+     * Value in TreeNode
+     *
+     * @param x value
+     */
+    TreeNode(int x) {
+        val = x;
+    }
+}
