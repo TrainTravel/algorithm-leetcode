@@ -21,7 +21,9 @@ import java.util.Stack;
 
 public class MaximalRectangle {
     /**
-     * face
+     * Regarded it as a similar problem of max histogram problem.
+     * In each line update the current "histogram" in a int array, when meet '0' simply reset current column to 0.
+     * Find max "histogram" of each line and finally find max rectangle.
      *
      * @param matrix input int matrix
      * @return max area
@@ -35,13 +37,15 @@ public class MaximalRectangle {
 
         int[] row = new int[matrix[0].length];
 
-
+        /* Init first line */
         for (int i = 0; i < row.length; i++) {
             if (matrix[0][i] == '1') {
                 row[i] += 1;
             }
         }
         int max = largestRectangleArea(row);
+
+        /* Find max in other rows */
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == '1') {
@@ -55,7 +59,16 @@ public class MaximalRectangle {
         return max;
     }
 
-    public int largestRectangleArea(int[] heights) {
+    /**
+     * Traverse all elements in array.
+     * Push elements in stack if it is increasing order.
+     * If not, pop top of stack and regard current index position as smallest bar. Calculate area.
+     * After each calculation, move index -1, since there is a possibility that current top is larger than smallest.
+     *
+     * @param heights input histogram's bar height array
+     * @return area of largest rectangle
+     */
+    private int largestRectangleArea(int[] heights) {
         Stack<Integer> temp = new Stack<>();
         int maxArea = 0;
         int h;
