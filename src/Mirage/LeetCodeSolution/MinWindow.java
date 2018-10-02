@@ -17,7 +17,7 @@ package Mirage.LeetCodeSolution;
 
 public class MinWindow {
     /**
-     * Use two pointer, one find all char in s first, one try to narrow the window in s.
+     * Use two pointer, one find all char in s first, the other one try to narrow the window in s.
      * Use a int array as hash map.
      *
      * @param s input string
