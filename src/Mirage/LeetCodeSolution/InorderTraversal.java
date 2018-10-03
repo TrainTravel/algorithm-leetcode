@@ -21,9 +21,6 @@ public class InorderTraversal {
      */
     public List<Integer> inorderTraversal(TreeNode root) {
 
-        if (root == null) {
-            return new LinkedList<>();
-        }
         LinkedList<Integer> res = new LinkedList<>();
 
         Stack<TreeNode> temp = new Stack<>();
