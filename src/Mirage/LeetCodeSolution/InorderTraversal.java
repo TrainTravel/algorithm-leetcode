@@ -22,9 +22,10 @@ public class InorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
 
         LinkedList<Integer> res = new LinkedList<>();
-
         Stack<TreeNode> temp = new Stack<>();
         TreeNode cur = root;
+
+        /* Traverse process */
         while (cur != null || !temp.isEmpty()) {
             while (cur != null) {
                 temp.add(cur);
