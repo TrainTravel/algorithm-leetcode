@@ -1,3 +1,3 @@
 # LeetCode Solution
 
-Solution of LeetCode algorithm porblems.
+Solutions of LeetCode algorithm porblems.
