@@ -55,14 +55,20 @@ public class HasPath {
         int x = cur[0];
         int y = cur[1];
 
-        if (!isValid(maze, x, y) || isVisited[x][y]) {
+        /* If this point has been visited before or out of bound */
+        if (x < 0 || y < 0 || x >= maze.length || y >= maze[0].length || maze[x][y] == 1 || isVisited[x][y]) {
             return false;
         }
+
+        /* If current point is available, mark this point */
         isVisited[x][y] = true;
+
         for (int[] direction : directions) {
             int xx = x;
             int yy = y;
-            while (isValid(maze, xx, yy)) {
+
+            /* Simulation of "rolling" process */
+            while (xx > -1 && yy > -1 && xx < maze.length && yy < maze[0].length && maze[xx][yy] == 0) {
                 xx += direction[0];
                 yy += direction[1];
             }
@@ -70,17 +76,6 @@ public class HasPath {
                 return true;
             }
         }
-
         return false;
-    }
-
-    /**
-     * @param maze maze data
-     * @param x    x coord
-     * @param y    y coord
-     * @return is given point available to be moved to
-     */
-    private boolean isValid(int[][] maze, int x, int y) {
-        return x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && maze[x][y] == 0;
     }
 }
