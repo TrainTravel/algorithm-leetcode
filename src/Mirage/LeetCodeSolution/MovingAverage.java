@@ -35,13 +35,11 @@ public class MovingAverage {
      */
     public double next(int val) {
         double res;
-
         q.addLast(val);
-
+        sum += val;
         if (q.size() > size) {
-            sum = sum - q.pollFirst() + val;
+            sum -= q.pollFirst();
         }
-
         res = (double) sum / q.size();
 
         return res;
