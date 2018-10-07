@@ -10,6 +10,7 @@ package Mirage.LeetCodeSolution;
  * @author BorisMirage
  * Time: 2018/10/07 17:49
  * Created with IntelliJ IDEA
+ * No.100
  */
 
 public class MyHashMap {
