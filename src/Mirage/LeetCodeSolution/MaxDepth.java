@@ -22,13 +22,8 @@ public class MaxDepth {
         if (root == null) {
             return 0;
         }
-        int depth = 1;
-        if (root.left != null || root.right != null) {
 
-            /* Keep find left sub tree and right sub tree until reaches the end */
-            depth += Integer.max(maxDepth(root.left), maxDepth(root.right));
-
-        }
-        return depth;
+        /* Keep find left sub tree and right sub tree until reaches the end */
+        return Integer.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }
