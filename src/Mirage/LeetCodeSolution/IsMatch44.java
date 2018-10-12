@@ -14,13 +14,13 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsMatch {
+public class IsMatch44 {
     /**
      * Dynamic programming.
      *
      * @param s string
      * @param p pattern string
-     * @return if pattern matched
+     * @return if string is matched to pattern
      */
     public boolean isMatch(String s, String p) {
 
@@ -34,14 +34,12 @@ public class IsMatch {
                 break;
         }
 
-        for (int row = 1; row < dp.length; row++) {
-            for (int col = 1; col < dp[0].length; col++) {
-                char str = s.charAt(row - 1);
-                char pattern = p.charAt(col - 1);
-                if (str == pattern || pattern == '?') {
-                    dp[row][col] = dp[row - 1][col - 1];
-                } else if (pattern == '*') {
-                    dp[row][col] = dp[row][col - 1] || dp[row - 1][col];
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p.charAt(j - 1) == '*') {
+                    dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
                 }
             }
         }
@@ -50,7 +48,7 @@ public class IsMatch {
     }
 
     public static void main(String[] args) {
-        IsMatch isMatchTest = new IsMatch();
+        IsMatch44 isMatchTest = new IsMatch44();
         System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
         System.out.println(isMatchTest.isMatch("adceb", "*a*b"));
         System.out.println(isMatchTest.isMatch("acdcb", "a*c?b"));
