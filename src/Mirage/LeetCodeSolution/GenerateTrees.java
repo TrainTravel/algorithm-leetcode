@@ -30,9 +30,9 @@ public class GenerateTrees {
      */
     public List<TreeNode> generateTrees(int n) {
 
-        /* Special Case */
         List<TreeNode> res = new LinkedList<>();
 
+        /* Special Case */
         if (n == 0) {
             return res;
         }
