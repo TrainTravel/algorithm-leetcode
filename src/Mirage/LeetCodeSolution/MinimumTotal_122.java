@@ -3,7 +3,7 @@ package Mirage.LeetCodeSolution;
 import java.util.List;
 
 /**
- * Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+ * Given a triangle, find the minimum path sum from top to bottom. Each step you may move to ADJACENT numbers on the row below.
  * For example, given the following triangle
  * [
  * [2],
@@ -21,10 +21,10 @@ import java.util.List;
 public class MinimumTotal_122 {
 
     /**
-     * Button to top.
+     * Bottom to top.
      *
-     * @param triangle given  triangle
-     * @return
+     * @param triangle given triangle
+     * @return min distance
      */
     public int minimumTotal(List<List<Integer>> triangle) {
         int[] temp = new int[triangle.size() + 1];
