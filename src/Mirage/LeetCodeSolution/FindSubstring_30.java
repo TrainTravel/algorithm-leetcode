@@ -16,7 +16,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA
  */
 
-public class FindSubstring {
+public class FindSubstring_30 {
     /**
      * Use two maps to store expected appearance times and appeared times.
      * One map to record the expected times of each word, the other map to record the times words have been seen.
@@ -77,7 +77,7 @@ public class FindSubstring {
 
         final long startTime = System.currentTimeMillis();  // Timer
 
-        FindSubstring findSubstringTest = new FindSubstring();
+        FindSubstring_30 findSubstringTest = new FindSubstring_30();
         System.out.println(findSubstringTest.findSubstring(s, words));
 
         final long endTime = System.currentTimeMillis();    // Timer

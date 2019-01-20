@@ -14,7 +14,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class FindStrobogrammatic {
+public class FindStrobogrammatic_247 {
     /**
      * Use recursion to find all combination.
      *

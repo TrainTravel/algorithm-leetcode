@@ -12,13 +12,13 @@ import java.util.*;
  * Created with IntelliJ IDEA
  */
 
-public class TwoSumStructure {
+public class TwoSumStructure_170 {
     HashMap<Integer, Integer> temp;
 
     /**
      * Initialize data structure.
      */
-    public TwoSumStructure() {
+    public TwoSumStructure_170() {
         temp = new HashMap<>();
     }
 

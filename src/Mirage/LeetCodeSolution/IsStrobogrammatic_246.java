@@ -12,7 +12,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA
  */
 
-public class IsStrobogrammatic {
+public class IsStrobogrammatic_246 {
     /**
      * Use hash map to store pairs.
      *

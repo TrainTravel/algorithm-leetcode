@@ -147,7 +147,7 @@ public class SolutionTest {
 //        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
 
 //        /* Word Search */
-//        Exist existTest = new Exist();
+//        Exist_79 existTest = new Exist_79();
 //        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
 //        char[][] board = {{'A'}};
 //        System.out.println(existTest.exist(board, "ABCZZ"));

@@ -20,7 +20,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Exist {
+public class Exist_79 {
     /**
      * Start from first char in word, then find adjacent cell until current cell is unavailable or all char was found.
      * Kindly similar to maze path finding method.
