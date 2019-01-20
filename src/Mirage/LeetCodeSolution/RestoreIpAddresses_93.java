@@ -43,6 +43,7 @@ public class RestoreIpAddresses_93 {
      * Check given string is valid ip part or not.
      * 1. length > 0 && < 4
      * 2. value < 256
+     * 3. Avoid "00", but "0" is valid
      *
      * @param s given string
      * @return if given string is valid ip part
