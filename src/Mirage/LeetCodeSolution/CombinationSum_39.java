@@ -11,7 +11,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class CombinationSum {
+public class CombinationSum_39 {
     /**
      * Given a set of candidate numbers (candidates) (without duplicates) and a target number (target).
      * Find all unique combinations in candidates where the candidate numbers sums to target.
@@ -73,7 +73,7 @@ public class CombinationSum {
 
         /* Combination Sum */
         int[] candidate = {2, 3, 6, 7};
-        CombinationSum combinationSumTest = new CombinationSum();
+        CombinationSum_39 combinationSumTest = new CombinationSum_39();
         System.out.println(combinationSumTest.combinationSum(candidate, 7));
         candidate = new int[]{2, 3, 5};
         System.out.println(combinationSumTest.combinationSum(candidate, 8));

@@ -66,7 +66,7 @@ public class SolutionTest {
 //        System.out.println(maxSubArrayTest.maxSubArray(m));
 
 //        /* Jump Game */
-//        CanJump canJumpTest = new CanJump();
+//        CanJump_55 canJumpTest = new CanJump_55();
 //        int[] jump = {3, 1, 1, 0, 1, 0};
 //        System.out.println(canJumpTest.canJump(jump));
 //
@@ -113,7 +113,7 @@ public class SolutionTest {
 //        System.out.println(minPathSumTest.minPathSum(grid));
 
 //        /* Climbing Stairs */
-//        ClimbStairs climbStairsTest = new ClimbStairs();
+//        ClimbStairs_70 climbStairsTest = new ClimbStairs_70();
 //        System.out.println(climbStairsTest.climbStairs(5));
 
 //        /* Set Matrix Zeroes */
@@ -138,7 +138,7 @@ public class SolutionTest {
 //        System.out.println(Arrays.toString(sss));
 
 //        /* Combinations */
-//        Combine combineTest = new Combine();
+//        Combine_77 combineTest = new Combine_77();
 //        System.out.println(combineTest.combine(4, 3));
 
 //        /* Subsets */

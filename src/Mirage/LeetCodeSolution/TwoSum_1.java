@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Date: 2017/06/17
  * Created with IntelliJ IDEA
  */
-public class TwoSum {
+public class TwoSum_1 {
 
     /**
      * Use map to store input and to find out if there exist an number that is target.
@@ -34,7 +34,7 @@ public class TwoSum {
     }
 
     public static void main(String[] args) {
-        TwoSum test = new TwoSum();
+        TwoSum_1 test = new TwoSum_1();
         int[] testArray = {3, 5, 6, 8, 7};
         int num = 8;
         System.out.println(Arrays.toString(test.twoSum(testArray, num)));

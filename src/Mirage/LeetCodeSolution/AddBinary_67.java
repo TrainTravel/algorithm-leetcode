@@ -9,7 +9,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class AddBinary {
+public class AddBinary_67 {
     /**
      * Traverse all char in string.
      * Use XOR as addition.

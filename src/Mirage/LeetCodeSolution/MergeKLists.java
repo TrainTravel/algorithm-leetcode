@@ -39,7 +39,7 @@ public class MergeKLists {
 
 
     /**
-     * Divide input lists from mid and put into two subpart recursively, until each subpart only has one element.
+     * Divide_29 input lists from mid and put into two subpart recursively, until each subpart only has one element.
      * Then merge these two lists using mergeTwoLists method.
      * Finally, the whole ListNode list will be merged and this merged list will be returned.
      *

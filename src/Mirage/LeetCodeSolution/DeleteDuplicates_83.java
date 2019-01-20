@@ -14,7 +14,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class DeleteDuplicates {
+public class DeleteDuplicates_83 {
     /**
      * Simply remove duplicates elements.
      *

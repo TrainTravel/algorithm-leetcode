@@ -16,7 +16,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class DeleteDuplicatesII {
+public class DeleteDuplicatesII_82 {
     /**
      * Two pointers.
      * One point to previous non-duplicate element, the other one point to next non-duplicate element.

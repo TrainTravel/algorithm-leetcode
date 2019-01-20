@@ -15,7 +15,7 @@ public class IntToRoman {
      * X can be placed before L (50) and C (100) to make 40(XL) and 90(XC).
      * C can be placed before D (500) and M (1000) to make 400(CD) and 900(CM).
      * Started from the largest int(1000), subtract the largest that is not larger than current num.
-     * Combine represented Roman numerals each subtraction.
+     * Combine_77 represented Roman numerals each subtraction.
      * Symbol       Value
      * I             1
      * V             5

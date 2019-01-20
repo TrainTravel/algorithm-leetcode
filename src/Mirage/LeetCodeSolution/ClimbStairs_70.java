@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class ClimbStairs {
+public class ClimbStairs_70 {
     /**
      * Dynamic programming.
      * Create a new array that store current n length paths.

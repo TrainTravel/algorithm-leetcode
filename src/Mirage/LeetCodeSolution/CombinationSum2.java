@@ -56,7 +56,7 @@ public class CombinationSum2 {
                 result.add(new ArrayList<>(temp));
             } else {
 
-                /* Same recursion as CombinationSum except one more step to avoid duplicate */
+                /* Same recursion as CombinationSum_39 except one more step to avoid duplicate */
                 for (int i = start; i < candidates.length; i++) {
 
                     /* Remove duplicate elements in output */

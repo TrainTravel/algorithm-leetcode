@@ -11,7 +11,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class Combine {
+public class Combine_77 {
     /**
      * This problem can be solved in backtracking method.
      * However, there is another approach that can solve this problem in a faster way.

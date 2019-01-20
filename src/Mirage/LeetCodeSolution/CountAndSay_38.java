@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class CountAndSay {
+public class CountAndSay_38 {
     /**
      * Given an integer n, generate the nth term of the count-and-say sequence.
      * Note: Each term of the sequence of integers will be represented as a string.
@@ -49,7 +49,7 @@ public class CountAndSay {
     public static void main(String[] args) {
 
         /* Count and Say */
-        CountAndSay countAndSayTest = new CountAndSay();
+        CountAndSay_38 countAndSayTest = new CountAndSay_38();
         System.out.println(countAndSayTest.countAndSay(6));
     }
 }

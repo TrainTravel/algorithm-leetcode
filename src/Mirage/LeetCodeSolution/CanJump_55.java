@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class CanJump {
+public class CanJump_55 {
     /**
      * To find max jump each time, it is needed to compare current move and next move.
      * Hence, if max jump results in a position that max length is 0, then this array can not reach the end of it.

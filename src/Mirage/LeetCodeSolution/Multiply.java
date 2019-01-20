@@ -11,7 +11,7 @@ public class Multiply {
      * Given two non-negative integers num1 and num2 represented as strings.
      * Return the product of num1 and num2, also represented as a string.
      * <p>
-     * Divide multiply into steps, it can be regarded as one digit multi one digit in each time, finally sum all result.
+     * Divide_29 multiply into steps, it can be regarded as one digit multi one digit in each time, finally sum all result.
      * Hence, simply apply this process.
      *
      * @param num1 first input number in string format
