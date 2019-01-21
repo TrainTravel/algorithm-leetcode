@@ -1,6 +1,5 @@
 package Mirage.LeetCodeSolution;
 
-import java.util.Arrays;
 
 /**
  * Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
@@ -28,30 +27,31 @@ public class IsInterleave_97 {
      * @return whether s3 is formed by the interleaving of s1 and s2.
      */
     public boolean isInterleave(String s1, String s2, String s3) {
-        int l1 = s1.length();
-        int l2 = s2.length();
-        int l3 = s3.length();
+        int l1 = s1.length() + 1;
+        int l2 = s2.length() + 1;
+        int l3 = s3.length() + 1;
 
         /* Special case */
         if (l1 + l2 != l3) {
             return false;
         }
-        if (l1 + l2 + l3 == 0) {
+        if (l1 + l2 + l3 == 3) {
             return true;
         }
 
         boolean[][] table = new boolean[l1 + 1][l2 + 1];
 
         /* First row and column */
-        for (int i = 1; i < l1 + 1; i++) {
+        for (int i = 1; i < l1; i++) {
             table[i][0] = s3.charAt(i - 1) == s1.charAt(i - 1) && (table[i - 1][0] || i == 1);
         }
-        for (int i = 1; i < l2 + 1; i++) {
+        for (int i = 1; i < l2; i++) {
             table[0][i] = s3.charAt(i - 1) == s2.charAt(i - 1) && (table[0][i - 1] || i == 1);
         }
 
-        for (int i = 1; i < l1 + 1; i++) {
-            for (int j = 1; j < l2 + 1; j++) {
+        /* Fill table */
+        for (int i = 1; i < l1; i++) {
+            for (int j = 1; j < l2; j++) {
                 table[i][j] = (table[i - 1][j] && (s3.charAt(i + j - 1) == s1.charAt(i - 1))) || (table[i][j - 1] && (s3.charAt(i + j - 1) == s2.charAt(j - 1)));
             }
         }
