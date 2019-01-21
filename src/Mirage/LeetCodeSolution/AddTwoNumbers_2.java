@@ -19,7 +19,7 @@ package Mirage.LeetCodeSolution;
  */
 
 
-public class AddTwoNumbers {
+public class AddTwoNumbers_2 {
 
     /**
      * Sum two nodes and return the sum node. Until List is empty
