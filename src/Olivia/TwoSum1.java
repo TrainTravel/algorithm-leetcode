@@ -46,6 +46,11 @@ public class TwoSum1 {
     }
 
     //Try one pass hash table
+    public int[] twoSum2(int[] nums,int[] target){
+        int[] result =new int[2];
+
+    }
+
 }
 
 
