@@ -153,7 +153,7 @@ public class SolutionTest {
 //        System.out.println(existTest.exist(board, "ABCZZ"));
 
 //        /* Remove Duplicates from Sorted Array II */
-//        RemoveDuplicatesII removeDuplicatesIITest = new RemoveDuplicatesII();
+//        RemoveDuplicatesII_80 removeDuplicatesIITest = new RemoveDuplicatesII_80();
 //        int[] dup = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4};
 ////        int[] dup = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
 ////        int[] dup = {1};
