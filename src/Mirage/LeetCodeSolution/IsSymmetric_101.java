@@ -8,7 +8,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsSymmetric {
+public class IsSymmetric_101 {
     /**
      * Recursion.
      *
@@ -35,7 +35,7 @@ public class IsSymmetric {
     }
 
     /**
-     * Almost same as IsSameTree problem, only simply modified the recursion to compare left node and right node.
+     * Almost same as IsSameTree_100 problem, only simply modified the recursion to compare left node and right node.
      *
      * @param p TreeNode 1
      * @param q TreeNode 2

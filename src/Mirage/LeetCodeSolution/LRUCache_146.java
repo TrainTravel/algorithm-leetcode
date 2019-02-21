@@ -9,7 +9,7 @@ import java.util.*;
  * put(key, value): Set or insert the value if the key is not already present.
  * When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
  * Example:
- * LRUCache cache = new LRUCache(2);
+ * LRUCache_146 cache = new LRUCache_146(2);
  * cache.put(1, 1);
  * cache.put(2, 2);
  * cache.get(1);       // returns 1
@@ -25,7 +25,7 @@ import java.util.*;
  * Created with IntelliJ IDEA
  */
 
-public class LRUCache {
+public class LRUCache_146 {
     private int capacity;
     private Node head;
     private Node end;
@@ -42,7 +42,7 @@ public class LRUCache {
      *
      * @param capacity cache capacity
      */
-    public LRUCache(int capacity) {
+    public LRUCache_146(int capacity) {
         this.capacity = capacity;
         this.head = new Node();
         head.previous = null;
@@ -146,7 +146,7 @@ public class LRUCache {
     }
 
     public static void main(String[] args) {
-        LRUCache testCache = new LRUCache(2);
+        LRUCache_146 testCache = new LRUCache_146(2);
 
         testCache.put(1, 1);
         testCache.put(2, 2);

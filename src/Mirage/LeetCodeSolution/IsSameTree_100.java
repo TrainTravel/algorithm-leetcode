@@ -9,7 +9,8 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsSameTree {
+public class IsSameTree_100 {
+
     /**
      * Recursion.
      * If sub nodes do not be in same situation (null or not null), return false.

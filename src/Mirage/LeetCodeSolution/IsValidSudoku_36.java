@@ -9,7 +9,7 @@ import java.util.Set;
  * Created with IntelliJ IDEA
  */
 
-public class IsValidSudoku {
+public class IsValidSudoku_36 {
     /**
      * Determine if a 9x9 Sudoku board is valid.
      * Only the filled cells need to be validated according to the following rules:
@@ -53,7 +53,7 @@ public class IsValidSudoku {
     public static void main(String[] args) {
 
         /* Valid Sudoku */
-        IsValidSudoku isValidSudoku = new IsValidSudoku();
+        IsValidSudoku_36 isValidSudoku = new IsValidSudoku_36();
         char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},

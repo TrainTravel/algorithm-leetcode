@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsAnagram {
+public class IsAnagram_242 {
     /**
      * Given two strings s and t , write a function to determine if t is an anagram of s.
      * <p>

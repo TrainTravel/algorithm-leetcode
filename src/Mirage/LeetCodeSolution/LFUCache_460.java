@@ -16,7 +16,7 @@ import java.util.LinkedHashSet;
  * Created with IntelliJ IDEA
  */
 
-public class LFUCache {
+public class LFUCache_460 {
     private HashMap<Integer, Integer> pair;       // store key-value pair
     private HashMap<Integer, Integer> count;      // store frequency as key-count pair
     private HashMap<Integer, LinkedHashSet<Integer>> frequency;        // determine which to be removed
@@ -26,7 +26,7 @@ public class LFUCache {
     /**
      * @param capacity cache capacity
      */
-    public LFUCache(int capacity) {
+    public LFUCache_460(int capacity) {
         this.capacity = capacity;
         pair = new HashMap<>();
         count = new HashMap<>();
@@ -96,7 +96,7 @@ public class LFUCache {
     }
 
     public static void main(String[] args) {
-        LFUCache testCache = new LFUCache(2);
+        LFUCache_460 testCache = new LFUCache_460(2);
 
         testCache.put(1, 1);
         testCache.put(2, 2);

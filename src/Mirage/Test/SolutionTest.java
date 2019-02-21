@@ -1,8 +1,6 @@
 package Mirage.Test;
 
 
-import Mirage.LeetCodeSolution.LRUCache;
-
 /**
  * This is a test class for unit test in package LeetCodeSolution.
  *
@@ -42,7 +40,7 @@ public class SolutionTest {
 //        System.out.println(Arrays.deepToString(r));
 
 //        /* Valid Anagram */
-//        IsAnagram isAnagramTest = new IsAnagram();
+//        IsAnagram_242 isAnagramTest = new IsAnagram_242();
 //        String s = "anagram";
 //        String t = "nagaram";
 //        System.out.println(isAnagramTest.isAnagram_1(s, t));
@@ -65,7 +63,7 @@ public class SolutionTest {
 //        int[] m = {1,1,1,1,1};
 //        System.out.println(maxSubArrayTest.maxSubArray(m));
 
-//        /* Jump Game */
+//        /* Jump_45 Game */
 //        CanJump_55 canJumpTest = new CanJump_55();
 //        int[] jump = {3, 1, 1, 0, 1, 0};
 //        System.out.println(canJumpTest.canJump(jump));

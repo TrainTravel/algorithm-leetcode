@@ -13,7 +13,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsValidBST {
+public class IsValidBST_98 {
 
     /**
      * Recursion with each root's value. Compare left subtree and right subtree.

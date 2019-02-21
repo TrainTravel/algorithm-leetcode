@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 public class SolveSudoku_37 {
     /**
-     * Use recursion with IsValidSudoku.
+     * Use recursion with IsValidSudoku_36.
      *
      * @param board input Sudoku board
      */

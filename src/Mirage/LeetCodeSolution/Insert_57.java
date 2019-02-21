@@ -13,7 +13,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class Insert {
+public class Insert_57 {
     /**
      * Definition for an interval.
      * public class Interval {
