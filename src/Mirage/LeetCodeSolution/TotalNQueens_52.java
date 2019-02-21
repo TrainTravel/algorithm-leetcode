@@ -8,7 +8,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class TotalNQueens {
+public class TotalNQueens_52 {
     /**
      * Based on special property of queen, search can be done column by column (or row by row).
      *

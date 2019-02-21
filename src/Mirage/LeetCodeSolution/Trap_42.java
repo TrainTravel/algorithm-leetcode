@@ -10,7 +10,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Trap {
+public class Trap_42 {
     /**
      * Use two int as left start pointer and right start pointer.
      * Move pointer toward center in iteration and add valid value to result.

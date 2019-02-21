@@ -28,7 +28,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class SolveNQueens {
+public class SolveNQueens_51 {
 
     /**
      * Based on special property of queen, search can be done column by column (or row by row).

@@ -55,7 +55,7 @@ public class SolutionTest {
 //        System.out.println(groupAnagramsTest.groupAnagrams(strs));
 
 //        /* Trapping Rain Water */
-//        Trap trapTest = new Trap();
+//        Trap_42 trapTest = new Trap_42();
 //        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 //        System.out.println(trapTest.trap(height));
 
@@ -90,11 +90,11 @@ public class SolutionTest {
 //        System.out.println(uniquePathsWithObstaclesTest.uniquePathsWithObstacles(rrrrrrr));
 
 //        /* N Queens */
-//        SolveNQueens solveNQueensTest = new SolveNQueens();
+//        SolveNQueens_51 solveNQueensTest = new SolveNQueens_51();
 //        System.out.println(solveNQueensTest.solveNQueens(5));
 
 //        /* N-Queens II */
-//        TotalNQueens totalNQueensTest = new TotalNQueens();
+//        TotalNQueens_52 totalNQueensTest = new TotalNQueens_52();
 //        System.out.println(totalNQueensTest.totalNQueens(5));
 
 //        /* Plus One */
