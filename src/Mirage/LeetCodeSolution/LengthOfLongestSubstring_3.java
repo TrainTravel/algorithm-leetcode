@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 
-public class LengthOfLongestSubstring {
+public class LengthOfLongestSubstring_3 {
 
     /**
      * Given a string, find the length of the longest substring without repeating characters.
@@ -56,7 +56,7 @@ public class LengthOfLongestSubstring {
     }
 
     public static void main(String[] args) {
-        LengthOfLongestSubstring test = new LengthOfLongestSubstring();
+        LengthOfLongestSubstring_3 test = new LengthOfLongestSubstring_3();
         System.out.println(test.lengthOfLongestSubstring("tmmzuxt"));
         System.out.println(test.lengthOfLongestSubstring("a"));
     }

@@ -12,7 +12,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class InorderTraversal {
+public class InorderTraversal_94 {
     /**
      * Simply follow the inorder traversal rule. Use stack to temporary store node during the process.
      *

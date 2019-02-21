@@ -10,7 +10,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class FourSum {
+public class FourSum_18 {
     /**
      * Given an array nums of n integers and an integer target, find elements in nums such that a + b + c + d = target.
      * Find all unique quadruplets in the array which gives the sum of target.

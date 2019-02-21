@@ -9,7 +9,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class PalindromeNumber {
+public class PalindromeNumber_9 {
     /**
      * Search starts from the first and last element, each time move forward/backward respectively.
      * If there is a mismatch during the process, then it is not palindrome.
@@ -30,7 +30,7 @@ public class PalindromeNumber {
     public static void main(String[] args) {
 
         /* Palindrome Number Test*/
-        PalindromeNumber palindromeNumberTest = new PalindromeNumber();
+        PalindromeNumber_9 palindromeNumberTest = new PalindromeNumber_9();
         System.out.println(palindromeNumberTest.isPalindrome(0000));
     }
 }

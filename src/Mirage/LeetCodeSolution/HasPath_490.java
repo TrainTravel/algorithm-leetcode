@@ -19,7 +19,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class HasPath {
+public class HasPath_490 {
     private int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     /**

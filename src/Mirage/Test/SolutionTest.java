@@ -48,7 +48,7 @@ public class SolutionTest {
 //        System.out.println(isAnagramTest.isAnagram_1(s, t));
 
 //        /* Group Anagram */
-//        GroupAnagrams groupAnagramsTest = new GroupAnagrams();
+//        GroupAnagrams_49 groupAnagramsTest = new GroupAnagrams_49();
 //        String[] strs = {"nozzle","punjabi","waterlogged","imprison","crux","numismatists","sultans","rambles","deprecating"};
 //        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
 //
@@ -104,7 +104,7 @@ public class SolutionTest {
 
 //        /* Permutation Sequence */
 //        int[] ttt = {1, 2, 3};
-//        GetPermutation getPermutationTest = new GetPermutation();
+//        GetPermutation_60 getPermutationTest = new GetPermutation_60();
 //        System.out.println(getPermutationTest.getPermutation(4, 9));
 
 //        /* Minimum Path Sum */

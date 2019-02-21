@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class FindMedianSortedArrays_2 {
+public class FindMedianSortedArrays_4 {
     /**
      * Two arrays are both SORTED.
      *
@@ -53,7 +53,7 @@ public class FindMedianSortedArrays_2 {
         /* Find median Test */
         int[] num1 = {1, 2, 3};
         int[] num2 = {4, 5, 6};
-        FindMedianSortedArrays_2 findMedianSortedArraysTest = new FindMedianSortedArrays_2();
+        FindMedianSortedArrays_4 findMedianSortedArraysTest = new FindMedianSortedArrays_4();
         System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
     }
 }

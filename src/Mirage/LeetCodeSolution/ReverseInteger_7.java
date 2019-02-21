@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created with IntelliJ IDEA
  */
 
-public class ReverseInteger {
+public class ReverseInteger_7 {
     /**
      * Reverse digits of an integer.
      *
@@ -46,7 +46,7 @@ public class ReverseInteger {
     public static void main(String[] args) {
 
         /* Reverse int Test */
-        ReverseInteger reverseIntegerTest = new ReverseInteger();
+        ReverseInteger_7 reverseIntegerTest = new ReverseInteger_7();
         System.out.println(reverseIntegerTest.reverseInteger(1534236469));
     }
 }

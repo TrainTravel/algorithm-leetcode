@@ -9,7 +9,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class GenerateParenthesis {
+public class GenerateParenthesis_22 {
     /**
      * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
      * <p>
@@ -41,7 +41,7 @@ public class GenerateParenthesis {
     public static void main(String[] args) {
 
         /* Generate Parentheses Test */
-        GenerateParenthesis generateParenthesisTest = new GenerateParenthesis();
+        GenerateParenthesis_22 generateParenthesisTest = new GenerateParenthesis_22();
         System.out.println(generateParenthesisTest.generateParenthesis(3));
     }
 }

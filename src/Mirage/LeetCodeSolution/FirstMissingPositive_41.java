@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class FirstMissingPositive {
+public class FirstMissingPositive_41 {
     /**
      * Given an unsorted integer array, find the smallest missing positive integer.
      * <p>
@@ -57,7 +57,7 @@ public class FirstMissingPositive {
     public static void main(String[] args) {
 
         /* First Missing Positive */
-        FirstMissingPositive firstMissingPositiveTest = new FirstMissingPositive();
+        FirstMissingPositive_41 firstMissingPositiveTest = new FirstMissingPositive_41();
         int[] c = {2, 3, 6, 7};
         System.out.println(firstMissingPositiveTest.firstMissingPositive(c));       // 1
         c = new int[]{3, 4, -1, 1};

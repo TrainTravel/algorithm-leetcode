@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * Created with IntelliJ IDEA
  */
 
-public class MyAtoi {
+public class MyAtoi_8 {
 
     /**
      * Convert string to integer
@@ -94,7 +94,7 @@ public class MyAtoi {
     public static void main(String[] args) {
 
         /* Atoi test */
-        MyAtoi myAtoiTest = new MyAtoi();
+        MyAtoi_8 myAtoiTest = new MyAtoi_8();
         System.out.println(myAtoiTest.myAtoi("   - 321"));
         System.out.println(myAtoiTest.myAtoi("  -0012a42"));
         System.out.println(myAtoiTest.myAtoi("   +0 123"));

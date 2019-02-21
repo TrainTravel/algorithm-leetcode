@@ -14,8 +14,10 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsMatch10 {
+public class IsMatch_10 {
     /**
+     * Dynamic programming with 2D table.
+     *
      * @param s string
      * @param p pattern string
      * @return if string is matched to pattern
@@ -32,7 +34,7 @@ public class IsMatch10 {
 
         for (int i = 0; i < s.length(); i++) {
             for (int j = 0; j < p.length(); j++) {
-                if (p.charAt(j) == '.'||p.charAt(j) == s.charAt(i)) {
+                if (p.charAt(j) == '.' || p.charAt(j) == s.charAt(i)) {
                     dp[i + 1][j + 1] = dp[i][j];
                 }
                 if (p.charAt(j) == '*') {

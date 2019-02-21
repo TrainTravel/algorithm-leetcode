@@ -8,7 +8,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class ZigZagConversion {
+public class ZigZagConversion_6 {
     /**
      * Base on zig zag division, input string can be divided into blocks based on index.
      * Blocks that contains chars that placed in same column and place in same diagonal.
@@ -49,7 +49,7 @@ public class ZigZagConversion {
     public static void main(String[] args) {
 
         /* Zig Zag test */
-        ZigZagConversion zigZagConversionTest = new ZigZagConversion();
+        ZigZagConversion_6 zigZagConversionTest = new ZigZagConversion_6();
         String testS = "abcdefghijk";
         int numRow = 4;
         System.out.println(zigZagConversionTest.convert(testS, numRow));

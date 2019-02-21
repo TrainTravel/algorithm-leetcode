@@ -21,7 +21,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class GenerateTrees {
+public class GenerateTrees_95 {
     /**
      * Select each point from 1 to n as root, recursive generate each root's left sub tree and right sub tree.
      *

@@ -1,17 +1,17 @@
 package Mirage.LeetCodeSolution;
 
 /**
+ * Find the longest palindromic substring in s.
+ * You may assume that the maximum length of s is 1000.
+ * If there does not exist a palindromic substring, then return first letter.
+ *
  * @author BorisMirage
  * Time: 2018/05/12 16:43
  * Created with IntelliJ IDEA
  */
 
-public class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring_5 {
     /**
-     * Find the longest palindromic substring in s.
-     * You may assume that the maximum length of s is 1000.
-     * If there does not exist a palindromic substring, then return first letter.
-     * <p>
      * There are two conditions of palindromic substring.
      * First is that the center only contains one letter, such as "aba".
      * Second is that the center contains two letters, such as "abba".
@@ -61,7 +61,7 @@ public class LongestPalindromicSubstring {
     public static void main(String[] args) {
 
         /* Longest Palindromic Substring Test*/
-        LongestPalindromicSubstring longestPalindromicSubstringTest = new LongestPalindromicSubstring();
+        LongestPalindromicSubstring_5 longestPalindromicSubstringTest = new LongestPalindromicSubstring_5();
         System.out.println(longestPalindromicSubstringTest.longestPalindrome("s"));
     }
 }

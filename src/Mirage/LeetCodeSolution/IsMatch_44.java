@@ -14,7 +14,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IsMatch44 {
+public class IsMatch_44 {
     /**
      * Dynamic programming.
      *
@@ -48,7 +48,7 @@ public class IsMatch44 {
     }
 
     public static void main(String[] args) {
-        IsMatch44 isMatchTest = new IsMatch44();
+        IsMatch_44 isMatchTest = new IsMatch_44();
         System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
         System.out.println(isMatchTest.isMatch("adceb", "*a*b"));
         System.out.println(isMatchTest.isMatch("acdcb", "a*c?b"));

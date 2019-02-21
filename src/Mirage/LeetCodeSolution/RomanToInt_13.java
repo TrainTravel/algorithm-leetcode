@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Created with IntelliJ IDEA
  */
 
-public class RomanToInt {
+public class RomanToInt_13 {
     /**
      * Convert Roman numerals to int
      * I can be placed before V (5) and X (10) to make 4(IV) and 9(IX).
@@ -60,8 +60,8 @@ public class RomanToInt {
 
     public static void main(String[] args) {
 
-        /* RomanToInt Test */
-        RomanToInt romanIntTest = new RomanToInt();
+        /* RomanToInt_13 Test */
+        RomanToInt_13 romanIntTest = new RomanToInt_13();
         System.out.println(romanIntTest.romanToInt("MCMXCIV"));
     }
 }

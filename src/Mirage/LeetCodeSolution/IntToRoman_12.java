@@ -7,7 +7,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class IntToRoman {
+public class IntToRoman_12 {
     /**
      * Convert int to Roman numerals.
      * Subtracting int num from largest Roman numeral (M).
@@ -45,8 +45,8 @@ public class IntToRoman {
 
     public static void main(String[] args) {
 
-        /* IntToRoman Test */
-        IntToRoman intToRomanTest = new IntToRoman();
+        /* IntToRoman_12 Test */
+        IntToRoman_12 intToRomanTest = new IntToRoman_12();
         System.out.println(intToRomanTest.intToRoman(100));
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class GetPermutation {
+public class GetPermutation_60 {
     /**
      * This problem can not be solved in time when using backtracking.
      * Only need to find out kth permutation sequence, hence no need to find all sequence.

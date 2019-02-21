@@ -8,7 +8,7 @@ import java.util.*;
  * Created with IntelliJ IDEA
  */
 
-public class GroupAnagrams {
+public class GroupAnagrams_49 {
     /**
      * Given an array of strings, group anagrams together.
      * <p>
