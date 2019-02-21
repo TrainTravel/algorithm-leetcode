@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MergeTwoLists {
+public class MergeTwoSortedLists_21 {
 
     /**
      * Merge two sorted linked lists and return it as a new list.

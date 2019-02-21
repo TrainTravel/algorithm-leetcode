@@ -7,7 +7,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class SwapPairs {
+public class SwapPairs_24 {
     /**
      * Given a linked list, swap every two adjacent nodes and return its head.
      * <p>

@@ -21,7 +21,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class RemoveDuplicates {
+public class RemoveDuplicates_26 {
     /**
      * Two int as pointers.
      * First pointer is the "i" in for loop. It represent the position in traverse.
@@ -50,8 +50,8 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
 
-        /* RemoveDuplicates Test */
-        RemoveDuplicates removeDuplicatesTest = new RemoveDuplicates();
+        /* RemoveDuplicates_26 Test */
+        RemoveDuplicates_26 removeDuplicatesTest = new RemoveDuplicates_26();
         int[] test = {1, 2, 3, 4};
         System.out.println(removeDuplicatesTest.removeDuplicates(test));
     }

@@ -30,9 +30,9 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class RemoveDuplicatesII {
+public class RemoveDuplicatesII_80 {
     /**
-     * Similar to RemoveDuplicates, simply modify pointer moving condition.
+     * Similar to RemoveDuplicates_26, simply modify pointer moving condition.
      * Two int as pointers.
      * First pointer is the "i" in for loop. It represent the position in traverse.
      * The other pointer points to the last element in array that is non-duplicate.

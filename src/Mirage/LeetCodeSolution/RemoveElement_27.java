@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class RemoveElement {
+public class RemoveElement_27 {
     /**
      * Given an array nums and a value val, remove all instances of that value in-place and return the new length.
      * Do not allocate extra space for another array

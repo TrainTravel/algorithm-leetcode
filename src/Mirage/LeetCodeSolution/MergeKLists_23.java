@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MergeKLists {
+public class MergeKLists_23 {
     /**
      * Merge k sorted linked lists and return it as one sorted list.
      * Analyze and describe its complexity.

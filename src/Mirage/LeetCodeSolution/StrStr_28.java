@@ -6,10 +6,10 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class StrStr {
+public class StrStr_28 {
 
     /**
-     * Implement StrStr().
+     * Implement StrStr_28().
      * Return the index of the FIRST occurrence of needle in haystack, or -1 if needle is not part of haystack.
      * <p>
      * Clarification:
@@ -41,8 +41,8 @@ public class StrStr {
 
     public static void main(String[] args) {
 
-        /* StrStr Test */
-        StrStr strStrTest = new StrStr();
+        /* StrStr_28 Test */
+        StrStr_28 strStrTest = new StrStr_28();
         System.out.println(strStrTest.strStr("mississippi", "issip"));
     }
 }
