@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.Stack;
 
 /**
- * Given a Binary Search Tree and a target number.
+ * Given a Binary Search_33 Tree and a target number.
  * Return true if there exist two elements in the BST such that their sum is equal to the given target.
  *
  * @author BorisMirage

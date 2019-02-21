@@ -3,7 +3,7 @@ package Mirage.LeetCodeSolution;
 
 /**
  * An n x n 2D matrix representing an image is given.
- * Rotate the image by 90 degrees (clockwise).
+ * Rotate_48 the image by 90 degrees (clockwise).
  * <p>
  * Note:
  * You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
@@ -14,7 +14,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Rotate {
+public class Rotate_48 {
     /**
      * <p>
      * Rotate image in clockwise:

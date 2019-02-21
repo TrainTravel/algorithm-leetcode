@@ -12,7 +12,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Search {
+public class Search_33 {
     /**
      * Use modified binary search. Only one sub-array in each search will possibly not be in ascending order.
      * Hence, in each binary search iteration, find sub-array that is not in ascending order.
@@ -72,8 +72,8 @@ public class Search {
 
     public static void main(String[] args) {
 
-        /* Search */
-        Search searchTest = new Search();
+        /* Search_33 */
+        Search_33 searchTest = new Search_33();
         int[] nums = {1, 2, 3, 4, 5, 6};
         System.out.println(searchTest.search(nums, 4));
     }

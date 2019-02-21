@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class SearchMatrix {
+public class SearchMatrix_74 {
     /**
      * Treat whole matrix as a sorted list, then use binary search to find target.
      * Be care of corner case such as empty matrix {}, {{}}.

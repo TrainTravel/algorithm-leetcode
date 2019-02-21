@@ -20,7 +20,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class PermuteUnique {
+public class PermuteUnique_47 {
     /**
      * Backtracking.
      * The difference between permute problem is that one boolean array is added during backtracking process.

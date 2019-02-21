@@ -10,7 +10,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class SearchInsert {
+public class SearchInsert_35 {
     /**
      * Use binary search.
      *

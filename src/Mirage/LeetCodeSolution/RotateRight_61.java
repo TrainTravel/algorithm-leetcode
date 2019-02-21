@@ -13,7 +13,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class RotateRight {
+public class RotateRight_61 {
     /**
      * Find i - k % ith node and do the rotation.
      *

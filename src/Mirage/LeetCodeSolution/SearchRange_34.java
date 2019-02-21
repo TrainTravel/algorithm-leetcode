@@ -19,7 +19,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class SearchRange {
+public class SearchRange_34 {
     /**
      * Use binary search.
      *
@@ -69,7 +69,7 @@ public class SearchRange {
     public static void main(String[] args) {
 
 //        /* Search Range */
-        SearchRange searchRangeTest = new SearchRange();
+        SearchRange_34 searchRangeTest = new SearchRange_34();
         int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
         System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
     }

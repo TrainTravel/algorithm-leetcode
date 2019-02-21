@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
 
 public class PalindromeNumber_9 {
     /**
-     * Search starts from the first and last element, each time move forward/backward respectively.
+     * Search_33 starts from the first and last element, each time move forward/backward respectively.
      * If there is a mismatch during the process, then it is not palindrome.
      *
      * @param x input int

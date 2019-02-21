@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class PlusOne {
+public class PlusOne_66 {
     /**
      * Be careful about carry of last digit.
      * If last digit is not 9, then directly return input array.

@@ -24,7 +24,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class Permute {
+public class Permute_46 {
     /**
      * Use backtracking to traverse each possibility.
      *

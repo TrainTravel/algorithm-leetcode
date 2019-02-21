@@ -83,8 +83,8 @@ public class FindSubstring_30 {
         final long endTime = System.currentTimeMillis();    // Timer
         System.out.println("Time: " + (endTime - startTime) + "ms");
 
-        /* Search Insert Position */
-        SearchInsert searchInsertTest = new SearchInsert();
+        /* Search_33 Insert Position */
+        SearchInsert_35 searchInsertTest = new SearchInsert_35();
         int[] nums = {1, 3};
 
         System.out.println(searchInsertTest.searchInsert(nums, 2));

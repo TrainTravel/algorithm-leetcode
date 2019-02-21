@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class SearchII {
+public class SearchII_81 {
     /**
      * Simply apply binary search can not solve array with duplicate elements.
      * Hence, narrowing searching range is needed.

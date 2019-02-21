@@ -24,17 +24,17 @@ public class SolutionTest {
 //        System.out.println(multiplyTest.multiply(a1, a2));
 
 //        /* Permutations */
-//        Permute permuteTest = new Permute();
+//        Permute_46 permuteTest = new Permute_46();
 //        int[] c = {1};
 //        System.out.println(permuteTest.permute(c));
 
 //        /* Permutations II */
-//        PermuteUnique permuteUniqueTest = new PermuteUnique();
+//        PermuteUnique_47 permuteUniqueTest = new PermuteUnique_47();
 //        int[] c = {1, 2, 2, 3};
 //        System.out.println(permuteUniqueTest.permuteUnique(c));
 
 //        /* Rotation */
-//        Rotate rotateTest = new Rotate();
+//        Rotate_48 rotateTest = new Rotate_48();
 //        int[][] r = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 //        rotateTest.rotate(r);
 //        System.out.println(Arrays.deepToString(r));
@@ -96,7 +96,7 @@ public class SolutionTest {
 //        System.out.println(totalNQueensTest.totalNQueens(5));
 
 //        /* Plus One */
-//        PlusOne plusOneTest = new PlusOne();
+//        PlusOne_66 plusOneTest = new PlusOne_66();
 //        int[] tt = {4,3,2,1};
 //        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
 
@@ -122,8 +122,8 @@ public class SolutionTest {
 //        SetZeroes_73 setZeroesTest = new SetZeroes_73();
 //        setZeroesTest.setZeroes(zeros);
 
-//        /* Search a 2D Matrix */
-//        SearchMatrix searchMatrixTest = new SearchMatrix();
+//        /* Search_33 a 2D Matrix */
+//        SearchMatrix_74 searchMatrixTest = new SearchMatrix_74();
 //        int[][] mmmmmm = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
 //        int[][] mmmmmm = {{1}};
 //        int[][] mmmmmm = {};
@@ -144,7 +144,7 @@ public class SolutionTest {
 //        int[] sbs = {1, 2, 3};
 //        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
 
-//        /* Word Search */
+//        /* Word Search_33 */
 //        Exist_79 existTest = new Exist_79();
 //        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
 //        char[][] board = {{'A'}};
@@ -157,8 +157,8 @@ public class SolutionTest {
 ////        int[] dup = {1};
 //        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
 
-//        /* Search in Rotated Sorted Array II */
-//        SearchII searchIITest = new SearchII();
+//        /* Search_33 in Rotated Sorted Array II */
+//        SearchII_81 searchIITest = new SearchII_81();
 //        int[] ss = {1, 1, 3, 1};
 //        System.out.println(searchIITest.searchII(ss, 3));
 
