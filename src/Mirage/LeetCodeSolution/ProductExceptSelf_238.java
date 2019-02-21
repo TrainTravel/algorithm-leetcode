@@ -3,6 +3,7 @@ package Mirage.LeetCodeSolution;
 /**
  * Given an array nums of n integers where n > 1.
  * Return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+ * Note that in this problem, the product of all elements will not exceed the max integer value.
  *
  * @author BorisMirage
  * Time: 2019/02/20 19:18
@@ -10,6 +11,12 @@ package Mirage.LeetCodeSolution;
  */
 
 public class ProductExceptSelf_238 {
+    /**
+     * Count the entire product of array and divide each element in next round.
+     *
+     * @param nums int array
+     * @return array that each element equal to the product of all the elements of nums except nums[i]
+     */
     public int[] productExceptSelf(int[] nums) {
 
         /* Special case */
@@ -18,7 +25,6 @@ public class ProductExceptSelf_238 {
         }
 
         int p = 1;
-        int[] res = new int[nums.length];
         int countZero = 0;
 
 
@@ -32,16 +38,21 @@ public class ProductExceptSelf_238 {
 
         if (countZero == 0) {
             for (int i = 0; i < nums.length; i++) {
-                res[i] = p / nums[i];
+                int temp = p / nums[i];
+                nums[i] = temp;
             }
         } else if (countZero == 1) {
             for (int i = 0; i < nums.length; i++) {
                 if (nums[i] == 0) {
-                    res[i] = p;
+                    nums[i] = p;
+                } else {
+                    nums[i] = 0;
                 }
             }
+        } else {
+            return new int[nums.length];
         }
 
-        return res;
+        return nums;
     }
 }
