@@ -8,7 +8,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MergeSortedArray {
+public class MergeSortedArray_88 {
     /**
      * Two pointers.
      *

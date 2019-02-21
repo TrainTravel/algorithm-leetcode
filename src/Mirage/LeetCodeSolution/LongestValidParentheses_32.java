@@ -11,7 +11,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class LongestValidParentheses {
+public class LongestValidParentheses_32 {
     /**
      * Traverse s for two times, set two counter "left" and "right" to count "(", ")" respectively.
      * First from left to right, if left equals to right and none of them are 0, then one valid length is found.

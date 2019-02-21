@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MyPow {
+public class MyPow_50 {
     /**
      * Implement pow(x, n), which calculates x raised to the power n (x^n).
      *

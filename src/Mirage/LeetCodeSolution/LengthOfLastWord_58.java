@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class LengthOfLastWord {
+public class LengthOfLastWord_58 {
     /**
      * Given a string s consists of upper/lower-case alphabets and empty space characters ' '.
      * Return the length of last word in the string.

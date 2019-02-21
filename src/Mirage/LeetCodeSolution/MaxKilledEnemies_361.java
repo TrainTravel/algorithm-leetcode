@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MaxKilledEnemies {
+public class MaxKilledEnemies_361 {
     /**
      * Traverse whole array and use a counter and a array to record each row and column's max.
      *

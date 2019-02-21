@@ -9,7 +9,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class NumTrees {
+public class NumTrees_96 {
     /**
      * Dynamic programming.
      * G(n) = F(1, n) + F(2, n) + ... + F(n, n).

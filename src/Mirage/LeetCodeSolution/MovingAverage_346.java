@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
  * Example:
- * MovingAverage m = new MovingAverage(3);
+ * MovingAverage_346 m = new MovingAverage_346(3);
  * m.next(1) = 1
  * m.next(10) = (1 + 10) / 2
  * m.next(3) = (1 + 10 + 3) / 3
@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * Created with IntelliJ IDEA
  */
 
-public class MovingAverage {
+public class MovingAverage_346 {
     int size;
     LinkedList<Integer> q;
     int sum = 0;
@@ -24,7 +24,7 @@ public class MovingAverage {
     /**
      * @param size window size
      */
-    public MovingAverage(int size) {
+    public MovingAverage_346(int size) {
         this.size = size;
         q = new LinkedList<>();
     }

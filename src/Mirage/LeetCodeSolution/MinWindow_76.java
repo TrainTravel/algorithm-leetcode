@@ -15,7 +15,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MinWindow {
+public class MinWindow_76 {
     /**
      * Use two pointer, one find all char in s first, the other one try to narrow the window in s.
      * Use a int array as hash map.

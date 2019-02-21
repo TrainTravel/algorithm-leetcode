@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class NextPermutation {
+public class NextPermutation_31 {
     /**
      * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
      * If such arrangement is not possible, it must rearrange it as the lowest possible order.
@@ -59,7 +59,7 @@ public class NextPermutation {
     public static void main(String[] args) {
 
         /* Next Permutation */
-        NextPermutation nextPermutationTest = new NextPermutation();
+        NextPermutation_31 nextPermutationTest = new NextPermutation_31();
         int[] a = {1, 3, 2};
         nextPermutationTest.nextPermutation(a);
         System.out.println(Arrays.toString(a));

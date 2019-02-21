@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MinPathSum {
+public class MinPathSum_64 {
     /**
      * Dynamic programming with table filling.
      * (i,j) = min((i-1, j), (i, j-1)) + grid(i,j)

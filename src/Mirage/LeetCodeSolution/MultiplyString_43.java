@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Multiply {
+public class MultiplyString_43 {
     /**
      * Given two non-negative integers num1 and num2 represented as strings.
      * Return the product of num1 and num2, also represented as a string.

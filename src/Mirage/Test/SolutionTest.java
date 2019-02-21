@@ -18,7 +18,7 @@ public class SolutionTest {
 
 
 //        /* Multiply */
-//        Multiply multiplyTest = new Multiply();
+//        MultiplyString_43 multiplyTest = new MultiplyString_43();
 //        String a1 = "123";
 //        String a2 = "456";
 //        System.out.println(multiplyTest.multiply(a1, a2));
@@ -59,7 +59,7 @@ public class SolutionTest {
 
 
 //        /* Maximum Subarray */
-//        MaxSubArray maxSubArrayTest = new MaxSubArray();
+//        MaxSubArray_53 maxSubArrayTest = new MaxSubArray_53();
 //        int[] m = {1,1,1,1,1};
 //        System.out.println(maxSubArrayTest.maxSubArray(m));
 
@@ -69,17 +69,17 @@ public class SolutionTest {
 //        System.out.println(canJumpTest.canJump(jump));
 //
 //        /* Length of Last Word */
-//        LengthOfLastWord lengthOfLastWordTest = new LengthOfLastWord();
+//        LengthOfLastWord_58 lengthOfLastWordTest = new LengthOfLastWord_58();
 //        String s = "aa bb";
 //        System.out.println(lengthOfLastWordTest.lengthOfLastWord(s));
 
 //        /* Missing Number */
-//        MissingNumber missingNumberTest = new MissingNumber();
+//        MissingNumber_268 missingNumberTest = new MissingNumber_268();
 //        int[] jump = {2, 3, 1, 0, 5};
 //        System.out.println(missingNumberTest.missingNumberWithBitManipulate(jump));
 
 //        /* Longest Valid Parentheses */
-//        LongestValidParentheses longestValidParenthesesTest = new LongestValidParentheses();
+//        LongestValidParentheses_32 longestValidParenthesesTest = new LongestValidParentheses_32();
 //        System.out.println(longestValidParenthesesTest.longestValidParenthesesDP(")()())"));
 
 //        /* Unique Paths II */
@@ -106,7 +106,7 @@ public class SolutionTest {
 //        System.out.println(getPermutationTest.getPermutation(4, 9));
 
 //        /* Minimum Path Sum */
-//        MinPathSum minPathSumTest = new MinPathSum();
+//        MinPathSum_64 minPathSumTest = new MinPathSum_64();
 //        int[][] grid = {{1, 2}, {5, 6}, {1, 1}};
 //        System.out.println(minPathSumTest.minPathSum(grid));
 

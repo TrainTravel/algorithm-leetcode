@@ -19,7 +19,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class MaximalRectangle {
+public class MaximalRectangle_85 {
     /**
      * Regarded it as a similar problem of max histogram problem.
      * In each line update the current "histogram" in a int array, when meet '0' simply reset current column to 0.

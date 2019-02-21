@@ -13,7 +13,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class Partition {
+public class PartitionList_86 {
     /**
      * Use two pointers, one connect to small part, and the other one connect to larger part (including equal).
      * Another two pointers connect each ListNode during partition.

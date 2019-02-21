@@ -13,13 +13,13 @@ package Mirage.LeetCodeSolution;
  * No.100
  */
 
-public class MyHashMap {
+public class MyHashMap_706 {
     private int[] map;
 
     /**
      * Initialize map.
      */
-    public MyHashMap() {
+    public MyHashMap_706() {
         this.map = new int[1000001];
     }
 

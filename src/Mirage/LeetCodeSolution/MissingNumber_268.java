@@ -16,7 +16,7 @@ import java.util.Set;
  * Created with IntelliJ IDEA
  */
 
-public class MissingNumber {
+public class MissingNumber_268 {
     /**
      * Put elements into set and traverse from 0 to n to find missing number.
      *

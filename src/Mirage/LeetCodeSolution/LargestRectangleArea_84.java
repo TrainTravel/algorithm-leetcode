@@ -11,7 +11,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class LargestRectangleArea {
+public class LargestRectangleArea_84 {
 
     /**
      * Faster solution with stack.
@@ -87,7 +87,7 @@ public class LargestRectangleArea {
 
 
     public static void main(String[] args) {
-        LargestRectangleArea largestRectangleAreaTest = new LargestRectangleArea();
+        LargestRectangleArea_84 largestRectangleAreaTest = new LargestRectangleArea_84();
         int[] arr = {2, 1, 5, 6, 2, 3};
         System.out.println(largestRectangleAreaTest.largestRectangleArea(arr));
     }

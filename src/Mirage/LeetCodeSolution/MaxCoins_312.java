@@ -22,7 +22,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MaxCoins {
+public class MaxCoins_312 {
     /**
      * This problem can be solved by dynamic programming.
      * However, it can be easier understood by using divide and conquer with memoization.
@@ -66,7 +66,7 @@ public class MaxCoins {
 
     public static void main(String[] args) {
         int[] arr = {3, 1, 5, 8};
-        MaxCoins test = new MaxCoins();
+        MaxCoins_312 test = new MaxCoins_312();
         System.out.println(test.maxCoins(arr));
     }
 

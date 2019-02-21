@@ -9,7 +9,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MaxDepth {
+public class MaxDepth_104 {
     /**
      * DFS with recursion, when there exist sub node, continue and find max depth of tree.
      *

@@ -7,7 +7,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MaxSubArray {
+public class MaxSubArray_53 {
     /**
      * Given an integer array nums
      * Find the contiguous sub array (containing at least one number) which has the largest sum and return its sum.

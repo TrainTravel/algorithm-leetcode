@@ -13,7 +13,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MinDistance {
+public class MinDistance_72 {
     /**
      * Dynamic programming with filling a 2D array.
      *
@@ -52,7 +52,7 @@ public class MinDistance {
 
 
     public static void main(String[] args) {
-        MinDistance test = new MinDistance();
+        MinDistance_72 test = new MinDistance_72();
         System.out.println(test.minDistance("zoologicoarchaeologist", "zoogeologist"));
     }
 }

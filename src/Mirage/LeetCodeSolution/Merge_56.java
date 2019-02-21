@@ -10,7 +10,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class Merge {
+public class Merge_56 {
     /**
      * Given a collection of intervals, merge all overlapping intervals.
      *
@@ -22,7 +22,7 @@ public class Merge {
      * @param intervals input Interval list
      * @return merged result
      */
-    public List<Interval> merge(List<Interval> intervals) {
+    public List<Interval> Merge(List<Interval> intervals) {
 
         /* Special Case */
         if (intervals.size() < 2) {
