@@ -10,7 +10,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class UniquePaths {
+public class UniquePaths_62 {
     /**
      * Find total paths via fill m x n table.
      * If block is in first row or first column, fill 1.

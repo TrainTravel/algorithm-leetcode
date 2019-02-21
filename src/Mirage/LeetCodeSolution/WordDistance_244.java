@@ -15,7 +15,7 @@ import java.util.LinkedList;
  * Created with IntelliJ IDEA
  */
 
-public class WordDistance {
+public class WordDistance_244 {
     String[] words;
     HashMap<String, LinkedList<Integer>> store = new HashMap<>();
 
@@ -24,7 +24,7 @@ public class WordDistance {
      *
      * @param words given words list
      */
-    public WordDistance(String[] words) {
+    public WordDistance_244(String[] words) {
         this.words = words;
 
         for (int i = 0; i < words.length; i++) {

@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * Implement an iterator to flatten a 2d vector.
- * Your Vector2D object will be instantiated and called as such:
- * Vector2D i = new Vector2D(vec2d);
+ * Your Vector2D_251 object will be instantiated and called as such:
+ * Vector2D_251 i = new Vector2D_251(vec2d);
  * while (i.hasNext()) v[f()] = i.next();
  * Example:
  * Input: 2d vector =
@@ -24,11 +24,11 @@ import java.util.List;
  */
 
 
-public class Vector2D implements Iterator<Integer> {
+public class Vector2D_251 implements Iterator<Integer> {
     private Iterator<List<Integer>> l;      // List iterator
     private Iterator<Integer> i;            // int iterator
 
-    public Vector2D(List<List<Integer>> vec2d) {
+    public Vector2D_251(List<List<Integer>> vec2d) {
         l = vec2d.iterator();
     }
 

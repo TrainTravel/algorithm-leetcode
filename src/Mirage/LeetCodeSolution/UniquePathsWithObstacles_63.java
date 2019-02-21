@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class UniquePathsWithObstacles {
+public class UniquePathsWithObstacles_63 {
     /**
      * Similar to find path without obstacle.
      * The only difference is that when searching path the block with obstacle needs to be excluded.
