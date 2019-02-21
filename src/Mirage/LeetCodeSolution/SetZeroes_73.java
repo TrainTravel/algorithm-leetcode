@@ -11,7 +11,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class SetZeroes {
+public class SetZeroes_73 {
     /**
      * Leave first row and column as the sign to mark which row and column needs to be set 0.
      * Two boolean value to record if first row and column needs to be set as 0.

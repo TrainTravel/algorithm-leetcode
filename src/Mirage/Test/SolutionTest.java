@@ -121,7 +121,7 @@ public class SolutionTest {
 ////        int[][] zeros = {{0}};
 //        int[][] zeros = {{1, 0, 3}};
 //
-//        SetZeroes setZeroesTest = new SetZeroes();
+//        SetZeroes_73 setZeroesTest = new SetZeroes_73();
 //        setZeroesTest.setZeroes(zeros);
 
 //        /* Search a 2D Matrix */
@@ -132,7 +132,7 @@ public class SolutionTest {
 //        System.out.println(searchMatrixTest.searchMatrix(mmmmmm, 1));
 
 //        /* Sort Colors */
-//        SortColors sortColorsTest = new SortColors();
+//        SortColors_75 sortColorsTest = new SortColors_75();
 //        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
 //        sortColorsTest.sortColors(sss);
 //        System.out.println(Arrays.toString(sss));
@@ -142,7 +142,7 @@ public class SolutionTest {
 //        System.out.println(combineTest.combine(4, 3));
 
 //        /* Subsets */
-//        SubsetsWithDup subsetsWithDupTest = new SubsetsWithDup();
+//        SubsetsWithDup_90 subsetsWithDupTest = new SubsetsWithDup_90();
 //        int[] sbs = {1, 2, 3};
 //        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
 

@@ -20,7 +20,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class SpiralOrder {
+public class SpiralOrder_54 {
     /**
      * Add elements into result list layer by layer.
      *

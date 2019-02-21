@@ -26,7 +26,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class SubsetsWithDup {
+public class SubsetsWithDup_90 {
     /**
      * Use backtracking.
      *

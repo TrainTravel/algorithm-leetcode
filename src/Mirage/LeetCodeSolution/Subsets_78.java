@@ -28,7 +28,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class Subsets {
+public class Subsets_78 {
     /**
      * Use backtracking.
      *

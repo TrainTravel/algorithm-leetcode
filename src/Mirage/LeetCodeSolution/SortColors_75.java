@@ -11,7 +11,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class SortColors {
+public class SortColors_75 {
     /**
      * Two pointers.
      *

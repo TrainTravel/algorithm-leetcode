@@ -21,7 +21,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class SolveSudoku {
+public class SolveSudoku_37 {
     /**
      * Use recursion with IsValidSudoku.
      *
@@ -91,7 +91,7 @@ public class SolveSudoku {
     public static void main(String[] args) {
 
         /* Solve Sudoku */
-        SolveSudoku solveSudokuTest = new SolveSudoku();
+        SolveSudoku_37 solveSudokuTest = new SolveSudoku_37();
         char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
