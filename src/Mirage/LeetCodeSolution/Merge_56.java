@@ -46,11 +46,8 @@ public class Merge_56 {
                 startIndex = endIndex + 1;
             }
         }
-
         return res;
     }
-
-
 }
 
 /**
