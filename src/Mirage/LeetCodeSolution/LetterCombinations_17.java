@@ -9,7 +9,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class LetterCombinations {
+public class LetterCombinations_17 {
     /**
      * Given a string containing digits from 2-9 inclusive.
      * Return all possible letter combinations that the number could represent.

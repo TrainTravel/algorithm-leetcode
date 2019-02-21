@@ -8,7 +8,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class IsValid {
+public class IsValid_20 {
     /**
      * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
      * <p>
@@ -43,7 +43,7 @@ public class IsValid {
     public static void main(String[] args) {
 
         /* Parentheses Test */
-        IsValid isValidTest = new IsValid();
+        IsValid_20 isValidTest = new IsValid_20();
         System.out.println(isValidTest.isValid("()[]{}"));
     }
 }

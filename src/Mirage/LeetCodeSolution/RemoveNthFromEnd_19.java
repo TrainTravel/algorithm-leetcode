@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class RemoveNthFromEnd {
+public class RemoveNthFromEnd_19 {
     /**
      * Given a linked list, remove the n-th node from the end of list and return its head.
      * <p>

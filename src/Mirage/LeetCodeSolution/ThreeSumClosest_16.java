@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class ThreeSumClosest {
+public class ThreeSumClosest_16 {
     /**
      * Similar to 3sum problem, the difference is the bound when selecting elements from array.
      * And the compare number that is found in each round is not -nums[i], it is target - nums[i].
@@ -64,7 +64,7 @@ public class ThreeSumClosest {
     public static void main(String[] args) {
 
         /* 3 Sum Closest Test*/
-        ThreeSumClosest threeSumClosestTest = new ThreeSumClosest();
+        ThreeSumClosest_16 threeSumClosestTest = new ThreeSumClosest_16();
         int[] test3SumC = {1, 8, 3, 6, 8, 3, 5, 3};
         int[] test = {-1, 2, 1, -4};
         System.out.println(threeSumClosestTest.threeSumClosest(test, 1));

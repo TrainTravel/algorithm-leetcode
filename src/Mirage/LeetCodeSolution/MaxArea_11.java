@@ -6,7 +6,7 @@ package Mirage.LeetCodeSolution;
  * Created with IntelliJ IDEA
  */
 
-public class MaxArea {
+public class MaxArea_11 {
     /**
      * Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai).
      * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).
@@ -39,7 +39,7 @@ public class MaxArea {
 
         /* Max Area Test */
         int[] height = {1, 8, 3, 6, 8, 3, 5, 3};
-        MaxArea MaxAreaTest = new MaxArea();
+        MaxArea_11 MaxAreaTest = new MaxArea_11();
         System.out.println(MaxAreaTest.MaxArea(height));
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class ThreeSum {
+public class ThreeSum_15 {
     /**
      * Sort the array first, then start from the smallest (or largerest) element.
      * When one element is selected, start from the next element and the last element in this array.
@@ -87,7 +87,7 @@ public class ThreeSum {
 
         /* Three sum test*/
         int[] test = {0, -4, -1, -4, -2, -3, 2};
-        ThreeSum threeSumTest = new ThreeSum();
+        ThreeSum_15 threeSumTest = new ThreeSum_15();
         System.out.println(threeSumTest.threeSum(test));
     }
 }
