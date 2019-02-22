@@ -1,4 +1,4 @@
-package Common;
+package Lib;
 
 /**
  * Intervals that contain two elements.
