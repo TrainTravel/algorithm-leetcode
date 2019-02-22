@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 /**
  * Given a list of words and two words word1 and word2.

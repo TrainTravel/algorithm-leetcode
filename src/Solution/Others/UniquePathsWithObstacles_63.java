@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 /**
  * From top-left corner to bottom-right of a m x n grid .

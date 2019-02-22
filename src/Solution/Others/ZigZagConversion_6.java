@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 /**
  * Convert input string into zigzag format

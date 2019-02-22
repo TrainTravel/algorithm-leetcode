@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 import java.util.Iterator;
 import java.util.List;

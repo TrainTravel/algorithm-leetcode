@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 /**
  * Given an integer n, generate the nth term of the count-and-say sequence.

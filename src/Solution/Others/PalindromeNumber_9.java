@@ -1,4 +1,4 @@
-package Solution;
+package Solution.Others;
 
 /**
  * Determine whether an integer is a palindrome.
