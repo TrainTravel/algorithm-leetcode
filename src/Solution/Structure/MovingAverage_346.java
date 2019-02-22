@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Structure;
 
 import java.util.LinkedList;
 
