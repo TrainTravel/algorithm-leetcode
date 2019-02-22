@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.List;
 
 import Lib.Interval;
 

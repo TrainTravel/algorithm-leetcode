@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Map;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class IsStrobogrammatic_246 {
      */
     public boolean isStrobogrammatic(String num) {
 
-        Map<Character, Character> map = new HashMap<Character, Character>();
+        Map<Character, Character> map = new HashMap<>();
         map.put('6', '9');
         map.put('9', '6');
         map.put('0', '0');

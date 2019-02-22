@@ -1,8 +1,10 @@
-package Solution.Others;
+package Solution.Map;
 
 import java.util.*;
 
 /**
+ * Given an array of strings, group anagrams together.
+ *
  * @author BorisMirage
  * Time: 2018/06/25 10:14
  * Created with IntelliJ IDEA
@@ -10,8 +12,6 @@ import java.util.*;
 
 public class GroupAnagrams_49 {
     /**
-     * Given an array of strings, group anagrams together.
-     * <p>
      * Use hash map to identify.
      * Iterate strings. Convert word to char array and sort it.
      * Use this as key of map and a list to store all words has same key (anagram).

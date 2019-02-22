@@ -31,6 +31,7 @@ public class CountAndSay_38 {
 
             int count = 1;
             StringBuilder round = new StringBuilder();
+
             /* Traverse previous sequence to generate new sequence */
             for (int j = 1; j < res.length(); j++) {
                 if (res.charAt(j - 1) == res.charAt(j)) {

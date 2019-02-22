@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.DynamicProgramming;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +23,8 @@ import java.util.List;
 
 public class Generate_118 {
     /**
-     * i,j  = i-1, j-1 + i-1, j
+     * Dynamic programming.
+     * (i,j) = (i-1, j-1) + (i-1, j)
      *
      * @param numRows number of total rows
      * @return Pascal's triangle in linked list

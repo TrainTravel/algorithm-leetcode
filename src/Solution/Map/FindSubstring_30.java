@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Map;
 
 
 import Solution.Array.SearchInsert_35;
