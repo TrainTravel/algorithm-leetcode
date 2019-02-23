@@ -33,8 +33,8 @@ public class FindMedianSortedArrays_4 {
         int low = 0, high = length2 * 2;        // avoid moving out of bound due to nums 2 is shorter array
 
         while (low <= high) {
-            int mid2 = (high + low) / 2;
-            int mid1 = length1 + length2 - mid2;
+            int mid2 = (high + low) / 2;        // mid of virtual array (nums2 * 2)
+            int mid1 = length1 + length2 - mid2;        // mid of virtual array (nums1 * 2)
 
             /* Avoid no overlapping */
             double left1 = (mid1 == 0) ? Integer.MIN_VALUE : nums1[(mid1 - 1) / 2];
