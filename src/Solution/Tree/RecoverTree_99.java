@@ -2,7 +2,6 @@ package Solution.Tree;
 
 import Lib.TreeNode;
 
-
 /**
  * Two random elements of a binary search tree (BST) are swapped by mistake.
  * Recover the tree without changing its structure.
@@ -21,6 +20,7 @@ public class RecoverTree_99 {
     /**
      * The factor is to find two "root" nodes to swap.
      * Therefore, use in order traversal would found the incorrect left node and then incorrect right node.
+     * This equals to add a "check" operation between two sub nodes.
      *
      * @param root root node of tree
      */
