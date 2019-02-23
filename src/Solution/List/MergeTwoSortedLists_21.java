@@ -3,6 +3,9 @@ package Solution.List;
 import Lib.ListNode;
 
 /**
+ * Merge two sorted linked lists and return it as a new list.
+ * The new list should be made by splicing together the nodes of the first two lists.
+ *
  * @author BorisMirage
  * Time: 2018/06/12 19:03
  * Created with IntelliJ IDEA
@@ -11,17 +14,7 @@ import Lib.ListNode;
 public class MergeTwoSortedLists_21 {
 
     /**
-     * Merge two sorted linked lists and return it as a new list.
-     * The new list should be made by splicing together the nodes of the first two lists.
-     * <p>
      * Simply compare value in two ListNode. Point smaller one as next node.
-     * <p>
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode(int x) { val = x; }
-     * }
      *
      * @param l1 first node
      * @param l2 second node
