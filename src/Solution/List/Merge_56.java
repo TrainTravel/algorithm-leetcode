@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Given a collection of intervals, merge all overlapping intervals.
+ *
  * @author BorisMirage
  * Time: 2018/06/30 17:19
  * Created with IntelliJ IDEA
@@ -14,8 +16,6 @@ import java.util.List;
 
 public class Merge_56 {
     /**
-     * Given a collection of intervals, merge all overlapping intervals.
-     *
      * Using two arrays to store each interval's start and end. Sort each array respectively.
      * Traverse these two arrays and add new Interval into result based on this:
      * Current Interval's end will be smaller than next Interval's start.
