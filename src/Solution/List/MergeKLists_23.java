@@ -3,6 +3,9 @@ package Solution.List;
 import Lib.ListNode;
 
 /**
+ * Merge k sorted linked lists and return it as one sorted list.
+ * Analyze and describe its complexity.
+ *
  * @author BorisMirage
  * Time: 2018/06/13 12:48
  * Created with IntelliJ IDEA
@@ -10,18 +13,7 @@ import Lib.ListNode;
 
 public class MergeKLists_23 {
     /**
-     * Merge k sorted linked lists and return it as one sorted list.
-     * Analyze and describe its complexity.
-     * <p>
      * Use divide and conquer to merge each two lists and recursively complete this process until only one list left.
-     *
-     * <p>
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode(int x) { val = x; }
-     * }
      *
      * @param lists input LitNode Array
      * @return next ListNode
