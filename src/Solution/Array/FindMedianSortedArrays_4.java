@@ -13,7 +13,7 @@ package Solution.Array;
 public class FindMedianSortedArrays_4 {
     /**
      * Two arrays are both SORTED.
-     * Add a virtual space in array, for example:
+     * Add a virtual space in each array, for example:
      * [#, 1, #, 3, #, 6, #, 10, #, 11, #, 21, #]
      * In this way the median of this array will be (nums[(l + r) / 2] + nums[(l + r - 1) / 2]) / 2.
      * l = 0, r = nums.length.
@@ -23,32 +23,34 @@ public class FindMedianSortedArrays_4 {
      * @return median of the two sorted arrays
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int length1 = nums1.length;
-        int length2 = nums2.length;
+        int l1 = nums1.length;
+        int l2 = nums2.length;
 
-        if (length1 < length2) {
+        if (l1 < l2) {
             return findMedianSortedArrays(nums2, nums1);        // assure num1 is longer array
         }
 
-        int low = 0, high = length2 * 2;        // avoid moving out of bound due to nums 2 is shorter array
+        /* left/right: left/right element next to median */
+        double left1, right1, left2, right2;    // if array.length is odd, left == right, otherwise right - left == 1
+        int l = 0, h = l2 * 2, vm1, vm2;        // avoid moving out of bound due to nums2 is shorter array
 
-        while (low <= high) {
-            int mid2 = (high + low) / 2;        // mid of virtual array (nums2 * 2)
-            int mid1 = length1 + length2 - mid2;        // mid of virtual array (nums1 * 2)
+        while (l <= h) {
+            vm2 = (h + l) / 2;        // mid of virtual array (nums2 * 2)
+            vm1 = l1 + l2 - vm2;        // mid of virtual array (nums1 * 2)
 
             /* Avoid out of bound due to no overlapping between two arrays */
-            double left1 = (mid1 == 0) ? Integer.MIN_VALUE : nums1[(mid1 - 1) / 2];
-            double right1 = (mid1 == length1 * 2) ? Integer.MAX_VALUE : nums1[(mid1) / 2];
+            left1 = (vm1 == 0) ? Integer.MIN_VALUE : nums1[(vm1 - 1) / 2];      // if l1 + l2 is odd, left1 == right1
+            right1 = (vm1 == l1 * 2) ? Integer.MAX_VALUE : nums1[(vm1) / 2];    // else |left1 - right1| == 1
 
             /* Avoid out of bound due to second array is empty */
-            double left2 = (mid2 == 0) ? Integer.MIN_VALUE : nums2[(mid2 - 1) / 2];
-            double right2 = (mid2 == length2 * 2) ? Integer.MAX_VALUE : nums2[(mid2) / 2];
+            left2 = (vm2 == 0) ? Integer.MIN_VALUE : nums2[(vm2 - 1) / 2];
+            right2 = (vm2 == l2 * 2) ? Integer.MAX_VALUE : nums2[(vm2) / 2];
 
             /* Ensure L1 <= R2 && L2 <= R1 */
             if (left1 > right2) {
-                low = mid2 + 1;
+                l = vm2 + 1;
             } else if (right1 < left2) {
-                high = mid2 - 1;
+                h = vm2 - 1;
             } else {
 
                 /* median: (max(L1, L2) + min(R1, R2)) / 2 */
