@@ -36,8 +36,6 @@ public class Intersection_349 {
             }
         }
 
-        System.out.println(s1);
-        System.out.println(l2);
         int[] out = new int[l2.size()];
         for (int i = 0; i < out.length; i++) {
             out[i] = l2.pop();
