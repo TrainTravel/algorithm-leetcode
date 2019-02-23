@@ -36,11 +36,11 @@ public class FindMedianSortedArrays_4 {
             int mid2 = (high + low) / 2;        // mid of virtual array (nums2 * 2)
             int mid1 = length1 + length2 - mid2;        // mid of virtual array (nums1 * 2)
 
-            /* Avoid no overlapping */
+            /* Avoid out of bound due to no overlapping between two arrays */
             double left1 = (mid1 == 0) ? Integer.MIN_VALUE : nums1[(mid1 - 1) / 2];
             double right1 = (mid1 == length1 * 2) ? Integer.MAX_VALUE : nums1[(mid1) / 2];
 
-            /* Avoid second array is empty */
+            /* Avoid out of bound due to second array is empty */
             double left2 = (mid2 == 0) ? Integer.MIN_VALUE : nums2[(mid2 - 1) / 2];
             double right2 = (mid2 == length2 * 2) ? Integer.MAX_VALUE : nums2[(mid2) / 2];
 
