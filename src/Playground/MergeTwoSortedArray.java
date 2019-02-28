@@ -18,8 +18,7 @@ public class MergeTwoSortedArray {
             return a1;
         }
 
-        int i1 = 0;
-        int i2 = 0;
+        int i1 = 0, i2 = 0;
         int[] mergeArray = new int[a1.length + a2.length];
 
         for (int i = 0; i < mergeArray.length; i++) {
