@@ -3,6 +3,9 @@ package Solution.Tree;
 import Lib.TreeNode;
 
 /**
+ * Given a tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree.
+ * Every node has no left child and only 1 right child.
+ *
  * @author BorisMirage
  * Time: 2019/02/28 12:52
  * Created with IntelliJ IDEA
