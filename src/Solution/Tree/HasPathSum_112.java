@@ -18,7 +18,7 @@ public class HasPathSum_112 {
      *
      * @param root root node
      * @param sum  given sum
-     * @return if it has a root-to-leaf path such that adding up all the values along the path equals the given sum
+     * @return if it has a root-to-leaf path such that sum of all values along the path equals the given sum
      */
     public boolean hasPathSum(TreeNode root, int sum) {
 
