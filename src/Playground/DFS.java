@@ -36,7 +36,7 @@ public class DFS {
      * @param r     current root node
      * @param res   path list
      * @param cache temporary path list
-     * @return
+     * @return root-to-leaf paths
      */
     private List<List<Integer>> dfs(TreeNode r, List<List<Integer>> res, List<Integer> cache) {
 
