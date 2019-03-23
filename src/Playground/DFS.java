@@ -14,12 +14,12 @@ import java.util.List;
 public class DFS {
 
     /**
-     * DFS traverse binary tree implementation.
+     * Depth-first search implementation via tree node.
      *
      * @param root root node
      * @return all root-to-leaf paths
      */
-    public List<List<Integer>> DFS(TreeNode root) {
+    public List<List<Integer>> depthFirstSerch(TreeNode root) {
         List<List<Integer>> res = new LinkedList<>();
         if (root == null) {
             return res;
@@ -40,6 +40,7 @@ public class DFS {
      */
     private List<List<Integer>> dfs(TreeNode r, List<List<Integer>> res, List<Integer> cache) {
 
+        /* Add value into list as DFS process */
         cache.add(r.val);
 
         if (r.left == null && r.right == null) {
