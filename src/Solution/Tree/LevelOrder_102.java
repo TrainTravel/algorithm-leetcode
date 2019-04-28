@@ -4,6 +4,7 @@ import Lib.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Given a binary tree, return the level order traversal of its nodes' values (from left to right, level by level).
@@ -29,28 +30,26 @@ public class LevelOrder_102 {
         if (root == null) {
             return out;
         }
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
 
-        LinkedList<TreeNode> layer = new LinkedList<>();
-        layer.add(root);
-        while (!layer.isEmpty()) {
-
-            int size = layer.size();
-            List<Integer> temp = new LinkedList<>();
-
-            for (int i = 0; i < size; i++) {
-                TreeNode c = layer.getFirst();
-                if (c.left != null) {
-                    layer.addLast(c.left);
+        while (!q.isEmpty()) {
+            int s = q.size();
+            List<Integer> level = new LinkedList<>();
+            for (int i = 0; i < s; i++) {
+                TreeNode temp = q.poll();
+                if (temp != null) {
+                    level.add(temp.val);
+                    if (temp.left != null) {
+                        q.add(temp.left);
+                    }
+                    if (temp.right != null) {
+                        q.add(temp.right);
+                    }
                 }
-                if (c.right != null) {
-                    layer.addLast(c.right);
-                }
-                temp.add(c.val);
-                layer.removeFirst();
             }
-            out.add(temp);
+            out.add(level);
         }
-
         return out;
     }
 }
