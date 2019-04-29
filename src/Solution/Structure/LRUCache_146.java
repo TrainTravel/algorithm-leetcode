@@ -1,6 +1,6 @@
 package Solution.Structure;
 
-import Lib.Node;
+import Lib.CacheLine;
 
 import java.util.*;
 
@@ -29,26 +29,26 @@ import java.util.*;
 
 public class LRUCache_146 {
     private int capacity;
-    private Node head;
-    private Node end;
+    private CacheLine head;
+    private CacheLine end;
     private int c = 0;      // count total cache size
-    private HashMap<Integer, Node> cache = new HashMap<>();
+    private HashMap<Integer, CacheLine> cache = new HashMap<>();
 
     /**
      * Structure of cache:
      * Basically, use node to store key and value. A hash map in this cache is to store key-node pair for searching key.
-     * Node works as a double linked list, which contains previous Node and next Node.
+     * CacheLine works as a double linked list, which contains previous CacheLine and next CacheLine.
      * When <code>put</code> operation finds a existing key, move corresponding node to top of the list.
      * When put a new pair into cache, first check size to avoid oversize, then add this node to top of list.
-     * If cache is oversize, then remove last Node in double linked list. And remove corresponding key as well.
+     * If cache is oversize, then remove last CacheLine in double linked list. And remove corresponding key as well.
      *
      * @param capacity cache capacity
      */
     public LRUCache_146(int capacity) {
         this.capacity = capacity;
-        this.head = new Node();
+        this.head = new CacheLine();
         head.previous = null;
-        this.end = new Node();
+        this.end = new CacheLine();
         end.next = null;
         head.next = end;
         end.previous = head;
@@ -61,7 +61,7 @@ public class LRUCache_146 {
      * @return corresponding value, or -1.
      */
     public int get(int key) {
-        Node temp = cache.get(key);
+        CacheLine temp = cache.get(key);
         if (temp == null) {
             return -1;
         }
@@ -71,17 +71,17 @@ public class LRUCache_146 {
 
     /**
      * <code>put</code> operation, put new key-value pair into cache.
-     * If cache is oversize, it will remove Least Recently Used (LRU) Node store in cache.
+     * If cache is oversize, it will remove Least Recently Used (LRU) CacheLine store in cache.
      *
      * @param key   new key
      * @param value new value
      */
     public void put(int key, int value) {
 
-        Node node = cache.get(key);
+        CacheLine node = cache.get(key);
 
         if (node == null) {
-            Node add = new Node();
+            CacheLine add = new CacheLine();
             add.key = key;
             add.val = value;
             c++;
@@ -101,13 +101,13 @@ public class LRUCache_146 {
     }
 
     /**
-     * Remove given Node.
+     * Remove given CacheLine.
      *
-     * @param node given Node
+     * @param node given CacheLine
      */
-    private void removeNode(Node node) {
-        Node pre = node.previous;
-        Node next = node.next;
+    private void removeNode(CacheLine node) {
+        CacheLine pre = node.previous;
+        CacheLine next = node.next;
         pre.next = next;
         next.previous = pre;
     }
@@ -118,17 +118,17 @@ public class LRUCache_146 {
      *
      * @param node
      */
-    private void lastUsed(Node node) {
+    private void lastUsed(CacheLine node) {
         removeNode(node);
         addNode(node);
     }
 
     /**
-     * Add a new Node next to head.
+     * Add a new CacheLine next to head.
      *
-     * @param node Node to be moved
+     * @param node CacheLine to be moved
      */
-    private void addNode(Node node) {
+    private void addNode(CacheLine node) {
         node.previous = head;
         node.next = head.next;
         head.next.previous = node;
@@ -136,13 +136,13 @@ public class LRUCache_146 {
     }
 
     /**
-     * Remove last Node.
+     * Remove last CacheLine.
      * Hash map needs to know which key to remove, hence pop node is required.
      *
      * @return pop node
      */
-    private Node popEnd() {
-        Node old = end.previous;
+    private CacheLine popEnd() {
+        CacheLine old = end.previous;
         this.removeNode(old);
         return old;
     }

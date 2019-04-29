@@ -67,7 +67,7 @@ public class LFUCache_460 {
 
     /**
      * <code>put</code> operation, put new key-value pair into cache.
-     * If cache is oversize, it will remove Least Recently Used (LRU) Node store in cache.
+     * If cache is oversize, it will remove Least Recently Used (LRU) CacheLine store in cache.
      *
      * @param key   new key
      * @param value new value
