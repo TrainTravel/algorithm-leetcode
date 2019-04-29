@@ -23,7 +23,7 @@ public class Rob_337 {
     }
 
     public int[] postOrderTraversal(TreeNode r) {
-        int[] max = new int[2];     // max[0]: sum without current Node r; max[1]: sum with current Node r value
+        int[] max = new int[2];     // max[0]: sum without current node r; max[1]: sum with current node r value
         if (r == null) {
             return max;
         }
