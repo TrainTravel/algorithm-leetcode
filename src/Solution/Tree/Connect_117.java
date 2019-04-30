@@ -2,7 +2,6 @@ package Solution.Tree;
 
 import Lib.Node;
 
-import java.util.LinkedList;
 
 /**
  * Given a binary tree (not perfect).
@@ -17,37 +16,47 @@ import java.util.LinkedList;
 
 public class Connect_117 {
     /**
-     * Use queue to store each node in current and next layer.
+     * Use a Node to store previous node, link to next node.
+     * Use a Node to store the next layer's head node for iteration.
      *
      * @param root root node
      * @return populate tree
      */
     public Node connect(Node root) {
+        Node nextHead = null;
+        Node nextPrevious = null;
+        Node current = root;
 
-        if (root == null) {
-            return null;
-        }
+        /* Iterate whole tree */
+        while (current != null) {
 
-        LinkedList<Node> layer = new LinkedList<>();
-        layer.add(root);
+            /* Iterate current layer */
+            while (current != null) {
 
-        while (!layer.isEmpty()) {
-            int s = layer.size();
-            for (int i = 0; i < s; i++) {
-                Node next = layer.pop();
-                if (next.left != null) {
-                    layer.add(next.left);
+                /* Left child */
+                if (current.left != null) {
+                    if (nextPrevious != null) {
+                        nextPrevious.next = current.left;
+                    } else {
+                        nextHead = current.left;        // find new layer
+                    }
+                    nextPrevious = current.left;
                 }
-                if (next.right != null) {
-                    layer.add(next.right);
-                }
 
-                /* last node is initially set to null */
-                if (i < s - 1) {
-                    next.next = layer.peek();
+                /* Right child */
+                if (current.right != null) {
+                    if (nextPrevious != null) {
+                        nextPrevious.next = current.right;
+                    } else {
+                        nextHead = current.right;       // find new layer
+                    }
+                    nextPrevious = current.right;
                 }
+                current = current.next;
             }
-
+            current = nextHead;     // going to next layer
+            nextHead = null;
+            nextPrevious = null;
         }
         return root;
     }
