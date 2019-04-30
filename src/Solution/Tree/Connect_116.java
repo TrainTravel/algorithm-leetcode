@@ -24,7 +24,7 @@ import Lib.Node;
  * Created with IntelliJ IDEA
  */
 
-public class Connect {
+public class Connect_116 {
     /**
      * It is a perfect binary tree. Hence, simply point next layer's sub node to its right node.
      * left sub node -> right sub node
