@@ -17,6 +17,7 @@ import java.util.LinkedList;
 public class Solve_130 {
     /**
      * Find all 'O' on boundary of given board and relating 'O', set them to a third value.
+     * Use BFS to searching relating 'O'.
      * These 'O's will not be flipped.
      * After such 'O's are all found, flip the rest 'O's.
      *
