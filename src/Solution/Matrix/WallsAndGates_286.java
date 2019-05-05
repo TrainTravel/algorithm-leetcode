@@ -46,20 +46,20 @@ public class WallsAndGates_286 {
             int x = t[0];
             int y = t[1];
 
-            if (x + 1 < r && rooms[x + 1][y] > 0 && (rooms[x + 1][y] == Integer.MAX_VALUE || rooms[x + 1][y] >= rooms[x][y] + 1)) {
+            if (x + 1 < r && rooms[x + 1][y] > 0 && (rooms[x + 1][y] == Integer.MAX_VALUE || rooms[x + 1][y] > rooms[x][y] + 1)) {
                 l.add(new int[]{x + 1, y});
                 rooms[x + 1][y] = rooms[x][y] + 1;
             }
 
-            if (x - 1 > -1 && rooms[x - 1][y] > 0 && (rooms[x - 1][y] == Integer.MAX_VALUE || rooms[x - 1][y] >= rooms[x][y] + 1)) {
+            if (x - 1 > -1 && rooms[x - 1][y] > 0 && (rooms[x - 1][y] == Integer.MAX_VALUE || rooms[x - 1][y] > rooms[x][y] + 1)) {
                 l.add(new int[]{x - 1, y});
                 rooms[x - 1][y] = rooms[x][y] + 1;
             }
-            if (y + 1 < c && rooms[x][y + 1] > 0 && (rooms[x][y + 1] == Integer.MAX_VALUE || rooms[x][y + 1] >= rooms[x][y] + 1)) {
+            if (y + 1 < c && rooms[x][y + 1] > 0 && (rooms[x][y + 1] == Integer.MAX_VALUE || rooms[x][y + 1] > rooms[x][y] + 1)) {
                 l.add(new int[]{x, y + 1});
                 rooms[x][y + 1] = rooms[x][y] + 1;
             }
-            if (y - 1 > -1 && rooms[x][y - 1] > 0 && (rooms[x][y - 1] == Integer.MAX_VALUE || rooms[x][y - 1] >= rooms[x][y] + 1)) {
+            if (y - 1 > -1 && rooms[x][y - 1] > 0 && (rooms[x][y - 1] == Integer.MAX_VALUE || rooms[x][y - 1] > rooms[x][y] + 1)) {
                 l.add(new int[]{x, y - 1});
                 rooms[x][y - 1] = rooms[x][y] + 1;
             }
