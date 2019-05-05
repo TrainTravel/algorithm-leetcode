@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Matrix;
 
 import java.util.ArrayList;
 import java.util.List;
