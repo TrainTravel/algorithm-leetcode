@@ -1,4 +1,6 @@
-package Solution.Tree;
+package Solution.Matrix;
+
+import Lib.Point;
 
 import java.util.LinkedList;
 
@@ -33,36 +35,36 @@ public class Solve_130 {
             for (int j = 0; j < board[0].length; j++) {
                 if ((i == 0 || j == 0 || i == board.length - 1 || j == board[0].length - 1) && board[i][j] == 'O') {
                     board[i][j] = 'T';
-                    LinkedList<Coord> q = new LinkedList<>();
-                    q.offer(new Coord(i, j));
+                    LinkedList<Point> q = new LinkedList<>();
+                    q.offer(new Point(i, j));
 
                     while (!q.isEmpty()) {
-                        Coord temp = q.remove();
+                        Point temp = q.remove();
                         int r = temp.x;
                         int c = temp.y;
 
                         /* left */
                         if (r - 1 > -1 && board[r - 1][c] == 'O') {
                             board[r - 1][c] = 'T';
-                            q.offer(new Coord(r - 1, c));
+                            q.offer(new Point(r - 1, c));
                         }
 
                         /* right */
                         if (r + 1 < board.length && board[r + 1][c] == 'O') {
                             board[r + 1][c] = 'T';
-                            q.offer(new Coord(r + 1, c));
+                            q.offer(new Point(r + 1, c));
                         }
 
                         /* top */
                         if (c - 1 > -1 && board[r][c - 1] == 'O') {
                             board[r][c - 1] = 'T';
-                            q.offer(new Coord(r, c - 1));
+                            q.offer(new Point(r, c - 1));
                         }
 
                         /* bottom */
                         if (c + 1 < board[0].length && board[r][c + 1] == 'O') {
                             board[r][c + 1] = 'T';
-                            q.add(new Coord(r, c + 1));
+                            q.add(new Point(r, c + 1));
                         }
                     }
                 }
@@ -79,15 +81,5 @@ public class Solve_130 {
                 }
             }
         }
-    }
-}
-
-class Coord {
-    int x;
-    int y;
-
-    Coord(int a, int b) {
-        x = a;
-        y = b;
     }
 }
