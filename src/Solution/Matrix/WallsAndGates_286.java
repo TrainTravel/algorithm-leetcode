@@ -1,7 +1,5 @@
 package Solution.Matrix;
 
-import Lib.Point;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
