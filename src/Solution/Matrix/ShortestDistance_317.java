@@ -4,12 +4,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * You want to build a house on an empty land which reaches all buildings in the shortest amount of distance.
- * You can only move up, down, left and right. You are given a 2D grid of values 0, 1 or 2, where:
- * Each 0 marks an empty land which you can pass by freely.
- * Each 1 marks a building which you CANNOT pass through.
- * Each 2 marks an obstacle which you CANNOT pass through.
- * If there is a 1 that can not reach any other 1 in array, then there is no possibility and return -1.
+ * A 2D array that contains 0, 1, 2 is given.
+ * Find a point in grid to minimize the total distance from all 1 to this point.
+ * Each 0 marks pass.
+ * Each 1 marks start point that requires to count distance, but it CANNOT pass through.
+ * Each 2 marks an obstacle that CANNOT pass through.
+ * If there is a 1 that can not reach any other 1 in array, then there is no possibility to find this point, return -1.
  *
  * @author BorisMirage
  * Time: 2019/05/05 19:47
