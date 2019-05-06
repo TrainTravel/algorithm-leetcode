@@ -36,7 +36,7 @@ public class MinTotalDistance {
             }
         }
 
-        return median(row) + median(col);       // convert 2D to 1D
+        return minSum(row) + minSum(col);       // convert 2D to 1D
     }
 
     /**
@@ -45,7 +45,7 @@ public class MinTotalDistance {
      * @param a list
      * @return minimize sum of given list
      */
-    private int median(List<Integer> a) {
+    private int minSum(List<Integer> a) {
         int d = 0;
         Collections.sort(a);
         int l = 0;
