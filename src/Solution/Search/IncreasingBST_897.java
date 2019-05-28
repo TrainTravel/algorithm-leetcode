@@ -1,4 +1,4 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.TreeNode;
 
@@ -14,6 +14,12 @@ import Lib.TreeNode;
 public class IncreasingBST_897 {
     private TreeNode p = null, r = null;
 
+    /**
+     * DFS.
+     *
+     * @param root root node
+     * @return rearranged tree
+     */
     public TreeNode increasingBST(TreeNode root) {
 
         if (root == null) {
