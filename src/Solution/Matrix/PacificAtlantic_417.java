@@ -39,23 +39,23 @@ public class PacificAtlantic_417 {
         boolean[][] visitedPacific = new boolean[matrix.length][matrix[0].length], visitedAtlantic = new boolean[matrix.length][matrix[0].length];
         Queue<int[]> Pacific = new LinkedList<>(), Atlantic = new LinkedList<>();
 
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {       // mark all edges to corresponding map as visited
             Pacific.add(new int[]{i, 0});
             Atlantic.add(new int[]{i, matrix[0].length - 1});
             visitedPacific[i][0] = true;
             visitedAtlantic[i][matrix[0].length - 1] = true;
         }
-        for (int i = 0; i < matrix[0].length; i++) {
+        for (int i = 0; i < matrix[0].length; i++) {        // mark all edges to corresponding map as visited
             Pacific.add(new int[]{0, i});
             Atlantic.add(new int[]{matrix.length - 1, i});
             visitedPacific[0][i] = true;
             visitedAtlantic[matrix.length - 1][i] = true;
         }
 
-        bfs(visitedPacific, matrix, Pacific);
-        bfs(visitedAtlantic, matrix, Atlantic);
+        bfs(visitedPacific, matrix, Pacific);       // find all points can be accessed from upper and left edge
+        bfs(visitedAtlantic, matrix, Atlantic);     // find all points can be accessed from right and bottom edge
 
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {       // find points that is both accessible
             for (int j = 0; j < matrix[0].length; j++) {
                 if (visitedPacific[i][j] && visitedAtlantic[i][j]) {
                     res.add(new int[]{i, j});
@@ -66,6 +66,13 @@ public class PacificAtlantic_417 {
         return res;
     }
 
+    /**
+     * BFS to find all points that is accessible based on given point queue.
+     *
+     * @param isVisited 2D array record which point has been visited
+     * @param matrix    given 2D array record value
+     * @param q         queue
+     */
     private void bfs(boolean[][] isVisited, int[][] matrix, Queue<int[]> q) {
         int[] xy = {1, -1, 0, 0, 0, 0, 1, -1};
         while (!q.isEmpty()) {
