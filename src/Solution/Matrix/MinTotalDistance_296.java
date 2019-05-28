@@ -4,15 +4,15 @@ import java.util.*;
 
 /**
  * A 2D grid of values 0 or 1 is given.
- * Find a point that from all 1 to this point, the distance is minimized.
- * The distance is calculated using Manhattan Distance, where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
+ * Find a point that from all 1 to this point, where the total Manhattan distance is minimized.
+ * Manhattan distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
  *
  * @author BorisMirage
  * Time: 2019/05/05 23:07
  * Created with IntelliJ IDEA
  */
 
-public class MinTotalDistance {
+public class MinTotalDistance_296 {
     /**
      * Calculate sum of position in row and column respectively.
      * The way to find a min distance is to find median in row and column to minimize Manhattan distance.
