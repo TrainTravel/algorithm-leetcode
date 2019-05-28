@@ -1,6 +1,5 @@
 package Solution.Matrix;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,7 +20,10 @@ import java.util.Queue;
 
 public class PacificAtlantic_417 {
     /**
-     * Add all points next to edge
+     * Add all points next to edge and find all possible accessed point from edge using BFS.
+     * Use two boolean 2D array to record corresponding visit.
+     * The start point of each BFS is the edge point.
+     * Finally, compare both diagonal visited map, if a point can be accessed in both visit map, then add to result.
      *
      * @param matrix given grid
      * @return all points that could move to diagonal edges
@@ -34,10 +36,8 @@ public class PacificAtlantic_417 {
             return res;
         }
 
-        boolean[][] visitedPacific = new boolean[matrix.length][matrix[0].length];
-        boolean[][] visitedAtlantic = new boolean[matrix.length][matrix[0].length];
-        Queue<int[]> Pacific = new LinkedList<>();
-        Queue<int[]> Atlantic = new LinkedList<>();
+        boolean[][] visitedPacific = new boolean[matrix.length][matrix[0].length], visitedAtlantic = new boolean[matrix.length][matrix[0].length];
+        Queue<int[]> Pacific = new LinkedList<>(), Atlantic = new LinkedList<>();
 
         for (int i = 0; i < matrix.length; i++) {
             Pacific.add(new int[]{i, 0});
@@ -45,7 +45,6 @@ public class PacificAtlantic_417 {
             visitedPacific[i][0] = true;
             visitedAtlantic[i][matrix[0].length - 1] = true;
         }
-
         for (int i = 0; i < matrix[0].length; i++) {
             Pacific.add(new int[]{0, i});
             Atlantic.add(new int[]{matrix.length - 1, i});
@@ -68,7 +67,7 @@ public class PacificAtlantic_417 {
     }
 
     private void bfs(boolean[][] isVisited, int[][] matrix, Queue<int[]> q) {
-        int[] xy = {1, -1, 0, 0, 1, -1, 0, 0};
+        int[] xy = {1, -1, 0, 0, 0, 0, 1, -1};
         while (!q.isEmpty()) {
             int[] c = q.remove();
             int x = c[0];
