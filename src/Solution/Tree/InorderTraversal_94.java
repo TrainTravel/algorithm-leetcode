@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Given a binary tree, return the inorder traversal of its nodes' values.
+ * Given a binary tree, return the in order traversal of its nodes' values.
  *
  * @author BorisMirage
  * Time: 2018/10/02 20:22
@@ -16,10 +16,10 @@ import java.util.Stack;
 
 public class InorderTraversal_94 {
     /**
-     * Simply follow the inorder traversal rule. Use stack to temporary store node during the process.
+     * Simply follow the in order traversal rule. Use stack to temporary store node during the process.
      *
      * @param root root node
-     * @return inorder traversal node value
+     * @return in order traversal node value
      */
     public List<Integer> inorderTraversal(TreeNode root) {
 
