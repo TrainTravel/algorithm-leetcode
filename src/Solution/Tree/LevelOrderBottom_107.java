@@ -15,7 +15,7 @@ import java.util.Queue;
  * Created with IntelliJ IDEA
  */
 
-public class LevelOrderBottom {
+public class LevelOrderBottom_107 {
     /**
      * Use a double linked list to store level. Change order from add to addFirst.
      *
