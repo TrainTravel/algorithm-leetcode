@@ -64,11 +64,13 @@ public class FindLadders_126 {
                         String w = new String(arr);
                         if (wordSet.contains(w)) {
                             nextLayer.add(w);
-                            for (List<String> p : currentPath) {        // iter all possible path
+
+                            /* Iter all possible path and add word to its end */
+                            for (List<String> p : currentPath) {
                                 List<String> nextPath = new LinkedList<>(p);
                                 nextPath.add(w);
-                                m.putIfAbsent(w, new LinkedList<>());
-                                m.get(w).add(nextPath);
+                                m.putIfAbsent(w, new LinkedList<>());       // update key to current word
+                                m.get(w).add(nextPath);                     // add path including current word
                                 if (endWord.equals(w)) {
                                     res.add(nextPath);
                                     found = true;
@@ -77,8 +79,10 @@ public class FindLadders_126 {
                         }
                     }
                 }
-                m.remove(s);
+                m.remove(s);        // remove paths using previous layer's word as key, avoid duplicated paths
             }
+
+            /* Clear current layer and add next layer*/
             layer.clear();
             layer.addAll(nextLayer);
         }
