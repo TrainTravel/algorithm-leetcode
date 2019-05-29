@@ -1,4 +1,4 @@
-package Solution.Matrix;
+package Solution.Search;
 
 import java.util.LinkedList;
 import java.util.List;
