@@ -35,15 +35,15 @@ public class LadderLength_127 {
             return 0;
         }
 
-        Queue<String> temp = new LinkedList<>();
+        Queue<String> layer = new LinkedList<>();
         Set<String> wordSet = new HashSet<>(wordList);
-        temp.add(beginWord);
+        layer.add(beginWord);
 
-        while (!temp.isEmpty()) {
-            int s = temp.size();
+        while (!layer.isEmpty()) {
+            int s = layer.size();
 
             for (int i = 0; i < s; i++) {
-                String current = temp.remove();
+                String current = layer.remove();
 
                 if (current.equals(endWord)) {
                     return result;
@@ -56,7 +56,7 @@ public class LadderLength_127 {
                         String t = new String(arr);
                         if (wordSet.contains(t)) {
 
-                            temp.offer(t);
+                            layer.offer(t);
                             // System.out.println("add!");
                             wordSet.remove(t);
                         }
@@ -66,5 +66,30 @@ public class LadderLength_127 {
             result++;
         }
         return 0;
+    }
+
+    public static void main(String[] args) {
+        String b = "hit";
+        String e = "cog";
+        List<String> l = new LinkedList<>();
+        l.add("hot");
+        l.add("dot");
+        l.add("dog");
+        l.add("lot");
+        l.add("log");
+        l.add("cog");
+
+        LadderLength_127 test = new LadderLength_127();
+        System.out.println(test.ladderLength(b, e, l));
+
+        b = "a";
+        e = "c";
+        l = new LinkedList<>();
+        l.add("a");
+        l.add("b");
+        l.add("c");
+
+        test = new LadderLength_127();
+        System.out.println(test.ladderLength(b, e, l));
     }
 }
