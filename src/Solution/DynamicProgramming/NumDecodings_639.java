@@ -29,7 +29,7 @@ public class NumDecodings_639 {
      */
     public int numDecodings(String s) {
 
-        /* Special case */
+        /* Corner case */
         long[] c = new long[2];     // two stages: i - 2, i - 1; i will replace i - 1 and i - 1 replace i - 2
         c[0] = oneChar(s.charAt(0));
         if (s.length() < 2) {

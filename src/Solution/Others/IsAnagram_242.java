@@ -23,7 +23,7 @@ public class IsAnagram_242 {
 
     public boolean isAnagram(String s, String t) {
 
-        /* Special Case*/
+        /* Corner case*/
         if (s.length() != t.length()) {
             return false;
         }

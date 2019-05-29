@@ -17,7 +17,7 @@ public class Sqrt_69 {
      */
     public int sqrt(int x) {
 
-        /* Special case */
+        /* Corner case */
         if (x == 0) {
             return 0;
         }

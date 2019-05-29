@@ -20,7 +20,7 @@ public class MultiplyString_43 {
      */
     public String multiply(String num1, String num2) {
 
-        /* Special Case */
+        /* Corner case */
         if (num1.charAt(0) == '0' || num2.charAt(0) == '0') {
             return "0";
         }

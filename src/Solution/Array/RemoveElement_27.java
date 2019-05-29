@@ -42,7 +42,7 @@ public class RemoveElement_27 {
      */
     public int removeElement(int[] nums, int val) {
 
-        /* Special case */
+        /* Corner case */
         if (nums.length == 0) {
             return 0;
         }

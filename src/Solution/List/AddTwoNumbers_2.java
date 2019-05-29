@@ -44,7 +44,7 @@ public class AddTwoNumbers_2 {
      */
     public ListNode recursiveAdding(ListNode l1, ListNode l2, int sum) {
 
-        /* Special case and end point */
+        /* Corner case and end point */
         if (l1 == null && l2 == null && sum == 0) {
             return null;
         }

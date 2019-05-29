@@ -33,7 +33,7 @@ public class FindSubstring_30 {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new LinkedList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (s.length() < 1 || words.length == 0) {
             return res;
         }

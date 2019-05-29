@@ -24,7 +24,7 @@ public class UniquePaths_62 {
      */
     public int uniquePaths(int m, int n) {
 
-        /* Special Case */
+        /* Corner case */
         if (m == 0 || n == 0) {
             return 0;
         }

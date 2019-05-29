@@ -22,7 +22,7 @@ public class GroupAnagrams_49 {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> res = new LinkedList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (strs.length == 0) {
             return res;
         }

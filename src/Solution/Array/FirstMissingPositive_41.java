@@ -24,7 +24,7 @@ public class FirstMissingPositive_41 {
      */
     public int firstMissingPositive(int[] nums) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0) {
             return 1;
         }

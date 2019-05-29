@@ -26,7 +26,7 @@ public class Merge_56 {
      */
     public List<Interval> Merge(List<Interval> intervals) {
 
-        /* Special Case */
+        /* Corner case */
         if (intervals.size() < 2) {
             return intervals;
         }

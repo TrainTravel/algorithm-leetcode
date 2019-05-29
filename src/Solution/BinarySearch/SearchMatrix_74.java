@@ -22,7 +22,7 @@ public class SearchMatrix_74 {
      */
     public boolean searchMatrix(int[][] matrix, int target) {
 
-        /* Special Case */
+        /* Corner case */
         if (matrix.length == 0) {
             return false;
         }

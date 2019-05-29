@@ -30,7 +30,7 @@ public class MaxProfit_188 {
             return 0;
         }
 
-        /* Special case: compare between current and previous value in array */
+        /* Corner case: compare between current and previous value in array */
         if (k >= prices.length / 2) {       // k is sufficient for comparing each adjacent value in array
             int max = 0;
             for (int i = 1; i < prices.length; i++) {

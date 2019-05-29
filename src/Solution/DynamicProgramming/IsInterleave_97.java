@@ -30,7 +30,7 @@ public class IsInterleave_97 {
         int l2 = s2.length() + 1;
         int l3 = s3.length() + 1;
 
-        /* Special case */
+        /* Corner case */
         if (l1 + l2 != l3) {
             return false;
         }

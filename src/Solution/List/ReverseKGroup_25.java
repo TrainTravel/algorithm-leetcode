@@ -20,7 +20,7 @@ public class ReverseKGroup_25 {
      */
     public ListNode reverseKGroup(ListNode head, int k) {
 
-        /* Special Case */
+        /* Corner case */
         if (k <= 1 || head == null) {
             return head;
         }

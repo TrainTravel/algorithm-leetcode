@@ -17,7 +17,7 @@ public class MaxSubArray_53 {
      */
     public int maxSubArray(int[] nums) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0) {
             return 0;
         }

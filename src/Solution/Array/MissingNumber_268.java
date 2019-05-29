@@ -25,7 +25,7 @@ public class MissingNumber_268 {
      */
     public int missingNumber(int[] nums) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0) {
             return 0;
         }

@@ -33,7 +33,7 @@ public class Anagram {
     public List<String> findAnagram() {
         List<String> res = new LinkedList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (find.length() < 2) {
             return res;
         }

@@ -20,7 +20,7 @@ public class MergeKLists_23 {
      */
     public ListNode mergeKLists(ListNode[] lists) {
 
-        /* Special case */
+        /* Corner case */
         if (lists.length == 0) {
             return null;
         }

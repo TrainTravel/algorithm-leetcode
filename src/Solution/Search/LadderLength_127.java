@@ -30,7 +30,7 @@ public class LadderLength_127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int result = 1;
 
-        /* Special case */
+        /* Corner case */
         if (wordList.size() == 0 || !wordList.contains(endWord)) {
             return 0;
         }

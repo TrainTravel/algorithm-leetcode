@@ -19,7 +19,7 @@ public class LongestCommonSubstring {
      */
     public String longestCommonSubstring(String strA, String strB) {
 
-        /* Special Case */
+        /* Corner case */
         if (str1.length() == 0 || strB.length() == 0) {
             return strA.length() == 0 ? strA : strB;
         }

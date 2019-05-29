@@ -19,7 +19,7 @@ public class ProductExceptSelf_238 {
      */
     public int[] productExceptSelf(int[] nums) {
 
-        /* Special case */
+        /* Corner case */
         if (nums.length < 1) {
             return nums;
         }

@@ -23,7 +23,7 @@ public class AnagramCheck {
 
     public boolean anagramCheck(String s, String t) {
 
-        /* Special Case*/
+        /* Corner case*/
         if (s.length() != t.length()) {
             return false;
         }

@@ -27,7 +27,7 @@ public class Insert_57 {
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> res = new ArrayList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (intervals.size() == 0) {
             res.add(newInterval);
             return res;

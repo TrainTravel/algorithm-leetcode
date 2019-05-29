@@ -34,7 +34,7 @@ public class Permute_46 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0) {
             return res;
         }

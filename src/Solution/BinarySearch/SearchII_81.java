@@ -23,7 +23,7 @@ public class SearchII_81 {
      */
     public boolean searchII(int[] nums, int target) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0) {
             return false;
         }

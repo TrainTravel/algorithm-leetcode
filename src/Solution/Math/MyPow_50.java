@@ -19,7 +19,7 @@ public class MyPow_50 {
 
     public double myPow(double x, int n) {
 
-        /* Special Case */
+        /* Corner case */
         if (n == 1) {
             return x;
         }

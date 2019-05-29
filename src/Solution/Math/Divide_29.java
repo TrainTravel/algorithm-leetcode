@@ -31,7 +31,7 @@ public class Divide_29 {
             return Integer.MAX_VALUE;
         }
 
-        /* Special Case */
+        /* Corner case */
         if (dividendLong < divisorLong || dividendLong == 0) {
             return 0;
         }

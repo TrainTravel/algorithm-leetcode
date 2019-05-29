@@ -27,7 +27,7 @@ public class LongestValidParentheses_32 {
      */
     public int longestValidParentheses(String s) {
 
-        /* Special Case */
+        /* Corner case */
         if (s.length() < 2) {
             return 0;
         }
@@ -85,7 +85,7 @@ public class LongestValidParentheses_32 {
      */
     public int longestValidParenthesesStack(String s) {
 
-        /* Special Case */
+        /* Corner case */
         if (s.length() < 2) {
             return 0;
         }

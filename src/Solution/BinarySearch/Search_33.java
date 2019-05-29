@@ -26,7 +26,7 @@ public class Search_33 {
      */
     public int search(int[] nums, int target) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length < 1) {
             return -1;
         }

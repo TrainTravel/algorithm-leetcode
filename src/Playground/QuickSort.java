@@ -18,7 +18,7 @@ public class QuickSort {
      */
     public int[] QuickSort(int[] sortArray) {
 
-        /* Special Case */
+        /* Corner case */
         if (sortArray.length == 0 || sortArray.length == 1) {
             return sortArray;
         }
@@ -36,7 +36,7 @@ public class QuickSort {
      */
     public void partition(int leftIndex, int rightIndex) {
 
-        /* Special case and end point for recursion */
+        /* Corner case and end point for recursion */
         if (leftIndex == rightIndex || arr == null) {
             return;
         }

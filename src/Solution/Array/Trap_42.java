@@ -20,7 +20,7 @@ public class Trap_42 {
      */
     public int trap(int[] height) {
 
-        /* Special Case */
+        /* Corner case */
         if (height.length < 3) {
             return 0;
         }

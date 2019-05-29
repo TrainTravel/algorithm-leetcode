@@ -30,7 +30,7 @@ public class MaximalRectangle_85 {
      */
     public int maximalRectangle(char[][] matrix) {
 
-        /* Special Case */
+        /* Corner case */
         if (matrix.length == 0 || matrix[0].length == 0) {
             return 0;
         }

@@ -16,7 +16,7 @@ public class CountAndSay_38 {
      */
     public String countAndSay(int n) {
 
-        /* Special Case */
+        /* Corner case */
         if (n < 2) {
             return "1";
         }

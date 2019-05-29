@@ -18,7 +18,7 @@ public class IsPalindrome_125 {
      */
     public boolean isPalindrome(String s) {
 
-        /* Special case*/
+        /* Corner case*/
         if (s.length() == 0) {
             return true;
         }

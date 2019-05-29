@@ -31,7 +31,7 @@ public class PacificAtlantic_417 {
     public List<int[]> pacificAtlantic(int[][] matrix) {
         List<int[]> res = new LinkedList<>();
 
-        /* Special case */
+        /* Corner case */
         if (matrix.length == 0) {
             return res;
         }

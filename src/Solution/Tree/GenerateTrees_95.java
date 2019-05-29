@@ -34,7 +34,7 @@ public class GenerateTrees_95 {
 
         List<TreeNode> res = new LinkedList<>();
 
-        /* Special Case */
+        /* Corner case */
         if (n == 0) {
             return res;
         }

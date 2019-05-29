@@ -20,7 +20,7 @@ public class SearchInsert_35 {
      */
     public int searchInsert(int[] nums, int target) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length == 0 || target < nums[0]) {
             return 0;
         }

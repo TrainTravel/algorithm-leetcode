@@ -21,7 +21,7 @@ public class StrStr_28 {
      */
     public int strStr(String haystack, String needle) {
 
-        /* Special Case */
+        /* Corner case */
         if (needle.length() == 0) {
             return 0;
         }

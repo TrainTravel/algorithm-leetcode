@@ -29,7 +29,7 @@ public class SwapPairs_24 {
      */
     public ListNode swapPairs(ListNode head) {
 
-        /* Special Case */
+        /* Corner case */
         if (head == null || head.next == null) {
             return head;
         }

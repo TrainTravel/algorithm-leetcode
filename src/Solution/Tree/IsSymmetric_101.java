@@ -19,7 +19,7 @@ public class IsSymmetric_101 {
      */
     public boolean isSymmetric(TreeNode root) {
 
-        /* Special Case */
+        /* Corner case */
         if (root == null) {
             return true;
         }

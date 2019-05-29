@@ -19,7 +19,7 @@ public class NextPermutation_31 {
      */
     public void nextPermutation(int[] nums) {
 
-        /* Special Case */
+        /* Corner case */
         if (nums.length <= 1) {
             return;
         }
