@@ -29,15 +29,15 @@ public class DepthSum_339 {
 
         int sum = 0;
         int level = 1;
-        return sumHelper(nestedList, sum, level);
+        return sum(nestedList, sum, level);
     }
 
-    private int sumHelper(List<NestedInteger> nestedList, int sum, int level) {
+    private int sum(List<NestedInteger> nestedList, int sum, int level) {
         for (NestedInteger i : nestedList) {
             if (i.isInteger()) {
                 sum += level * i.getInteger();
             } else {
-                sum = sumHelper(i.getList(), sum, level + 1);
+                sum = sum(i.getList(), sum, level + 1);
             }
         }
         return sum;
