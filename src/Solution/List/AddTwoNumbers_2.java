@@ -40,7 +40,7 @@ public class AddTwoNumbers_2 {
      * @param l1  first node
      * @param l2  second node
      * @param sum previous sum
-     * @return
+     * @return sum of two nodes
      */
     public ListNode recursiveAdding(ListNode l1, ListNode l2, int sum) {
 
