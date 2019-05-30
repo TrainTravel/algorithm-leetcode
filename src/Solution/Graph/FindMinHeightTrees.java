@@ -22,8 +22,18 @@ import java.util.*;
  */
 
 public class FindMinHeightTrees {
+    /**
+     * Find leaf node and remove all leafs, since leaf can not be the root node of MHT.
+     * Keep find and remove leaf until there are less than 3 nodes in the tree (2 or 1).
+     *
+     * @param n     number of nodes
+     * @param edges all edges in the tree
+     * @return list of MHT root
+     */
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> result = new LinkedList<>();
+
+        /* Corner case */
         if (n < 3) {
             for (int i = 0; i < n; i++) {
                 result.add(i);
@@ -31,33 +41,42 @@ public class FindMinHeightTrees {
             return result;
         }
 
-        HashMap<Integer, Set<Integer>> m = new HashMap<>();
-        for (int[] edge : edges) {
-            m.putIfAbsent(edge[0], new HashSet<>());
-            m.putIfAbsent(edge[1], new HashSet<>());
-            m.get(edge[0]).add(edge[1]);
-            m.get(edge[1]).add(edge[0]);
-
+        int[] degree = new int[n];
+        List<List<Integer>> graph = new ArrayList<>();      // save connections between vertex
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
         }
 
-        while (m.size() > 2) {
-            Set<Integer> leaf = new HashSet<>();
-            for (Integer integer : m.keySet()) {
-                if (m.get(integer).size() < 2) {
-                    leaf.add(integer);
+        for (int[] e : edges) {
+            graph.get(e[0]).add(e[1]);      // add connection
+            graph.get(e[1]).add(e[0]);      // add connection
+            degree[e[0]]++;
+            degree[e[1]]++;
+        }
+
+        Queue<Integer> leaf = new LinkedList<>();
+
+        for (int i = 0; i < n; i++) {
+            if (degree[i] == 1) {
+                leaf.add(i);        // Add leaf
+            }
+        }
+        while (!leaf.isEmpty()) {
+            int size = leaf.size();
+            result = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                int l = leaf.remove();      // get leaf node
+                result.add(l);      // root of MHT must be a final layer of leaf
+                degree[l]--;
+                for (int j = 0; j < graph.get(l).size(); j++) {
+                    int next = graph.get(l).get(j);     // find leaf's connection
+                    if (degree[next] == 2) {
+                        leaf.add(next);     // if leaf connect to node has only one connection, then it is next leaf
+                    }
+                    degree[next]--;
                 }
             }
-
-            for (Integer integer : leaf) {
-                m.remove(integer);
-            }
-            for (Integer i : m.keySet()) {
-                m.get(i).removeAll(leaf);
-            }
         }
-
-        result.addAll(m.keySet());
-//        System.out.println(m);
 
         return result;
     }
@@ -66,5 +85,7 @@ public class FindMinHeightTrees {
         FindMinHeightTrees test = new FindMinHeightTrees();
         int[][] arr = {{0, 1}, {6, 1}, {7, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 8}};
         System.out.println(test.findMinHeightTrees(9, arr));
+        arr = new int[][]{{0, 1}, {6, 1}, {7, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}};
+        System.out.println(test.findMinHeightTrees(8, arr));
     }
 }
