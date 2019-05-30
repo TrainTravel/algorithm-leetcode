@@ -22,6 +22,12 @@ import java.util.*;
 public class FindLadders_126 {
     /**
      * Save each path while completing BFS using hash map.
+     * Three Hash Sets are using in this solution:
+     * 1. wordSet: save available words for next BFS search
+     * 2. layer: save current layer words, update before each BFS search loop
+     * 3. nextLayer: save current layer words, update in each BFS search loop
+     * One Hash Map to store all possible path. Key is newest added word in path, value are all paths to this word.
+     * Therefore, after each single word BFS, all old path based on this word should be removed to avoid repeated path.
      *
      * @param beginWord begin word
      * @param endWord   target word
@@ -38,7 +44,7 @@ public class FindLadders_126 {
         }
 
         /* First layer */
-        Set<String> layer = new HashSet<>();
+        Set<String> layer = new HashSet<>();        // save current layer words
         layer.add(beginWord);
 
         /* First path */
@@ -48,11 +54,11 @@ public class FindLadders_126 {
         m.put(beginWord, new LinkedList<>());
         m.get(beginWord).add(path);
 
-        boolean found = false;
+        boolean found = false;      // if endWord is reached, terminate searching loop
 
         while (!layer.isEmpty() && !wordSet.isEmpty() && !found) {
-            wordSet.removeAll(layer);       // avoid duplicate words
-            Set<String> nextLayer = new HashSet<>();
+            wordSet.removeAll(layer);       // avoid repeated words
+            Set<String> nextLayer = new HashSet<>();        // save next layer words
             for (String s : layer) {
                 List<List<String>> currentPath = m.get(s);      // path based on current word
 
@@ -79,7 +85,7 @@ public class FindLadders_126 {
                         }
                     }
                 }
-                m.remove(s);        // remove paths using previous layer's word as key, avoid duplicated paths
+                m.remove(s);        // remove paths using previous layer's word as key, avoid repeated paths
             }
 
             /* Clear current layer and add next layer*/
