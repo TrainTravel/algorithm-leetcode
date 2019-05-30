@@ -21,7 +21,7 @@ import java.util.*;
  * Created with IntelliJ IDEA
  */
 
-public class FindMinHeightTrees {
+public class FindMinHeightTrees_310 {
     /**
      * Find leaf node and remove all leafs, since leaf can not be the root node of MHT.
      * Keep find and remove leaf until there are less than 3 nodes in the tree (2 or 1).
@@ -82,7 +82,7 @@ public class FindMinHeightTrees {
     }
 
     public static void main(String[] args) {
-        FindMinHeightTrees test = new FindMinHeightTrees();
+        FindMinHeightTrees_310 test = new FindMinHeightTrees_310();
         int[][] arr = {{0, 1}, {6, 1}, {7, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 8}};
         System.out.println(test.findMinHeightTrees(9, arr));
         arr = new int[][]{{0, 1}, {6, 1}, {7, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}};
