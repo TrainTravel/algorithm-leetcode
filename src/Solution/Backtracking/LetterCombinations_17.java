@@ -1,9 +1,13 @@
 package Solution.Backtracking;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Given a string containing digits from 2-9 inclusive.
+ * Return all possible letter combinations that the number could represent.
+ * The combination has same length as the digit length.
+ *
  * @author BorisMirage
  * Time: 2018/06/06 18:29
  * Created with IntelliJ IDEA
@@ -11,54 +15,45 @@ import java.util.List;
 
 public class LetterCombinations_17 {
     /**
-     * Given a string containing digits from 2-9 inclusive.
-     * Return all possible letter combinations that the number could represent.
-     * The combination has same length as the digit length
+     * Backtracking.
      *
      * @param digits input digits
      * @return string array list that contains all possible combinations
      */
     public List<String> letterCombinations(String digits) {
-        ArrayList<String> result = new ArrayList<String>();
+        List<String> output = new LinkedList<>();
 
-        if (digits.equals("")) {
-            return result;
+        /* Corner case */
+        if (digits.length() == 0) {
+            return output;
+        }
+        for (int i = 0; i < digits.length(); i++) {
+            if (digits.charAt(i) - '0' < 2) {
+                return output;
+            }
         }
 
-        /* First time calling function, the combination string is empty. */
-        findCombination(digits, result, "");
-
-        return result;
+        backtracking(digits, output, "");
+        return output;
     }
 
     /**
      * Recursively find all combinations of digit letters.
      *
-     * @param digit  input digit
-     * @param result each step's result
-     * @param s      each step's combination string
+     * @param digit   input digit
+     * @param output  each step's result
+     * @param current each step's combination string
      */
-    public void findCombination(String digit, ArrayList<String> result, String s) {
+    private void backtracking(String digit, List<String> output, String current) {
+        String[] keymap = new String[]{" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        if (digit.length() == current.length()) {
+            output.add(current);
+        } else {
+            String letters = keymap[digit.charAt(current.length()) - '0'];
 
-        /* Each key's representation */
-        String[] keyboardMap = new String[]{" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-
-        /* Ending point for this recursion */
-        if (s.length() == digit.length()) {
-            result.add(s);
-            return;
-        }
-
-        /* Current string array item that is represented to the digit
-         *  char - '0': to convert char digit to int digit, therefore to find letters in key array */
-        String digitChar = keyboardMap[digit.charAt(s.length()) - '0'];
-
-        /* Traverse every char in key array item */
-        for (int i = 0; i < digitChar.length(); i++) {
-
-            /* Each recursion will include one more char from key item,
-               until combination length is equal to digit length */
-            findCombination(digit, result, s + digitChar.charAt(i));
+            for (int i = 0; i < letters.length(); i++) {
+                backtracking(digit, output, current + letters.charAt(i));
+            }
         }
     }
 }
