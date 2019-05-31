@@ -13,36 +13,35 @@ import java.util.List;
 
 public class Combine_77 {
     /**
-     * This problem can be solved in backtracking method.
-     * However, there is another approach that can solve this problem in a faster way.
-     * This is based on C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
-     * The problem itself is C(n, k), hence, break this problem into C(n - 1, k - 1) + C(n - 1, k), which is recursion.
+     * Two approaches. First approach is using backtracking.
+     * The other approach is to use the property of combination.
+     * Using combination based on recursion is faster, where C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
      *
-     * @param n set from 1 to n
+     * @param n n numbers could be in combination, from 1 to n
      * @param k each combination length
      * @return List contains all combinations
      */
     public List<List<Integer>> combine(int n, int k) {
 
-        /* C(n, k) = C(n - 1, k - 1) + C(n - 1, k) */
-        List<List<Integer>> res = new LinkedList<>();
-        if (n < k || k == 0) {
-            return res;
+        List<List<Integer>> output = new LinkedList<>();
+
+        /* Corner case */
+        if (k == 0 || n < k) {      // C(n, k), n must be equal or larger than k, and k should be larger then 0
+            return output;          // also, recursion ends here
         }
 
-        /* C(n - 1, k - 1) */
-        res = combine(n - 1, k - 1);
+        output = combine(n - 1, k - 1);     // C(n - 1, k - 1)
 
-        /* Add int to list in each sub problem */
-        if (res.isEmpty()) {
-            res.add(new LinkedList<>());
+        if (output.isEmpty()) {
+            output.add(new LinkedList<>());     // add combination list during recursion
         }
-        for (List<Integer> list : res) {
+
+        for (List<Integer> list : output) {
             list.add(n);
         }
 
-        /* C(n - 1, k) */
-        res.addAll(combine(n - 1, k));
-        return res;
+        output.addAll(combine(n - 1, k));       // the other part, C(n - 1, k)
+
+        return output;
     }
 }
