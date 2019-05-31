@@ -18,7 +18,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class CombinationSum2 {
+public class CombinationSum2_40 {
     /**
      * Use backtracking to find all combinations via traversing all elements in candidate array.
      *
@@ -74,7 +74,7 @@ public class CombinationSum2 {
     public static void main(String[] args) {
 
         /* Combination Sum 2 */
-        CombinationSum2 combinationSum2Test = new CombinationSum2();
+        CombinationSum2_40 combinationSum2Test = new CombinationSum2_40();
         int[] candidate = {10, 1, 2, 7, 6, 1, 5};
         System.out.println(combinationSum2Test.combinationSum2(candidate, 8));
         candidate = new int[]{2, 5, 2, 1, 2};
