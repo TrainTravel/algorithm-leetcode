@@ -29,7 +29,7 @@ public class LetterCombinations_17 {
         }
         for (int i = 0; i < digits.length(); i++) {
             if (digits.charAt(i) - '0' < 2) {
-                return output;
+                return output;      // no possible letter combinations when '1' or '0' exists
             }
         }
 
