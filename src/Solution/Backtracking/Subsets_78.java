@@ -9,19 +9,6 @@ import java.util.List;
  * Given a array of distinct integers.
  * Return all possible subsets (the power set).
  * Note: The solution set must not contain duplicate subsets.
- * Example:
- * Input: nums = [1,2,3]
- * Output:
- * [
- * [3],
- * [1],
- * [2],
- * [1,2,3],
- * [1,3],
- * [2,3],
- * [1,2],
- * []
- * ]
  *
  * @author BorisMirage
  * Time: 2018/08/09 13:44
@@ -30,32 +17,39 @@ import java.util.List;
 
 public class Subsets_78 {
     /**
-     * Use backtracking.
+     * Backtracking.
      *
      * @param nums input int array
      * @return List that contains all subsets
      */
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
-        Arrays.sort(nums);
-        backtracking(res, new ArrayList<>(), nums, 0);
-        return res;
+        List<List<Integer>> output = new LinkedList<>();
+
+        if (nums.length == 0) {
+            return output;
+        }
+
+        Arrays.sort(nums);      // avoid duplication
+        backtracking(output, new LinkedList<>(), nums, 0);
+        return output;
     }
 
     /**
      * Basic backtracking.
+     * Each iteration starts at next int from previous iteration.
      *
-     * @param res  output List
-     * @param temp temp List
-     * @param nums int array
-     * @param k    each recursion start position
+     * @param output output list
+     * @param temp   temp list
+     * @param nums   int array
+     * @param k      each recursion start position
      */
-    private void backtracking(List<List<Integer>> res, List<Integer> temp, int[] nums, int k) {
-        res.add(new ArrayList<>(temp));
+    private void backtracking(List<List<Integer>> output, List<Integer> temp, int[] nums, int k) {
+        output.add(new ArrayList<>(temp));     // every subset should be added to final result
         for (int i = k; i < nums.length; i++) {
             temp.add(nums[i]);
-            backtracking(res, temp, nums, i + 1);
-            temp.remove(temp.size() - 1);
+            backtracking(output, temp, nums, i + 1);
+            temp.remove(temp.size() - 1);       // avoid duplication
+
         }
     }
 
