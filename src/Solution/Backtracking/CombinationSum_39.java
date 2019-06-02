@@ -10,8 +10,8 @@ import java.util.List;
  * Find all unique combinations in candidates where the candidate numbers sums to target.
  * The same repeated number may be chosen from candidates unlimited number of times.
  * Note:
- * All numbers (including target) will be positive integers.
- * The solution set must not contain duplicate combinations.
+ * 1. All numbers (including target) will be positive integers.
+ * 2. The solution set must not contain duplicate combinations.
  *
  * @author BorisMirage
  * Time: 2018/06/22 21:56
@@ -29,8 +29,14 @@ public class CombinationSum_39 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
 
+        /* Corner case */
+        if (candidates.length < 1) {
+            return res;
+        }
+
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
+
         backtracking(res, new ArrayList<>(), candidates, target, 0);
         return res;
     }
@@ -38,32 +44,24 @@ public class CombinationSum_39 {
     /**
      * Backtracking to find all combination that the sum is target.
      *
-     * @param result     result output array list
+     * @param result     result array list
      * @param temp       temp array list, if combination is found it will be added to result
      * @param candidates input candidates
      * @param remain     current input int, compare to target to check whether current combination correct
-     * @param start      traverse start position in array
+     * @param start      start position in array for current traversal
      */
     private void backtracking(List<List<Integer>> result, List<Integer> temp, int[] candidates, int remain, int start) {
 
-        /* Current sum is not larger than target */
-        if (remain >= 0) {
+        if (remain == 0) {
+            result.add(new ArrayList<>(temp));
+        }
+        if (remain > -1) {       // if remain < 0, then current int can not be the result
 
-            /* If current sum is 0, add temp list into result as current combination is current answer */
-            if (remain == 0) {
-                result.add(new ArrayList<>(temp));
-            } else {
-
-                /* If current sum is smaller than target, traverse all elements in array include candidates[i] itself */
-                for (int i = start; i < candidates.length; i++) {
-
-                    /* Add current candidate to temp list */
-                    temp.add(candidates[i]);
-                    backtracking(result, temp, candidates, remain - candidates[i], i);
-
-                    /* If current sum is larger than target, remove last element */
-                    temp.remove(temp.size() - 1);
-                }
+            /* Iter rest elements in array */
+            for (int i = start; i < candidates.length; i++) {
+                temp.add(candidates[i]);
+                backtracking(result, temp, candidates, remain - candidates[i], i);
+                temp.remove(temp.size() - 1);      // if it is not a possible combination, remove and continue
             }
         }
     }
