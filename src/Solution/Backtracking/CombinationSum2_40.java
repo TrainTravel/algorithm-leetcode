@@ -2,7 +2,6 @@ package Solution.Backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -27,7 +26,11 @@ public class CombinationSum2_40 {
      * @return result int list
      */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> res = new LinkedList<>();
+        List<List<Integer>> res = new ArrayList<>();
+
+        if (candidates.length < 1) {
+            return res;
+        }
 
         /* Sort array to avoid duplication and use backtracking to find all combinations */
         Arrays.sort(candidates);
@@ -39,30 +42,22 @@ public class CombinationSum2_40 {
     /**
      * Backtracking to find all combination that the sum is target.
      *
-     * @param result     result output array list
+     * @param result     result array list
      * @param temp       temp array list, if combination is found it will be added to result
      * @param candidates input candidates
      * @param remain     current input int, compare to target to check whether current combination correct
-     * @param start      traverse start position in array
+     * @param start      start position in array for current traversal
      */
     private void backtracking(List<List<Integer>> result, List<Integer> temp, int[] candidates, int remain, int start) {
 
-        /* Current sum is not larger than target */
-        if (remain >= 0) {
+        if (remain == 0) {
+            result.add(new ArrayList<>(temp));      // end point
+        }
+        if (remain > -1) {
+            for (int i = start; i < candidates.length; i++) {
 
-            /* If current sum is 0, add temp list into result as current combination is current answer */
-            if (remain == 0) {
-                result.add(new ArrayList<>(temp));
-            } else {
-
-                /* Same recursion as CombinationSum_39 except one more step to avoid duplicate */
-                for (int i = start; i < candidates.length; i++) {
-
-                    /* Remove duplicate elements in output */
-                    if (i > start && candidates[i] == candidates[i - 1]) {
-                        continue;
-                    }
-
+                /* Remove duplicate elements in output */
+                if (i == start || candidates[i] != candidates[i - 1]) {
                     temp.add(candidates[i]);
                     backtracking(result, temp, candidates, remain - candidates[i], i + 1);
                     temp.remove(temp.size() - 1);
