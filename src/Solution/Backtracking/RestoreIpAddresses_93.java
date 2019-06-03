@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
