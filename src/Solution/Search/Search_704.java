@@ -28,7 +28,7 @@ public class Search_704 {
         int l = 0, r = nums.length - 1;
 
         while (l <= r) {
-            int m = (l + r) / 2;
+            int m = (l + r) >>> 1;      //  right shift 1 bit, equals divide 2
             if (target == nums[m]) {
                 return m;
             } else if (target > nums[m]) {
@@ -39,5 +39,4 @@ public class Search_704 {
         }
         return -1;
     }
-
 }
