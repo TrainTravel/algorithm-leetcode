@@ -1,4 +1,4 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.TreeNode;
 
@@ -14,7 +14,7 @@ import Lib.TreeNode;
 
 public class HasPathSum_112 {
     /**
-     * Tree traversal.
+     * DFS Tree traversal.
      *
      * @param root root node
      * @param sum  given sum

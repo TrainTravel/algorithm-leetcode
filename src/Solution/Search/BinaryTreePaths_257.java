@@ -13,7 +13,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class BinaryTreePaths {
+public class BinaryTreePaths_257 {
     /**
      * DFS.
      *

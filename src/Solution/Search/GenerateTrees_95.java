@@ -1,4 +1,4 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.TreeNode;
 
@@ -42,6 +42,13 @@ public class GenerateTrees_95 {
         return generate(1, n);
     }
 
+    /**
+     * Generate BST.
+     *
+     * @param start start int
+     * @param end   end int
+     * @return generate all structurally unique BST
+     */
     private List<TreeNode> generate(int start, int end) {
         List<TreeNode> out = new LinkedList<>();
 

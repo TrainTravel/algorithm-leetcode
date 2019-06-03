@@ -1,4 +1,4 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.NestedInteger;
 

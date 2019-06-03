@@ -1,7 +1,6 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.Node;
-
 
 /**
  * Given a binary tree (not perfect).
@@ -16,6 +15,7 @@ import Lib.Node;
 
 public class Connect_117 {
     /**
+     * BFS.
      * Use a Node to store previous node, link to next node.
      * Use a Node to store the next layer's head node for iteration.
      *

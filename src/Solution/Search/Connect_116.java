@@ -1,4 +1,4 @@
-package Solution.Tree;
+package Solution.Search;
 
 import Lib.Node;
 
@@ -14,10 +14,9 @@ import Lib.Node;
  * Populate each next pointer to point to its next right node.
  * If there is no next right node, the next pointer should be set to NULL.
  * Initially, all next pointers are set to NULL.
- * <p>
  * Note:
- * You may only use constant extra space.
- * Recursive approach is fine, implicit stack space does not count as extra space for this problem.
+ * 1. You may only use constant extra space.
+ * 2. Recursive approach is fine, implicit stack space does not count as extra space for this problem.
  *
  * @author BorisMirage
  * Time: 2019/04/28 17:34
@@ -26,6 +25,7 @@ import Lib.Node;
 
 public class Connect_116 {
     /**
+     * BFS.
      * It is a perfect binary tree. Hence, simply point next layer's sub node to its right node.
      * left sub node -> right sub node
      * right sub node -> next left sub node
