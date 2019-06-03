@@ -19,24 +19,27 @@ public class RestoreIpAddresses_93 {
      * @return all valid ip
      */
     public List<String> restoreIpAddresses(String s) {
-        List<String> res = new ArrayList<>();
+        List<String> output = new ArrayList<>();
 
-        /* 3 loops as 3 "dot" in ip address */
+        /* Corner case */
+        if (s.length() < 4) {
+            return output;
+        }
+
         for (int i = 1; i < 4 && i < s.length() - 2; i++) {
             for (int j = i + 1; j < i + 4 && j < s.length() - 1; j++) {
                 for (int k = j + 1; k < j + 4 && k < s.length(); k++) {
 
-                    /* Make up ip by four segments */
+                    /* Divide to segments as IP parts */
                     String s1 = s.substring(0, i), s2 = s.substring(i, j), s3 = s.substring(j, k), s4 = s.substring(k);
-
-                    /* Check Validity */
                     if (isValid(s1) && isValid(s2) && isValid(s3) && isValid(s4)) {
-                        res.add(s1 + "." + s2 + "." + s3 + "." + s4);
+                        output.add(s1 + "." + s2 + "." + s3 + "." + s4);
                     }
                 }
             }
         }
-        return res;
+
+        return output;
     }
 
     /**
@@ -49,6 +52,11 @@ public class RestoreIpAddresses_93 {
      * @return if given string is valid ip part
      */
     private boolean isValid(String s) {
-        return s.length() > 0 && s.length() < 4 && (s.charAt(0) != '0' || s.length() < 2) && Integer.parseInt(s) < 256;
+        return s.length() < 4 && (s.charAt(0) != '0' || s.length() < 2) && Integer.parseInt(s) < 256;
+    }
+
+    public static void main(String[] args) {
+        RestoreIpAddresses_93 test = new RestoreIpAddresses_93();
+        System.out.println(test.restoreIpAddresses("25525511135"));
     }
 }

@@ -28,7 +28,7 @@ import java.util.List;
 
 public class SubsetsWithDup_90 {
     /**
-     * Use backtracking.
+     * Backtracking.
      *
      * @param nums input int array
      * @return List that contains all subsets
@@ -53,12 +53,15 @@ public class SubsetsWithDup_90 {
         for (int i = k; i < nums.length; i++) {
 
             /* Avoid output duplication */
-            if (i > k && nums[i] == nums[i - 1]) {
-                continue;
+//            if (i > k && nums[i] == nums[i - 1]) {
+//                continue;
+//            }
+
+            if (i <= k || nums[i] != nums[i - 1]) {     // avoid duplicate subsets
+                temp.add(nums[i]);
+                backtracking(res, temp, nums, i + 1);
+                temp.remove(temp.size() - 1);
             }
-            temp.add(nums[i]);
-            backtracking(res, temp, nums, i + 1);
-            temp.remove(temp.size() - 1);
         }
     }
 }
