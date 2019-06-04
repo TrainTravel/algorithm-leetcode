@@ -25,7 +25,6 @@ public class IsValid_20 {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
 
-        /* Every char in s */
         for (char c : s.toCharArray()) {
             if (c == '(')
                 stack.push(')');
@@ -33,7 +32,7 @@ public class IsValid_20 {
                 stack.push('}');
             else if (c == '[')
                 stack.push(']');
-            else if (stack.isEmpty() || stack.pop() != c)
+            else if (stack.isEmpty() || stack.pop() != c)       // open brackets must be closed by same type of it
                 return false;
         }
         return stack.isEmpty();
