@@ -2,7 +2,7 @@ package Solution.Search;
 
 import Lib.TreeNode;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,15 +18,15 @@ public class PathSum_113 {
      * DFS.
      *
      * @param root root tree node
-     * @param sum given sum
+     * @param sum  given sum
      * @return all root-to-leaf paths where each path's sum equals the given sum
      */
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        List<List<Integer>> res = new LinkedList<>();
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
             return res;
         }
-        dfs(root, sum, res, new LinkedList<>());
+        dfs(root, sum, res, new ArrayList<>());
 
         return res;
     }
@@ -39,14 +39,14 @@ public class PathSum_113 {
      * @param sum   required sum
      * @param res   path list
      * @param cache temporary path list
-     * @return
+     * @return all root-to-leaf paths sum equals the given sum
      */
     private List<List<Integer>> dfs(TreeNode r, int sum, List<List<Integer>> res, List<Integer> cache) {
 
         cache.add(r.val);
 
         if (r.left == null && r.right == null && r.val == sum) {
-            res.add(new LinkedList<>(cache));
+            res.add(new ArrayList<>(cache));
 
         } else {
             if (r.left != null) {
@@ -60,7 +60,6 @@ public class PathSum_113 {
         cache.remove(cache.size() - 1);
 
         return res;
-
     }
 
 
