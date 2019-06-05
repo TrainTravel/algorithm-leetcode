@@ -24,7 +24,7 @@ import java.util.Set;
  * Created with IntelliJ IDEA
  */
 
-public class CleanRoom {
+public class CleanRoom_489 {
     /**
      * DFS searching, move until not reachable and
      * The way this robot works is that it will move in one direction unless call the turnRight()/turnLeft() to turn.
