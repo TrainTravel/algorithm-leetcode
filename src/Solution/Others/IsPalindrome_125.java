@@ -1,7 +1,7 @@
 package Solution.Others;
 
 /**
- * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+ * Determine if a string is a palindrome, considering only alphanumeric characters and ignoring cases.
  * Empty string considered as palindrome string.
  *
  * @author BorisMirage
