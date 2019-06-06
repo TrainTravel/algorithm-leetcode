@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * Given two binary trees, write a function to check if they are the same or not.

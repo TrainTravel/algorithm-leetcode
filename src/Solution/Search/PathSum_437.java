@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * You are given a binary tree in which each node contains an integer value.

@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * Two random elements of a binary search tree (BST) are swapped by mistake.

@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * Given a tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree.

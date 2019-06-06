@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 import java.util.HashSet;
 import java.util.Set;

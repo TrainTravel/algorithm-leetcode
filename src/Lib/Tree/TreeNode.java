@@ -1,4 +1,4 @@
-package Lib;
+package Lib.Tree;
 
 /**
  * TreeNode structure

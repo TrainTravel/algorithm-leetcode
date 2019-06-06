@@ -1,6 +1,6 @@
 package Solution.Search;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * Give a binary tree, return maximum sum that each element made up it has no connection to any other elements in it.

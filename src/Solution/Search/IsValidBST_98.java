@@ -1,7 +1,7 @@
 package Solution.Search;
 
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 /**
  * Given a binary tree, determine if it is a valid binary search tree (BST).
