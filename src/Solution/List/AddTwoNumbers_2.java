@@ -3,7 +3,7 @@ package Solution.List;
 import Lib.ListNode;
 
 /**
- * You are given two non-empty linked lists representing two non-negative integers.
+ * Two non-empty linked lists are given to represent two non-negative integers.
  * The digits are stored in reverse order and each of their nodes contain a single digit.
  * Add the two numbers and return it as a linked list.
  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
@@ -17,40 +17,41 @@ import Lib.ListNode;
 public class AddTwoNumbers_2 {
 
     /**
-     * Sum two nodes and return the sum node. Until List is empty
+     * Sum two nodes and return the sum node until List is empty.
      *
      * @param l1 first int contains in ListNode
      * @param l2 second int contains in ListNode
      * @return result in ListNode
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return recursiveAdding(l1, l2, 0);
+        return helper(l1, l2, 0);
     }
 
     /**
-     * Recursively add nodes until reach the end of list.
+     * Add non-empty nodes recursively until all nodes in two lists are reached.
+     * Use a int to save carry for next calculation.
      *
-     * @param l1  first node
-     * @param l2  second node
-     * @param sum previous sum
+     * @param n1    first node
+     * @param n2    second node
+     * @param carry carry from previous sum
      * @return sum of two nodes
      */
-    public ListNode recursiveAdding(ListNode l1, ListNode l2, int sum) {
+    public ListNode helper(ListNode n1, ListNode n2, int carry) {
 
         /* Corner case and end point */
-        if (l1 == null && l2 == null && sum == 0) {
+        if (n1 == null && n2 == null && carry == 0) {
             return null;
         }
 
-        if (l1 != null) {
-            sum += l1.val;
+        if (n1 != null) {
+            carry += n1.val;
         }
-        if (l2 != null) {
-            sum += l2.val;
+        if (n2 != null) {
+            carry += n2.val;
         }
 
-        ListNode current = new ListNode(sum % 10);
-        current.next = recursiveAdding(l1 == null ? null : l1.next, l2 == null ? null : l2.next, sum / 10);
+        ListNode current = new ListNode(carry % 10);        // create a node to store this digit
+        current.next = helper(n1 == null ? null : n1.next, n2 == null ? null : n2.next, carry / 10);
         return current;
     }
 }
