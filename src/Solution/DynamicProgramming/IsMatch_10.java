@@ -1,5 +1,7 @@
 package Solution.DynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
  * '.' Matches any single character.
@@ -60,9 +62,9 @@ public class IsMatch_10 {
             }
         }
 
-//        for (boolean[] booleans : dp) {
-//            System.out.println(Arrays.toString(booleans));
-//        }
+        for (boolean[] booleans : dp) {
+            System.out.println(Arrays.toString(booleans));
+        }
         return dp[s.length()][p.length()];
     }
 
