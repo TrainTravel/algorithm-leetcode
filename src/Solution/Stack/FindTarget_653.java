@@ -1,6 +1,6 @@
 package Solution.Stack;
 
-import Lib.TreeNode;
+import Lib.Tree.TreeNode;
 
 import java.util.Stack;
 

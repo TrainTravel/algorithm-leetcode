@@ -7,6 +7,6 @@ package Lib.Cache;
 public class Cache {
     public int key;     // cache key
     public int val;     // value store in cache
-    public Cache previous;      // previous cache block
-    public Cache next;          // next cache block
+    public Cache previous;      // previous cache block pointer
+    public Cache next;          // next cache block pointer
 }
