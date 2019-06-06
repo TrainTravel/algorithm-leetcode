@@ -1,5 +1,7 @@
 package Solution.DynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
  * '?' Matches any single character.
@@ -16,7 +18,11 @@ package Solution.DynamicProgramming;
 
 public class IsMatch_44 {
     /**
-     * Dynamic programming.
+     * Dynamic programming with 2D table.
+     * Conditions:
+     * if (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') ->  dp[i + 1][j + 1] = dp[i][j]
+     * if (p.charAt(j) == '*'): since '*' can match empty string, then directly fill dp[i + 1][j] || dp[i][j + 1]
+     * If either condition is satisfied, return false.
      *
      * @param s string
      * @param p pattern string
@@ -24,25 +30,36 @@ public class IsMatch_44 {
      */
     public boolean isMatch(String s, String p) {
 
-        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
-        dp[0][0] = true;
-
-        for (int i = 1; i < dp[0].length; i++) {
-            if (p.charAt(i - 1) == '*')
-                dp[0][i] = true;
-            else
-                break;
+        /* Corner case */
+        if (s == null || p == null) {
+            return false;
         }
 
-        for (int i = 1; i < dp.length; i++) {
-            for (int j = 1; j < dp[0].length; j++) {
-                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else if (p.charAt(j - 1) == '*') {
-                    dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+        dp[0][0] = true;        // empty string matches empty string
+
+        for (int i = 0; i < p.length(); i++) {
+            if (p.charAt(i) == '*') {        // only p contains '.' or '*'
+                dp[0][i + 1] = true;        // '*' can match empty string
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < p.length(); j++) {
+                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') {
+                    dp[i + 1][j + 1] = dp[i][j];
+                }
+                if (p.charAt(j) == '*') {
+                    dp[i + 1][j + 1] = dp[i + 1][j] || dp[i][j + 1];
                 }
             }
         }
+//        for (boolean[] booleans : dp) {
+//
+//            System.out.println(Arrays.toString(booleans));
+//        }
 
         return dp[s.length()][p.length()];
     }
@@ -52,6 +69,7 @@ public class IsMatch_44 {
         System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
         System.out.println(isMatchTest.isMatch("adceb", "*a*b"));
         System.out.println(isMatchTest.isMatch("acdcb", "a*c?b"));
+        System.out.println(isMatchTest.isMatch("aa", "*a"));
 
     }
 }
