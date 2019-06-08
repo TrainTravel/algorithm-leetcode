@@ -58,7 +58,7 @@ public class CanWin_294 {
                 arr[i] = '+';
                 arr[i - 1] = '+';
 
-                if (!b) {         // current string contains one "++" and rest of string can not win
+                if (!b) {         // if next player lose then current player wins
                     return true;  // then current player wins
                 }
             }
