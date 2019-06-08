@@ -52,39 +52,48 @@ public class CanIWin_464 {
      * @return if the first player to move can force a win
      */
     private boolean backtracking(int max, boolean[] chosen, int currentTotal) {
-        if (currentTotal <= 0) {
+
+        if (currentTotal <= 0) {        // previous step has won
             return false;
         }
 
         int current = transfer(chosen);
         if (m.containsKey(current)) {
-            return m.get(current);
+            return m.get(current);      // reuse previous result to reduce time
         }
 
         for (int i = 1; i < max; i++) {
-            if (!chosen[i]) {
+
+            if (!chosen[i]) {       // choose a new number for result tree
                 chosen[i] = true;
 
+                /* If next player lose, then current player wins */
                 if (!backtracking(max, chosen, currentTotal - i)) {
                     m.put(current, true);
-                    chosen[i] = false;
-                    return true;
+                    chosen[i] = false;      // flip back to previous situation for next iteration
+                    return true;            // only one winning situation will suffice
                 }
-                chosen[i] = false;
+                chosen[i] = false;      // flip back to previous situation for next iteration
             }
         }
-        m.put(current, false);
+        m.put(current, false);      // no winning situation for current player
 
         return false;
     }
 
 
+    /**
+     * Regard bit array as a integer and transfer it.
+     *
+     * @param arr given boolean array
+     * @return integer that this array representing
+     */
     private int transfer(boolean[] arr) {
         int num = 0;
         for (boolean x : arr) {
-            num <<= 1;
+            num <<= 1;      // left shift one bit
             if (x) {
-                num |= 1;
+                num |= 1;       // turn false to 0
             }
         }
         return num;
