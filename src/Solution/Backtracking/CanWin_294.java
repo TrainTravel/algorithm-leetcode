@@ -30,7 +30,8 @@ public class CanWin_294 {
 
     /**
      * Backtracking with hash map.
-     * Iterate char array each time to find an action until reach the end.
+     * Iterate string and find a flip action. Keep backtracking.
+     * If given string contains a "++" (for flip) and later backtracking shows no other flips, then current player wins.
      *
      * @param arr given string converted to char array
      * @param m   hash map
@@ -57,8 +58,8 @@ public class CanWin_294 {
                 arr[i] = '+';
                 arr[i - 1] = '+';
 
-                if (!b) {
-                    return true;
+                if (!b) {         // current string contains one "++" and rest of string can not win
+                    return true;  // then current player wins
                 }
             }
         }
