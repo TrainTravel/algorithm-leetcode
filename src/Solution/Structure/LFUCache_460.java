@@ -9,7 +9,7 @@ import java.util.LinkedHashSet;
  * get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
  * put(key, value) - Set or insert the value if the key is not already present.
  * When the cache reaches its capacity, it should invalidate the least frequently used item before inserting a new item.
- * For the purpose of this problem, when there is a tie (i.e., two or more keys that have the same frequency), the least recently used key would be evicted.
+ * When there is a tie (i.e., two or more keys that have the same frequency), the LRU key would be evicted.
  *
  * @author BorisMirage
  * Time: 2018/09/29 20:59
@@ -37,6 +37,7 @@ public class LFUCache_460 {
 
     /**
      * <code>get</code> operation. Return -1 if key is not found in cache.
+     * Use a hash map to record the frequency.
      *
      * @param key requesting key
      * @return corresponding value, or -1.
@@ -89,6 +90,7 @@ public class LFUCache_460 {
             count.remove(removeLeast);
             pair.remove(removeLeast);
         }
+
         pair.put(key, value);
         count.put(key, 1);
         min = 1;
