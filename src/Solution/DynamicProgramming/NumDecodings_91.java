@@ -17,28 +17,28 @@ public class NumDecodings_91 {
     /**
      * Dynamic programming with 1D table.
      * Traverse s from back to front to avoid initial '0'.
+     * During the traverse, if current char is '0' then continue, otherwise check if i, i + 1 is larger than 26.
+     * If larger than 26, add dp[i + 2] only, otherwise add dp[i + 1] and dp[i + 2].
      *
      * @param s given int string
      * @return total number of ways to decode it
      */
     public int numDecodings(String s) {
-        if (s.length() == 0) {
+
+        /* Corner case */
+        if (s.length() == 0 || s.charAt(0) == '0') {
             return 0;
         }
 
-        int[] t = new int[s.length() + 1];
+        int[] dp = new int[s.length() + 1];
+        dp[s.length()] = 1;
+        dp[s.length() - 1] = (s.charAt(s.length() - 1) == '0' ? 0 : 1);     // in case last digit is 0
 
-        t[s.length()] = 1;
-        t[s.length() - 1] = s.charAt(s.length() - 1) == '0' ? 0 : 1;
-
-        for (int i = s.length() - 2; i >= 0; i--) {
+        for (int i = dp.length - 2; i > -1; i--) {
             if (s.charAt(i) != '0') {
-
-                /* (i ,i + 1), two digits */
-                t[i] = (Integer.parseInt(s.substring(i, i + 2)) <= 26) ? t[i + 1] + t[i + 2] : t[i + 1];
+                dp[i] = (Integer.parseInt(s.substring(i, i + 2)) < 27) ? dp[i + 1] + dp[i + 2] : dp[i + 1];
             }
         }
-        return t[0];
-
+        return dp[0];
     }
 }
