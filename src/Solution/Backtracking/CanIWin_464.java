@@ -44,7 +44,7 @@ public class CanIWin_464 {
     }
 
     /**
-     * Backtracking with a hash map to pruning.
+     * Backtracking with a hash map for pruning.
      *
      * @param max          max choosable integer
      * @param chosen       integers has been choosen
