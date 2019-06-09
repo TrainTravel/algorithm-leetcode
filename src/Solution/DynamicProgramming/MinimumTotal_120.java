@@ -10,7 +10,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class MinimumTotal_122 {
+public class MinimumTotal_120 {
 
     /**
      * Dynamic programming that find path from bottom to top.
