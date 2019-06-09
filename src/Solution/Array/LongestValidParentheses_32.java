@@ -18,7 +18,7 @@ public class LongestValidParentheses_32 {
      * Compare current length to max length. If larger then switch it. Then reset both counters.
      * When first traverse completed, traverse string from right to left with same process.
      * Final max length is the result.
-     * <p>
+     * Analysis:
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
      * Space complexity: O(1). Three local variables are used.
      *
@@ -32,51 +32,45 @@ public class LongestValidParentheses_32 {
             return 0;
         }
 
-        int maxValid = 0;
-        int left = 0;
-        int right = 0;
-        for (int i = 0; i < s.length(); i++) {
+        int left = 0, right = 0, max = 0;
+        for (int i = 0; i < s.length(); i++) {      // traverse from left to right
             if (s.charAt(i) == '(') {
-                left += 1;
+                left++;
             } else {
-                right += 1;
+                right++;
             }
-
-            /* If right is larger than left, reset counter and left for next traverse */
             if (left == right) {
-                maxValid = Integer.max(maxValid, left + right);
-            } else if (right >= left) {
+                max = Math.max(max, left + right);
+            } else if (right > left) {
                 left = 0;
                 right = 0;
             }
-
         }
 
-        /* Next traverse */
         left = 0;
         right = 0;
-        for (int j = s.length() - 1; j >= 0; j--) {
 
-            if (s.charAt(j) == '(') {
-                left += 1;
+        for (int i = s.length() - 1; i > -1; i--) {     // traverse from right to left
+            if (s.charAt(i) == '(') {
+                left++;
             } else {
-                right += 1;
+                right++;
             }
             if (left == right) {
-                maxValid = Integer.max(maxValid, left + right);
-            } else if (right <= left) {
+                max = Math.max(max, left + right);
+            } else if (right < left) {
                 left = 0;
                 right = 0;
             }
         }
-        return maxValid;
+        return max;
     }
 
     /**
      * Another solution of this problem that uses stack to store left parentheses' position.
      * If encounter right parenthesis, pop stack's top index and compare i - index to max length.
      * If stack is empty and encounter right parenthesis, push current index into stack as next valid length's start.
-     * <p>
+     * Analysis:
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
      * Space complexity: O(n). Stack at most store string's length
      *
@@ -128,7 +122,7 @@ public class LongestValidParentheses_32 {
     public int longestValidParenthesesDP(String s) {
 
         /* Record temp max length result */
-        int arr[] = new int[s.length()];
+        int[] arr = new int[s.length()];
         int maxParentheses = 0;
 
         for (int i = 1; i < s.length(); i++) {
