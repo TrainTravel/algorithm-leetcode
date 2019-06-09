@@ -48,14 +48,16 @@ public class LongestIncreasingPath_329 {
     private int dfs(int[][] matrix, int i, int j, int[][] temp) {
 
         if (temp[i][j] != 0) {
-            return temp[i][j];
+            return temp[i][j];      // if cell is visited more than one time, directly return the max value to save time
         }
+
         int max = 1;
-        int[] d = {1, -1, 0, 0, 0, 0, 1, -1};
+        final int[] d = {1, -1, 0, 0, 0, 0, 1, -1};
 
         for (int k = 0; k < 4; k++) {
             int xx = i + d[k];
             int yy = j + d[k + 4];
+
             if (xx > -1 && xx < matrix.length && yy > -1 && yy < matrix[0].length && matrix[xx][yy] > matrix[i][j]) {
                 max = Math.max(max, 1 + dfs(matrix, xx, yy, temp));
             }
