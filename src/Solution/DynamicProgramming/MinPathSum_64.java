@@ -13,7 +13,7 @@ package Solution.DynamicProgramming;
 
 public class MinPathSum_64 {
     /**
-     * Dynamic programming with table filling.
+     * Dynamic programming with 2D table.
      * (i,j) = min((i-1, j), (i, j-1)) + grid(i,j)
      * First row and column can be filled at beginning since only one down or right move can be made each time.
      *
@@ -22,12 +22,15 @@ public class MinPathSum_64 {
      */
     public int minPathSum(int[][] grid) {
 
-        /* First column */
+        /* Corner case */
+        if (grid.length == 0) {
+            return 0;
+        }
+
         for (int i = 1; i < grid.length; i++) {
             grid[i][0] = grid[i - 1][0] + grid[i][0];
         }
 
-        /* First line */
         for (int i = 1; i < grid[0].length; i++) {
             grid[0][i] = grid[0][i - 1] + grid[0][i];
         }
