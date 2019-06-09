@@ -27,10 +27,10 @@ public class MinimumTotal_120 {
             return 0;
         }
 
-        int[] dp = new int[triangle.get(triangle.size() - 1).size()];
+        int[] dp = new int[triangle.get(triangle.size() - 1).size()];       // get last level of triangle
 
         for (int i = 0; i < triangle.get(triangle.size() - 1).size(); i++) {
-            dp[i] = triangle.get(triangle.size() - 1).get(i);
+            dp[i] = triangle.get(triangle.size() - 1).get(i);       // fill value with last level of triangle
         }
 
         for (int i = triangle.size() - 2; i > -1; i--) {
