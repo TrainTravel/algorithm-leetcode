@@ -20,12 +20,10 @@ public class MaxProfit_122 {
      * @return max profit
      */
     public int maxProfit(int[] prices) {
-        int t = 0;
+        int max = 0;
         for (int i = 1; i < prices.length; i++) {
-            if (prices[i] > prices[i - 1]) {
-                t += prices[i] - prices[i - 1];
-            }
+            max = prices[i] > prices[i - 1] ? max + prices[i] - prices[i - 1] : max;
         }
-        return t;
+        return max;
     }
 }
