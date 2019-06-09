@@ -1,6 +1,5 @@
 package Solution.DynamicProgramming;
 
-
 /**
  * Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
  * 3 operations permitted on a word:
@@ -15,39 +14,41 @@ package Solution.DynamicProgramming;
 
 public class MinDistance_72 {
     /**
-     * Dynamic programming with filling a 2D array.
+     * Dynamic programming with a 2D array.
+     * State transition:
+     * dp[i][j] = dp[i-1][j-1], if word1.charAt(i-1) == word2.charAt(j-1)
+     * dp[i+1][j+1] = min(dp[i][j], Math.min(dp[i + 1][j], dp[i][j + 1])+1, otherwise
      *
-     * @param s string 1
-     * @param t target converted string
+     * @param word1 string 1
+     * @param word2 target converted string
      * @return min edit distance
      */
-    public int minDistance(String s, String t) {
-        if (s.equals(t)) {
+    public int minDistance(String word1, String word2) {
+        if (word1.equals(word2)) {
             return 0;
         }
 
-        int[][] dp = new int[s.length() + 1][t.length() + 1];
+        int[][] dp = new int[word1.length() + 1][word2.length() + 1];
 
-        /* First row and column */
-        for (int i = 0; i < dp[0].length; i++) {
-            dp[0][i] = i;
-
+        for (int i = 1; i < dp.length; i++) {
+            dp[i][0] = dp[i - 1][0] + 1;
         }
-        for (int i = 0; i < dp.length; i++) {
-            dp[i][0] = i;
+        for (int i = 1; i < dp[0].length; i++) {
+            dp[0][i] = dp[i - 1][0] + 1;
         }
 
-        /* The rest of array */
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < t.length(); j++) {
-                if (t.charAt(j) == s.charAt(i)) {
-                    dp[i + 1][j + 1] = dp[i][j];
+
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    dp[i + 1][j + 1] = Math.min(dp[i][j], Math.min(dp[i + 1][j], dp[i][j + 1])) + 1;
+                    dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
                 }
             }
         }
-        return dp[s.length()][t.length()];
+
+        return dp[word1.length()][word2.length()];
     }
 
 
