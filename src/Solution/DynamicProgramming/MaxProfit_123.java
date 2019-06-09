@@ -12,24 +12,32 @@ package Solution.DynamicProgramming;
  */
 
 public class MaxProfit_123 {
-
     /**
-     * Add a second sell to compare.
+     * Use a state machine to describes the problem statement.
+     * State 0: do nothing or buy stock
+     * State 1: sell stock or hold purchased stock
+     * State 2: do nothing or buy stock again
+     * State 3: sell stock or do nothing
+     * Finally, return the final state s3. If no purchase then it will directly return -price[0].
+     * If final result is negative, then return 0.
      *
      * @param prices price int array
      * @return max profit
      */
     public int maxProfit(int[] prices) {
 
-        int buy1 = Integer.MIN_VALUE, sell1 = 0, buy2 = buy1, sell2 = 0;        // sell2 presume second time sell
-
-        for (int price : prices) {
-            buy1 = Math.max(buy1, -price);
-            sell1 = Math.max(sell1, buy1 + price);      // at least sell one time (if no profit then it keeps 0)
-            buy2 = Math.max(buy2, sell1 - price);
-            sell2 = Math.max(sell2, buy2 + price);      // compare if there is second buy & sell
+        /* Corner case */
+        if (prices.length == 0) {
+            return 0;
         }
 
-        return sell2;
+        int s0 = -prices[0], s1 = Integer.MIN_VALUE, s2 = Integer.MIN_VALUE, s3 = Integer.MIN_VALUE;
+        for (int i = 1; i < prices.length; i++) {
+            s0 = Integer.max(s0, -prices[i]);           // state 0
+            s1 = Integer.max(s1, s0 + prices[i]);       // sell stock -> turn to state 1 or do nothing
+            s2 = Integer.max(s2, s1 - prices[i]);       // second buy -> turn to state 2 or do nothing
+            s3 = Integer.max(s3, s2 + prices[i]);       // final state, sell or do nothing
+        }
+        return Integer.max(s3, 0);      // if the stock price is monotonically decreasing, return 0
     }
 }
