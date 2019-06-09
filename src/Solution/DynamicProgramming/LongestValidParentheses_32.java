@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.DynamicProgramming;
 
 import java.util.Stack;
 
@@ -13,7 +13,7 @@ import java.util.Stack;
 
 public class LongestValidParentheses_32 {
     /**
-     * Traverse s for two times, set two counter "left" and "right" to count "(", ")" respectively.
+     * Traverse given string for two times, set two counter "left" and "right" to count "(", ")" respectively.
      * First from left to right, if left equals to right and none of them are 0, then one valid length is found.
      * Compare current length to max length. If larger then switch it. Then reset both counters.
      * When first traverse completed, traverse string from right to left with same process.
@@ -129,7 +129,7 @@ public class LongestValidParentheses_32 {
 
             /* If current char is ')', then find previous state */
             if (s.charAt(i) == ')') {
-                if (s.charAt(i - 1) == '(') {
+                if (s.charAt(i - 1) == '(') {       // add a new pair
                     if (i > 1) {
                         arr[i] = arr[i - 2] + 2;
                     } else {
@@ -138,7 +138,7 @@ public class LongestValidParentheses_32 {
                 } else if (i > arr[i - 1] && s.charAt(i - arr[i - 1] - 1) == '(') {
 
                     /* i - arr[i - 1] - 1: find first '(' */
-                    if (i - arr[i - 1] > 1) {
+                    if (i - arr[i - 1] > 1) {        // new valid pair immediately next to previous one
                         arr[i] = arr[i - 1] + arr[i - arr[i - 1] - 2] + 2;
                     } else {
                         arr[i] = arr[i - 1] + 2;
