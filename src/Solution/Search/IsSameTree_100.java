@@ -14,7 +14,7 @@ import Lib.Tree.TreeNode;
 public class IsSameTree_100 {
 
     /**
-     * Recursion.
+     * Any kind of traversal of tree (in-order, post-order, pre-order) will suffice.
      * If sub nodes do not be in same situation (null or not null), return false.
      * If value in tree node is same, continue recursion in sub nodes.
      *

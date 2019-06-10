@@ -12,7 +12,7 @@ import Lib.Tree.TreeNode;
 
 public class IsSymmetric_101 {
     /**
-     * Recursion.
+     * Pre-order traversal.
      *
      * @param root root TreeNode
      * @return if this tree is symmetric
@@ -29,6 +29,7 @@ public class IsSymmetric_101 {
         if (root.left == null || root.right == null) {
             return false;
         }
+
         if (root.left.val == root.right.val) {
             return isSymmetricTree(root.left, root.right);
         }
