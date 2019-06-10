@@ -15,7 +15,7 @@ public class RecoverTree_99 {
 
     private TreeNode a = null;
     private TreeNode b = null;
-    private TreeNode temp = new TreeNode(Integer.MIN_VALUE);        // avoid null when "root" node is the deepest left node
+    private TreeNode temp = new TreeNode(Integer.MIN_VALUE);        // avoid null when "root" is the deepest left node
 
     /**
      * The factor is to find two "root" nodes to swap.
