@@ -20,7 +20,7 @@ public class MaxDepth_104 {
      */
     public int maxDepth(TreeNode root) {
 
-        /* End point */
+        /* Corner case and end point */
         if (root == null) {
             return 0;
         }
