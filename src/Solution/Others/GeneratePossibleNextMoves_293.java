@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GeneratePossibleNextMoves_293 {
     /**
-     * When find capable position, spilt string and add result to output list.
+     * When find capable position, split string and add result to output list.
      *
      * @param s given string
      * @return all possible states of the string after one flip

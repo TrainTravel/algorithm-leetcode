@@ -17,7 +17,7 @@ public class WordBreak_139 {
     /**
      * Dynamic programming with 1D boolean array.
      * Iterate the given string.
-     * Under each substring in iteration, find a breaking point to spilt both substring exist in dictionary.
+     * Under each substring in iteration, find a breaking point to split both substring exist in dictionary.
      *
      * @param s        given string
      * @param wordDict given dictionary
