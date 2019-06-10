@@ -39,7 +39,7 @@ public class IsValidBST_98 {
         if (root == null) {
             return true;
         }
-        if (root.val >= max || root.val <= min) {
+        if (root.val >= max || root.val <= min) {       // no duplicate node as well
             return false;
         }
         return recursion(root.left, min, root.val) && recursion(root.right, root.val, max);
