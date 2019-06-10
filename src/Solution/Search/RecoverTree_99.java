@@ -13,8 +13,8 @@ import Lib.Tree.TreeNode;
 
 public class RecoverTree_99 {
 
-    private TreeNode a = null;
-    private TreeNode b = null;
+    private TreeNode wrong1 = null;
+    private TreeNode wrong2 = null;
     private TreeNode temp = new TreeNode(Integer.MIN_VALUE);        // avoid null when "root" is the deepest left node
 
     /**
@@ -28,9 +28,9 @@ public class RecoverTree_99 {
         traverse(root);
 
         /* Swap incorrect value */
-        a.val = a.val + b.val;
-        b.val = a.val - b.val;
-        a.val = a.val - b.val;
+        wrong1.val = wrong1.val + wrong2.val;
+        wrong2.val = wrong1.val - wrong2.val;
+        wrong1.val = wrong1.val - wrong2.val;
     }
 
     /**
@@ -45,11 +45,11 @@ public class RecoverTree_99 {
 
         traverse(r.left);
 
-        if (a == null && temp.val >= r.val) {
-            a = temp;      // left incorrect node, based on in order traversal (left -> root -> right)
+        if (wrong1 == null && temp.val >= r.val) {
+            wrong1 = temp;      // left incorrect node, based on in order traversal (left -> root -> right)
         }
-        if (a != null && temp.val >= r.val) {
-            b = r;      // right incorrect node, based on in order traversal (left -> root -> right)
+        if (wrong1 != null && temp.val >= r.val) {
+            wrong2 = r;      // right incorrect node, based on in order traversal (left -> root -> right)
         }
 
         temp = r;
