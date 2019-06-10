@@ -10,6 +10,53 @@ package Solution.DynamicProgramming;
  */
 
 public class MaxProfit_188 {
+
+    /**
+     * Use a state machine to save state.
+     * The length of state is 2 * k, since each k representing a buy and sell state.
+     *
+     * @param k      at most k transactions
+     * @param prices given int array
+     * @return max profit
+     */
+    public int stateMachine(int k, int[] prices) {
+
+        /* Corner case */
+        if (k == 0 || prices.length < 2) {
+            return 0;
+        }
+
+        if (k >= prices.length / 2) {
+            int max = 0;
+            for (int i = 1; i < prices.length; i++) {
+                if (prices[i] - prices[i - 1] > 0) {
+                    max += prices[i] - prices[i - 1];
+                }
+            }
+            return max;
+        }
+
+        int[] state = new int[k * 2];
+        state[0] = -prices[0];
+        for (int i = 1; i < state.length; i++) {
+            state[i] = Integer.MIN_VALUE;
+        }
+
+        for (int i = 1; i < prices.length; i++) {
+            for (int j = 0; j < state.length; j++) {
+
+                /* State transition */
+                if (j == 0) {
+                    state[j] = Integer.max(state[j], -prices[i]);
+                } else {
+                    state[j] = Integer.max(state[j], (j % 2 == 0 ? state[j - 1] - prices[i] : state[j - 1] + prices[i]));
+                }
+            }
+        }
+
+        return Integer.max(0, state[state.length - 1]);
+    }
+
     /**
      * Dynamic programming with table.
      * [i, j] = max([i, j - 1], prices[j] - prices[j'] + [i - 1, j'])
@@ -24,8 +71,9 @@ public class MaxProfit_188 {
      * @param prices int array
      * @return max profit
      */
-    public int maxProfit(int k, int[] prices) {
+    public int dp(int k, int[] prices) {
 
+        /* Corner case */
         if (prices.length < 2) {
             return 0;
         }
@@ -49,7 +97,6 @@ public class MaxProfit_188 {
             for (int j = 0; j < r1.length; j++) {
                 r2[j] = Integer.max(r2[j - 1], prices[j] + base);
                 base = Integer.max(base, r1[j] - prices[j]);
-
             }
 
             /* Reduce memory usage */
