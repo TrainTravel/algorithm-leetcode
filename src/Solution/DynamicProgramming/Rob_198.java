@@ -23,18 +23,18 @@ public class Rob_198 {
             return 0;
         }
 
-        int a = nums[0];        // actually only constant space is required
+        int premax = nums[0];        // actually only constant space is required
         if (nums.length == 1) {
-            return a;
+            return premax;
         }
-        int b = Math.max(nums[0], nums[1]);
-        for (int i = 2; i < nums.length; i++) {
 
-            int c = a;
-            b = Math.max(a + nums[i], b);
-            a = c;
+        int max = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            int temp = max;
+            max = Math.max(premax + nums[i], max);
+            premax = temp;
         }
-        return b;
+        return max;
     }
 
     // test
