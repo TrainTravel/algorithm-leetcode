@@ -18,7 +18,7 @@ import Lib.Tree.TreeNode;
 public class IsValidBST_98 {
 
     /**
-     * Recursion with each root's value. Compare left subtree and right subtree.
+     * In-order traversal with each root's value. Compare left subtree and right subtree.
      *
      * @param root root TreeNode
      * @return is this tree a BST
@@ -28,7 +28,7 @@ public class IsValidBST_98 {
     }
 
     /**
-     * Recursion that compare root's value to left and right.
+     * In-order traversal that compare root's value to left and right.
      *
      * @param root current root
      * @param min  min value
