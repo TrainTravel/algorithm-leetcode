@@ -2,21 +2,12 @@ package Solution.Search;
 
 import Lib.Tree.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
- * Example:
- * Input: 3
- * Output:
- * [
- * [1,null,3,2],
- * [3,2,null,1],
- * [3,1,null,null,2],
- * [2,1,3],
- * [1,null,2,null,3]
- * ]
  *
  * @author BorisMirage
  * Time: 2018/10/13 10:25
@@ -50,14 +41,13 @@ public class GenerateTrees_95 {
      * @return generate all structurally unique BST
      */
     private List<TreeNode> generate(int start, int end) {
-        List<TreeNode> out = new LinkedList<>();
+        List<TreeNode> out = new ArrayList<>();
 
         /* End point */
         if (start > end) {
             out.add(null);
             return out;
         }
-
         if (start == end) {
             out.add(new TreeNode(start));
             return out;
@@ -66,22 +56,22 @@ public class GenerateTrees_95 {
         List<TreeNode> left;
         List<TreeNode> right;
 
-        for (int i = start; i <= end; i++) {
+        for (int i = start; i <= end; i++) {        // select every i as root node
 
-            /* Generate sub tree recursively */
-            left = generate(start, i - 1);
-            right = generate(i + 1, end);
+            left = generate(start, i - 1);      // left: less than i
+            right = generate(i + 1, end);       // right: larger than i
 
-            /* Add nodes to tree */
-            for (TreeNode leftNode : left) {
-                for (TreeNode rightNode : right) {
+
+            for (TreeNode l : left) {
+                for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
-                    root.left = leftNode;
-                    root.right = rightNode;
+                    root.left = l;
+                    root.right = r;
                     out.add(root);
                 }
             }
         }
+
         return out;
     }
 }
