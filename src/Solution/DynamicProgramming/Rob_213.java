@@ -12,40 +12,32 @@ package Solution.DynamicProgramming;
 
 public class Rob_213 {
     /**
-     * If choose first element, then last element can be regarded as "removed".
-     * Last element is same.
-     * Therefore, dp(i, j) = max(dp(i, j - 1), dp(i + 1, j))
-     * Simply compare the result of array without first element and array without last element.
+     * Dynamic programming.
+     * If first element and last element is considered as "adjacent", then find max(profit(0, l - 2), profit(1, l - 1)).
+     * Where l is the length of array.
+     * The state transition keeps same.
+     * dp(i, j) = max(dp(i, j - 1), dp(i + 1, j))
      *
      * @param nums given array
      * @return maximum sum that is made up by nonadjacent elements
      */
     public int rob(int[] nums) {
-        if (nums.length == 1) {
-            return nums[0];
+
+        /* Corner case */
+        if (nums.length < 2) {
+            return nums.length == 1 ? nums[0] : 0;
         }
-        return Math.max(range(nums, 0, nums.length - 2), range(nums, 1, nums.length - 1));
-    }
 
-    /**
-     * Helper function that remove the constrain of first and last element is "adjacent".
-     * Note that it will return 0 if input array is empty, or even with negative input.
-     * The reason is that the result int is initialized to 0, and the given array is non-negative int array.
-     *
-     * @param num nums given array
-     * @param l   first index of array
-     * @param h   second index of array
-     * @return maximum sum that is made up by nonadjacent elements
-     */
-    private int range(int[] num, int l, int h) {
-        int a = 0, b = 0;
-        for (int i = l; i <= h; i++) {
+        int[] dp = new int[nums.length], dp1 = new int[nums.length];
 
-            int t = b;
-            b = Math.max(a + num[i], b);
-            a = t;
+        dp[0] = nums[0];
+        dp1[1] = nums[1];
 
+        for (int i = 1; i < nums.length - 1; i++) {
+            dp[i] = Math.max(dp[i - 1], nums[i] + (i - 2 >= 0 ? dp[i - 2] : 0));
+            dp1[i + 1] = Math.max(dp1[i], nums[i + 1] + dp1[i - 1]);
         }
-        return Math.max(a, b);
+
+        return Math.max(dp[nums.length - 2], dp1[nums.length - 1]);
     }
 }
