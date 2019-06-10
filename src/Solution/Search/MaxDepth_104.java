@@ -13,7 +13,7 @@ import Lib.Tree.TreeNode;
 
 public class MaxDepth_104 {
     /**
-     * DFS with recursion, when there exist sub node, continue and find max depth of tree.
+     * DFS, using pre-order traversal.
      *
      * @param root root node
      * @return max depth.
@@ -24,6 +24,8 @@ public class MaxDepth_104 {
         if (root == null) {
             return 0;
         }
+
+//        System.out.println(root.val);
 
         /* Keep find left sub tree and right sub tree until reaches the end */
         return Integer.max(maxDepth(root.left), maxDepth(root.right)) + 1;
