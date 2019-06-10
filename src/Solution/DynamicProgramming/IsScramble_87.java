@@ -10,6 +10,50 @@ package Solution.DynamicProgramming;
  */
 
 public class IsScramble_87 {
+/**
+ * Recursion.
+ * Check given string has same char, split string into substring and repeat this process.
+ * If two original string is not scrambled, then it will finally has a different substring.
+ *
+ * @param s1 first string
+ * @param s2 second string
+ * @return if s2 is a scrambled string of s1
+ */
+public boolean isScramble(String s1, String s2) {
+
+    /* Corner case */
+    if (s1.length() != s2.length()) {
+        return false;
+    }
+    if (s1.equals(s2)) {
+        return true;
+    }
+
+    int[] alphabet = new int[26];
+    for (int i = 0; i < s1.length(); i++) {
+        alphabet[s1.charAt(i) - 'a']++;
+        alphabet[s2.charAt(i) - 'a']--;
+    }
+
+    for (int value : alphabet) {
+        if (value != 0) {
+            return false;       // if two strings has different # of char, then it can not be scrambled
+        }
+    }
+
+    for (int i = 1; i < s1.length(); i++) {
+
+        /* Spilt into two adjacent part and see if they have different chars */
+        if (isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i))) {
+            return true;
+        }
+        if (isScramble(s1.substring(0, i), s2.substring(s2.length() - i)) && isScramble(s1.substring(i), s2.substring(0, s2.length() - i))) {
+            return true;
+        }
+    }
+    return false;
+}
+
     /**
      * Dynamic programming with 3D table.
      * i  i+q  i+k-1
@@ -20,9 +64,14 @@ public class IsScramble_87 {
      * @param s2 second string
      * @return if s2 is a scrambled string of s1
      */
-    public boolean isScramble(String s1, String s2) {
-
-//        if (s1.length()!=s2.length())return false;
+    public boolean dp(String s1, String s2) {
+        /* Corner case */
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        if (s1.equals(s2)) {
+            return true;
+        }
 
         int l = s1.length();
 
