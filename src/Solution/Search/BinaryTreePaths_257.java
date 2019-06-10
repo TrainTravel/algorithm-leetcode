@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BinaryTreePaths_257 {
     /**
-     * DFS.
+     * Pre-order traversal.
      *
      * @param root root node
      * @return all path from root to leaf
@@ -29,7 +29,7 @@ public class BinaryTreePaths_257 {
     }
 
     /**
-     * Basic DFS.
+     * Pre-order traversal.
      *
      * @param n      node
      * @param s      path string
