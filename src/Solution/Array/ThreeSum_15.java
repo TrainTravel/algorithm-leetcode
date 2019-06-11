@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ThreeSum_15 {
     /**
-     * Sort the array first, then start from the smallest (or largerest) element.
+     * Sort the array first, then start from the smallest (or largest) element.
      * When one element is selected, start from the next element and the last element in this array.
      * Compare the sum of these two elements, if it is smaller than -nums[i], then move the left element to its right.
      * If the sum is larger than 0, then move the right element to its left
