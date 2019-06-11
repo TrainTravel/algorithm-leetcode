@@ -9,7 +9,7 @@ package Playground;
 
 class BinaryTree {
     // Root of Binary Tree
-    Node root;
+    private Node root;
 
     private BinaryTree() {
         root = null;
@@ -113,7 +113,7 @@ class Node {
     int key;
     Node left, right;
 
-    public Node(int item) {
+    Node(int item) {
         key = item;
         left = right = null;
     }
