@@ -15,7 +15,8 @@ import Lib.Tree.TreeNode;
 public class SortedListToBST_109 {
     /**
      * Linked list can not directly get item by index.
-     * Therefore, use two pointers to traverse the linked list, when faster one reaches the end of list, slow one is at root.
+     * Therefore, use two pointers to traverse the linked list
+     * When faster one reaches the end of list, slow one will be at root (middle of linked list).
      *
      * @param head head node
      * @return root of height balanced BST
