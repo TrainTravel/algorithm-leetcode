@@ -28,7 +28,7 @@ public class IsBalanced_110 {
     }
 
     /**
-     * DFS traversal. If current tree has a imbalanced tree, return -1.
+     * DFS traversal. If current tree has an imbalanced tree, return -1.
      * Otherwise return the height difference.
      *
      * @param root root node
@@ -36,7 +36,7 @@ public class IsBalanced_110 {
      */
     private int dfs(TreeNode root) {
         if (root == null) {
-            return 0;
+            return 0;       // null node has no height
         }
 
         int left = dfs(root.left);
