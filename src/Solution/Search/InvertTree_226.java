@@ -3,6 +3,8 @@ package Solution.Search;
 import Lib.Tree.TreeNode;
 
 /**
+ * Invert a binary tree.
+ *
  * @author BorisMirage
  * Time: 2019/06/11 16:48
  * Created with IntelliJ IDEA
