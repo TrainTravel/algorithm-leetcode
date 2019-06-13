@@ -16,7 +16,8 @@ import java.util.Stack;
 
 public class InorderTraversal_94 {
     /**
-     * Simply follow the in order traversal rule. Use stack to temporary store node during the process.
+     * Simply follow the in order traversal rule.
+     * Use stack to temporary store node during the process.
      *
      * @param root root node
      * @return in order traversal node value
@@ -24,19 +25,22 @@ public class InorderTraversal_94 {
     public List<Integer> inorderTraversal(TreeNode root) {
 
         LinkedList<Integer> res = new LinkedList<>();
-        Stack<TreeNode> temp = new Stack<>();
+        Stack<TreeNode> s = new Stack<>();
         TreeNode cur = root;
 
         /* Traverse process */
-        while (cur != null || !temp.isEmpty()) {
+        while (cur != null || !s.isEmpty()) {
+
             while (cur != null) {
-                temp.add(cur);
+                s.add(cur);
                 cur = cur.left;
             }
-            cur = temp.pop();
+
+            cur = s.pop();
             res.add(cur.val);
             cur = cur.right;
         }
+
         return res;
     }
 }
