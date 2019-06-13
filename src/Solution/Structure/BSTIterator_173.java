@@ -2,8 +2,6 @@ package Solution.Structure;
 
 import Lib.Tree.TreeNode;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -19,63 +17,42 @@ import java.util.Stack;
  */
 
 public class BSTIterator_173 {
-    private TreeNode root;
-    Queue<Integer> q = new LinkedList<>();
+
+    private Stack<TreeNode> s = new Stack<>();
 
     /**
-     * Implement a In-order traversal.
+     * Implement a In-order traversal with a stack.
      *
      * @param root given root node
      */
     public BSTIterator_173(TreeNode root) {
-        this.root = root;
-        inorder(root);
+        this.leftMost(root);
+//        inorder(root);
     }
 
     /**
      * @return the next smallest number
      */
     public int next() {
-        if (!q.isEmpty()) {
-            return q.poll();
+        TreeNode next = s.pop();
+        if (next.right != null) {
+            leftMost(next.right);
         }
-        return -1;
-
+        return next.val;
     }
 
     /**
      * @return whether we have a next smallest number
      */
     public boolean hasNext() {
-        return !q.isEmpty();
-
+        return !this.s.isEmpty();
     }
 
-    /**
-     * Implement in-order traversal to save elements into a list.
-     *
-     * @param r root node
-     * @return list contains all nodes in tree
-     */
-    private Queue<Integer> inorder(TreeNode r) {
-
-//        LinkedList<Integer> res = new LinkedList<>();
-        Stack<TreeNode> s = new Stack<>();
-        TreeNode cur = root;
-
-        /* Traverse process */
-        while (cur != null || !s.isEmpty()) {
-
-            while (cur != null) {
-                s.add(cur);
-                cur = cur.left;
-            }
-
-            cur = s.pop();
-            q.add(cur.val);
-            cur = cur.right;
+    private void leftMost(TreeNode r) {
+        while (r != null) {
+            this.s.push(r);
+            r = r.left;
         }
-
-        return q;
+        System.out.println(s);
     }
 }
