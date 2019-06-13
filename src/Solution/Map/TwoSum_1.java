@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Map;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,13 +21,13 @@ public class TwoSum_1 {
      * @return int array that contains two numbers which sum is target number
      */
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> arrayMap = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
-            if (arrayMap.containsKey(target - nums[i])) {
-                return new int[]{i, arrayMap.get(target - nums[i])};
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{i, map.get(target - nums[i])};
             }
-            arrayMap.put(nums[i], i);
+            map.put(nums[i], i);
         }
 
         throw new IllegalArgumentException("No solution. \n");
