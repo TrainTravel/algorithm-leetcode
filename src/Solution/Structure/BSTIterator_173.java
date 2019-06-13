@@ -27,7 +27,6 @@ public class BSTIterator_173 {
      */
     public BSTIterator_173(TreeNode root) {
         this.leftMost(root);
-//        inorder(root);
     }
 
     /**
@@ -53,6 +52,5 @@ public class BSTIterator_173 {
             this.s.push(r);
             r = r.left;
         }
-        System.out.println(s);
     }
 }
