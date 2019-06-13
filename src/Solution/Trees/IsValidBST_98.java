@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.Trees;
 
 
 import Lib.Tree.TreeNode;
