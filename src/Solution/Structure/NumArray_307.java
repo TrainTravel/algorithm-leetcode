@@ -11,7 +11,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA
  */
 
-public class NumArray {
+public class NumArray_307 {
 
     private node root;
 
@@ -20,7 +20,7 @@ public class NumArray {
      *
      * @param nums given array
      */
-    public NumArray(int[] nums) {
+    public NumArray_307(int[] nums) {
         root = segmentTreeBuilder(nums, 0, nums.length - 1);
     }
 
@@ -181,7 +181,7 @@ public class NumArray {
      * @param args given arguments
      */
     public static void main(String[] args) {
-        NumArray test = new NumArray(new int[]{0, 9, 5, 7, 3});
+        NumArray_307 test = new NumArray_307(new int[]{0, 9, 5, 7, 3});
         System.out.println(test.sumRange(4, 4));
 //        test.printAllNodes();
     }
