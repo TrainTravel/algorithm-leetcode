@@ -5,36 +5,39 @@ import java.util.HashMap;
 
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
- * It may be assumed that each input would have exactly one solution, and same element can not be used twice.
+ * Each input would have exactly one solution, and you may not use the same element twice.
  *
  * @author BorisMirage
- * Date: 2017/06/17
+ * Time: 2019/06/18 10:10
  * Created with IntelliJ IDEA
  */
-public class TwoSum_1 {
 
+public class TwoSum_1 {
     /**
-     * Use map to store input and to find out if there exist an number that is target.
+     * Use a hash map to store the element in array, and value in hash map is the index of array.
+     * Iterate the array, if found an element that is equals to target - nums[i], then return the i and map value.
+     * Otherwise, put the nums[i] and i into hash map.
      *
-     * @param nums   integer number array
-     * @param target target sum number
-     * @return int array that contains two numbers which sum is target number
+     * @param nums   given array
+     * @param target target number
+     * @return indices of the two numbers such that they add up to a specific target
      */
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+
+        HashMap<Integer, Integer> m = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                return new int[]{i, map.get(target - nums[i])};
+            if (m.containsKey(target - nums[i])) {
+                return new int[]{m.get(target - nums[i]), i};
             }
-            map.put(nums[i], i);
+            m.put(nums[i], i);
         }
 
-        throw new IllegalArgumentException("No solution. \n");
+        return null;
     }
 
     public static void main(String[] args) {
-        TwoSum_1 test = new TwoSum_1();
+        Solution.Map.TwoSum_1 test = new Solution.Map.TwoSum_1();
         int[] testArray = {3, 5, 6, 8, 7};
         int num = 8;
         System.out.println(Arrays.toString(test.twoSum(testArray, num)));
