@@ -1,4 +1,4 @@
-package Solution.TwoPointers;
+package Solution.SlidingWindow;
 
 /**
  * Given a string S and a string T.

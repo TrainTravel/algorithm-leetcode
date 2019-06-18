@@ -1,4 +1,4 @@
-package Solution.TwoPointers;
+package Solution.SlidingWindow;
 
 
 import Solution.Array.SearchInsert_35;

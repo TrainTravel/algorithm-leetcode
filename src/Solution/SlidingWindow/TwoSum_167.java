@@ -1,4 +1,4 @@
-package Solution.TwoPointers;
+package Solution.SlidingWindow;
 
 /**
  * Given an array of integers that is already sorted in ascending order.

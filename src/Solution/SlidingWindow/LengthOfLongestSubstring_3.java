@@ -1,4 +1,4 @@
-package Solution.TwoPointers;
+package Solution.SlidingWindow;
 
 import java.util.HashMap;
 import java.util.Map;
