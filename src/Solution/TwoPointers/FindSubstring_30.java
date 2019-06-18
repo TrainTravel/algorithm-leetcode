@@ -1,4 +1,4 @@
-package Solution.Map;
+package Solution.TwoPointers;
 
 
 import Solution.Array.SearchInsert_35;
@@ -6,7 +6,6 @@ import Solution.Array.SearchInsert_35;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * You are given a string, s, and a list of words, words, that are all of the SAME LENGTH.
@@ -31,44 +30,44 @@ public class FindSubstring_30 {
      * @return indices of word concatenation start
      */
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> res = new LinkedList<>();
+        List<Integer> out = new LinkedList<>();
 
         /* Corner case */
-        if (s.length() < 1 || words.length == 0) {
-            return res;
+        if (s.length() < 1 || words.length < 1) {
+            return out;
         }
 
-        /* Record each word's appearance time. Key - word in String[] words; Value: appearance */
-        final Map<String, Integer> wordMap = new HashMap<>();
-        for (String word : words) {
-            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1);
+        HashMap<String, Integer> wordMap = new HashMap<>();     // save word appearance in words array
+        HashMap<String, Integer> stringMap = new HashMap<>();       // save word appearance in string
+        for (String w : words) {
+            wordMap.put(w, wordMap.getOrDefault(w, 0) + 1);     // avoid corner case such as duplicated words in array or given string
         }
-        Map<String, Integer> stringMap = new HashMap<>();
+
         for (int i = 0; i < s.length() - words[0].length() * words.length + 1; i++) {
             int j = 0;
-            while (j < words.length) {
 
-                /* All words in String[] words has same length */
-                String currentSubstring = s.substring(i + j * words[0].length(), i + (j + 1) * words[0].length());
+            while (j < words.length) {      // j is the words index that count # in words[]
 
-                /* Continue this while loop iff current sub string was found in wordMap */
-                if (wordMap.containsKey(currentSubstring)) {
+                /* Spilt string to a substring that has same length as given word */
+                String sub = s.substring(i + j * words[0].length(), i + (j + 1) * words[0].length());
 
-                    stringMap.put(currentSubstring, stringMap.getOrDefault(currentSubstring, 0) + 1);
-                    if (stringMap.get(currentSubstring) > wordMap.get(currentSubstring)) {
-                        break;
+                if (wordMap.containsKey(sub)) {
+                    stringMap.put(sub, stringMap.getOrDefault(sub, 0) + 1);
+                    if (stringMap.get(sub) > wordMap.get(sub)) {
+                        break;      // substring contains more words than given array
                     }
                 } else {
-                    break;
+                    break;      // current substring does not exist in words array
                 }
-                j++;
+                j++;        // j + 1: next word in array
             }
+
             if (j == words.length) {
-                res.add(i);
+                out.add(i);     // find all correct words in current substring
             }
-            stringMap.clear();
         }
-        return res;
+
+        return out;
     }
 
     public static void main(String[] args) {
