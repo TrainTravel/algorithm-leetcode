@@ -1,11 +1,10 @@
-package Solution.Array;
+package Solution.Greedy;
 
 /**
  * Given an array of non-negative integers, you are initially positioned at the first index of the array.
  * Each element in the array represents your maximum jump length at that position.
  * i.e., steps can be taken to move forward <= nums[i].
  * Your goal is to reach the last index in the minimum number of jumps.
- * <p>
  * Traverse all possible move distance in each step, find max move distance in each distance. (greedy algorithm)
  *
  * @author BorisMirage
