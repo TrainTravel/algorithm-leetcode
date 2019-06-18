@@ -1,22 +1,15 @@
-package Solution.Array;
+package Solution.TwoPointers;
 
 /**
- * Given a sorted array nums, remove the duplicates in-place.
- * Duplicates appeared at most twice and return the new length.
+ * Given a sorted array nums.
+ * Remove the duplicates in-place such that each element appear only once and return the new length.
  * Do not allocate extra space for another array.
  * It must be done by modifying the input array in-place with O(1) extra memory.
  * <p>
- * Example 1:
- * Given nums = [1,1,1,2,2,3],
- * Function should return length = 5, with nums being 1, 1, 2, 2 and 3 respectively.
- * It doesn't matter what you leave beyond the returned length.
- * Example 2:
- * Given nums = [0,0,1,1,1,1,2,3,3],
- * Function should return length = 7, with nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
- * It doesn't matter what values are set beyond the returned length.
- * <p>
+ * Note: Input array is passed in by reference, modification to it will be known to the caller as well.
+ * Output sample:
  * // nums is passed in by reference. (i.e., without making a copy)
- * int len = removeDuplicates(nums);
+ * int len = removeElement(nums, val);
  * // any modification to nums in your function would be known by the caller.
  * // using the length returned by your function, it prints the first len elements.
  * for (int i = 0; i < len; i++) {
@@ -24,13 +17,12 @@ package Solution.Array;
  * }
  *
  * @author BorisMirage
- * Time: 2018/08/14 13:49
+ * Time: 2018/06/13 18:00
  * Created with IntelliJ IDEA
  */
 
-public class RemoveDuplicatesII_80 {
+public class RemoveDuplicates_26 {
     /**
-     * Similar to RemoveDuplicates_26, simply modify pointer moving condition.
      * Two int as pointers.
      * First pointer is the "i" in for loop. It represent the position in traverse.
      * The other pointer points to the last element in array that is non-duplicate.
@@ -40,17 +32,27 @@ public class RemoveDuplicatesII_80 {
      * @param nums input sorted int array
      * @return length of array that removed duplicate element
      */
-    public int removeDuplicatesII(int[] nums) {
+    public int removeDuplicates(int[] nums) {
 
         /* Non-duplicate int pointer */
         int n = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if (i < 2 || nums[i] > nums[n - 2]) {
+            if (i == 0 || nums[i] != nums[i - 1]) {
+
+                /* Switch array elements so that this array can be divided in the end */
                 nums[n++] = nums[i];
             }
         }
 //        System.out.println(Arrays.toString(nums));
         return n;
+    }
+
+    public static void main(String[] args) {
+
+        /* RemoveDuplicates_26 Test */
+        RemoveDuplicates_26 removeDuplicatesTest = new RemoveDuplicates_26();
+        int[] test = {1, 2, 3, 4};
+        System.out.println(removeDuplicatesTest.removeDuplicates(test));
     }
 }

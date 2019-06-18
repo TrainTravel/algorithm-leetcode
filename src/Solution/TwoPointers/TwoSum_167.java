@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.TwoPointers;
 
 /**
  * Given an array of integers that is already sorted in ascending order.
