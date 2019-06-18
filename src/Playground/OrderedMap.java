@@ -1,6 +1,7 @@
 package Playground;
 
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * @author BorisMirage
@@ -18,5 +19,15 @@ public class OrderedMap {
         map.put(5, "val");
         map.put(4, "val");
         System.out.println(map);
+
+        TreeSet<String> test = new TreeSet<>();
+
+        test.add("LGA");
+        test.add("LGB");
+        test.add("LGC");
+
+        for (String s : test) {
+            System.out.println(s);
+        }
     }
 }
