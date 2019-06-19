@@ -32,7 +32,7 @@ public class SortedListToBST_109 {
     }
 
     /**
-     * Use two pointer to find root node.
+     * Use two pointers to find root node.
      * Fast node moves two time faster than slow node.
      * In this way, if fast node reaches the end, slow node will accurately at the mid of list, which is root.
      *
