@@ -14,11 +14,14 @@ import java.util.LinkedList;
  */
 
 public class WordDistance_244 {
-    String[] words;
-    HashMap<String, LinkedList<Integer>> store = new HashMap<>();
+    private String[] words;
+    private HashMap<String, LinkedList<Integer>> store = new HashMap<>();       // store word - index list pair
 
     /**
      * Init map.
+     * The key of map is the word in words list.
+     * The value of map is the index of word in list.
+     * To save the duplicated words index, use a list to store all indexes.
      *
      * @param words given words list
      */
@@ -27,8 +30,7 @@ public class WordDistance_244 {
 
         for (int i = 0; i < words.length; i++) {
             if (store.containsKey(words[i])) {
-                store.get(words[i]).add(i);
-
+                store.get(words[i]).add(i);     // duplicate index in words[]
             } else {
                 LinkedList<Integer> temp = new LinkedList<>();
                 temp.add(i);
@@ -38,7 +40,7 @@ public class WordDistance_244 {
     }
 
     /**
-     * Get List that store in map and compare min distance.
+     * Get list that store in map and compare min distance.
      *
      * @param word1 first word in list
      * @param word2 second word in list
@@ -48,7 +50,7 @@ public class WordDistance_244 {
         LinkedList<Integer> list1 = store.get(word1);
         LinkedList<Integer> list2 = store.get(word2);
 
-        int min = words.length + 1;
+        int min = this.words.length + 1;
         int i = 0, j = 0;
         while (i < list1.size() && j < list2.size()) {
             if (min == 1) {
