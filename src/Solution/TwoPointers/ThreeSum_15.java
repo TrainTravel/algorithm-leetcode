@@ -42,37 +42,35 @@ public class ThreeSum_15 {
             return out;     // if all elements are positive, then it is not possible to have a three sum equals 0
         }
 
-        for (int i = 0; nums[i] < 1 && i < nums.length - 2; i++) {      // if current value > 0, then no possible triplet exists
+        for (int i = 0; nums[i] < 1 && i < nums.length - 2; i++) {      // if current value > 0, then no possible triplet
 
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;       // avoid duplicate
-            }
+            if (i == 0 || nums[i] != nums[i - 1]) {     // avoid duplicate
+                int p1 = i + 1, p2 = nums.length - 1;
 
-            int left = i + 1, right = nums.length - 1;
+                while (p1 < p2) {      // move two points toward center
 
-            while (left < right) {      // move two points toward center
+                    if (nums[p1] + nums[p2] < -nums[i]) {
+                        p1++;     // make sum larger
+                    } else if (nums[p1] + nums[p2] > -nums[i]) {
+                        p2--;        // make sum smaller
+                    } else {
 
-                if (nums[left] + nums[right] < -nums[i]) {
-                    left++;     // make sum larger
-                } else if (nums[left] + nums[right] > -nums[i]) {
-                    right--;        // make sum smaller
-                } else {
+                        /* Find one triplet */
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[p1]);
+                        temp.add(nums[p2]);
+                        out.add(temp);
+                        p1++;
+                        p2--;
 
-                    /* Find one triplet */
-                    List<Integer> temp = new ArrayList<>();
-                    temp.add(nums[i]);
-                    temp.add(nums[left]);
-                    temp.add(nums[right]);
-                    out.add(temp);
-                    left++;
-                    right--;
-
-                    /* Avoid duplicate */
-                    while (left < right && nums[left] == nums[left - 1]) {
-                        left++;
-                    }
-                    while (left < right && nums[right] == nums[right + 1]) {
-                        right--;
+                        /* Avoid duplicate */
+                        while (p1 < p2 && nums[p1] == nums[p1 - 1]) {
+                            p1++;
+                        }
+                        while (p1 < p2 && nums[p2] == nums[p2 + 1]) {
+                            p2--;
+                        }
                     }
                 }
             }
