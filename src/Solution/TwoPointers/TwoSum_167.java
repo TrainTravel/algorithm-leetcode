@@ -12,7 +12,6 @@ package Solution.TwoPointers;
  */
 
 public class TwoSum_167 {
-
     /**
      * Two pointers, one starts from beginning and one starts at end.
      *
@@ -22,21 +21,17 @@ public class TwoSum_167 {
      */
     public int[] twoSum(int[] numbers, int target) {
 
-        int[] res = new int[2];
+        int p1 = 0;
+        int p2 = numbers.length - 1;
 
-        int s = 0;
-        int e = numbers.length - 1;
-
-        while (s < e) {
-            if (numbers[s] + numbers[e] == target) {
-                res[0] = s + 1;
-                res[1] = e + 1;
-                return res;
+        while (p1 < p2) {
+            if (numbers[p1] + numbers[p2] == target) {
+                return new int[]{p1 + 1, p2 + 1};
             }
-            if (numbers[s] + numbers[e] < target) {
-                s += 1;
-            } else if (numbers[s] + numbers[e] > target) {
-                e -= 1;
+            if (numbers[p1] + numbers[p2] < target) {
+                p1++;
+            } else if (numbers[p1] + numbers[p2] > target) {
+                p2--;
             }
         }
         return null;
