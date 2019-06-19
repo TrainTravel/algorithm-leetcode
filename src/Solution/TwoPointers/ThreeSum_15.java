@@ -64,7 +64,7 @@ public class ThreeSum_15 {
                         p1++;
                         p2--;
 
-                        /* Avoid duplicate */
+                        /* Avoid duplication */
                         while (p1 < p2 && nums[p1] == nums[p1 - 1]) {
                             p1++;
                         }
