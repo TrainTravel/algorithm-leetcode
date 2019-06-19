@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Others;
 
 /**
  * There are two sorted arrays nums1 and nums2 of size m and n respectively, find the median of the two sorted arrays.

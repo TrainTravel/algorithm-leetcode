@@ -5,6 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Given an array and an integer target, find if there exist four elements such that a + b + c + d = target?
+ * Find all unique quadruplets in the array which gives the sum of target.
+ * Note:
+ * 1. The solution set must not contain duplicate quadruplets.
+ *
  * @author BorisMirage
  * Time: 2018/06/11 19:47
  * Created with IntelliJ IDEA
@@ -14,10 +19,9 @@ public class FourSum_18 {
     /**
      * Given an array nums of n integers and an integer target, find elements in nums such that a + b + c + d = target.
      * Find all unique quadruplets in the array which gives the sum of target.
-     *
      * Similar to 3 sum and 3 sum closest, the only difference is to modify the bound when searching array
      *
-     * @param nums input integer array
+     * @param nums   input integer array
      * @param target target sum
      * @return linked list that contains all unique quadruplets
      */
