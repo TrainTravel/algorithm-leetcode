@@ -53,9 +53,12 @@ public class WordDistance_244 {
         int min = this.words.length + 1;
         int i = 0, j = 0;
         while (i < list1.size() && j < list2.size()) {
+
+            /* Corner case */
             if (min == 1) {
                 return 1;
             }
+
             int i1 = list1.get(i), i2 = list2.get(j);
             if (i1 < i2) {
                 min = Math.min(min, i2 - i1);
