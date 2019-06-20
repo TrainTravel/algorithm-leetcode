@@ -25,16 +25,14 @@ public class RemoveDuplicates_26 {
     public int removeDuplicates(int[] nums) {
 
         /* Non-duplicate int pointer */
-        int slow = 0;
+        int slow = 0, fast = 0;
 
-        for (int fast = 0; fast < nums.length; fast++) {
+        while (fast < nums.length) {
             if (fast == 0 || nums[fast] != nums[fast - 1]) {
-
-                /* Switch array elements so that this array can be divided in the end */
-                nums[slow++] = nums[fast];
+                nums[slow++] = nums[fast];        // swap elements when reaches a new non-duplicate element
             }
+            fast++;
         }
-//        System.out.println(Arrays.toString(nums));
         return slow;
     }
 
