@@ -14,6 +14,13 @@ package Solution.TwoPointers;
  */
 
 public class RemoveElement_27 {
+    /**
+     * Two pointers.
+     *
+     * @param nums input int array
+     * @param val  int that will be removed in array
+     * @return nums length after this process
+     */
     public int removeElement(int[] nums, int val) {
         if (nums.length < 2) {
             return nums.length;
