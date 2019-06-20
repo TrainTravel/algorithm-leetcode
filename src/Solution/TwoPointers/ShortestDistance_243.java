@@ -23,21 +23,17 @@ public class ShortestDistance_243 {
      */
     public int shortestDistance(String[] words, String word1, String word2) {
 
-        int p1 = -1, p2 = -1, min = Integer.MAX_VALUE;
+        int min = words.length - 1;     // max distance is the array length - 1
 
-        for (int i = 0; i < words.length; i++) {
+        for (int i = 0, j = -1; i < words.length; i++) {
 
-            if (words[i].equals(word1)) {
-                p1 = i;
-            }
-            if (words[i].equals(word2)) {
-                p2 = i;
-            }
-            if (p1 != -1 && p2 != -1) {
-                min = Math.min(Math.abs(p2 - p1), min);
+            if (words[i].equals(word1) || words[i].equals(word2)) {
+                if (j != -1 && (!words[j].equals(words[i]))) {       // avoid word1.equals(word2)
+                    min = Math.min(min, i - j);
+                }
+                j = i;
             }
         }
-
         return min;
     }
 }
