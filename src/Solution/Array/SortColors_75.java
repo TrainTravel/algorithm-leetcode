@@ -18,16 +18,17 @@ public class SortColors_75 {
      * @param nums input array
      */
     public void sortColors(int[] nums) {
-        int l = 0;
-        int r = nums.length - 1;
-        for (int i = 0; i <= r; i++) {
-            if (nums[i] == 0 && i != l) {
-                swap(nums, l, i);
-                l++;
+        int left = 0;
+        int right = nums.length - 1;
+
+        for (int i = 0; i <= right; i++) {
+            if (nums[i] == 0 && i != left) {
+                swap(nums, left, i);
+                left++;
                 i--;
-            } else if (nums[i] == 2 && i != r) {
-                swap(nums, r, i);
-                r--;
+            } else if (nums[i] == 2 && i != right) {
+                swap(nums, right, i);
+                right--;
                 i--;
             }
         }
