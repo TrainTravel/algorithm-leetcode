@@ -15,8 +15,9 @@ package Solution.BinarySearch;
 
 public class Search_33 {
     /**
-     * Use modified binary search. Only one sub-array in each search will possibly not be in ascending order.
-     * Hence, in each binary search iteration, find sub-array that is not in ascending order.
+     * Use modified binary search.
+     * Only one sub-array in each search will possibly not be in ascending order.
+     * Hence, in each binary search iteration, identify sub-array that is not in ascending order.
      * If target is not in normal ascending sub-array, compare target to the rest sub-array's mid and end.
      * If sub-array [mid, end] is normal array, compare target to this array to see if in this range.
      * Repeat this process until no sub-array to search or found target.
@@ -37,31 +38,32 @@ public class Search_33 {
         while (left < right) {
 
             mid = (left + right) / 2;
-
             if (nums[mid] == target) {
-
-
                 return mid;
             }
+
             if (nums[left] <= nums[mid]) {      // left sub-array is normal ascending array
-                if (target < nums[mid] && target >= nums[left]) {       // left <= target < mid
+
+                if (target < nums[mid] && target >= nums[left]) {       // nums[left] <= target <  nums[mid]
                     right = mid - 1;        // target is in the left sub-array
                 } else {        // target < left => right subarray is rotated, target > mid => right subarray
                     left = mid + 1;
                 }
             } else {        // nums[left] > nums[mid] => rotated pivot in left subarray
-                if (target <= nums[right] && target > nums[mid]) {
-                    left = mid + 1;
-                } else {
+
+                if (target <= nums[right] && target > nums[mid]) {      // nums[mid] < target <= nums[right]
+                    left = mid + 1;     // normal situation, target at right subarray
+                } else {        // otherwise, target is in right subarray
                     right = mid - 1;
                 }
             }
         }
 
-        if (nums[left] == target) {
-            return left;
-        }
-        return -1;
+        /*
+         * If last element in binary search is target, then return it.
+         * Otherwise, the element is not found in array.
+         * */
+        return (nums[left] == target) ? left : -1;
     }
 
     public static void main(String[] args) {
