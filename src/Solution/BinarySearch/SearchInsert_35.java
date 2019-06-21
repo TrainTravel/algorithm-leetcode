@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.BinarySearch;
 
 /**
  * Given a sorted array and a target value, return the index if the target is found.
@@ -12,7 +12,7 @@ package Solution.Array;
 
 public class SearchInsert_35 {
     /**
-     * Use binary search.
+     * Binary search.
      *
      * @param nums   input int array
      * @param target target int
@@ -22,15 +22,12 @@ public class SearchInsert_35 {
 
         /* Corner case */
         if (nums.length == 0 || target < nums[0]) {
-            return 0;
-        }
-        if (target > nums[nums.length - 1]) {
-            return nums.length;
+            return (target > nums[nums.length - 1]) ? nums.length : 0;
         }
 
-        /* Normal binary search */
         int left = 0;
         int right = nums.length - 1;
+
         while (left < right) {
             int mid = (left + right) / 2;
             if (target == nums[mid]) {
@@ -45,12 +42,6 @@ public class SearchInsert_35 {
 
         /* If target was not found in array, return insert position */
         int mid = (left + right) / 2;
-        if (target == nums[left]) {
-            return left;
-        } else if (target > nums[mid]) {
-            return mid + 1;
-        } else {
-            return mid;
-        }
+        return (target == nums[left]) ? left : (target > nums[mid]) ? mid + 1 : mid;
     }
 }
