@@ -1,5 +1,6 @@
 package Solution.BinarySearch;
 
+
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
  * (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
@@ -31,41 +32,34 @@ public class Search_33 {
             return -1;
         }
 
-        int startIndex = 0;
-        int endIndex = nums.length - 1;
+        int left = 0, right = nums.length - 1, mid;
 
-        while (startIndex < endIndex) {
-            int mid = (endIndex + startIndex) / 2;
+        while (left < right) {
+
+            mid = (left + right) / 2;
+
             if (nums[mid] == target) {
+
+
                 return mid;
             }
-
-            /* If left sub-array is normal ascending array */
-            if (nums[startIndex] <= nums[mid]) {
-
-                /* If target is in the range, search this part */
-                if (target < nums[mid] && target >= nums[startIndex]) {
-                    endIndex = mid - 1;
-                } else {
-
-                    /* If target is not in this part, search right part */
-                    startIndex = mid + 1;
+            if (nums[left] <= nums[mid]) {      // left sub-array is normal ascending array
+                if (target < nums[mid] && target >= nums[left]) {       // left <= target < mid
+                    right = mid - 1;        // target is in the left sub-array
+                } else {        // target < left => right subarray is rotated, target > mid => right subarray
+                    left = mid + 1;
                 }
-            } else {
-
-                /* Find the normal ascending part and continue search as above */
-                if (target <= nums[endIndex] && target > nums[mid]) {
-                    startIndex = mid + 1;
+            } else {        // nums[left] > nums[mid] => rotated pivot in left subarray
+                if (target <= nums[right] && target > nums[mid]) {
+                    left = mid + 1;
                 } else {
-                    endIndex = mid - 1;
+                    right = mid - 1;
                 }
             }
-
         }
 
-        /* mid has been compare to target during the iteration, hence first element needs to compare to target here */
-        if (nums[startIndex] == target) {
-            return startIndex;
+        if (nums[left] == target) {
+            return left;
         }
         return -1;
     }
