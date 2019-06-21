@@ -44,4 +44,12 @@ public class SearchInsert_35 {
         int mid = (left + right) / 2;
         return (target == nums[left]) ? left : (target > nums[mid]) ? mid + 1 : mid;
     }
+
+    public static void main(String[] args) {
+
+        SearchInsert_35 searchInsertTest = new SearchInsert_35();
+        int[] nums = {1, 3};
+
+        System.out.println(searchInsertTest.searchInsert(nums, 2));
+    }
 }

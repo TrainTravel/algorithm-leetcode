@@ -1,8 +1,5 @@
 package Solution.SlidingWindow;
 
-
-import Solution.Array.SearchInsert_35;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -83,11 +80,5 @@ public class FindSubstring_30 {
 
         final long endTime = System.currentTimeMillis();    // Timer
         System.out.println("Time: " + (endTime - startTime) + "ms");
-
-        /* Search_33 Insert Position */
-        SearchInsert_35 searchInsertTest = new SearchInsert_35();
-        int[] nums = {1, 3};
-
-        System.out.println(searchInsertTest.searchInsert(nums, 2));
     }
 }
