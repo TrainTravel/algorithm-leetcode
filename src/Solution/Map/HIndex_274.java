@@ -11,6 +11,8 @@ package Solution.Map;
 public class HIndex_274 {
     /**
      * Bucket sorting to reduce memory consumption comparing to hash map.
+     * Sort the array descending order, give each a index start from `1`.
+     * From right to left, find the `last` number `>=` its index, the result is its index.
      * At least n papers has n citations, therefore, create a new int array from 0 to n.
      * The index of array is the paper with # of citation, value is how many paper has this # of citations.
      * If there is a paper that has larger citations of n, then put at the end of array.
