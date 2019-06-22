@@ -31,14 +31,39 @@ public class Sqrt_69 {
         h--;
 
         int b = h - 1;
-        int res = (1 << h);
+        int root = (1 << h);
 
         while (b >= 0) {
-            if ((long) (res | (1 << b)) * (long) (res | (1 << b)) <= x) {
-                res |= (1 << b);
+            if ((long) (root | (1 << b)) * (long) (root | (1 << b)) <= x) {
+                root |= (1 << b);
             }
             b--;
         }
-        return res;
+        return root;
+    }
+
+    /**
+     * Binary search to find square root of x.
+     *
+     * @param x given int
+     * @return square root of x
+     */
+    public int binarySearch(int x) {
+
+        int left = 1, right = x;
+
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;        // avoid overflow
+
+            if (mid == x / mid) {
+                return mid;
+            } else if (mid < x / mid) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return right;       // decimal part is truncated, therefore directly return closest one
     }
 }
