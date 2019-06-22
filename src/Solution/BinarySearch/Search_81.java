@@ -11,7 +11,7 @@ package Solution.BinarySearch;
  * Created with IntelliJ IDEA
  */
 
-public class SearchII_81 {
+public class Search_81 {
     /**
      * Simply apply binary search can not solve array with duplicate elements.
      * Hence, narrowing searching range is needed.
@@ -21,44 +21,44 @@ public class SearchII_81 {
      * @param target search int
      * @return true if target is in nums, otherwise return false
      */
-    public boolean searchII(int[] nums, int target) {
+    public boolean search(int[] nums, int target) {
 
         /* Corner case */
         if (nums.length == 0) {
             return false;
         }
 
-        int l = 0;
-        int r = nums.length - 1;
+        int left = 0;
+        int right = nums.length - 1;
 
-        while (l < r) {
-            int mid = (l + r) / 2;
+        while (left < right) {
+            int mid = (left + right) / 2;
             if (nums[mid] == target) {
                 return true;
             }
 
             /* Monotonically increasing / decreasing */
-            if (nums[mid] < nums[r] || nums[mid] < nums[l]) {
-                if (target > nums[mid] && target <= nums[r]) {
-                    l = mid + 1;
+            if (nums[mid] < nums[right] || nums[mid] < nums[left]) {
+                if (target > nums[mid] && target <= nums[right]) {
+                    left = mid + 1;
                 } else {
-                    r = mid - 1;
+                    right = mid - 1;
                 }
-            } else if (nums[mid] > nums[l] || nums[mid] > nums[r]) {
-                if (target < nums[mid] && target >= nums[l]) {
-                    r = mid - 1;
+            } else if (nums[mid] > nums[left] || nums[mid] > nums[right]) {
+                if (target < nums[mid] && target >= nums[left]) {
+                    right = mid - 1;
                 } else {
-                    l = mid + 1;
+                    left = mid + 1;
                 }
 
             } else {
 
                 /* If the array is neither increasing nor decreasing, then simply narrow the range of searching */
-                r--;
-                l++;
+                right--;
+                left++;
             }
         }
-        return nums[l] == target;
+        return nums[left] == target;
     }
 }
 
