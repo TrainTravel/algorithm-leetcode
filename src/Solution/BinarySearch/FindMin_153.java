@@ -13,25 +13,28 @@ package Solution.BinarySearch;
 
 public class FindMin_153 {
     /**
-     * Binary search.
+     * Binary search. The minimum element will be at left part, or right part if rotated.
      * There may be a "pivot" in the array lead a reverse, find minimum 2 int in array and finally return minor one.
      *
      * @param nums given int array
      * @return min value in array
      */
     public int findMin(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
 
         int left = 0, right = nums.length - 1;
-
         while (left < right - 1) {
+            int middle = (left + right) / 2;
 
-            int m = (right + left) / 2;
-            if (nums[m] > nums[right]) {
-                left = m;
-            } else {
-                right = m;
+            if (nums[middle] > nums[right]) {
+                left = middle;      // middle could be min value
+            } else {        // nums[right] > nums[middle], left part contains minimum element
+                right = middle;     // middle could be min value
             }
         }
+
         return Math.min(nums[left], nums[right]);
     }
 
