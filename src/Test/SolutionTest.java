@@ -158,9 +158,9 @@ public class SolutionTest {
 //        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
 
 //        /* Search_33 in Rotated Sorted Array II */
-//        SearchII_81 searchIITest = new SearchII_81();
+//        Search_81 searchIITest = new Search_81();
 //        int[] ss = {1, 1, 3, 1};
-//        System.out.println(searchIITest.searchII(ss, 3));
+//        System.out.println(searchIITest.search(ss, 3));
 
     }
 }
