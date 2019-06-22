@@ -50,11 +50,16 @@ public class Sqrt_69 {
      */
     public int binarySearch(int x) {
 
-        int left = 1, right = x;
+        /* Corner case */
+        if (x < 2) {
+            return x;
+        }
+
+        int left = 1, right = x / 2 + 1;        // narrow range
 
         while (left <= right) {
 
-            int mid = left + (right - left) / 2;        // avoid overflow
+            int mid = (left + right) / 2;        // avoid overflow
 
             if (mid == x / mid) {
                 return mid;
