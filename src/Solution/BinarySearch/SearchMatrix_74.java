@@ -27,22 +27,22 @@ public class SearchMatrix_74 {
             return false;
         }
 
-        /* Binary search */
-        int s = 0;
-        int e = matrix.length * matrix[0].length - 1;
-        int c = matrix[0].length;
-        while (s <= e) {
-            int m = (s + e) / 2;
+        int left = 0;
+        int right = matrix.length * matrix[0].length - 1;
 
-            /* Find correct position of mid int index in matrix */
-            if (target == matrix[m / c][m % c]) {
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+            int row = mid / matrix[0].length;
+            int col = mid % matrix[0].length;
+
+            if (matrix[row][col] == target) {
                 return true;
             }
-            if (target > matrix[m / c][m % c]) {
-                s = m + 1;
-            }
-            if (target < matrix[m / c][m % c]) {
-                e = m - 1;
+            if (matrix[row][col] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
         return false;
