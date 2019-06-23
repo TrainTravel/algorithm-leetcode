@@ -12,7 +12,8 @@ public class LengthOfLIS_300 {
     /**
      * Dynamic programming with 1D array.
      * The 1D array stores the previous LIS by its length and the minimum value of LIS.
-     * Traverse the array, and use binary search to find a
+     * Traverse the array, and use binary search to find correct position that tails[i-1] < x <= tails[i].
+     * If it is larger than all tails, append it, increase size.
      *
      * @param nums given array
      * @return length of longest increasing sub sequence
