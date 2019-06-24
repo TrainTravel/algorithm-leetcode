@@ -24,7 +24,7 @@ public class ShortestDistance_317 {
      * For each building, use BFS to compute the shortest distance from each '0' to this building.
      * After searching every building, the sum of shortest distance can be found from every '0' to all reachable buildings.
      * This value is stored in 'distance[][]'.
-     * Time complexity: O(number of 1)O(number of 0) ~ O(m^2n^2)
+     * Time complexity: O(number of 1) * O(number of 0) ~ O(m^2n^2)
      *
      * @param grid given grid
      * @return minimal total travel distance
@@ -45,7 +45,7 @@ public class ShortestDistance_317 {
         for (int[] ints : grid) {
             for (int j = 0; j < column; j++) {
                 if (ints[j] == 1) {
-                    total += 1;
+                    total += 1;     // find total 1 on grid
                 }
             }
         }
