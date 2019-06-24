@@ -9,7 +9,9 @@ import java.util.Queue;
  * Each 0 marks pass.
  * Each 1 marks start point that requires to count distance, but it CANNOT pass through.
  * Each 2 marks an obstacle that CANNOT pass through.
- * If there is a 1 that can not reach any other 1 in array, then there is no possibility to find this point, return -1.
+ * Note:
+ * 1. There will be at least one building.
+ * 2. If it is not possible to build such house according to the above rules, return -1.
  *
  * @author BorisMirage
  * Time: 2019/05/05 19:47
@@ -17,20 +19,31 @@ import java.util.Queue;
  */
 
 public class ShortestDistance_317 {
+    /**
+     * Traverse the matrix.
+     * For each building, use BFS to compute the shortest distance from each '0' to this building.
+     * After searching every building, the sum of shortest distance can be found from every '0' to all reachable buildings.
+     * This value is stored in 'distance[][]'.
+     * Time complexity: O(number of 1)O(number of 0) ~ O(m^2n^2)
+     *
+     * @param grid given grid
+     * @return minimal total travel distance
+     */
     public int shortestDistance(int[][] grid) {
+
+        /* Corner case */
         if (grid.length == 0) {
             return -1;
         }
 
-        Queue<int[]> q = new LinkedList<>();
-        int r = grid.length;
-        int c = grid[0].length;
+        int row = grid.length;
+        int column = grid[0].length;
         int total = 0;      // find total 1 on grid
-        int[][] distance = new int[r][c];       // distance sum
-        int[][] reach = new int[r][c];      // each 0 should be capable to reach every 1 on grid
+        int[][] distance = new int[row][column];       // distance sum
+        int[][] reach = new int[row][column];      // each 0 should be capable to reach every 1 on grid
 
         for (int[] ints : grid) {
-            for (int j = 0; j < c; j++) {
+            for (int j = 0; j < column; j++) {
                 if (ints[j] == 1) {
                     total += 1;
                 }
