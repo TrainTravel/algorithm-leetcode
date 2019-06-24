@@ -1,4 +1,4 @@
-package Solution.Matrix;
+package Solution.FindKth;
 
 import java.util.*;
 
