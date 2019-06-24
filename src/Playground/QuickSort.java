@@ -34,7 +34,7 @@ public class QuickSort {
      * @param leftIndex  left bound INDEX
      * @param rightIndex right bound INDEX
      */
-    public void partition(int leftIndex, int rightIndex) {
+    private void partition(int leftIndex, int rightIndex) {
 
         /* Corner case and end point for recursion */
         if (leftIndex == rightIndex || arr == null) {
