@@ -1,4 +1,4 @@
-package Solution.Matrix;
+package Solution.Others;
 
 import java.util.Arrays;
 
@@ -63,6 +63,6 @@ public class SetZeroes_73 {
             }
         }
 
-        System.out.println(Arrays.deepToString(matrix));
+//        System.out.println(Arrays.deepToString(matrix));
     }
 }
