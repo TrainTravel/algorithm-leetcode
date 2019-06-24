@@ -39,10 +39,8 @@ public class KthSmallest_230 {
             }
 
             current = s.pop();
-            if (k == 0) {
+            if (--k == 0) {
                 break;
-            } else {
-                k--;
             }
             current = current.right;
         }
