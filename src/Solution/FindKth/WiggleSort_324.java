@@ -1,29 +1,48 @@
 package Solution.FindKth;
 
 /**
- * Find the kth largest element in an unsorted array.
- * Note that it is the kth largest element in the sorted order, not the kth distinct element.
+ * Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
  *
  * @author BorisMirage
- * Time: 2019/06/24 13:41
+ * Time: 2019/06/24 15:55
  * Created with IntelliJ IDEA
  */
 
-public class FindKthLargest_215 {
+public class WiggleSort_324 {
+    public void wiggleSort(int[] nums) {
+
+        int median = findMedian(nums);
+        int n = nums.length;
+        int left = 0, i = 0, right = n - 1;
+
+        while (i <= right) {
+
+            if (nums[newIndex(i, n)] > median) {
+                swap(nums, newIndex(left++, n), newIndex(i++, n));
+            } else if (nums[newIndex(i, n)] < median) {
+                swap(nums, newIndex(right--, n), newIndex(i, n));
+            } else {
+                i++;
+            }
+        }
+    }
+
+    private int newIndex(int index, int n) {
+        return (1 + 2 * index) % (n | 1);
+    }
+
     /**
-     * Use partition to partition array until right side (larger side) has just k elements.
+     * Find median in array.
      *
      * @param nums given number
-     * @param k    kth largest element
-     * @return kth largest element in an unsorted array
+     * @return median in unsorted array
      */
-    public int findKthLargest(int[] nums, int k) {
+    public int findMedian(int[] nums) {
         if (nums.length == 1) {
             return nums[0];
         }
 
-        int left = 0;
-        int right = nums.length - 1;
+        int left = 0, right = nums.length - 1, k = nums.length / 2;
 
         while (left <= right) {
 
@@ -89,13 +108,5 @@ public class FindKthLargest_215 {
         int temp = array[left];
         array[left] = array[right];
         array[right] = temp;
-    }
-
-    public static void main(String[] args) {
-        FindKthLargest_215 test = new FindKthLargest_215();
-        System.out.println(test.findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4));
-        System.out.println(test.findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2));
-        System.out.println(test.findKthLargest(new int[]{5, 2, 4, 1, 3, 6, 0}, 4));
-        System.out.println(test.findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 9));
     }
 }
