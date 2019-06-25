@@ -1,6 +1,5 @@
 package Solution.FindKth;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
