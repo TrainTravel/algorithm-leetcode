@@ -61,41 +61,24 @@ public class TopKFrequent_347 {
     public List<Integer> twoHashMap(int[] nums, int k) {
         List<Integer> out = new LinkedList<>();
 
-        HashMap<Integer, Integer> m1 = new HashMap<>();     // save the key - frequency pair
-        TreeMap<Integer, HashSet<Integer>> m2 = new TreeMap<>();        // save the frequency - key set pair
+        HashMap<Integer, Integer> m = new HashMap<>();     // save the key - frequency pair
 
         for (int i = 0; i < nums.length; i++) {
-            m1.put(nums[i], m1.getOrDefault(nums[i], 0) - 1);       // update frequency in key - frequency pair
-
-            if (m1.get(nums[i]) == -1) {        // init the map
-                if (m2.containsKey(-1)) {
-                    m2.get(-1).add(nums[i]);
-                } else {
-                    HashSet<Integer> temp = new HashSet<>();
-                    temp.add(nums[i]);
-                    m2.put(-1, temp);
-                }
-            } else {
-                m2.get(m1.get(nums[i]) + 1).remove(nums[i]);
-                if (m2.containsKey(m1.get(nums[i]))) {
-                    m2.get(m1.get(nums[i])).add(nums[i]);
-                } else {
-                    HashSet<Integer> temp = new HashSet<>();
-                    temp.add(nums[i]);
-                    m2.put(m1.get(nums[i]), temp);
-                }
-            }
+            m.put(nums[i], m.getOrDefault(nums[i], 0) - 1);
         }
 
-        for (Integer i : m2.keySet()) {
-            if (out.size() < k) {
-                HashSet<Integer> temp = m2.get(i);
-                out.addAll(temp);
-            }
+        List<Map.Entry<Integer, Integer>> list = new LinkedList<>(m.entrySet());
+        list.sort(Comparator.comparing(Map.Entry::getValue));       // sort map based on value instead of key
+
+        for (int i = 0; i < k; i++) {
+            out.add(list.get(i).getKey());
         }
-        while (out.size() > k) {
-            out.remove(out.size() - 1);
-        }
+
         return out;
+    }
+
+    public static void main(String[] args) {
+        TopKFrequent_347 test = new TopKFrequent_347();
+        System.out.println(test.twoHashMap(new int[]{1, 1, 1, 2, 2, 3}, 2));
     }
 }
