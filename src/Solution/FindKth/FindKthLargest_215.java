@@ -1,7 +1,5 @@
 package Solution.FindKth;
 
-import java.util.Random;
-
 /**
  * Find the kth largest element in an unsorted array.
  * Note that it is the kth largest element in the sorted order, not the kth distinct element.
@@ -19,6 +17,7 @@ public class FindKthLargest_215 {
      * @param k    kth largest element
      * @return kth largest element in an unsorted array
      */
+
     public int findKthLargest(int[] nums, int k) {
         if (nums.length == 1) {
             return nums[0];
@@ -29,37 +28,44 @@ public class FindKthLargest_215 {
 
         while (left <= right) {
 
-            int index = partition(nums, left, right);
+            int pivotPosition = partition(nums, left, right);
 
-            if (index - left + 1 < k) {
-                k = k - (index - left + 1);
-                left = index + 1;
-            } else if (index - left + 1 > k) {
-                right = index - 1;
+            /*
+             * Pivot position shows how many value in array is larger than pivot.
+             * If the pivot divide to a right sub array that has a size of k, then kth is found.
+             * Otherwise, if pivot divides a subarray smaller than k, then there are k - k' elements to be found.
+             * If pivot divides a larger subarray, then directly narrow the search range to right subarray.
+             * The reason is that under this condition, the right subarray contains more than k larger elements.
+             * Therefore, directly partition in right subarray will suffice. */
+            if (pivotPosition - left + 1 < k) {
+                k = k - (pivotPosition - left + 1);     // find out how many larger element should be found
+                left = pivotPosition + 1;       // reset search range
+            } else if (pivotPosition - left + 1 > k) {      // more than k larger elements are found
+                right = pivotPosition - 1;      // reset search range
             } else {
-                return nums[index];
+                return nums[pivotPosition];
             }
         }
-        return 0;
+        return Integer.MAX_VALUE;
     }
 
     /**
-     * Quick select.
+     * Quick selection, make elements value between [0, leftBound] are all >= pivot.
      *
      * @param array given array
-     * @param left  start position
-     * @param right end position
-     * @return partition array
+     * @param left  left index
+     * @param right right index
+     * @return pivot position
      */
     private int partition(int[] array, int left, int right) {
-        Random r = new Random();
-        int pivotIndex = r.nextInt((right - left) + 1) + left;
-//        int pivotIndex = left + (right - left) / 2;
+        // Random r = new Random();
+        // int pivotIndex = r.nextInt((right - left) + 1) + left;
+        int pivotIndex = left + (right - left) / 2;
         int pivot = array[pivotIndex];
-        swap(array, pivotIndex, right);
+        swap(array, pivotIndex, right);     // swap elements to the end of range
 
         int leftBound = left;
-        int rightBound = right - 1;
+        int rightBound = right - 1;     // set right bound to right - 1 to exclude pivot
         while (leftBound <= rightBound) {
             if (array[leftBound] >= pivot) {
                 leftBound++;
@@ -73,6 +79,13 @@ public class FindKthLargest_215 {
         return leftBound;
     }
 
+    /**
+     * Swap two elements in array by given index.
+     *
+     * @param array given array
+     * @param left  left index
+     * @param right right index
+     */
     private void swap(int[] array, int left, int right) {
         int temp = array[left];
         array[left] = array[right];
