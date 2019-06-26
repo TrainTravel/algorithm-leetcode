@@ -85,6 +85,5 @@ public class KSmallestPairs_373 {
             return this.val - b.val;        // Tuple with smaller sum is in prior of queue
         }
     }
-
 }
 
