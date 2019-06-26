@@ -17,7 +17,7 @@ import java.util.Stack;
 public class IsValid_20 {
     /**
      * Use stack to solve this problem. While char is left part of parentheses, push its right part to stack.
-     * When char is right part, pop stack and compare.
+     * When char is right part, pop the top of stack and compare.
      *
      * @param s input parentheses
      * @return boolean value that whether this input string is valid
