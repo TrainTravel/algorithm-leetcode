@@ -52,12 +52,6 @@ public class SolutionTest {
 //
 //        System.out.println(groupAnagramsTest.groupAnagrams(strs));
 
-//        /* Trapping Rain Water */
-//        Trap_42 trapTest = new Trap_42();
-//        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-//        System.out.println(trapTest.trap(height));
-
-
 //        /* Maximum Subarray */
 //        MaxSubArray_53 maxSubArrayTest = new MaxSubArray_53();
 //        int[] m = {1,1,1,1,1};

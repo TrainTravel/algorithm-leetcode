@@ -12,7 +12,7 @@ package Solution.TwoPointers;
 
 public class Trap_42 {
     /**
-     * Use two int as left start pointer and right start pointer.
+     * Use two pointers as left start pointer and right start pointer.
      * Move pointer toward center in iteration and add valid value to result.
      *
      * @param height int array that store map
@@ -70,5 +70,13 @@ public class Trap_42 {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+
+        /* Trapping Rain Water */
+        Trap_42 trapTest = new Trap_42();
+        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        System.out.println(trapTest.trap(height));
     }
 }
