@@ -47,13 +47,13 @@ public class KSmallestPairs_373 {
              * First polled element is nums1[0] + nums2[0]. This is smallest sum in two arrays.
              * Add nums1[1] + nums[0] to queue, based on heap comparator, it will be inserted to correct position.
              * Then poll the second smallest element in queue, and keep it until find k smallest pairs. */
-            Tuple cur = q.poll();
-            List<Integer> curList = new ArrayList<>();
-            curList.add(nums1[cur.x]);
-            curList.add(nums2[cur.y]);
-            out.add(new ArrayList<>(curList));
-            if (cur.x != nums1.length - 1) {
-                q.offer(new Tuple(cur.x + 1, cur.y, nums1[cur.x + 1] + nums2[cur.y]));      // y is decided by polled element
+            Tuple current = q.poll();
+            List<Integer> temp = new ArrayList<>();
+            temp.add(nums1[current.x]);
+            temp.add(nums2[current.y]);
+            out.add(new ArrayList<>(temp));
+            if (current.x != nums1.length - 1) {
+                q.offer(new Tuple(current.x + 1, current.y, nums1[current.x + 1] + nums2[current.y]));      // y is decided by polled element
             }
         }
         return out;
