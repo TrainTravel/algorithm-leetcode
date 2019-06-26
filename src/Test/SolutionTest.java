@@ -15,14 +15,6 @@ public class SolutionTest {
     public static void main(String[] args) {
         System.out.println("Test Complete. ");
 
-
-
-//        /* Multiply */
-//        MultiplyString_43 multiplyTest = new MultiplyString_43();
-//        String a1 = "123";
-//        String a2 = "456";
-//        System.out.println(multiplyTest.multiply(a1, a2));
-
 //        /* Permutations */
 //        Permute_46 permuteTest = new Permute_46();
 //        int[] c = {1};

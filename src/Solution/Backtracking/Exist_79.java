@@ -76,4 +76,10 @@ public class Exist_79 {
 
         return exist;
     }
+
+    public static void main(String[] args) {
+        Exist_79 existTest = new Exist_79();
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        System.out.println(existTest.exist(board, "ABCZZ"));
+    }
 }
