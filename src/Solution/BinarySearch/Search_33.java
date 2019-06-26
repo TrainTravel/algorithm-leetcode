@@ -67,8 +67,6 @@ public class Search_33 {
     }
 
     public static void main(String[] args) {
-
-        /* Search_33 */
         Search_33 searchTest = new Search_33();
         int[] nums = {1, 2, 3, 4, 5, 6};
         System.out.println(searchTest.search(nums, 4));

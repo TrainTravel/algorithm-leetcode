@@ -1,5 +1,7 @@
 package Solution.TwoPointers;
 
+import java.util.Arrays;
+
 /**
  * Given an array with n objects colored red, white or blue.
  * Sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.
@@ -48,5 +50,13 @@ public class SortColors_75 {
         int temp = nums[a];
         nums[a] = nums[b];
         nums[b] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        SortColors_75 sortColorsTest = new SortColors_75();
+        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
+        sortColorsTest.sortColors(sss);
+        System.out.println(Arrays.toString(sss));
     }
 }

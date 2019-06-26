@@ -123,12 +123,6 @@ public class SolutionTest {
 //        int[][] mmmmmm = {};
 //        System.out.println(searchMatrixTest.searchMatrix(mmmmmm, 1));
 
-//        /* Sort Colors */
-//        SortColors_75 sortColorsTest = new SortColors_75();
-//        int[] sss = {1, 1, 2, 0, 1, 1, 1, 2};
-//        sortColorsTest.sortColors(sss);
-//        System.out.println(Arrays.toString(sss));
-
 //        /* Combinations */
 //        Combine_77 combineTest = new Combine_77();
 //        System.out.println(combineTest.combine(4, 3));
@@ -138,23 +132,12 @@ public class SolutionTest {
 //        int[] sbs = {1, 2, 3};
 //        System.out.println(subsetsWithDupTest.subsetsWithDup(sbs));
 
-//        /* Word Search_33 */
-//        Exist_79 existTest = new Exist_79();
-//        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
-//        char[][] board = {{'A'}};
-//        System.out.println(existTest.exist(board, "ABCZZ"));
-
 //        /* Remove Duplicates from Sorted Array II */
 //        RemoveDuplicatesII_80 removeDuplicatesIITest = new RemoveDuplicatesII_80();
 //        int[] dup = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4};
 ////        int[] dup = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
 ////        int[] dup = {1};
 //        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
-
-//        /* Search_33 in Rotated Sorted Array II */
-//        Search_81 searchIITest = new Search_81();
-//        int[] ss = {1, 1, 3, 1};
-//        System.out.println(searchIITest.search(ss, 3));
 
     }
 }
