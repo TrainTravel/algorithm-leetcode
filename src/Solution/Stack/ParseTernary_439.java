@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * Given a string representing arbitrarily nested ternary expressions, calculate the result of the expression.
- * Assume that the given expression is valid and only consists of digits 0-9, ?, :, T and F (T and F represent True and False respectively).
+ * Assume that the given expression is valid and only consists of digits 0-9, ?, :, T and F.
  * Note:
  * 1. The length of the given string is ≤ 10000.
  * 2. Each number will contain only one digit.
@@ -18,6 +18,14 @@ import java.util.Stack;
  */
 
 public class ParseTernary_439 {
+    /**
+     * Use a stack to store each char in string.
+     * Top of stack will always store values from closest ternary expressions.
+     * Hence, pop out last four elements in stack and push current ternary expression result will finally return result.
+     *
+     * @param expression given expression string
+     * @return result of the expression
+     */
     public String parseTernary(String expression) {
         if (expression.length() < 6) {
             return "";
