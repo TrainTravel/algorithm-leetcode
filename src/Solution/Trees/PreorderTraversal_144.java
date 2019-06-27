@@ -14,9 +14,8 @@ import java.util.*;
 
 public class PreorderTraversal_144 {
     /**
-     * Use a stack to store the right sub tree of current node.
-     * Use a queue to store the root node and left sub tree.
-     * Poll the queue until it is empty, then move current node to the top of stack. Repeat this process.
+     * Use a stack to store nodes.
+     * Each time push right subtree to stack, then push left subtree. In this way to keep left subtree at top of stack.
      *
      * @param root root node of tree
      * @return preorder traversal of tree's values
@@ -27,7 +26,7 @@ public class PreorderTraversal_144 {
         if (root == null) {
             return out;
         }
-        Deque<TreeNode> stack = new LinkedList<>();
+        Stack<TreeNode> stack = new Stack<>();
 
         stack.push(root);
 
