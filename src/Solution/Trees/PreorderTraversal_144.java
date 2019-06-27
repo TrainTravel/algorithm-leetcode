@@ -2,10 +2,7 @@ package Solution.Trees;
 
 import Lib.Tree.TreeNode;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Given a binary tree, return the preorder traversal of its nodes' values.
@@ -26,26 +23,23 @@ public class PreorderTraversal_144 {
      */
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> out = new LinkedList<>();
-        TreeNode current = root;
 
-        Stack<TreeNode> s = new Stack<>();
-        Queue<TreeNode> q = new LinkedList<>();
+        if (root == null) {
+            return out;
+        }
+        Deque<TreeNode> stack = new LinkedList<>();
 
-        while (current != null || !q.isEmpty() || !s.isEmpty()) {
-            while (current != null) {
-                q.offer(current);
-                if (current.right != null) {
-                    s.push(current.right);
-                }
-                current = current.left;
-            }
-            while (!q.isEmpty()) {
-                out.add(q.poll().val);
-            }
-            if (!s.isEmpty()) {
-                current = s.pop();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node != null) {
+                out.add(node.val);
+                stack.push(node.right);
+                stack.push(node.left);      // keep left at top of stack
             }
         }
+
         return out;
     }
 }
