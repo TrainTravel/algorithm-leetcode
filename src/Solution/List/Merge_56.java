@@ -1,10 +1,6 @@
 package Solution.List;
 
-import Lib.Interval;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a collection of intervals, merge all overlapping intervals.
@@ -16,39 +12,44 @@ import java.util.List;
 
 public class Merge_56 {
     /**
-     * Using two arrays to store each interval's start and end. Sort each array respectively.
-     * Traverse these two arrays and add new Interval into result based on this:
-     * Current Interval's end will be smaller than next Interval's start.
-     * Hence, if start in start array is smaller than end array, move to next.
+     * Sort the array first by each interval's first element.
+     * Then add each interval.
+     * After sorting, interval[i][0] <= interval[i+1][0]. Therefore, to check overlapping, compare interval[i][1].
+     * If current interval left bound is smaller than previous interval right bound, then there is an overlapping.
+     * Reset right bound to larger one.
+     * If two intervals have no overlapping, add it to result and update previous checking interval to current one.
      *
      * @param intervals input Interval list
      * @return merged result
      */
-    public List<Interval> Merge(List<Interval> intervals) {
+    public int[][] merge(int[][] intervals) {
 
         /* Corner case */
-        if (intervals.size() < 2) {
+        if (intervals.length <= 1) {
             return intervals;
         }
 
-        List<Interval> res = new ArrayList<>();
-        int[] startArray = new int[intervals.size()];
-        int[] endArray = new int[intervals.size()];
-        for (int i = 0; i < intervals.size(); i++) {
-            startArray[i] = intervals.get(i).start;
-            endArray[i] = intervals.get(i).end;
-        }
-        Arrays.sort(startArray);
-        Arrays.sort(endArray);
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));     // sort based on intervals[i][0]
 
-        /* In each interval in result, the next interval's start must be larger than current interval's end */
-        for (int startIndex = 0, endIndex = 0; endIndex < intervals.size(); endIndex++) {
-            if (endIndex == intervals.size() - 1 || startArray[endIndex + 1] > endArray[endIndex]) {
-                res.add(new Interval(startArray[startIndex], endArray[endIndex]));
-                startIndex = endIndex + 1;
+        List<int[]> result = new ArrayList<>();
+        int[] temp = intervals[0];
+        result.add(temp);
+
+        for (int[] interval : intervals) {      // during the iteration, interval[i][0] <= interval[i+1][0]
+            if (interval[0] <= temp[1]) {        // overlapping intervals
+                temp[1] = Math.max(temp[1], interval[1]);     // find larger right bound to merge interval
+            } else {                             // disjoint intervals
+                temp = interval;
+                result.add(temp);       // add the new interval to the list and update temp
             }
         }
-        return res;
+
+        return result.toArray(new int[result.size()][]);
+    }
+
+    public static void main(String[] args) {
+        Merge_56 test = new Merge_56();
+        System.out.println(Arrays.deepToString(test.merge(new int[][]{{15, 18}, {2, 6}, {1, 3}, {8, 10}})));
     }
 }
 
