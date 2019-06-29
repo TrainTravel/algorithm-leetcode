@@ -1,9 +1,13 @@
 package Solution.List;
 
-
 import Lib.ListNode;
 
 /**
+ * Given a linked list, swap every two adjacent nodes and return its head.
+ * Note:
+ * 1. Algorithm should use only CONSTANT extra space.
+ * 2. Do not modify the values in the list's nodes, only nodes itself may be changed.
+ *
  * @author BorisMirage
  * Time: 2018/06/13 15:56
  * Created with IntelliJ IDEA
@@ -11,18 +15,15 @@ import Lib.ListNode;
 
 public class SwapPairs_24 {
     /**
-     * Given a linked list, swap every two adjacent nodes and return its head.
-     * <p>
-     * Note:
-     * Your algorithm should use only CONSTANT extra space.
-     * You may not modify the values in the list's nodes, only nodes itself may be changed.
-     * <p>
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode(int x) { val = x; }
-     * }
+     * Suppose there are four nodes 1, 2, 3, 4 and linked as dummy -> 1 -> 2 -> 3 -> 4 -> null.
+     * If swap nodes, then it should be dummy -> 2 -> 1 -> 3 -> 4.
+     * Create two nodes as temporary variable, current and next.
+     * First, point current and next to 1 and 2.
+     * Next, point 1 to 3 and 2 to 1, which is current = temp.next and next = temp.next.next.
+     * Then point 2 to 1 to finish swap. This is next.next = current.
+     * After this process, swap is completed, but previous dummy head still points at 1. Hence, point dummy to 2.
+     * This is temp.next = next.
+     * Finally, new dummy head should be created to repeat this process, then there is temp = current.
      *
      * @param head first node
      * @return ListNodes with correct order
@@ -34,45 +35,45 @@ public class SwapPairs_24 {
             return head;
         }
 
-        /* Work as init ListNode */
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode(0);      // dummy head
         dummy.next = head;
+        ListNode temp = dummy;
+        ListNode current;
+        ListNode next;
 
-        /* First ListNode is dummy rather than head */
-        ListNode cur = dummy;
-
-        while (cur.next != null && cur.next.next != null) {
-
-            /* Store current ListNode's next two node */
-            ListNode cache = cur.next.next;
-
-            /* Replace current ListNode's next two node's next pointer to current ListNode's next pointer */
-            cur.next.next = cache.next;
-
-            /* Replace cache ListNode's next pointer to currnent's next pointer */
-            cache.next = cur.next;
-
-            /* Link next round's current ListNode */
-            cur.next = cache;
-
-            /* Switch current ListNode's position */
-            cur = cache.next;
+        while (temp.next != null && temp.next.next != null) {
+            current = temp.next;        // current -> 1
+            next = temp.next.next;      // next -> 2
+            current.next = next.next;       // point current -> 3
+            next.next = current;        // point temp -> 1
+            temp.next = next;       // point dummy -> 2
+            temp = current;     // move temp to 1 as dummy again
         }
         return dummy.next;
     }
+
+    public static void main(String[] args) {
+        SwapPairs_24 test = new SwapPairs_24();
+        printAll(test.swapPairs(getList3()));
+    }
+
+    private static ListNode getList3() {
+        ListNode n1 = new ListNode(5);
+        ListNode n2 = new ListNode(4);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(2);
+        ListNode n5 = new ListNode(1);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static void printAll(ListNode head) {
+        while (head != null) {
+            System.out.println(head.val);
+            head = head.next;
+        }
+    }
 }
-/* List node sample */
-// 5->4->3->2->1
-//    public ListNode getList3() {
-//        ListNode n1 = new ListNode(5);
-//        ListNode n2 = new ListNode(4);
-//        ListNode n3 = new ListNode(3);
-//        ListNode n4 = new ListNode(2);
-//        ListNode n5 = new ListNode(1);
-//        n1.next = n2;
-//        n2.next = n3;
-//        n3.next = n4;
-//        n4.next = n5;
-//        ListNode head = n1;
-//        return head;
-//    }
