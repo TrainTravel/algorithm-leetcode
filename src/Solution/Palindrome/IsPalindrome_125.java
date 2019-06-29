@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Palindrome;
 
 /**
  * Determine if a string is a palindrome, considering only alphanumeric characters and ignoring cases.

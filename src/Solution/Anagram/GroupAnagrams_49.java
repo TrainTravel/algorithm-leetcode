@@ -1,4 +1,4 @@
-package Solution.Map;
+package Solution.Anagram;
 
 import java.util.*;
 
