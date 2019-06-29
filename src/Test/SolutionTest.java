@@ -81,11 +81,6 @@ public class SolutionTest {
 //        TotalNQueens_52 totalNQueensTest = new TotalNQueens_52();
 //        System.out.println(totalNQueensTest.totalNQueens(5));
 
-//        /* Plus One */
-//        PlusOne_66 plusOneTest = new PlusOne_66();
-//        int[] tt = {4,3,2,1};
-//        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
-
 //        /* Permutation Sequence */
 //        int[] ttt = {1, 2, 3};
 //        GetPermutation_60 getPermutationTest = new GetPermutation_60();
