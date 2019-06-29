@@ -4,11 +4,6 @@ import Lib.ListNode;
 
 /**
  * Given a linked list, rotate the list to the right by k places, where k is non-negative.
- * Example:
- * Input: 1->2->3->4->5->NULL, k = 2
- * Output: 4->5->1->2->3->NULL
- * Input: 0->1->2->NULL, k = 4
- * Output: 2->0->1->NULL
  *
  * @author BorisMirage
  * Time: 2018/08/05 14:37
@@ -25,30 +20,28 @@ public class RotateRight_61 {
      */
     public ListNode rotateRight(ListNode head, int k) {
 
-        if (head == null || head.next == null) {
+        /* Corner case */
+        if (head == null || head.next == null || k < 1) {
             return head;
         }
 
-        int i = 0;
+        int length = 0;
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode a = dummy;
         ListNode b = dummy;
 
-        /* Count total length */
         while (a.next != null) {
-            i++;
+            length++;
             a = a.next;
         }
 
-        /* Get i - k % i node for quicker rotation */
-        for (int j = i - k % i; j > 0; j--) {
+        for (int j = length - k % length; j > 0; j--) {
             b = b.next;
         }
-
-        a.next = dummy.next;
-        dummy.next = b.next;
-        b.next = null;
+        a.next = dummy.next;        // point end of list to head of list
+        dummy.next = b.next;        // reset head to rotate start
+        b.next = null;      // set rotate end to list end (null)
 
         return dummy.next;
     }
