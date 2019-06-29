@@ -1,4 +1,4 @@
-package Solution.List;
+package Solution.Sorting;
 
 import java.util.*;
 
