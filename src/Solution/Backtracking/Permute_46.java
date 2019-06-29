@@ -36,7 +36,7 @@ public class Permute_46 {
 
     /**
      * Backtracking to find all possible permutations.
-     * The end point is when current temporary list has reached the size of given array.
+     * The end point is when current temporary list reaching the size of given array.
      *
      * @param nums  given array
      * @param cache temporary list
