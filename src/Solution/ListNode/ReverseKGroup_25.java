@@ -59,9 +59,8 @@ public class ReverseKGroup_25 {
      */
     public ListNode reverse(ListNode begin, ListNode end) {
         ListNode current = begin.next;
-        ListNode next, first;
+        ListNode next, first = current;
         ListNode previous = begin;
-        first = current;
 
         while (current != end) {
             next = current.next;
@@ -71,7 +70,7 @@ public class ReverseKGroup_25 {
         }
 
         begin.next = previous;      // link beginning node to last reversed node's next node
-        first.next = current;       // link
+        first.next = current;       // link start to next start as next reverse's dummy
         return first;
     }
 
