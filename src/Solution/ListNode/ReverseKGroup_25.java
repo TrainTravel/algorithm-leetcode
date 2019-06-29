@@ -47,7 +47,6 @@ public class ReverseKGroup_25 {
             }
         }
         return dummy.next;
-
     }
 
     /**
@@ -100,24 +99,17 @@ public class ReverseKGroup_25 {
 
         if (count == k) {       // if current part is not remaining part of linked list
 
-            current = reverseKGroupRecursion(current, k);        // each recursion returns next recursion's start ListNode
+            current = reverseKGroupRecursion(current, k);        // each recursion returns next recursion's start node
 
             /* Reverse example:
              * 1 -> 2 -> 3 -> 4 -> 5 ->
              * <- 1 <- 2 <- 3 <- 4 <- 5
              * 5 -> 4 -> 3 -> 2 -> 1 -> */
             while (count > 0) {
-
-                /* Set a cache to store next node that will be relinked */
-                ListNode cache = head.next;
-
-                /* Link origin next pointer to previous node for reverse */
-                head.next = current;
+                ListNode cache = head.next;     // store next node that will be relinked
+                head.next = current;        // link origin next pointer to previous node for reverse
                 current = head;
-
-                /* Set next reverse node */
-                head = cache;
-
+                head = cache;       // set next reverse node
                 count--;
             }
             head = current;
