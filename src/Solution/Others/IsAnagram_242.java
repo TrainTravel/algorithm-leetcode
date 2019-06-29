@@ -23,7 +23,7 @@ public class IsAnagram_242 {
 
     public boolean isAnagram(String s, String t) {
 
-        /* Corner case*/
+        /* Corner case */
         if (s.length() != t.length()) {
             return false;
         }
@@ -39,8 +39,8 @@ public class IsAnagram_242 {
             store[t.charAt(i) - 97] -= 1;
         }
 
-        for (int aSArray : store) {
-            if (aSArray != 0) {
+        for (int i : store) {
+            if (i != 0) {
                 return false;
             }
         }
