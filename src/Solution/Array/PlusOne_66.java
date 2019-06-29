@@ -1,5 +1,7 @@
 package Solution.Array;
 
+import java.util.Arrays;
+
 /**
  * Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
  * The digits are stored such that the most significant digit is at the head of the list.
@@ -39,5 +41,11 @@ public class PlusOne_66 {
         res[0] = 1;
 
         return res;
+    }
+
+    public static void main(String[] args) {
+        PlusOne_66 plusOneTest = new PlusOne_66();
+        int[] tt = {4, 3, 2, 1};
+        System.out.println(Arrays.toString(plusOneTest.plusOne(tt)));
     }
 }
