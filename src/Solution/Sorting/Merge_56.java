@@ -31,20 +31,20 @@ public class Merge_56 {
 
         Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));     // sort based on intervals[i][0]
 
-        List<int[]> result = new ArrayList<>();
+        List<int[]> out = new ArrayList<>();
         int[] temp = intervals[0];
-        result.add(temp);
+        out.add(temp);
 
         for (int[] interval : intervals) {      // during the iteration, interval[i][0] <= interval[i+1][0]
             if (interval[0] <= temp[1]) {        // overlapping intervals
                 temp[1] = Math.max(temp[1], interval[1]);     // find larger right bound to merge interval
             } else {                             // disjoint intervals
                 temp = interval;
-                result.add(temp);       // add the new interval to the list and update temp
+                out.add(temp);       // add the new interval to the list and update temp
             }
         }
 
-        return result.toArray(new int[result.size()][]);
+        return out.toArray(new int[out.size()][]);
     }
 
     public static void main(String[] args) {
