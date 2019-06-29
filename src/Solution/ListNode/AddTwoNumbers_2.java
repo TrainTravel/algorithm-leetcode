@@ -1,4 +1,4 @@
-package Solution.List;
+package Solution.ListNode;
 
 import Lib.ListNode;
 
@@ -17,7 +17,7 @@ import Lib.ListNode;
 public class AddTwoNumbers_2 {
 
     /**
-     * Sum two nodes and return the sum node until List is empty.
+     * Sum two nodes and return the sum node until list is empty.
      *
      * @param l1 first int contains in ListNode
      * @param l2 second int contains in ListNode
