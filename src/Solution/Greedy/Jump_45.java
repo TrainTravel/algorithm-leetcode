@@ -14,40 +14,30 @@ package Solution.Greedy;
 
 public class Jump_45 {
     /**
-     * Greedy.
+     * Greedy, before each jump, find max next length in current available range.
      *
      * @param nums input int array
      * @return minimum number of jumps
      */
     public int jump(int[] nums) {
 
-        int start = 0;
-        int end = 0;
-        int curMax = 0;
+        int start = 0, end = 0, currentMax = 0;
         for (int i = 0; i < nums.length - 1; i++) {
-            curMax = Math.max(curMax, nums[i] + i);
+            currentMax = Math.max(currentMax, nums[i] + i);     // find max next length in current available range
             if (i == end) {
                 start++;
-                end = curMax;
+                end = currentMax;
             }
         }
         return start;
     }
 
     public static void main(String[] args) {
-
-        /* Jump_45 Game II */
         Jump_45 jumpTest = new Jump_45();
-        int[] jump = {2, 3, 1, 1, 1};
-        System.out.println("Min step: " + jumpTest.jump(jump));
-        jump = new int[]{1, 3, 2};
-        System.out.println("Min step: " + jumpTest.jump(jump));
-        jump = new int[]{1, 1, 1, 1};
-        System.out.println("Min step: " + jumpTest.jump(jump));
-        jump = new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0};
-        System.out.println("Min step: " + jumpTest.jump(jump));
-        jump = new int[]{4, 1, 1, 3, 1, 1, 1};
-        System.out.println("Min step: " + jumpTest.jump(jump));
-
+        System.out.println("Min step: " + jumpTest.jump(new int[]{2, 3, 1, 1, 1}));
+        System.out.println("Min step: " + jumpTest.jump(new int[]{1, 3, 2}));
+        System.out.println("Min step: " + jumpTest.jump(new int[]{1, 1, 1, 1}));
+        System.out.println("Min step: " + jumpTest.jump(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0}));
+        System.out.println("Min step: " + jumpTest.jump(new int[]{4, 1, 1, 3, 1, 1, 1}));
     }
 }
