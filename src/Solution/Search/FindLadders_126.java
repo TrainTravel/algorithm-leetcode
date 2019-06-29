@@ -32,7 +32,7 @@ public class FindLadders_126 {
      * @param beginWord begin word
      * @param endWord   target word
      * @param wordList  middle words
-     * @return all shortest transformation sequence(s) in List
+     * @return all shortest transformation sequence(s) in ListNode
      */
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> res = new LinkedList<>();

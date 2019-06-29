@@ -21,7 +21,7 @@ public class SolveNQueens_51 {
      * Based on special property of queen, search can be done column by column (or row by row).
      *
      * @param n placing n queens
-     * @return List contains all solutions that distinct board configuration of the n-queens' placement
+     * @return list contains all solutions that distinct board configuration of the n-queens' placement
      */
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> res = new ArrayList<>();
@@ -39,7 +39,7 @@ public class SolveNQueens_51 {
     /**
      * Use backtracking to traverse each possible place in chess board
      *
-     * @param res        result List
+     * @param res        result list
      * @param chessBoard char array that represent chess board
      * @param c          column number of current position
      */
@@ -83,7 +83,7 @@ public class SolveNQueens_51 {
      * Convert 2D char array into string list for final output.
      *
      * @param board chess board
-     * @return List contains output chess board
+     * @return ListNode contains output chess board
      */
     private List<String> output(char[][] board) {
         List<String> res = new LinkedList<>();

@@ -31,7 +31,7 @@ public class SubsetsWithDup_90 {
      * Backtracking.
      *
      * @param nums input int array
-     * @return List that contains all subsets
+     * @return list that contains all subsets
      */
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
@@ -43,8 +43,8 @@ public class SubsetsWithDup_90 {
     /**
      * Basic backtracking.
      *
-     * @param res  output List
-     * @param temp temp List
+     * @param res  output list
+     * @param temp temp list
      * @param nums int array
      * @param k    each recursion start position
      */

@@ -19,7 +19,7 @@ public class Combine_77 {
      *
      * @param n n numbers could be in combination, from 1 to n
      * @param k each combination length
-     * @return List contains all combinations
+     * @return list contains all combinations
      */
     public List<List<Integer>> combine(int n, int k) {
 

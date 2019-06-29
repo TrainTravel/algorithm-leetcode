@@ -13,7 +13,7 @@ public class TotalNQueens_52 {
      * Based on special property of queen, search can be done column by column (or row by row).
      *
      * @param n placing n queens
-     * @return List contains all solutions that distinct board configuration of the n-queens' placement
+     * @return list contains all solutions that distinct board configuration of the n-queens' placement
      */
     public int totalNQueens(int n) {
 

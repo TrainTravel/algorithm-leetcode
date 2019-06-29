@@ -5,18 +5,6 @@ import java.util.List;
 
 /**
  * Implement an iterator to flatten a 2d vector.
- * Your Vector2D_251 object will be instantiated and called as such:
- * Vector2D_251 i = new Vector2D_251(vec2d);
- * while (i.hasNext()) v[f()] = i.next();
- * Example:
- * Input: 2d vector =
- * [
- * [1,2],
- * [3],
- * [4,5,6]
- * ]
- * Output: [1,2,3,4,5,6]
- * Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,2,3,4,5,6].
  *
  * @author BorisMirage
  * Time: 2018/10/06 19:48
@@ -25,7 +13,7 @@ import java.util.List;
 
 
 public class Vector2D_251 implements Iterator<Integer> {
-    private Iterator<List<Integer>> l;      // List iterator
+    private Iterator<List<Integer>> l;      // list iterator
     private Iterator<Integer> i;            // int iterator
 
     public Vector2D_251(List<List<Integer>> vec2d) {

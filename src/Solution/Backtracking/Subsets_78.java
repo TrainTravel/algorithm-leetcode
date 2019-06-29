@@ -20,7 +20,7 @@ public class Subsets_78 {
      * Backtracking.
      *
      * @param nums input int array
-     * @return List that contains all subsets
+     * @return list that contains all subsets
      */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> output = new LinkedList<>();

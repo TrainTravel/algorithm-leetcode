@@ -16,7 +16,7 @@ public class SpiralOrder_54 {
      * Add elements into result list layer by layer.
      *
      * @param matrix input 2D array
-     * @return elements in spiral order that store in List
+     * @return elements in spiral order that store in list
      */
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> res = new ArrayList<>();
