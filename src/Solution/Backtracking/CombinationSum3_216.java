@@ -15,7 +15,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-public class CombinationSum3 {
+public class CombinationSum3_216 {
     /**
      * Backtracking.
      *
