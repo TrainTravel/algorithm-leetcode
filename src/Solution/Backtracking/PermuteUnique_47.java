@@ -49,8 +49,7 @@ public class PermuteUnique_47 {
         } else {
             for (int i = 0; i < nums.length; i++) {
 
-                /* Avoid reuse element in array */
-                if (use[i] || i > 0 && nums[i] == nums[i - 1] && !use[i - 1]) {
+                if (use[i] || i > 0 && nums[i] == nums[i - 1] && !use[i - 1]) {     // avoid reuse element in array
                     continue;
                 }
 
