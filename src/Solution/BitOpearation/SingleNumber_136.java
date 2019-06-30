@@ -10,7 +10,7 @@ package Solution.BitOpearation;
 
 public class SingleNumber_136 {
     /**
-     * XOR each adjacent number and the last number is the result
+     * XOR each adjacent number and the last number is the result.
      *
      * @param nums int array
      * @return number appears only once
