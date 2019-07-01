@@ -1,5 +1,7 @@
 package Solution.BitOpearation;
 
+import java.util.Arrays;
+
 /**
  * Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice.
  * Find the two elements that appear only once.
@@ -36,5 +38,10 @@ public class SingleNumber_260 {
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        SingleNumber_260 test = new SingleNumber_260();
+        System.out.println(Arrays.toString(test.singleNumber(new int[]{1, 1, 2, 2, 3, 3, 4, 5})));
     }
 }
