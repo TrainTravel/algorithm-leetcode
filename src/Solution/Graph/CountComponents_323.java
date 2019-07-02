@@ -1,7 +1,5 @@
 package Solution.Graph;
 
-import java.util.Arrays;
-
 /**
  * Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes).
  * Write a function to find the number of connected components in an undirected graph.
@@ -17,6 +15,8 @@ import java.util.Arrays;
 public class CountComponents_323 {
     /**
      * Union find.
+     * Initially, consider all nodes as individual nodes.
+     * Then traverse all given edges. Union two vertices that connected by edge.
      *
      * @param n     # of nodes
      * @param edges edges connect nodes
@@ -26,7 +26,7 @@ public class CountComponents_323 {
         int[] union = new int[n];
 
         for (int i = 0; i < union.length; i++) {
-            union[i] = i;
+            union[i] = i;       // count each node as individual node
         }
         for (int[] e : edges) {
             int r1 = find(e[0], union);
@@ -48,7 +48,7 @@ public class CountComponents_323 {
      */
     private int find(int i, int[] arr) {
         while (i != arr[i]) {
-            arr[i] = arr[arr[i]];
+            arr[i] = arr[arr[i]];       // update root if current node is not root
             i = arr[i];
         }
         return i;
