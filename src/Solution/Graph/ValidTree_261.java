@@ -34,11 +34,9 @@ public class ValidTree_261 {
         for (int[] edge : edges) {
 
             int r1 = find(edge[0], connection), r2 = find(edge[1], connection);     // find their newest son
-
             if (r1 == r2) {     // if two nodes has same newest son, then the union operation will create a loop
                 return false;
             }
-
             connection[r1] = r2;        // union
         }
         return true;
@@ -59,9 +57,7 @@ public class ValidTree_261 {
 
     public static void main(String[] args) {
         ValidTree_261 test = new ValidTree_261();
-
         System.out.println(test.validTree(5, new int[][]{{0, 1}, {0, 4}, {1, 4}, {2, 3}}));
         System.out.println(test.validTree(5, new int[][]{{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}}));
-
     }
 }
