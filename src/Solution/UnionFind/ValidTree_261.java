@@ -1,4 +1,4 @@
-package Solution.Graph;
+package Solution.UnionFind;
 
 import java.util.Arrays;
 
