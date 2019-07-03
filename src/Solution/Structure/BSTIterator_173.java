@@ -18,10 +18,11 @@ import java.util.Stack;
 
 public class BSTIterator_173 {
 
-    private Stack<TreeNode> s = new Stack<>();
+    private Stack<TreeNode> s = new Stack<>();      // save right child
 
     /**
      * Implement a In-order traversal with a stack.
+     * Initially, find all right child of current node and move current node to leftmost child of root.
      *
      * @param root given root node
      */
@@ -47,10 +48,15 @@ public class BSTIterator_173 {
         return !this.s.isEmpty();
     }
 
-    private void leftMost(TreeNode r) {
-        while (r != null) {
-            this.s.push(r);
-            r = r.left;
+    /**
+     * Find left most node of given node
+     *
+     * @param node given node
+     */
+    private void leftMost(TreeNode node) {
+        while (node != null) {
+            this.s.push(node);
+            node = node.left;
         }
     }
 }
