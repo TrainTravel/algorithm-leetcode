@@ -12,18 +12,18 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-class TrieNode {
+public class Trie {
     /**
      * Nodes in trie.
      */
     private char val;       // value of current node
-    private HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
+    private HashMap<Character, Trie> m = new HashMap<>();       // save children of current trie
     private boolean end = false;
 
     /**
      * Initialization.
      */
-    TrieNode() {
+    Trie() {
     }
 
     /**
@@ -41,7 +41,7 @@ class TrieNode {
      * @param val children value
      */
     void addChild(char val) {
-        this.m.put(val, new TrieNode());
+        this.m.put(val, new Trie());
         this.m.get(val).setVal(val);
     }
 
@@ -69,7 +69,7 @@ class TrieNode {
      * @param val value of child
      * @return child node
      */
-    TrieNode getChild(char val) {
+    Trie getChild(char val) {
         return m.get(val);
     }
 
@@ -92,7 +92,7 @@ class TrieNode {
         return m.containsKey(val);
     }
 
-    List<TrieNode> getAllChildren() {
+    List<Trie> getAllChildren() {
         return new ArrayList<>(m.values());
     }
 }
