@@ -1,8 +1,13 @@
 package Solution.Others;
 
 /**
- * Given an integer n, generate the nth term of the count-and-say sequence.
- * Note: Each term of the sequence of integers will be represented as a string.
+ * The first line of the initial value is 1.
+ * The second line reads the first line, one is 1, which is 11.
+ * The third line reads the second line, 2, so the third line is 21.
+ * The fourth line reads the third line, one 2, one 1, so the fourth line is 1211.
+ * The fifth line reads the fourth line, one 1, one 2, two 1, so the fifth flight is 111221.
+ * The sixth line reads the fifth line, three 1, two 2, one 1, so the sixth line is 312211.
+ * Then the question asks for any number of lines from 1 - 30 to output the line.
  *
  * @author BorisMirage
  * Time: 2018/06/22 15:18
@@ -11,29 +16,26 @@ package Solution.Others;
 
 public class CountAndSay_38 {
     /**
+     * nth sequence is based on (n - 1)th sequence.
+     *
      * @param n nth term
      * @return nth term of the count-and-say sequence
      */
     public String countAndSay(int n) {
 
         /* Corner case */
-        if (n < 2) {
-            return "1";
-        }
-        if (n == 2) {
-            return "11";
+        if (n < 3) {
+            return (n == 2) ? "11" : "1";
         }
 
         String res = "11";
 
-        /* Generate next sequence */
         for (int i = 2; i < n; i++) {
 
             int count = 1;
             StringBuilder round = new StringBuilder();
 
-            /* Traverse previous sequence to generate new sequence */
-            for (int j = 1; j < res.length(); j++) {
+            for (int j = 1; j < res.length(); j++) {        // next sequence is based on current sequence
                 if (res.charAt(j - 1) == res.charAt(j)) {
                     count++;
                 } else {
@@ -49,7 +51,6 @@ public class CountAndSay_38 {
 
     public static void main(String[] args) {
 
-        /* Count and Say */
         CountAndSay_38 countAndSayTest = new CountAndSay_38();
         System.out.println(countAndSayTest.countAndSay(6));
     }
