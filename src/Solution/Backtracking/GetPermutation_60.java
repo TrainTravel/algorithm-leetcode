@@ -34,8 +34,7 @@ public class GetPermutation_60 {
             set.add(i);
         }
 
-        /* Store factorial from 1 to n */
-        int[] factorial = new int[n];
+        int[] factorial = new int[n];       // save factorial from 1 to n
         factorial[0] = 1;
         for (int i = 1; i < factorial.length; i++) {
             factorial[i] = i * factorial[i - 1];
@@ -51,8 +50,7 @@ public class GetPermutation_60 {
             k = k % factorial[i - 1];
             output.append(set.get(temp));
 
-            /* Find digits in subset that do not contains previous selected digit */
-            set.remove(temp);
+            set.remove(temp);       // find digits in subset that do not contains previous selected digit
         }
 
         return output.toString();
