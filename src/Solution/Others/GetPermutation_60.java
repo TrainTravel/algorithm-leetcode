@@ -1,4 +1,4 @@
-package Solution.Backtracking;
+package Solution.Others;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,7 +28,6 @@ public class GetPermutation_60 {
      */
     public String getPermutation(int n, int k) {
 
-        /* Create set */
         List<Integer> set = new LinkedList<>();
         for (int i = 1; i < n + 1; i++) {
             set.add(i);
@@ -40,8 +39,7 @@ public class GetPermutation_60 {
             factorial[i] = i * factorial[i - 1];
         }
 
-        /* Subset index starts from 0 */
-        k = k - 1;
+        k = k - 1;      // subset index starts from 0
         StringBuilder output = new StringBuilder();
 
         for (int i = n; i > 0; i--) {
