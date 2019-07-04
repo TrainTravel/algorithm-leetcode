@@ -19,8 +19,9 @@ public class GetPermutation_60 {
     /**
      * This problem can not be solved in time when using backtracking.
      * Only need to find out kth permutation sequence, hence no need to find all sequence.
-     * Assume given n, then each single digit in n contains (n-1)! subsets.
-     * Hence, in this way each digit can be recursively found until the length is acquired.
+     * Each digit of kth permutations is determined by number of its subsequence.
+     * If n = 4, k = 10, then the first digit is 10 / 6 + 1, which is 2.
+     * Repeat this process until all digits are found.
      *
      * @param n between 1 and 9 inclusive
      * @param k between 1 and n! inclusive
