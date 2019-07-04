@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Others;
 
 /**
  * Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0' (the number zero).

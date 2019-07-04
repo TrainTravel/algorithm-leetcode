@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Others;
 
 import java.util.Arrays;
 
@@ -24,11 +24,10 @@ public class PlusOne_66 {
      * @return array after plus one.
      */
     public int[] plusOne(int[] digits) {
-        int n = digits.length;
-        for (int i = n - 1; i >= 0; i--) {
 
-            /* If no carry is found in current position then return array with add one */
-            if (digits[i] < 9) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+
+            if (digits[i] < 9) {        // if no carry is found in current position, then return array with one added
                 digits[i]++;
                 return digits;
             }
@@ -36,8 +35,9 @@ public class PlusOne_66 {
             digits[i] = 0;
         }
 
-        /* If each digit is 9 */
-        int[] res = new int[n + 1];
+        /* If each digit is 9, then a new array with size of n + 1 should be returned.
+         * New array starts with 1. */
+        int[] res = new int[digits.length + 1];
         res[0] = 1;
 
         return res;

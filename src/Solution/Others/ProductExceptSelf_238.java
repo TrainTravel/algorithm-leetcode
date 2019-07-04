@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.Others;
 
 /**
  * Given an array nums of n integers where n > 1.
