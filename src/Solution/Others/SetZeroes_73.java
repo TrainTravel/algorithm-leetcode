@@ -1,7 +1,5 @@
 package Solution.Others;
 
-import java.util.Arrays;
-
 /**
  * Given a m x n matrix, if an element is 0, set its entire row and column to 0.
  * Solve this problem in-place.
@@ -27,23 +25,15 @@ public class SetZeroes_73 {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
-                    if (i == 0) {
-                        col0 = true;
-                    }
-                    if (j == 0) {
-                        row0 = true;
-                    }
-
-                    /* Mark which row and column needs to be set 0 */
-                    matrix[0][j] = 0;
+                    row0 = (j == 0) || row0;        // if first row or column contains 0, then mark it as true
+                    col0 = (i == 0) || col0;
+                    matrix[0][j] = 0;               // mark row and column
                     matrix[i][0] = 0;
-
                 }
             }
         }
 
-        /* Set 0 for each needed row and column except first row and column */
-        for (int i = 1; i < matrix.length; i++) {
+        for (int i = 1; i < matrix.length; i++) {       // set 0 except first row and column
             for (int j = 1; j < matrix[0].length; j++) {
                 if (matrix[0][j] == 0 || matrix[i][0] == 0) {
                     matrix[i][j] = 0;
@@ -51,18 +41,12 @@ public class SetZeroes_73 {
             }
         }
 
-        /* First column and row */
-        if (row0) {
-            for (int i = 0; i < matrix.length; i++) {
-                matrix[i][0] = 0;
-            }
-        }
-        if (col0) {
-            for (int i = 0; i < matrix[0].length; i++) {
-                matrix[0][i] = 0;
-            }
+        for (int i = 0; i < matrix.length && row0; i++) {     // set first row
+            matrix[i][0] = 0;
         }
 
-//        System.out.println(Arrays.deepToString(matrix));
+        for (int i = 0; i < matrix[0].length && col0; i++) {      // set first column
+            matrix[0][i] = 0;
+        }
     }
 }
