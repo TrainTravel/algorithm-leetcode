@@ -1,7 +1,5 @@
 package Solution.Structure;
 
-import Lib.Cache.Cache;
-
 import java.util.*;
 
 /**
@@ -10,17 +8,6 @@ import java.util.*;
  * get(key): Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
  * put(key, value): Set or insert the value if the key is not already present.
  * When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
- * Example:
- * LRUCache_146 cache = new LRUCache_146(2);
- * cache.put(1, 1);
- * cache.put(2, 2);
- * cache.get(1);       // returns 1
- * cache.put(3, 3);    // since size limit reached and key 2 is least used, evicts key 2
- * cache.get(2);       // returns -1 (not found)
- * cache.put(4, 4);    // evicts key 1
- * cache.get(1);       // returns -1 (not found)
- * cache.get(3);       // returns 3
- * cache.get(4);       // returns 4
  *
  * @author BorisMirage
  * Time: 2018/09/28 21:04
@@ -145,6 +132,17 @@ public class LRUCache_146 {
         Cache old = end.previous;
         this.removeNode(old);
         return old;
+    }
+
+    /**
+     * Definition of Cache.
+     * Worked as double linked list.
+     */
+    class Cache {
+        public int key;     // cache key
+        public int val;     // value store in cache
+        public Cache previous;      // previous cache block pointer
+        public Cache next;          // next cache block pointer
     }
 
     public static void main(String[] args) {
