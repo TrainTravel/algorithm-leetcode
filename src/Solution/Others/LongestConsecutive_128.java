@@ -14,7 +14,8 @@ public class LongestConsecutive_128 {
     /**
      * Use a hash map to save the # of current consecutive elements.
      * Each time, if array element's left or right exist in array, then add it to new consecutive elements.
-     * Update
+     * Elements inside this range will not meet again.
+     * Hence, directly update new length to beginning and the end of it is enough.
      *
      * @param nums given int array
      * @return longest consecutive elements
