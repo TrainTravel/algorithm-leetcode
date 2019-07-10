@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.BFS;
 
 import java.util.*;
 
@@ -59,15 +59,18 @@ public class FindLadders_126 {
         while (!layer.isEmpty() && !wordSet.isEmpty() && !found) {
             wordSet.removeAll(layer);       // avoid repeated words
             Set<String> nextLayer = new HashSet<>();        // save next layer words
-            for (String s : layer) {
+
+            for (String s : layer) {        // iter all words in current layer
                 List<List<String>> currentPath = m.get(s);      // path based on current word
 
                 /* BFS to find next layer */
                 for (int i = 0; i < s.length(); i++) {
                     char[] arr = s.toCharArray();
+
                     for (char j = 'a'; j <= 'z'; j++) {
                         arr[i] = j;
                         String w = new String(arr);
+
                         if (wordSet.contains(w)) {
                             nextLayer.add(w);
 
@@ -88,9 +91,8 @@ public class FindLadders_126 {
                 m.remove(s);        // remove paths using previous layer's word as key, avoid repeated paths
             }
 
-            /* Clear current layer and add next layer*/
-            layer.clear();
-            layer.addAll(nextLayer);
+            layer.clear();                  // clean current layer
+            layer.addAll(nextLayer);        // add next layer
         }
 
         return res;

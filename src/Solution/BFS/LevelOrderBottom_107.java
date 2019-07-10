@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.BFS;
 
 import Lib.Tree.TreeNode;
 

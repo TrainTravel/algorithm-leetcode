@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.BFS;
 
 import Lib.Node;
 

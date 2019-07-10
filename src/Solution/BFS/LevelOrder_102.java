@@ -1,7 +1,8 @@
-package Solution.Trees;
+package Solution.BFS;
 
 import Lib.Tree.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -25,30 +26,31 @@ public class LevelOrder_102 {
      * @return level order traversal of its nodes' values
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> out = new LinkedList<>();
+        List<List<Integer>> out = new ArrayList<>();
 
+        /* Corner case */
         if (root == null) {
             return out;
         }
+
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-
         while (!q.isEmpty()) {
-            int s = q.size();
-            List<Integer> level = new LinkedList<>();
-            for (int i = 0; i < s; i++) {
+            int size = q.size();        // current level size
+            List<Integer> cache = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
                 TreeNode temp = q.poll();
                 if (temp != null) {
-                    level.add(temp.val);
+                    cache.add(temp.val);
                     if (temp.left != null) {
-                        q.add(temp.left);
+                        q.add(temp.left);       // add child to queue
                     }
                     if (temp.right != null) {
-                        q.add(temp.right);
+                        q.add(temp.right);      // add child to queue
                     }
                 }
             }
-            out.add(level);
+            out.add(new ArrayList<>(cache));
         }
         return out;
     }

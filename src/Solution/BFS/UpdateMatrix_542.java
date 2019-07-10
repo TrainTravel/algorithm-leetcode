@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.BFS;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -21,15 +21,18 @@ public class UpdateMatrix_542 {
      * @return matrix with distance
      */
     public int[][] updateMatrix(int[][] matrix) {
+
+        /* Corner case */
         if (matrix.length == 0) {
             return matrix;
         }
+
         Queue<int[]> l = new LinkedList<>();
         int r = matrix.length;
         int c = matrix[0].length;
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
                 if (matrix[i][j] == 0) {
                     l.offer(new int[]{i, j});
                 } else {

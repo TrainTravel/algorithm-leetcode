@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.BFS;
 
 import Lib.Tree.TreeNode;
 
@@ -26,9 +26,11 @@ public class ZigzagLevelOrder_103 {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> out = new LinkedList<>();
 
+        /* Corner case */
         if (root == null) {
             return out;
         }
+
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         boolean inverse = true;
