@@ -53,4 +53,8 @@ public class Subsets_78 {
         }
     }
 
+    public static void main(String[] args) {
+        Subsets_78 test = new Subsets_78();
+        System.out.println(test.subsets(new int[]{1, 2, 3, 4, 5}));
+    }
 }

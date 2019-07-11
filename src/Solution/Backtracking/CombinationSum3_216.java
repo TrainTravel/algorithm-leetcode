@@ -20,8 +20,7 @@ public class CombinationSum3_216 {
      * Backtracking.
      *
      * @param k size of each combination
-     * @param n 1. n numbers can be used in combination
-     *          2. target sum of each combination
+     * @param n target sum of each combination
      * @return all possible combinations of k numbers that sum is n
      */
     public List<List<Integer>> combinationSum3(int k, int n) {

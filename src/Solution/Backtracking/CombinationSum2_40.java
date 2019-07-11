@@ -32,9 +32,13 @@ public class CombinationSum2_40 {
             return res;
         }
 
-        /* Sort array to avoid duplication and use backtracking to find all combinations */
-        Arrays.sort(candidates);
-        System.out.println(Arrays.toString(candidates));
+        Arrays.sort(candidates);        // avoid duplication
+//        System.out.println(Arrays.toString(candidates));
+
+        if (candidates[0] > target) {       // if min value in array is larger than target, return empty list
+            return res;
+        }
+
         backtracking(res, new ArrayList<>(), candidates, target, 0);
         return res;
     }

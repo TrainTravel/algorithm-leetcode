@@ -22,15 +22,13 @@ public class RestoreIpAddresses_93 {
         List<String> output = new ArrayList<>();
 
         /* Corner case */
-        if (s.length() < 4) {
+        if (s.length() < 4 || s.length() > 12) {
             return output;
         }
 
-        for (int i = 1; i < 4 && i < s.length() - 2; i++) {
-            for (int j = i + 1; j < i + 4 && j < s.length() - 1; j++) {
+        for (int i = 1; i < 4 && i < s.length() - 2; i++) {      // leave 3 digit for later parts
+            for (int j = i + 1; j < i + 4 && j < s.length() - 1; j++) {     // j should be less than 4
                 for (int k = j + 1; k < j + 4 && k < s.length(); k++) {
-
-                    /* Divide to segments as IP parts */
                     String s1 = s.substring(0, i), s2 = s.substring(i, j), s3 = s.substring(j, k), s4 = s.substring(k);
                     if (isValid(s1) && isValid(s2) && isValid(s3) && isValid(s4)) {
                         output.add(s1 + "." + s2 + "." + s3 + "." + s4);
@@ -38,7 +36,6 @@ public class RestoreIpAddresses_93 {
                 }
             }
         }
-
         return output;
     }
 
@@ -58,5 +55,6 @@ public class RestoreIpAddresses_93 {
     public static void main(String[] args) {
         RestoreIpAddresses_93 test = new RestoreIpAddresses_93();
         System.out.println(test.restoreIpAddresses("25525511135"));
+        System.out.println(test.restoreIpAddresses("0000"));
     }
 }

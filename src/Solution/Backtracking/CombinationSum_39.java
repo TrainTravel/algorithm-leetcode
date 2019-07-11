@@ -67,12 +67,8 @@ public class CombinationSum_39 {
     }
 
     public static void main(String[] args) {
-
-        /* Combination Sum */
-        int[] candidate = {2, 3, 6, 7};
         CombinationSum_39 combinationSumTest = new CombinationSum_39();
-        System.out.println(combinationSumTest.combinationSum(candidate, 7));
-        candidate = new int[]{2, 3, 5};
-        System.out.println(combinationSumTest.combinationSum(candidate, 8));
+        System.out.println(combinationSumTest.combinationSum(new int[]{2, 3, 6, 7}, 7));
+        System.out.println(combinationSumTest.combinationSum(new int[]{2, 3, 5}, 8));
     }
 }
