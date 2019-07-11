@@ -1,14 +1,10 @@
-package Solution.Search;
+package Solution.Backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Write a function to generate the generalized abbreviations of a word.
- * Example:
- * Input: "word"
- * Output:
- * ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
  *
  * @author BorisMirage
  * Time: 2019/06/04 13:16
@@ -16,12 +12,12 @@ import java.util.List;
  */
 
 public class GenerateAbbreviations_320 {
-/**
- * Backtracking to generate abbreviation.
- *
- * @param word given word
- * @return all generalized abbreviations of a word
- */
+    /**
+     * Backtracking to generate abbreviation.
+     *
+     * @param word given word
+     * @return all generalized abbreviations of a word
+     */
     public List<String> generateAbbreviations(String word) {
         List<String> out = new ArrayList<>();
 

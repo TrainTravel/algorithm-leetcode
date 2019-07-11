@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DFS;
 
 import Lib.Robot;
 

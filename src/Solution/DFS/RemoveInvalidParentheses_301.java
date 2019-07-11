@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DFS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,9 @@ import java.util.List;
 
 public class RemoveInvalidParentheses_301 {
     /**
-     * Iterate all chars in given string, if find any invalid pair in string, backtracking all in
+     * Iterate all chars in given string.
+     * If find any invalid pair in string, backtrack to find all possible valid parentheses.
+     * Finally, reverse string and do it again.
      *
      * @param s given parentheses pairs
      * @return all possible results.
@@ -50,8 +52,7 @@ public class RemoveInvalidParentheses_301 {
 
             if (right > left) {     // if right is more than left, then current parenthesis is invalid pair
 
-                /* Backtracking to find all possibility */
-                for (int j = b; j <= i; j++) {
+                for (int j = b; j <= i; j++) {      // backtracking to find all possibility
 
                     /* Try every possible substring without one invalid right parenthesis */
                     if (s.charAt(j) == close && (j == b || s.charAt(j - 1) != close)) {     // avoid duplication

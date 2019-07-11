@@ -1,19 +1,10 @@
-package Solution.Backtracking;
+package Solution.DFS;
 
 /**
  * Given a 2D board and a word, find if the word exists in the grid.
  * The same letter cell may not be used more than once.
- * Note: Word can only be constructed from "adjacent" cell, which are those horizontally or vertically neighboring.
- * Example:
- * board =
- * {
- * {'A', 'B', 'C', 'E'},
- * {'S', 'F', 'C', 'S'},
- * {'A', 'D', 'E', 'E'}
- * }
- * Given word = "ABCCED", return true.
- * Given word = "SEE", return true.
- * Given word = "ABCB", return false.
+ * Note:
+ * 1. Word can only be constructed from "adjacent" cell, which are those horizontally or vertically neighboring.
  *
  * @author BorisMirage
  * Time: 2018/08/09 15:26
@@ -22,7 +13,7 @@ package Solution.Backtracking;
 
 public class Exist_79 {
     /**
-     * Backtracking.
+     * DFS.
      * Start from first char in word, then find adjacent cell until current cell is unavailable or all char was found.
      *
      * @param board input 2D char board
@@ -33,7 +24,7 @@ public class Exist_79 {
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == word.charAt(0) && backtracking(board, word, i, j, 0)) {
+                if (board[i][j] == word.charAt(0) && dfs(board, word, i, j, 0)) {
                     return true;
                 }
             }
@@ -53,7 +44,7 @@ public class Exist_79 {
      * @param l     current char index
      * @return true if word is found, false otherwise
      */
-    private boolean backtracking(char[][] board, String word, int i, int j, int l) {
+    private boolean dfs(char[][] board, String word, int i, int j, int l) {
 
         /* Check coord availability */
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(l)) {
@@ -67,10 +58,10 @@ public class Exist_79 {
         char temp = board[i][j];
         board[i][j] = 0;        // marked current char as visited
 
-        boolean exist = backtracking(board, word, i + 1, j, l + 1)
-                || backtracking(board, word, i, j + 1, l + 1)
-                || backtracking(board, word, i - 1, j, l + 1)
-                || backtracking(board, word, i, j - 1, l + 1);
+        boolean exist = dfs(board, word, i + 1, j, l + 1)
+                || dfs(board, word, i, j + 1, l + 1)
+                || dfs(board, word, i - 1, j, l + 1)
+                || dfs(board, word, i, j - 1, l + 1);
 
         board[i][j] = temp;     // recover char for next backtracking
 

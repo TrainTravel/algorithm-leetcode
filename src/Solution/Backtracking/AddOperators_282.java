@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.Backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,11 @@ import java.util.List;
  */
 
 public class AddOperators_282 {
+    /**
+     * @param num    given array
+     * @param target target number
+     * @return all equations that result equals to target
+     */
     public List<String> addOperators(String num, int target) {
         List<String> output = new ArrayList<>();
 
@@ -26,6 +31,8 @@ public class AddOperators_282 {
     }
 
     /**
+     * Backtracking to find all possible solutions.
+     *
      * @param l          output list
      * @param t          target number
      * @param expression number expression
@@ -44,14 +51,15 @@ public class AddOperators_282 {
             if (i != s && num.charAt(s) == '0') {
                 break;      // valid number can not starts with '0' except for 0 itself
             }
-            long val = Long.parseLong(num.substring(s, i + 1));
-            if (s == 0) {
+
+            long val = Long.parseLong(num.substring(s, i + 1));     // current parse value
+            if (s == 0) {       // init state
                 backtracking(l, t, expression + val, num, i + 1, val, val);
             } else {
                 backtracking(l, t, expression + "+" + val, num, i + 1, eval + val, val);
                 backtracking(l, t, expression + "-" + val, num, i + 1, eval - val, -val);
 
-                /* multiple has a higher priority compare to plus and minus */
+                /* Multiplication has a higher priority compare to plus and minus */
                 backtracking(l, t, expression + "*" + val, num, i + 1, eval - previous + previous * val, previous * val);
             }
         }
@@ -59,16 +67,11 @@ public class AddOperators_282 {
 
     public static void main(String[] args) {
         AddOperators_282 test = new AddOperators_282();
+        System.out.println(test.addOperators("234", 24));
         System.out.println(test.addOperators("6", 6));
-        test = new AddOperators_282();
         System.out.println(test.addOperators("123", 6));
-        test = new AddOperators_282();
         System.out.println(test.addOperators("232", 8));
-        test = new AddOperators_282();
         System.out.println(test.addOperators("1050", 6));
-        test = new AddOperators_282();
         System.out.println(test.addOperators("00", 0));
-
-
     }
 }
