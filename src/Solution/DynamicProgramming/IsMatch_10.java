@@ -20,11 +20,11 @@ public class IsMatch_10 {
     /**
      * Dynamic programming with 2D table.
      * Conditions:
-     * if (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') ->  dp[i + 1][j + 1] = dp[i][j]
-     * if (p.charAt(j) == '*'):
+     * If (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') ->  dp[i + 1][j + 1] = dp[i][j]
+     * If (p.charAt(j) == '*'):
      * 1. p.charAt(j - 1) != s.charAt(i): match previous char in 0 time
      * 2. p.charAt(j - 1) == s.charAt(i): match either previous char in string or pattern, or match previous char 0 time
-     * If either condition is satisfied, return false.
+     * If no condition satisfied, return false.
      *
      * @param s string
      * @param p pattern string
