@@ -1,14 +1,14 @@
-package Solution.Search;
+package Solution.Backtracking;
 
 import java.util.*;
 
 /**
- * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words
+ * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words.
  * Add spaces in s to construct a sentence where each word is a valid dictionary word.
  * Return all such possible sentences.
  * Note:
- * The same word in the dictionary may be reused multiple times in the segmentation.
- * You may assume the dictionary does not contain duplicate words.
+ * 1. The same word in the dictionary may be reused multiple times in the segmentation.
+ * 2. You may assume the dictionary does not contain duplicate words.
  *
  * @author BorisMirage
  * Time: 2019/06/06 16:23
@@ -55,7 +55,7 @@ public class WordBreak_140 {
             }
         }
         m.put(s, out);
-        System.out.println(m);
+//        System.out.println(m);
         return out;
     }
 
