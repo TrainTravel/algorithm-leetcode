@@ -1,4 +1,4 @@
-package Solution.Backtracking;
+package Solution.DFS;
 
 /**
  * Given an integer matrix, find the length of the longest increasing path.
@@ -42,7 +42,7 @@ public class LongestIncreasingPath_329 {
      * @param matrix given matrix
      * @param i      i
      * @param j      j
-     * @param temp   store max path length in previous itreation
+     * @param temp   store max path length in previous iteration
      * @return length of the longest increasing path on current cell
      */
     private int dfs(int[][] matrix, int i, int j, int[][] temp) {
@@ -61,7 +61,6 @@ public class LongestIncreasingPath_329 {
             if (xx > -1 && xx < matrix.length && yy > -1 && yy < matrix[0].length && matrix[xx][yy] > matrix[i][j]) {
                 max = Math.max(max, 1 + dfs(matrix, xx, yy, temp));
             }
-
         }
         temp[i][j] = max;
 
@@ -69,11 +68,7 @@ public class LongestIncreasingPath_329 {
     }
 
     public static void main(String[] args) {
-        int[][] arr = {{9, 9, 4}, {6, 6, 8}, {2, 1, 1}};
-
         LongestIncreasingPath_329 test = new LongestIncreasingPath_329();
-
-
-        System.out.println(test.longestIncreasingPath(arr));
+        System.out.println(test.longestIncreasingPath(new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}}));
     }
 }

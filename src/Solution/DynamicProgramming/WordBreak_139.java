@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +35,13 @@ public class WordBreak_139 {
 
         for (int i = 1; i < dp.length; i++) {       // iter string
             for (int j = i; j > -1; j--) {
+
+                /*
+                 * Split string into s(0, j) and s(j, i).
+                 * There are two conditions.
+                 * 1. (0, j) can be previously found in set
+                 * 2. s(j, i) can be found in set
+                 * Then s(0, i) can be divided. */
                 if (dp[j] && wordDict.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
@@ -47,12 +54,10 @@ public class WordBreak_139 {
 
 
     public static void main(String[] args) {
-
-        String s = "callofduty";
         String[] wordDict = {"call", "of", "duty"};
         List<String> l = new ArrayList<>(Arrays.asList(wordDict));
         WordBreak_139 test = new WordBreak_139();
-        System.out.println(test.wordBreak(s, l));
+        System.out.println(test.wordBreak("callofduty", l));
 
         wordDict = new String[]{"car", "ca", "rs"};
         l = Arrays.asList(wordDict);
