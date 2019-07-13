@@ -3,10 +3,6 @@ package Solution.DynamicProgramming;
 /**
  * Given a string s, partition s such that every substring of the partition is a palindrome.
  * Return the minimum cuts needed for a palindrome partitioning of s.
- * Example:
- * Input: "cabababcbc"
- * Output: 3
- * Explanation: The palindrome partitioning ["c", "a", "babab", "cbc"] could be produced using 3 cut.
  *
  * @author BorisMirage
  * Time: 2019/03/24 10:48
@@ -29,6 +25,7 @@ public class MinCut_132 {
         if (s.length() == 0) {
             return 0;
         }
+
         int[] min = new int[s.length()];        // min cut at each position of string
         boolean[][] dp = new boolean[s.length()][s.length()];       // if s(i, j) is palindrome
 
