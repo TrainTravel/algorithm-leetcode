@@ -44,9 +44,10 @@ public class DiameterOfBinaryTree_543 {
             return 0;
         }
 
-        int left = path(root.left);
-        int right = path(root.right);
-        max = Math.max(max, left + right);      // global max
+        int left = path(root.left);     // left root depth
+        int right = path(root.right);       // right root depth
+
+        max = Math.max(max, left + right);      // global max sum of path
 
         return Math.max(left, right) + 1;       // current max
     }
