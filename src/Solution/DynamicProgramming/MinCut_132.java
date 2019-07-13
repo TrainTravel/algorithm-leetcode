@@ -13,8 +13,8 @@ public class MinCut_132 {
     /**
      * Dynamic programming with two 1D boolean array.
      * Assume i, j are the index in string, cut[i] is the min cut time for s(0, i).
-     * 1. cut[i] is the minimum of cut[j - 1] + 1 (j <= i), if [j, i] is palindrome.
-     * 2. If [j, i] is palindrome, then [j + 1, i - 1] is palindrome, and c[j] == c[i].
+     * 1. If s(j, i) is palindrome, cut[i] is the minimum of cut[j - 1] + 1 (j <= i)
+     * 2. If s(j, i) is palindrome, then [j + 1, i - 1] is palindrome, and c[j] == c[i].
      *
      * @param s given string
      * @return min cuts for a palindrome partitioning of s
@@ -22,7 +22,7 @@ public class MinCut_132 {
     public int minCut(String s) {
 
         /* Corner case */
-        if (s.length() == 0) {
+        if (s.length() < 2) {
             return 0;
         }
 
@@ -35,7 +35,7 @@ public class MinCut_132 {
             for (int j = 0; j <= i; j++) {      // iter sub string
                 if (s.charAt(j) == s.charAt(i) && (j + 1 > i - 1 || dp[j + 1][i - 1])) {        // j + 1 > i - 1: adjacent char
                     dp[j][i] = true;
-                    min[i] = j == 0 ? 0 : Math.min(min[i], min[j - 1] + 1);     // j == 0: first char always palindrome
+                    min[i] = (j == 0) ? 0 : Math.min(min[i], min[j - 1] + 1);     // j == 0: first char always palindrome
                 }
             }
         }
@@ -46,6 +46,5 @@ public class MinCut_132 {
         MinCut_132 t = new MinCut_132();
         System.out.println(t.minCut("abcba"));
         System.out.println(t.minCut("cabababcbc"));
-
     }
 }
