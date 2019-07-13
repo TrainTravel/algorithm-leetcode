@@ -121,8 +121,7 @@ public class LongestValidParentheses_32 {
      */
     public int longestValidParenthesesDP(String s) {
 
-        /* Record temp max length result */
-        int[] arr = new int[s.length()];
+        int[] arr = new int[s.length()];        // save temp max
         int maxParentheses = 0;
 
         for (int i = 1; i < s.length(); i++) {
@@ -130,24 +129,19 @@ public class LongestValidParentheses_32 {
             /* If current char is ')', then find previous state */
             if (s.charAt(i) == ')') {
                 if (s.charAt(i - 1) == '(') {       // add a new pair
-                    if (i > 1) {
-                        arr[i] = arr[i - 2] + 2;
-                    } else {
-                        arr[i] = 2;
-                    }
+
+                    arr[i] = (i > 1) ? arr[i - 2] + 2 : 2;
+
                 } else if (i > arr[i - 1] && s.charAt(i - arr[i - 1] - 1) == '(') {
 
-                    /* i - arr[i - 1] - 1: find first '(' */
-                    if (i - arr[i - 1] > 1) {        // new valid pair immediately next to previous one
-                        arr[i] = arr[i - 1] + arr[i - arr[i - 1] - 2] + 2;
-                    } else {
-                        arr[i] = arr[i - 1] + 2;
-                    }
+                    /*
+                     * i - arr[i - 1] - 1: find first '('
+                     * New valid pair immediately next to previous one. */
+                    arr[i] = (i - arr[i - 1] > 1) ? arr[i - 1] + arr[i - arr[i - 1] - 2] + 2 : arr[i - 1] + 2;
                 }
                 maxParentheses = Math.max(maxParentheses, arr[i]);
             }
         }
         return maxParentheses;
     }
-
 }

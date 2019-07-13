@@ -26,19 +26,26 @@ public class NumDecodings_91 {
     public int numDecodings(String s) {
 
         /* Corner case */
-        if (s.length() == 0 || s.charAt(0) == '0') {
+        if (s.length() == 0) {
             return 0;
         }
 
         int[] dp = new int[s.length() + 1];
-        dp[s.length()] = 1;
-        dp[s.length() - 1] = (s.charAt(s.length() - 1) == '0' ? 0 : 1);     // in case last digit is 0
 
-        for (int i = dp.length - 2; i > -1; i--) {
+        dp[s.length()] = 1;
+        dp[s.length() - 1] = s.charAt(s.length() - 1) == '0' ? 0 : 1;        // in case last digit is 0
+
+        for (int i = s.length() - 2; i > -1; i--) {
             if (s.charAt(i) != '0') {
+
+                /* (i ,i + 1), two digits */
                 dp[i] = (Integer.parseInt(s.substring(i, i + 2)) < 27) ? dp[i + 1] + dp[i + 2] : dp[i + 1];
             }
         }
         return dp[0];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new NumDecodings_91().numDecodings("1021"));
     }
 }
