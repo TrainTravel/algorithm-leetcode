@@ -11,6 +11,8 @@ package Solution.Math;
 
 public class CheckPerfectNumber_507 {
     /**
+     * Find factor from 1 to n.
+     *
      * @param num given number
      * @return whether this number is perfect number
      */
