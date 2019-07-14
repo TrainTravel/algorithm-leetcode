@@ -28,8 +28,7 @@ public class LengthOfLIS_300 {
         /*
          * Index is the length of LIS in array.
          * Values under corresponding index is the minimum value of last element in each length of LIS.
-         * Size is the length in tails[] filled with numbers (length of LIS found)
-         *  */
+         * Size is the length in tails[] filled with numbers (length of LIS found). */
         int[] tails = new int[nums.length];
         int size = 0;
 
@@ -39,8 +38,7 @@ public class LengthOfLIS_300 {
             /*
              * Binary search to find correct LIS tail that it should be inserted to.
              * Each element should be inserted to position where tails[i-1] < x <= tails[i].
-             * If current element is the largest one, then the size will increase 1, as new LIS is found.
-             * */
+             * If current element is the largest one, then the size will increase 1, as new LIS is found. */
             while (left < right) {
 
                 int mid = left + (right - left) / 2;
