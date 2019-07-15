@@ -2,6 +2,9 @@ package Solution.ListNode;
 
 import Lib.ListNode;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * Merge k sorted linked lists and return it as one sorted list.
  * Analyze and describe its complexity.
@@ -33,7 +36,7 @@ public class MergeKLists_23 {
 
 
     /**
-     * Divide_29 input lists from mid and put into two subpart recursively, until each subpart only has one element.
+     * Divide input lists from mid and put into two subpart recursively, until each subpart only has one element.
      * Then merge these two lists using mergeTwoLists method.
      * Finally, the whole ListNode list will be merged and this merged list will be returned.
      *
@@ -58,16 +61,6 @@ public class MergeKLists_23 {
 
     /**
      * Merge two sorted linked lists and return it as a new list.
-     * The new list should be made by splicing together the nodes of the first two lists.
-     * <p>
-     * Simply compare value in two ListNode. Point smaller one as next node.
-     * <p>
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode(int x) { val = x; }
-     * }
      *
      * @param l1 first node
      * @param l2 second node
@@ -87,5 +80,43 @@ public class MergeKLists_23 {
             l2.next = mergeTwoLists(l1, l2.next);
             return l2;
         }
+    }
+
+    /**
+     * Use heap to store the head node of each list and sort head node.
+     *
+     * @param lists given K lists
+     * @return sorted list
+     */
+    public ListNode heap(ListNode[] lists) {
+
+        /* Corner case */
+        if (lists.length == 0) {
+            return null;
+        }
+        if (lists.length == 1) {
+            return lists[0];
+        }
+
+        PriorityQueue<ListNode> q = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+
+        for (ListNode node : lists) {
+            if (node != null) {
+                q.add(node);
+            }
+        }
+
+        while (!q.isEmpty()) {
+            tail.next = q.poll();
+            tail = tail.next;
+            if (tail.next != null) {
+                q.add(tail.next);
+            }
+        }
+        return dummy.next;
     }
 }
