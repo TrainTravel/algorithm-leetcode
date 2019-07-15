@@ -33,15 +33,14 @@ public class ReverseKGroup_25 {
             return head;
         }
 
-        ListNode begin;
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        begin = dummy;
+        ListNode begin = dummy;
         int i = 0;
         while (head != null) {
             if (++i % k == 0) {
-                begin = reverse(begin, head.next);
-                head = begin.next;
+                begin = reverse(begin, head.next);      // obtain end of reversed list
+                head = begin.next;                      // move to next reverse sub linked list
             } else {
                 head = head.next;       // head works as local reverse end node
             }
@@ -50,27 +49,32 @@ public class ReverseKGroup_25 {
     }
 
     /**
-     * Reverse node in list.
+     * Reverse node in from dummy.next to end (end is not included).
      * Note that return value is the next reverse start dummy head node, instead of next start node.
      *
-     * @param begin dummy head node
-     * @param end   end node
+     * @param dummy dummy head node (not included in reverse)
+     * @param end   end node (not included in reverse)
      * @return next reverse start node
      */
-    public ListNode reverse(ListNode begin, ListNode end) {
-        ListNode current = begin.next;
-        ListNode next, first = current;
-        ListNode previous = begin;
+    public ListNode reverse(ListNode dummy, ListNode end) {
+        ListNode current = dummy.next;
+        ListNode first = current;     // first: first node to be reversed
+        ListNode previous = dummy;
+        ListNode next;
 
         while (current != end) {
-            next = current.next;
-            current.next = previous;
-            previous = current;
-            current = next;
+            next = current.next;        // save next current position when current node reverse is completed
+            current.next = previous;    // reverse: link current node to previous node
+            previous = current;         // current reverse is done, move previous node to current node
+            current = next;             // move current node to next node
         }
 
-        begin.next = previous;      // link beginning node to last reversed node's next node
-        first.next = current;       // link start to next start as next reverse's dummy
+        /*
+         * After iteration, current node is at end now.
+         * Link beginning of list to last node reversed and link first reversed node to end of list.
+         * Return last reversed node, as it will be the next reverse's beginning. (dummy head) */
+        dummy.next = previous;      // link beginning node to last reversed node's next node
+        first.next = end;           // link start to next start as next reverse's dummy
         return first;
     }
 
