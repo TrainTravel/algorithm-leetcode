@@ -19,7 +19,7 @@ import java.util.LinkedHashSet;
 public class LFUCache_460 {
     private HashMap<Integer, Integer> pair;       // store key-value pair
     private HashMap<Integer, Integer> count;      // store frequency as key-count pair
-    private HashMap<Integer, LinkedHashSet<Integer>> frequency;        // determine which to be removed
+    private HashMap<Integer, LinkedHashSet<Integer>> frequency;        // key is the frequency, value is cache key under this frequency
     private int min = -1;
     private int capacity;
 

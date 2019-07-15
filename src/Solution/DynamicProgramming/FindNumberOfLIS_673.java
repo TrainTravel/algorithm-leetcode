@@ -12,7 +12,7 @@ public class FindNumberOfLIS_673 {
     /**
      * Dynamic programming.
      * One array save the length of the LIS ends with nums[i], one array count number of the LIS ends with nums[i].
-     * If nums[i] > nums[j] （j < i):
+     * If nums[i] > nums[j] (j < i):
      * 1. length[i] < length[j] + 1: count[i] = count[j], length[i] = length[j] + 1;
      * 2. length[i] == length[j] + 1: count[i] += count[j]；
      * 3. length[i] > length[j]: stay same (included in other LIS)

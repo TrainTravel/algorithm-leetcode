@@ -13,55 +13,47 @@ import java.util.List;
 
 public class SpiralOrder_54 {
     /**
-     * Add elements into result list layer by layer.
+     * Add elements into result list controlled by four boundary element.
      *
      * @param matrix input 2D array
      * @return elements in spiral order that store in list
      */
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> res = new ArrayList<>();
+
+        List<Integer> out = new ArrayList<>();
+
         if (matrix.length == 0) {
-            return res;
-        }
-        int topRow = 0;
-        int leftColumn = 0;
-        int bottomRow = matrix.length - 1;
-        int rightColumn = matrix[0].length - 1;
-
-        /* Add each layer into output list */
-        while (topRow <= bottomRow && leftColumn <= rightColumn) {
-
-            /* Add elements through top row, from left to right */
-            for (int i = leftColumn; i <= rightColumn; i++) {
-                res.add(matrix[topRow][i]);
-            }
-
-            /* Add elements through rightmost column in each layer, from top to bottom */
-            for (int i = topRow + 1; i < bottomRow; i++) {
-                res.add(matrix[i][rightColumn]);
-            }
-
-            /* Check if current layer exist bottom layer */
-            if (topRow < bottomRow && leftColumn < rightColumn) {
-
-                /* Add elements through bottom row, from right to left */
-                for (int i = rightColumn - 1; i > leftColumn; i--) {
-                    res.add(matrix[bottomRow][i]);
-                }
-
-                /* Add elements through leftmost column in each layer, from top to bottom */
-                for (int i = bottomRow - 1; i > topRow; i--) {
-                    res.add(matrix[i][leftColumn]);
-                }
-            }
-
-            /* Move to next layer*/
-            topRow++;
-            bottomRow--;
-            leftColumn++;
-            rightColumn--;
+            return out;
         }
 
-        return res;
+        int left = 0, right = matrix[0].length - 1, top = 0, bottom = matrix.length - 1;
+
+        while (left <= right && top <= bottom) {
+            for (int i = left; i <= right; i++) {
+                out.add(matrix[top][i]);
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                out.add(matrix[i][right]);
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    out.add(matrix[bottom][i]);
+                }
+            }
+            bottom--;
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    out.add(matrix[i][left]);
+                }
+            }
+            left++;
+        }
+
+        return out;
     }
 }
