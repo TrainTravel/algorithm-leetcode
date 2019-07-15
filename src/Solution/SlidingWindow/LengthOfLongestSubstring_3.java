@@ -33,15 +33,16 @@ public class LengthOfLongestSubstring_3 {
 
         int max = 0;
         Map<Character, Integer> m = new HashMap<>();
+        int start = 0;
 
-        for (int i = 0, j = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
 
             if (m.containsKey(s.charAt(i))) {       // current char in map (duplicated)
-                j = Math.max(m.get(s.charAt(i)), j);        // compare current index to previous index
+                start = Math.max(m.get(s.charAt(i)) + 1, start);        // compare current index to previous index
             }
-            max = Math.max(max, i - j + 1);
+            max = Math.max(max, i - start + 1);
 
-            m.put(s.charAt(i), i + 1);      // continue at next char, if char is duplicated, reset start index
+            m.put(s.charAt(i), i);      // continue at next char, if char is duplicated, reset start index
         }
 
         return max;
