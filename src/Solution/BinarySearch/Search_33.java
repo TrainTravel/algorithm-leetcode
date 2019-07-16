@@ -35,14 +35,14 @@ public class Search_33 {
 
         int left = 0, right = nums.length - 1, mid;
 
-        while (left < right) {
+        while (left <= right) {     // avoid corner case that target is at left most of array
 
             mid = (left + right) / 2;
             if (nums[mid] == target) {
                 return mid;
             }
 
-            if (nums[left] <= nums[mid]) {      // left sub-array is normal ascending array
+            if (nums[left] <= nums[mid]) {      // left sub-array is normal ascending array, and including array with 2 elements
 
                 if (target < nums[mid] && target >= nums[left]) {       // nums[left] <= target <  nums[mid]
                     right = mid - 1;        // target is in the left sub-array
@@ -59,11 +59,7 @@ public class Search_33 {
             }
         }
 
-        /*
-         * If last element in binary search is target, then return it.
-         * Otherwise, the element is not found in array.
-         * */
-        return (nums[left] == target) ? left : -1;
+        return -1;
     }
 
     public static void main(String[] args) {
