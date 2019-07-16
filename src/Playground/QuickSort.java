@@ -1,5 +1,7 @@
 package Playground;
 
+import java.util.Arrays;
+
 /**
  * Quick sort implementation.
  *
@@ -12,70 +14,87 @@ public class QuickSort {
     private int[] arr;
 
     /**
-     * Put array into class and check length.
-     *
-     * @param sortArray array to be sort
+     * Class initialization.
      */
-    public int[] QuickSort(int[] sortArray) {
+    public QuickSort() {
+    }
+
+    public int[] sort(int[] arr) {
+        this.arr = arr;
 
         /* Corner case */
-        if (sortArray.length == 0 || sortArray.length == 1) {
-            return sortArray;
+        if (this.arr.length < 2) {
+            return this.arr;
         }
-        arr = sortArray;
-        partition(0, arr.length - 1);
-        return arr;
+        sort(0, this.arr.length - 1);
+        return this.arr;
+    }
+
+    /**
+     * The main function that implements QuickSort().
+     *
+     * @param left  starting index
+     * @param right ending index
+     */
+    private void sort(int left, int right) {
+
+        if (left < right) {
+
+            int partitionIndex = partition(left, right);
+
+            sort(left, partitionIndex - 1);        // recursively sort elements before partition and after partition
+            sort(partitionIndex + 1, right);
+        }
     }
 
     /**
      * Quick sort with recursively partition.
      * Sort target array from small to large.
      *
-     * @param leftIndex  left bound INDEX
-     * @param rightIndex right bound INDEX
+     * @param left  left bound INDEX
+     * @param right right bound INDEX
      */
-    private void partition(int leftIndex, int rightIndex) {
+    private int partition(int left, int right) {
 
-        /* Corner case and end point for recursion */
-        if (leftIndex == rightIndex || arr == null) {
-            return;
-        }
-        if (leftIndex == rightIndex - 1) {
-            if (leftIndex > rightIndex) {
-                int temp = arr[leftIndex];
-                arr[leftIndex] = arr[rightIndex];
-                arr[rightIndex] = temp;
+        int pivot = this.arr[right];
+        int i = (left - 1);      // index of smaller element
+
+        for (int j = left; j < right; j++) {
+
+            /*
+             * j points to each element in array.
+             * i points to element to be swapped.
+             * If pivot < current element, then i move forward, since it should not be swapped.
+             * Otherwise, i stops moving forward and once j points to an element smaller than pivot, swap i and j.
+             * It swaps first element larger than or equal to pivot (arr[i]) and first element smaller than pivot (arr[j]). */
+            if (pivot >= this.arr[j]) {      // if current element is smaller than or equal to pivot
+                swap(++i, j);
             }
-            return;
         }
+        System.out.println(Arrays.toString(arr));
 
-        int l = leftIndex;
-        int r = rightIndex;
+        swap(i + 1, right);     // swap arr[i+1] and arr[high] (or pivot)
 
-        /* Select pivot */
-        int pivot = arr[l + (r - l) / 2];
+        return i + 1;       // divide array to smaller or equal to pivot, and larger than pivot
+    }
 
-        /* Partition: move elements smaller than pivot to pivot's left, rest to pivot's right */
-        while (l < r) {
+    /**
+     * Swap two elements in array.
+     *
+     * @param i first index
+     * @param j second index
+     */
+    private void swap(int i, int j) {
+        int temp = this.arr[i];
+        this.arr[i] = this.arr[j];
+        this.arr[j] = temp;
+    }
 
-            /* Pass elements that smaller*/
-            while (arr[l] < pivot) {
-                l++;
-            }
-            while (arr[r] > pivot) {
-                r--;
-            }
-
-            /* Switch elements */
-            int temp = arr[l];
-            arr[l] = arr[r];
-            arr[r] = temp;
-            l++;
-            r--;
-        }
-
-        /* Recursion: repeat this process into sub array until reach end point */
-        partition(leftIndex, r);
-        partition(l, rightIndex);
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1})));
+        System.out.println("====");
+        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{5, 4, 2, 8, 3, 7, 9, 1, 6})));
+        System.out.println("====");
+        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{8, 4, 7, 8, 5, 3, 5, 7, 1})));
     }
 }
