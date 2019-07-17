@@ -1,4 +1,4 @@
-package Solution.OrderedMap;
+package Solution.Heap;
 
 import java.util.Arrays;
 import java.util.HashSet;
