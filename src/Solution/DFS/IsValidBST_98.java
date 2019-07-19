@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.DFS;
 
 
 import Lib.Tree.TreeNode;
