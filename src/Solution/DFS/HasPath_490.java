@@ -1,5 +1,4 @@
-package Solution.Trees;
-
+package Solution.DFS;
 
 /**
  * There is a ball in a maze with empty spaces and walls.

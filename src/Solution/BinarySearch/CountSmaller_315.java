@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.BinarySearch;
 
 import java.util.LinkedList;
 import java.util.List;

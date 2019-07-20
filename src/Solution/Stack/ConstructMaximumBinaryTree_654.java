@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.Stack;
 
 import Lib.Tree.TreeNode;
 

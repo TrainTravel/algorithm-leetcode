@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.DFS;
 
 import Lib.Tree.TreeNode;
 
@@ -57,26 +57,26 @@ public class LargestBSTSubtree_333 {
 
         return new TreeSize(left.size + 1 + right.size, Math.min(left.low, r.val), Math.max(right.high, r.val));
     }
-}
-
-/**
- * Save current tree's size and lower/upper bound of valid BST.
- */
-class TreeSize {
-    int size;
-    int low;        // lower bound of current BST
-    int high;       // upper bound of current BST
 
     /**
-     * Save info of tree.
-     *
-     * @param size tree size
-     * @param low  lower bound
-     * @param high upper bound
+     * Save current tree's size and lower/upper bound of valid BST.
      */
-    TreeSize(int size, int low, int high) {
-        this.size = size;
-        this.low = low;
-        this.high = high;
+    class TreeSize {
+        int size;
+        int low;        // lower bound of current BST
+        int high;       // upper bound of current BST
+
+        /**
+         * Save info of tree.
+         *
+         * @param size tree size
+         * @param low  lower bound
+         * @param high upper bound
+         */
+        TreeSize(int size, int low, int high) {
+            this.size = size;
+            this.low = low;
+            this.high = high;
+        }
     }
 }

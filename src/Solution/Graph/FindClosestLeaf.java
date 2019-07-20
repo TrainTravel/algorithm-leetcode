@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.Graph;
 
 import Lib.Tree.TreeNode;
 

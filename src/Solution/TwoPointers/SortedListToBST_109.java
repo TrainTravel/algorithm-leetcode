@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.TwoPointers;
 
 import Lib.ListNode;
 import Lib.Tree.TreeNode;

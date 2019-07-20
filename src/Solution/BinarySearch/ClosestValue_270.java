@@ -1,8 +1,10 @@
-package Solution.Trees;
+package Solution.BinarySearch;
 
 import Lib.Tree.TreeNode;
 
 /**
+ * Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+ *
  * @author BorisMirage
  * Time: 2019/06/12 19:18
  * Created with IntelliJ IDEA

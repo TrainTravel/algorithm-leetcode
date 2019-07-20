@@ -1,4 +1,4 @@
-package Solution.Trees;
+package Solution.Backtracking;
 
 import Lib.Tree.TreeNode;
 
