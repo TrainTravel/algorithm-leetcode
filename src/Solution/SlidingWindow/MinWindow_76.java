@@ -39,19 +39,23 @@ public class MinWindow_76 {
 
         while (fast < s.length()) {
 
-            char current = s.charAt(fast++);        // get current char
-
-            if (countChar[current]-- > 0) {     // if found a char in S
-                rest--;     // rest chars to be found in T reduce one
+            /* Each time, if current char is found in T, then reduce pending finding length in T.
+             * If pending length is 0, then try to narrow the searching window.*/
+            if (countChar[s.charAt(fast++)]-- > 0) {
+                rest--;
             }
 
-            while (rest == 0) {     // narrow the window, while assuring all chars in T are found
+            /*
+             * When no more char requires to be found in S, reduce the window to find min window size.
+             * During the narrow process, there are two conditions: remove a char in T or not in T.
+             * If one char in T is removed, the narrow process should stop.
+             * Otherwise, find min window size during narrowing. */
+            while (rest == 0) {
 
-                if (countChar[s.charAt(slow++)]++ == 0) {       // countChar count all chars in S, every char should count
+                if (countChar[s.charAt(slow++)]++ == 0){
                     rest++;     // avoid filter out char in T
                 }
 
-                /* Narrow window */
                 if (fast - slow + 1 < window) {
                     window = fast - slow + 1;
                     start = slow - 1;
