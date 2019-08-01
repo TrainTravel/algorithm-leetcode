@@ -13,6 +13,7 @@ package Solution.DynamicProgramming;
 public class Tribonacci_1137 {
     /**
      * Basic dynamic programming, dp[i] = dp[i-1] + dp[i-2] + dp[i-3].
+     * Do not use recrusion to solve this problem, which will cause TLE.
      *
      * @param n n
      * @return nth Tribonacci sequence
