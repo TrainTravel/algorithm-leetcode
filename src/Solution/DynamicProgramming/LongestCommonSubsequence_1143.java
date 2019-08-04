@@ -22,6 +22,12 @@ public class LongestCommonSubsequence_1143 {
      * @return the length of their longest common subsequence
      */
     public int longestCommonSubsequence(String text1, String text2) {
+
+        /* Corner case */
+        if (text1.length() == 0 || text2.length() == 0) {
+            return 0;
+        }
+
         int l1 = text1.length(), l2 = text2.length();
         int[][] dp = new int[l1 + 1][l2 + 1];
 
