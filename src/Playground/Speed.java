@@ -14,20 +14,22 @@ public class Speed {
      * @param endTime  end time of calculation
      * @return total distance before end
      */
-    public double speed(double[][] readings, double endTime) {
+    public double speed(double[][] readings, long endTime) {
 
         /* Corner case */
         if (readings.length == 1) {
-            return (endTime / (double) 3600) * readings[0][0];
+            return (endTime / (double) 3600) * readings[0][1];
         }
 
-        double total = 0;
+        double total = 0;       // total distance
 
         for (int i = 1; i < readings.length; i++) {
+
             if (readings[i][0] < endTime) {
                 total += (((readings[i][0] - readings[i - 1][0]) / (double) 3600) * readings[i - 1][1]);
             } else {
                 total += (((endTime - readings[i - 1][0]) / (double) 3600) * readings[i - 1][1]);
+                break;
             }
         }
         if (endTime > readings[readings.length - 1][0]) {
@@ -38,6 +40,12 @@ public class Speed {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Speed().speed(new double[][]{{0, 90}, {300, 80}}, (double) 600));
+        System.out.println(new Speed().speed(new double[][]{{0, 90}}, 600));
+        System.out.println(new Speed().speed(new double[][]{{0, 0}, {300, 0}}, 600));
+        System.out.println(new Speed().speed(new double[][]{{0, 50}, {180, -30}, {240, 60}}, 360));
+        System.out.println(new Speed().speed(new double[][]{{0, 90}, {300, 80}}, 600));
+        System.out.println(new Speed().speed(new double[][]{{0, 90}, {300, 80}}, 0));
+        System.out.println(new Speed().speed(new double[][]{{0, 90}, {300, 80}, {600, 70}}, 100));
+        System.out.println(new Speed().speed(new double[][]{{0, 54}, {300, 60}, {900, 100}}, 1080));
     }
 }
