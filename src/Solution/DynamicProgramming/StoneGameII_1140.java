@@ -1,4 +1,4 @@
-package Solution.Backtracking;
+package Solution.DynamicProgramming;
 
 /**
  * Alex and Lee continue their games with piles of stones.
@@ -17,7 +17,7 @@ package Solution.Backtracking;
 
 public class StoneGameII_1140 {
     /**
-     * Min-max algorithm.
+     * Dynamic programming with memorization to find min-max value.
      *
      * @param piles given array represents stone piles
      * @return the maximum number of stones Alex can get
@@ -37,29 +37,43 @@ public class StoneGameII_1140 {
             sum[i] = sum[i + 1] + piles[i];
         }
         int[][] dp = new int[l][l];
-        return helper(piles, 0, 0, sum, dp);
+        return helper(piles, 0, 1, sum, dp);
     }
 
+    /**
+     * Dynamic programming with memorization.
+     *
+     * @param piles given array represents stone piles
+     * @param i     pile index start to be taken
+     * @param m     init piles that player could take (players could take from i to i + 2m plies)
+     * @param sum   sum of piles from n to 1.
+     * @param dp    dp array
+     * @return the maximum number of stones first player can get
+     */
     private int helper(int[] piles, int i, int m, int[] sum, int[][] dp) {
 
         if (i == piles.length) {        // reaches the end of piles
             return 0;
         }
-
         if (m * 2 >= piles.length - i) {        // the other plays can take all rest stones
             return sum[i];
         }
-
-        if (dp[i][m] != 0) {        // use previous memorization
-            return dp[i][m];
+        if (dp[i][m] != 0) {        // previous memorization
+            return dp[i][m];        // dp[i][m]: max stones current player could take
         }
 
-        int min = Integer.MAX_VALUE;
-        for (int j = 1; j <= 2 * m; j++) {
-            min = Math.min(min, helper(piles, i + j, Math.max(m, j), sum, dp));
+        int min = Integer.MAX_VALUE;        // init min value
+        for (int x = 1; x <= 2 * m; x++) {
+
+            /*
+             * Find min value that next player could take based on this turn from 1 to 2m.
+             * The reason to find min value is to maximize next turn.
+             * i + x: take x piles and the next turn start position is i + x
+             * max(m, x): m = max(m, x), set by game rules. */
+            min = Math.min(min, helper(piles, i + x, Math.max(m, x), sum, dp));     // find min for next player
         }
 
-        dp[i][m] = sum[i] - min;
+        dp[i][m] = sum[i] - min;        // max stones = all the left stones - the min stones next player can get
 
         return dp[i][m];
     }
