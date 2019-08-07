@@ -1,4 +1,4 @@
-package Solution.Backtracking;
+package Solution.DivideAndConquer;
 
 import Lib.Tree.TreeNode;
 
@@ -34,7 +34,9 @@ public class GenerateTrees_95 {
     }
 
     /**
-     * Generate BST.
+     * Generating BST follows divide-and-conquer.
+     * Each int from 1 to n will be the root of BST.
+     * In each left-subtree and right subtree, from 1 to root - 1 and root + 1 to n will be the root of subtree.
      *
      * @param start start int
      * @param end   end int
@@ -43,12 +45,11 @@ public class GenerateTrees_95 {
     private List<TreeNode> generate(int start, int end) {
         List<TreeNode> out = new ArrayList<>();
 
-        /* End point */
-        if (start > end) {
+        if (start > end) {      // empty tree
             out.add(null);
             return out;
         }
-        if (start == end) {
+        if (start == end) {     // leaf node
             out.add(new TreeNode(start));
             return out;
         }
@@ -61,7 +62,6 @@ public class GenerateTrees_95 {
             left = generate(start, i - 1);      // left: less than i
             right = generate(i + 1, end);       // right: larger than i
 
-
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
@@ -73,5 +73,9 @@ public class GenerateTrees_95 {
         }
 
         return out;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new GenerateTrees_95().generateTrees(3));
     }
 }
