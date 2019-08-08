@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * Given an array arr of positive integers, consider all binary trees such that:
- * 1.Each node has either 0 or 2 children;
+ * 1. Each node has either 0 or 2 children;
  * 2. The values of arr correspond to the values of each leaf in an in-order traversal of the tree.
  * (Recall that a node is a leaf if and only if it has 0 children.)
  * 3. The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree respectively.
