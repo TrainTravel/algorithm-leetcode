@@ -87,7 +87,7 @@ public class LongestDupSubstring_1044 {
             if (m.containsKey(hash)) {
                 for (int start : m.get(hash)) {
                     if (s.substring(start, start + length).equals(s.substring(i, i + length))) {
-                        return i;
+                        return i;       // start position if the duplicated substring exits
                     }
                 }
             } else {

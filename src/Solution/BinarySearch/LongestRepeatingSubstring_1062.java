@@ -74,7 +74,7 @@ public class LongestRepeatingSubstring_1062 {
      * @param base   base number
      * @param arr    string array
      * @param mod    module number
-     * @return start position if the duplicated substring exits, or -1 otherwise
+     * @return length of duplicated string if the duplicated substring exits, or -1 otherwise
      */
     private int hasRepeating(String s, int length, int base, int[] arr, int mod) {
         long hash = 0, al = 1;
@@ -94,7 +94,7 @@ public class LongestRepeatingSubstring_1062 {
             if (m.containsKey(hash)) {
                 for (Integer h : m.get(hash)) {
                     if (s.substring(h, h + length).equals(s.substring(i, i + length))) {
-                        return length;
+                        return length;      // length of duplicated string
                     }
                 }
             } else {
