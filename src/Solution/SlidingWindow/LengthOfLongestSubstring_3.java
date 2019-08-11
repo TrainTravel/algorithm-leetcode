@@ -1,7 +1,6 @@
 package Solution.SlidingWindow;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Given a string, find the length of the longest substring without repeating characters.
@@ -10,7 +9,6 @@ import java.util.Map;
  * Time: 2018/03/23 12:27
  * Created with IntelliJ IDEA
  */
-
 
 public class LengthOfLongestSubstring_3 {
     /**
@@ -32,28 +30,25 @@ public class LengthOfLongestSubstring_3 {
         }
 
         int max = 0;
-        Map<Character, Integer> m = new HashMap<>();
+        HashMap<Character, Integer> m = new HashMap<>();
         int start = 0;
 
         for (int i = 0; i < s.length(); i++) {
-
-            if (m.containsKey(s.charAt(i))) {       // current char in map (duplicated)
-                start = Math.max(m.get(s.charAt(i)) + 1, start);        // compare current index to previous index
+            if (m.containsKey(s.charAt(i))) {
+                start = Math.max(start, m.get(s.charAt(i)));        // update start to largest to avoid duplicate
             }
-            max = Math.max(max, i - start + 1);
-
-            m.put(s.charAt(i), i);      // continue at next char, if char is duplicated, reset start index
+            m.put(s.charAt(i), i + 1);
+            max = Math.max(i - start + 1, max);
         }
-
         return max;
     }
 
     public static void main(String[] args) {
         LengthOfLongestSubstring_3 test = new LengthOfLongestSubstring_3();
-        System.out.println(test.lengthOfLongestSubstring("tmmzuxt"));
+        System.out.println(test.lengthOfLongestSubstring("abcabcbb"));       // 3
+        System.out.println(test.lengthOfLongestSubstring("tmmzuxt"));       // 5
         System.out.println(test.lengthOfLongestSubstring("a"));
         System.out.println(test.lengthOfLongestSubstring("dvdf"));      // answer: 3
-
     }
 }
 
