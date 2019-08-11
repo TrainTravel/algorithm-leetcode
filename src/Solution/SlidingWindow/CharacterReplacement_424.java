@@ -13,10 +13,9 @@ package Solution.SlidingWindow;
 public class CharacterReplacement_424 {
     /**
      * Sliding window.
-     * The window will shift right, or extend its size only by appending one char on the right.
      * The window can only extend its size when the count of the new char exceeds the historical max count.
      * Therefore, count each char's appearance during the traverse.
-     * we only care if the max count exceeds the historical max count
+     * Only consider if the max count exceeds the historical max count.
      *
      * @param s given string
      * @param k limit of replacing operations
@@ -28,22 +27,28 @@ public class CharacterReplacement_424 {
         if (s.length() < 1) {
             return 0;
         }
-        if (k > s.length()) {
+        if (k > s.length()) {       // directly replace all char in string
             return s.length();
         }
 
-        int[] store = new int[26];      // store char appearance
-
-        int max = 0, window = 0, from = 0;
+        int[] count = new int[26];      // store char appearance
+        int max = 0, window = 0, start = 0;
 
         for (int i = 0; i < s.length(); i++) {
 
-            max = Math.max(max, ++store[s.charAt(i) - 'A']);        // find window that contains the largest number of reoccurring char
-
-            while (i - from + 1 > k + max) {        // set substring length (i - from + 1) to be equal to max length (k + max)
-                store[s.charAt(from++) - 'A']--;        // find chars require operation
+            /*
+             * During traverse, the max possible window is the most occurred char + k.
+             * k is the largest possible replacement. And the char count is under current window size.
+             * The initially window size is 1. To extend the window size, there are two conditions:
+             * 1. There are replacement left for different char.
+             * 2. Find a new char that is either the current most occurred char, or new max count.
+             * If window size is larger than max possible size (max char + k), then the window size should be narrowed.
+             * When narrowing the window size, reduce char count that will be excluded from window . */
+            max = Math.max(max, ++count[s.charAt(i) - 'A']);    // resize window if new max count found
+            while (i - start + 1 > k + max) {                   // narrow window
+                count[s.charAt(start++) - 'A']--;               // remove char that is excluded from window
             }
-            window = Math.max(window, i - from + 1);        // find max window size
+            window = Math.max(window, i - start + 1);           // find max window size
         }
 
         return window;
