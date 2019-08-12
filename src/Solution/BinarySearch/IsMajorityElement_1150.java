@@ -1,8 +1,12 @@
 package Solution.BinarySearch;
 
 /**
- * Given an array nums sorted in non-decreasing order, and a number target, return True if and only if target is a majority element.
+ * Given an array nums sorted in non-decreasing order, a number target, return True iff target is a majority element.
  * A majority element is an element that appears more than N/2 times in an array of length N.
+ * Note:
+ * 1. 1 <= nums.length <= 1000
+ * 2. 1 <= nums[i] <= 10^9
+ * 3. 1 <= target <= 10^9
  *
  * @author BorisMirage
  * Time: 2019/08/10 14:02
@@ -15,7 +19,7 @@ public class IsMajorityElement_1150 {
      *
      * @param nums   given array
      * @param target target number
-     * @return true if and only if target is a majority element
+     * @return true iff target is a majority element
      */
     public boolean isMajorityElement(int[] nums, int target) {
         int low = 0, high = nums.length - 1, mid;
