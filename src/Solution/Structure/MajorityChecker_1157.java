@@ -12,7 +12,7 @@ package Solution.Structure;
  * Created with IntelliJ IDEA
  */
 
-public class MajorityChecker {
+public class MajorityChecker_1157 {
     private int[] arr;
 
     /**
@@ -20,7 +20,7 @@ public class MajorityChecker {
      *
      * @param arr given array
      */
-    public MajorityChecker(int[] arr) {
+    public MajorityChecker_1157(int[] arr) {
         this.arr = arr;
     }
 
@@ -58,7 +58,7 @@ public class MajorityChecker {
     }
 
     public static void main(String[] args) {
-        MajorityChecker test = new MajorityChecker(new int[]{1, 1, 2, 2, 1, 1});
+        MajorityChecker_1157 test = new MajorityChecker_1157(new int[]{1, 1, 2, 2, 1, 1});
         System.out.println(test.query(0, 5, 4));
         System.out.println(test.query(0, 3, 3));
         System.out.println(test.query(2, 3, 2));
