@@ -109,6 +109,7 @@ public class DistanceK_863 {
             if (K == 0) {
                 for (TreeNode treeNode : q) {
                     out.add(treeNode.val);
+                    return out;
                 }
             }
         }
