@@ -12,7 +12,9 @@ package Solution.Others;
 
 public class ProductExceptSelf_238 {
     /**
-     * Count the entire product of array and divide each element in next round.
+     * Two traversals.
+     * First traverse multiple each element of its left.
+     * Second traverse multiple each element of its right.
      *
      * @param nums int array
      * @return array that each element equal to the product of all the elements of nums except nums[i]
@@ -24,35 +26,20 @@ public class ProductExceptSelf_238 {
             return nums;
         }
 
-        int p = 1;
-        int countZero = 0;
+        int[] out = new int[nums.length];
+        out[0] = 1;
 
-
-        for (int num : nums) {
-            if (num != 0) {
-                p = p * num;
-            } else {
-                countZero += 1;
-            }
+        for (int i = 1; i < nums.length; i++) {
+            out[i] = out[i - 1] * nums[i - 1];     // left part
         }
 
-        if (countZero == 0) {
-            for (int i = 0; i < nums.length; i++) {
-                int temp = p / nums[i];
-                nums[i] = temp;
-            }
-        } else if (countZero == 1) {
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] == 0) {
-                    nums[i] = p;
-                } else {
-                    nums[i] = 0;
-                }
-            }
-        } else {
-            return new int[nums.length];
+        int right = 1;
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            out[i] = out[i] * right;        // right part except self
+            right *= nums[i];
         }
 
-        return nums;
+        return out;
     }
 }
