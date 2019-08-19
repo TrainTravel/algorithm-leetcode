@@ -57,8 +57,6 @@ public class LongestRepeatingSubstring_1062 {
         }
 
         int start = hasRepeating(S, right, base, arr, mod);
-        System.out.println(start);
-        System.out.println(right);
         return (start == -1) ? 0 : start;
     }
 
