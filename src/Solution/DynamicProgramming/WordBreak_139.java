@@ -2,6 +2,7 @@ package Solution.DynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ public class WordBreak_139 {
      * Dynamic programming with 1D boolean array.
      * Iterate the given string.
      * Under each substring in iteration, find a breaking point to split both substring exist in dictionary.
+     * State transition:
+     * dp(i) = true iff dp(j) == true && dic.contains(s.substring(j, i)), where j <= 0 < i.
+     * In substring function, j should be from
      *
      * @param s        given string
      * @param wordDict given dictionary
@@ -29,20 +33,20 @@ public class WordBreak_139 {
         if (s.length() == 0 || wordDict.size() == 0) {
             return false;
         }
+        HashSet<String> dict = new HashSet<>(wordDict);
 
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;       // avoid first char is found in dictionary but marked as false
 
         for (int i = 1; i < dp.length; i++) {       // iter string
-            for (int j = i; j > -1; j--) {
-
+            for (int j = i - 1; j >= 0; j--) {
                 /*
                  * Split string into s(0, j) and s(j, i).
-                 * There are two conditions.
+                 * There are two conditions:
                  * 1. (0, j) can be previously found in set
                  * 2. s(j, i) can be found in set
                  * Then s(0, i) can be divided. */
-                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                if (dp[j] && dict.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
                 }
