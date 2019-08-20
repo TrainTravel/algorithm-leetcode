@@ -1,4 +1,4 @@
-package Solution.Structure;
+package Solution.Design;
 
 import Lib.Tree.TreeNode;
 

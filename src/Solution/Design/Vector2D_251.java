@@ -1,4 +1,4 @@
-package Solution.Structure;
+package Solution.Design;
 
 /**
  * Design and implement an iterator to flatten a 2d vector.

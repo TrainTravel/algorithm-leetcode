@@ -1,4 +1,4 @@
-package Solution.Structure;
+package Solution.Design;
 
 /**
  * Implementing the class MajorityChecker, which has the following API:

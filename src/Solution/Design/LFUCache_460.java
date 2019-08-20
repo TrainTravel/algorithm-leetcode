@@ -1,4 +1,4 @@
-package Solution.Structure;
+package Solution.Design;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
