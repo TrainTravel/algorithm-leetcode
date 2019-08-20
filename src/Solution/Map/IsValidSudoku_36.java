@@ -10,7 +10,6 @@ import java.util.Set;
  * 2. Each column must contain the digits 1-9 without repetition.
  * 3. Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
  * 4. The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
- * <p>
  * Note:
  * A Sudoku board (partially filled) could be valid but is not necessarily solvable.
  * Only the filled cells need to be validated according to the mentioned rules.
@@ -24,6 +23,8 @@ import java.util.Set;
 
 public class IsValidSudoku_36 {
     /**
+     * Use a hash set to store column(char), (char)row, block(char)block as key.
+     *
      * @param board input 9x9 char array as board
      * @return whether this board is valid
      */
