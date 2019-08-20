@@ -1,4 +1,4 @@
-package Solution.Backtracking;
+package Solution.Math;
 
 import java.util.LinkedList;
 import java.util.List;

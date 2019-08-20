@@ -22,7 +22,7 @@ public class CanIWin_464 {
     private HashMap<Integer, Boolean> m = new HashMap<>();       // hash map store backtrack temp result
 
     /**
-     * DFS with pruning to reduce time.
+     * Backtracking with pruning to reduce time.
      *
      * @param maxChoosableInteger max choosable integer
      * @param desiredTotal        total to reach

@@ -52,7 +52,7 @@ public class MostVisitedPattern_1152 {
             if (list.size() < 3) {
                 continue;
             }
-            //build users' all 3-sequences, use set in case duplicated 3-sequences
+            // build users' all 3-sequences, use set in case duplicated 3-sequences
             Set<String> subsequence = subsequence(list);
             for (String seq : subsequence) {
                 sequence.put(seq, sequence.getOrDefault(seq, 0) + 1);

@@ -39,8 +39,7 @@ public class FindMedianSortedArrays_4 {
              * minRight2 is the min value in right subarray of second array.
              * Corner case: partition index reaches the end (or beginning) of array.
              * If reaches the end of array, then set to MAX_VALUE.
-             * If reaches the beginning of array, set to MIN_VALUE
-             * */
+             * If reaches the beginning of array, set to MIN_VALUE. */
             int maxLeft1 = (middle1 == 0) ? Integer.MIN_VALUE : nums1[middle1 - 1];     // left of middle index
             int minRight1 = (middle1 == nums1.length) ? Integer.MAX_VALUE : nums1[middle1];     // middle index
             int maxLeft2 = (middle2 == 0) ? Integer.MIN_VALUE : nums2[middle2 - 1];     // left of middle index
@@ -54,8 +53,7 @@ public class FindMedianSortedArrays_4 {
              * If the condition is not met, then the partition position is incorrect,
              * If max in left subarray 1 is larger than min in right subarray 2, move partition position to left.
              * Since the partition has include elements that should belong to right sub array.
-             * Otherwise, move partition position to right.
-             * */
+             * Otherwise, move partition position to right. */
             if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
                 return ((nums1.length + nums2.length) % 2 == 0) ? ((double) Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2 : Math.max(maxLeft1, maxLeft2);
             } else if (maxLeft1 > minRight2) {

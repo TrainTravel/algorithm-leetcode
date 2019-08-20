@@ -14,6 +14,9 @@ import java.util.List;
 
 public class AddOperators_282 {
     /**
+     * Backtracking problem.
+     * Multiplication has a higher priority compare to plus and minus during the backtracking process.
+     *
      * @param num    given array
      * @param target target number
      * @return all equations that result equals to target
@@ -32,6 +35,7 @@ public class AddOperators_282 {
 
     /**
      * Backtracking to find all possible solutions.
+     * Multiplication has a higher priority compare to plus and minus.
      *
      * @param l          output list
      * @param t          target number

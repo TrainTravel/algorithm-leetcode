@@ -1,6 +1,9 @@
 package Solution.Backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words.
@@ -17,6 +20,10 @@ import java.util.*;
 
 public class WordBreak_140 {
     /**
+     * Backtracking + HashMap.
+     * Use hash map to store results during backtracking.
+     * The key of hash map is string, and the value is all result can be formed under current given string.
+     *
      * @param s        given string
      * @param wordDict given word dictionary
      * @return all possible sentences
@@ -28,39 +35,38 @@ public class WordBreak_140 {
 
     /**
      * Backtracking with hash map to store previous result.
-     * It combined backtracking with dynamic programming to avoid TLE.
+     * Use hash map to store previous result to avoid TLE.
      *
-     * @param s        string
-     * @param wordDict given word dictionary
-     * @param m        hash map store previous result
+     * @param s   string
+     * @param dic given word dictionary
+     * @param m   hash map store previous result
      * @return all possible sentences
      */
-    private List<String> backtracking(String s, List<String> wordDict, Map<String, List<String>> m) {
+    private List<String> backtracking(String s, List<String> dic, HashMap<String, List<String>> m) {
 
         if (m.containsKey(s)) {
             return m.get(s);        // avoid duplication
         }
 
-        List<String> out = new ArrayList<>();
+        List<String> out = new ArrayList<>();       // save all combination under current result
 
-        for (String w : wordDict) {
+        for (String w : dic) {
+
             if (s.startsWith(w)) {
                 if (s.substring(w.length()).length() == 0) {
-                    out.add(w);     // if it is last word in s
+                    out.add(w);     // if it is last word in given string
                 } else {
-                    for (String subWord : backtracking(s.substring(w.length()), wordDict, m)) {
+                    for (String subWord : backtracking(s.substring(w.length()), dic, m)) {
                         out.add(w + " " + subWord);     // find all words in substring and add to current result
                     }
                 }
             }
         }
         m.put(s, out);
-//        System.out.println(m);
         return out;
     }
 
     public static void main(String[] args) {
-
         String[] wordDict = {"apple", "pen", "applepen", "pine", "pineapple"};
         List<String> l = new ArrayList<>(Arrays.asList(wordDict));
 
