@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DivideAndConquer;
 
 
 import java.util.ArrayList;
