@@ -53,16 +53,11 @@ public class SwapPairs_24 {
     }
 
     public static void main(String[] args) {
-        SwapPairs_24 test = new SwapPairs_24();
-        printAll(test.swapPairs(getList3()));
+        printAll(new SwapPairs_24().swapPairs(getList3()));
     }
 
     private static ListNode getList3() {
-        ListNode n1 = new ListNode(5);
-        ListNode n2 = new ListNode(4);
-        ListNode n3 = new ListNode(3);
-        ListNode n4 = new ListNode(2);
-        ListNode n5 = new ListNode(1);
+        ListNode n1 = new ListNode(5), n2 = new ListNode(4), n3 = new ListNode(3), n4 = new ListNode(2), n5 = new ListNode(1);
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;

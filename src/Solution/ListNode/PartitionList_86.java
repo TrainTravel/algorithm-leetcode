@@ -27,9 +27,9 @@ public class PartitionList_86 {
      */
     public ListNode partition(ListNode head, int x) {
 
-        ListNode largeHead = new ListNode(0);
-        ListNode smallHead = new ListNode(0);
+        ListNode smallHead = new ListNode(0);       // dummy head of smaller part
         ListNode small = smallHead;
+        ListNode largeHead = new ListNode(0);       // dummy head of larger part
         ListNode large = largeHead;
 
         while (head != null) {
@@ -43,8 +43,8 @@ public class PartitionList_86 {
             }
             head = head.next;
         }
-        large.next = null;
-        small.next = largeHead.next;
+        large.next = null;              // mark as end of new list
+        small.next = largeHead.next;    // combine two lists
 
         return smallHead.next;
     }

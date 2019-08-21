@@ -3,7 +3,8 @@ package Solution.ListNode;
 import Lib.ListNode;
 
 /**
- * Given a singly linked list L: L0 -> L1 -> ... -> Ln-1 -> Ln, reorder it to: L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2 -> ...
+ * Given a singly linked list L: L0 -> L1 -> ... -> Ln-1 -> Ln.
+ * Reorder it to: L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2 -> ...
  *
  * @author BorisMirage
  * Time: 2019/06/29 14:34
