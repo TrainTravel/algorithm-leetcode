@@ -18,12 +18,10 @@ import java.util.*;
  */
 
 public class DinnerPlates_1172 {
-
-    //    private TreeMap<Integer, List<Integer>> m = new TreeMap<>();
     private TreeMap<Integer, Stack<Integer>> m = new TreeMap<>();
     private int capacity;
     private TreeSet<Integer> heap = new TreeSet<>();
-    private int max = 0;
+    private int max = 0;        // stacks has been used (this counter counting every used stack including empty stacks)
 
     /**
      * Use a TreeMap to store stacks, and a TreeSet to store all available stacks for push.
@@ -43,7 +41,6 @@ public class DinnerPlates_1172 {
         int p = (heap.isEmpty()) ? max++ : heap.pollFirst();
 
         if (!m.containsKey(p)) {
-//            m.put(p, new LinkedList<>());
             m.put(p, new Stack<>());
         }
 
@@ -71,10 +68,6 @@ public class DinnerPlates_1172 {
         Map.Entry<Integer, Stack<Integer>> last = m.pollLastEntry();
         int k = last.getKey();
         Stack<Integer> tmp = last.getValue();
-//        Map.Entry<Integer, List<Integer>> last = m.pollLastEntry();
-//        List<Integer> tmp = last.getValue();
-//        int val = tmp.get(tmp.size() - 1);
-//        tmp.remove(tmp.size() - 1);
         int val = tmp.pop();
 
         if (!tmp.isEmpty()) {
@@ -107,13 +100,6 @@ public class DinnerPlates_1172 {
             m.remove(index);
         }
         heap.add(index);
-//        List<Integer> tmp = m.get(index);
-//        int val = tmp.get(tmp.size() - 1);
-//        tmp.remove(tmp.size() - 1);
-//        if (tmp.size() == 0) {
-//            m.remove(index);
-//        }
-//        heap.add(index);
 
         return val;
     }
