@@ -1,4 +1,4 @@
-package Solution.ListNode;
+package Solution.LinkedList;
 
 import Lib.ListNode;
 
