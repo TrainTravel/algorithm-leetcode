@@ -20,7 +20,7 @@ import java.util.*;
 public class DinnerPlates_1172 {
     private TreeMap<Integer, Stack<Integer>> m = new TreeMap<>();
     private int capacity;
-    private TreeSet<Integer> heap = new TreeSet<>();
+    private TreeSet<Integer> ts = new TreeSet<>();      // save available stacks, excludes all new stacks
     private int max = 0;        // stacks has been used (this counter counting every used stack including empty stacks)
 
     /**
@@ -38,7 +38,7 @@ public class DinnerPlates_1172 {
      * @param val value to be pushed
      */
     public void push(int val) {
-        int p = (heap.isEmpty()) ? max++ : heap.pollFirst();
+        int p = (ts.isEmpty()) ? max++ : ts.pollFirst();
 
         if (!m.containsKey(p)) {
             m.put(p, new Stack<>());
@@ -47,7 +47,7 @@ public class DinnerPlates_1172 {
         m.get(p).add(val);
 
         if (m.get(p).size() < capacity) {
-            heap.add(p);
+            ts.add(p);
         }
     }
 
@@ -73,7 +73,7 @@ public class DinnerPlates_1172 {
         if (!tmp.isEmpty()) {
             m.put(k, tmp);
         }
-        heap.add(k);
+        ts.add(k);
 
         return val;
     }
@@ -99,7 +99,7 @@ public class DinnerPlates_1172 {
         if (tmp.isEmpty()) {
             m.remove(index);
         }
-        heap.add(index);
+        ts.add(index);
 
         return val;
     }
