@@ -1,6 +1,7 @@
 package Solution.Stack;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Given a string which contains only lowercase letters.
@@ -31,9 +32,9 @@ public class RemoveDuplicateLetters_316 {
             return "";
         }
 
-        Stack<Character> stack = new Stack<>();     // stack store the final available chars
-        int[] count = new int[26];      // count char appearance
-        boolean[] visited = new boolean[26];
+        Deque<Character> dq = new LinkedList<>();       // use deque instead of stack for better string forming
+        boolean[] isVisited = new boolean[26];
+        int[] count = new int[26];                      // count char appearance
         char[] arr = s.toCharArray();
 
         for (char c : arr) {
@@ -43,28 +44,26 @@ public class RemoveDuplicateLetters_316 {
         for (char c : arr) {
             count[c - 'a']--;
 
-            if (visited[c - 'a']) {
-                continue;       // pass chars already in stack to delete duplicated char
-            }
+            if (!isVisited[c - 'a']) {      // pass chars already in stack and in this way to delete duplicated char
 
-            /*
-             * Pop out elements that:
-             * 1. larger than current char (to assure result smallest lexicographical order)
-             * 2. this popped char should be found in later of string */
-            while (!stack.isEmpty() && stack.peek() > c && count[stack.peek() - 'a'] > 0) {
-                visited[stack.peek() - 'a'] = false;        // popped char may be seen in later of array
-                stack.pop();
+                /*
+                 * Pop out elements that:
+                 * 1. Larger than current char (to assure result smallest lexicographical order)
+                 * 2. This popped char will be found in later of string (count[c] > 0)
+                 * Both conditions should be met. */
+                while (!dq.isEmpty() && dq.peekLast() > c && count[dq.peekLast() - 'a'] > 0) {
+                    isVisited[dq.pollLast() - 'a'] = false;     // popped char may be seen in later of array
+                }
+                dq.addLast(c);
+                isVisited[c - 'a'] = true;
             }
-
-            stack.push(c);
-            visited[c - 'a'] = true;
         }
 
         StringBuilder sb = new StringBuilder();
-        for (char c : stack) {
-            sb.append(c);
-        }
 
+        while (!dq.isEmpty()) {
+            sb.append(dq.pollFirst());
+        }
         return sb.toString();
     }
 }
