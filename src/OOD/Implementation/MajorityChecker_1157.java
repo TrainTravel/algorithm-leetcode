@@ -1,4 +1,4 @@
-package Solution.Design;
+package OOD.Implementation;
 
 /**
  * Implementing the class MajorityChecker, which has the following API:

@@ -1,29 +1,38 @@
-package Solution.Design;
+package OOD.Implementation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
+ * Design a data structure that supports the following two operations:
+ * void addWord(word)
+ * bool search(word)
+ * search(word) can search a literal word or a regular expression string containing only letters a-z or '.'.
+ * A . means it can represent any one letter.
+ *
  * @author BorisMirage
- * Time: 2019/07/03 15:09
+ * Time: 2019/07/03 17:17
  * Created with IntelliJ IDEA
  */
 
-public class Trie_208 {
+public class WordDictionary_211 {
+
     private TrieNode root;
 
     /**
-     * Initialize your data structure here.
+     * Initialization.
      */
-    public Trie_208() {
-        root = new TrieNode();
+    public WordDictionary_211() {
+        this.root = new TrieNode();
     }
 
     /**
-     * Inserts a word into the trie.
+     * Adds a word into the data structure.
      *
-     * @param word word to be inserted to trie
+     * @param word given word to be added
      */
-    public void insert(String word) {
+    public void addWord(String word) {
         TrieNode temp = root;
         for (int i = 0; i < word.length(); i++) {
             if (!temp.containsChild(word.charAt(i))) {
@@ -35,39 +44,40 @@ public class Trie_208 {
     }
 
     /**
-     * Returns if the word is in the trie.
+     * Returns if the word is in the data structure.
+     * A word could contain the dot character '.' to represent any one letter.
      *
      * @param word given word
-     * @return if word is in trie
+     * @return if the word is in dictionary
      */
     public boolean search(String word) {
-        TrieNode temp = root;
-        for (int i = 0; i < word.length(); i++) {
-            if (temp.containsChild(word.charAt(i))) {
-                temp = temp.getChild(word.charAt(i));
-            } else {
-                return false;
-            }
-        }
-        return temp.isEnd();
+        return find(word.toCharArray(), 0, root);
     }
 
     /**
-     * Returns if there is any word in the trie that starts with the given prefix.
-     *
-     * @param prefix given prefix
-     * @return if prefix is in trie
+     * @param word  given word in char array
+     * @param index current index in word
+     * @param n     root node
+     * @return if given word can be found in trie
      */
-    public boolean startsWith(String prefix) {
-        TrieNode temp = root;
-        for (int i = 0; i < prefix.length(); i++) {
-            if (temp.containsChild(prefix.charAt(i))) {
-                temp = temp.getChild(prefix.charAt(i));
-            } else {
-                return false;
+    private boolean find(char[] word, int index, TrieNode n) {
+
+        if (index == word.length) {
+            return n.isEnd();
+
+        } else if (word[index] == '.') {
+
+            List<TrieNode> temp = n.getAllChildren();
+            for (TrieNode node : temp) {
+                if (find(word, index + 1, node)) {
+                    return true;
+                }
             }
+
+        } else if (n.containsChild(word[index])) {
+            return find(word, index + 1, n.getChild(word[index]));
         }
-        return true;
+        return false;
     }
 
 
@@ -75,16 +85,15 @@ public class Trie_208 {
      * Nodes in trie.
      */
     class TrieNode {
-        char val;       // value of current node
-        HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
-        boolean end = false;
+        private char val;       // value of current node
+        private HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
+        private boolean end = false;
 
         /**
          * Initialization.
          */
         TrieNode() {
         }
-
 
         /**
          * Set current node's value.
@@ -151,20 +160,24 @@ public class Trie_208 {
         boolean containsChild(char val) {
             return m.containsKey(val);
         }
+
+        List<TrieNode> getAllChildren() {
+            return new ArrayList<>(m.values());
+        }
     }
 
     public static void main(String[] args) {
-        Trie_208 test = new Trie_208();
-        test.insert("app");
-        test.insert("apple");
-        test.insert("beer");
-        test.insert("add");
-        test.insert("jam");
-        test.insert("rental");
-        System.out.println(test.search("app"));
-        System.out.println(test.search("apps"));
-        System.out.println(test.startsWith("beer"));
-        test.insert("app");
-        System.out.println(test.search("app"));
+        WordDictionary_211 test = new WordDictionary_211();
+        test.addWord("bad");
+        test.addWord("dad");
+        test.addWord("mad");
+        System.out.println(test.search("bad."));
+        System.out.println(test.search("b.."));
+        System.out.println(test.search("..."));
+        System.out.println(test.search("bad"));
+        System.out.println(test.search(".ad"));
+        System.out.println(test.search("dap"));
+
     }
 }
+

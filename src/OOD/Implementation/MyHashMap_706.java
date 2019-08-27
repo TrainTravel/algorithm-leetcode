@@ -1,4 +1,4 @@
-package Solution.Design;
+package OOD.Implementation;
 
 /**
  * Design a HashMap without using any built-in hash table libraries.

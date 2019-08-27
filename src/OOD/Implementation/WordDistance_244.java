@@ -1,4 +1,4 @@
-package Solution.Design;
+package OOD.Implementation;
 
 import java.util.HashMap;
 import java.util.LinkedList;
