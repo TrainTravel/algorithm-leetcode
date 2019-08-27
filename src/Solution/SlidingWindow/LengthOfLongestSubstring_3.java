@@ -12,9 +12,8 @@ import java.util.HashMap;
 
 public class LengthOfLongestSubstring_3 {
     /**
-     * Construct a new map to store previous chars.
-     * key - char
-     * value - next position
+     * Sliding window problem.
+     * Use a pointer to point at the start position, and a hash map to save each char's position.
      * If current char does not exist in map, then store this char and its next position.
      * If current char exists in map, reset the position to current char's next. (No duplication)
      * Compare current non-repeating substring length to max length and find longer one.
@@ -31,9 +30,8 @@ public class LengthOfLongestSubstring_3 {
 
         int max = 0;
         HashMap<Character, Integer> m = new HashMap<>();
-        int start = 0;
 
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0, start = 0; i < s.length(); i++) {      // i is the end of window, start point at window start
             if (m.containsKey(s.charAt(i))) {
                 start = Math.max(start, m.get(s.charAt(i)));        // update start to largest to avoid duplicate
             }

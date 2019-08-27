@@ -13,8 +13,20 @@ package Solution.BinarySearch;
 public class FindMedianSortedArrays_4 {
     /**
      * Binary search.
-     * Try to partition two arrays that sum of elements in two left part is equal to sum of elements in two right part.
-     * The partition of both array should match the condition: maxLeft1 <= minRight2 && maxLeft2 <= minRight1.
+     * To find median, two arrays should be divided into 4 parts, 2 smaller and 2 large.
+     * The elements in different part can only at most has a difference of 1.
+     * That is to say, abs[(small1 + small2) - (larger1 + larger2)]<=1.
+     * If total length of two arrays are even, then it can be evenly divided into two parts.
+     * Otherwise, one part will have one more element.
+     * The way to find the correct partition is using binary search in first array.
+     * Note that to avoid out of bound exception, the first array should be assured as shorter array.
+     * Each time, the first array will be divided into two parts.
+     * Since this array is sorted, the two parts will be assured to be one small part, and one large part.
+     * Then, the partition position of second array will be fixed as well:
+     * middle2 = (nums2.length + nums1.length + 1) / 2 - middle1
+     * Index smaller than middle2 will be divided into small2 and larger elements will be divided into large2.
+     * To ensure the division is correct, check if this maxLeft1 <= minRight2 && maxLeft2 <= minRight1 is met.
+     * If both conditions are matched, then median can be found.
      *
      * @param nums1 first sorted array with length m
      * @param nums2 second sorted array with length n
@@ -28,7 +40,7 @@ public class FindMedianSortedArrays_4 {
 
         int left = 0, right = nums1.length;
 
-        while (left <= right) {
+        while (left <= right) {     // binary search only in first array, partition position in second array is fixed
             int middle1 = left + (right - left) / 2;       // binary search middle index
             int middle2 = (nums2.length + nums1.length + 1) / 2 - middle1;
 
@@ -66,11 +78,7 @@ public class FindMedianSortedArrays_4 {
     }
 
     public static void main(String[] args) {
-
-        /* Find median Test */
-        int[] num1 = {1, 2, 3};
-        int[] num2 = {4, 5, 6};
-        FindMedianSortedArrays_4 findMedianSortedArraysTest = new FindMedianSortedArrays_4();
-        System.out.println(findMedianSortedArraysTest.findMedianSortedArrays(num1, num2));
+        FindMedianSortedArrays_4 test = new FindMedianSortedArrays_4();
+        System.out.println(test.findMedianSortedArrays(new int[]{1, 2, 3}, new int[]{4, 5, 6}));
     }
 }
