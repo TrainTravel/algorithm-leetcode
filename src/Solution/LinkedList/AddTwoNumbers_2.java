@@ -7,6 +7,8 @@ import Lib.ListNode;
  * The digits are stored in reverse order and each of their nodes contain a single digit.
  * Add the two numbers and return it as a linked list.
  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ * Output: 7 -> 0 -> 8
  *
  * @author BorisMirage
  * Time: 2017/11/24 12:26
@@ -15,7 +17,6 @@ import Lib.ListNode;
 
 
 public class AddTwoNumbers_2 {
-
     /**
      * Sum two nodes and return the sum node until list is empty.
      *
@@ -24,6 +25,41 @@ public class AddTwoNumbers_2 {
      * @return result in ListNode
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        int carry = 0;
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        while (l1 != null || l2 != null) {
+            int v1 = (l1 == null) ? 0 : l1.val;
+            int v2 = (l2 == null) ? 0 : l2.val;
+
+            carry = carry + v1 + v2;
+
+            current.next = new ListNode(carry % 10);        // link node to (sum/10)
+            current = current.next;                             // move result to its next
+
+            carry = carry / 10;
+            l1 = (l1 == null) ? null : l1.next;
+            l2 = (l2 == null) ? null : l2.next;
+        }
+
+        if (carry != 0) {
+            current.next = new ListNode(carry);
+        }
+
+        return dummy.next;
+    }
+
+    /**
+     * Sum two nodes and return the sum node until list is empty.
+     * This is recursion version, it is suggested that use iterative version instead.
+     *
+     * @param l1 first int contains in ListNode
+     * @param l2 second int contains in ListNode
+     * @return result in ListNode
+     */
+    public ListNode recursion(ListNode l1, ListNode l2) {
         return helper(l1, l2, 0);
     }
 
