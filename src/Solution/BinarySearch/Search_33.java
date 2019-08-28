@@ -1,6 +1,5 @@
 package Solution.BinarySearch;
 
-
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
  * (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
@@ -15,12 +14,13 @@ package Solution.BinarySearch;
 
 public class Search_33 {
     /**
-     * Use modified binary search.
-     * Only one sub-array in each search will possibly not be in ascending order.
-     * Hence, in each binary search iteration, identify sub-array that is not in ascending order.
-     * If target is not in normal ascending sub-array, compare target to the rest sub-array's mid and end.
-     * If sub-array [mid, end] is normal array, compare target to this array to see if in this range.
-     * Repeat this process until no sub-array to search or found target.
+     * Binary search.
+     * The key is to find the mid position, and compare it to pivot position.
+     * If pivot is at right of mid, then left sub array is normal array.
+     * If target is not in left then it will be in right, or not exist.
+     * If pivot is at left of mid, then right sub array is normal array.
+     * If target is not in right then it will be in left, or not exist.
+     * In this way, only normal part of half array will be searched and avoid the complicated pivot case.
      *
      * @param nums   input int array
      * @param target value to search
@@ -29,31 +29,29 @@ public class Search_33 {
     public int search(int[] nums, int target) {
 
         /* Corner case */
-        if (nums.length < 1) {
+        if (nums.length == 0) {
             return -1;
         }
 
-        int left = 0, right = nums.length - 1, mid;
+        int left = 0, right = nums.length - 1;
 
         while (left <= right) {     // avoid corner case that target is at left most of array
+            int mid = left + (right - left / 2);
 
-            mid = (left + right) / 2;
-            if (nums[mid] == target) {
+            if (target == nums[mid]) {
                 return mid;
             }
 
-            if (nums[left] <= nums[mid]) {      // left sub-array is normal ascending array, and including array with 2 elements
-
-                if (target < nums[mid] && target >= nums[left]) {       // nums[left] <= target <  nums[mid]
-                    right = mid - 1;        // target is in the left sub-array
-                } else {        // target < left => right subarray is rotated, target > mid => right subarray
+            if (nums[left] < nums[mid]) {       // pivot at right of mid, left sub-array is normal ascending array
+                if (nums[left] <= target && target < nums[mid]) {       // nums[left] <= target <  nums[mid]
+                    right = mid - 1;
+                } else {
                     left = mid + 1;
                 }
-            } else {        // nums[left] > nums[mid] => rotated pivot in left subarray
-
-                if (target <= nums[right] && target > nums[mid]) {      // nums[mid] < target <= nums[right]
-                    left = mid + 1;     // normal situation, target at right subarray
-                } else {        // otherwise, target is in right subarray
+            } else {                            // pivot at left of mid, right sub-array is normal ascending array
+                if (nums[mid] < target && target <= nums[right]) {      // nums[mid] < target <= nums[right]
+                    left = mid + 1;
+                } else {
                     right = mid - 1;
                 }
             }
@@ -63,8 +61,15 @@ public class Search_33 {
     }
 
     public static void main(String[] args) {
-        Search_33 searchTest = new Search_33();
-        int[] nums = {1, 2, 3, 4, 5, 6};
-        System.out.println(searchTest.search(nums, 4));
+        Search_33 test = new Search_33();
+        System.out.println(test.search(new int[]{1, 2, 3, 4, 5, 6}, 4));
+        System.out.println(test.search(new int[]{1, 2, 3, 4, 5, 6}, 1));
+        System.out.println(test.search(new int[]{1, 2, 3, 4, 5, 6}, 6));
+        System.out.println(test.search(new int[]{1, 2}, 1));
+        System.out.println(test.search(new int[]{1, 2}, 2));
+        System.out.println(test.search(new int[]{2, 1}, 2));
+        System.out.println(test.search(new int[]{2, 1}, 1));
+        System.out.println(test.search(new int[]{1}, 4));
+        System.out.println(test.search(new int[]{1}, 1));
     }
 }
