@@ -17,55 +17,33 @@ package Solution.Math;
 
 public class Divide_29 {
     /**
+     * Binary search.
+     * Each time, shift divisor to right for x + 1 bits.
+     * Dividend should reduce divisor each time.
+     * Time complexity: O(logN^2).
+     *
      * @param dividend int dividend
      * @param divisor  int divisor
      * @return quotient
      */
     public int divide(int dividend, int divisor) {
 
-        long dividendLong = Math.abs((long) dividend);
-        long divisorLong = Math.abs((long) divisor);
-
-        /* If input overflow */
-        if (divisorLong == 0) {
-            return Integer.MAX_VALUE;
-        }
-
         /* Corner case */
-        if (dividendLong < divisorLong || dividendLong == 0) {
-            return 0;
-        }
-        if (divisor == 1) {
-            return dividend;
+        if (dividend == 1 << 31 && divisor == -1) {
+            return (1 << 31) - 1;       // 2^31 / -1 cause overflow, excepted return MAX_VALUE
         }
 
-        /* Use recursion to find result */
-        long result = fastDivide(dividendLong, divisorLong);
+        int a = Math.abs(dividend), b = Math.abs(divisor), res = 0, x;
 
-        /* Avoid overflow */
-        if (result > Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        }
+        while (a - b >= 0) {
+            x = 0;
+            while (a - (b << x << 1) >= 0) {        // a - (b * 2^x * 2^1), shift b to reach a as close as possible
+                x++;
+            }
 
-        if ((divisor > 0 && dividend < 0) || (dividend > 0 && divisor < 0)) {
-            return -(int) result;
+            res += 1 << x;      // res += 1 * 2^x
+            a -= b << x;
         }
-        return (int) result;
+        return (dividend < 0) ^ (divisor < 0) ? -res : res;     // check negative
     }
-
-    private long fastDivide(long dividend, long divisor) {
-
-        /* Recursion exit point */
-        if (dividend < divisor) {
-            return 0;
-        }
-        long cache = divisor;
-        long multi = 1;
-        while ((cache + cache) <= dividend) {
-            cache += cache;
-            multi += multi;
-        }
-        return multi + fastDivide(dividend - cache, divisor);
-    }
-
 }
