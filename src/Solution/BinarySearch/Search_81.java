@@ -13,10 +13,8 @@ package Solution.BinarySearch;
 
 public class Search_81 {
     /**
-     * Simply apply binary search can not solve array with duplicate elements.
-     * Hence, narrowing searching range is needed.
-     * When sub-array is neither monotonically increasing nor decreasing, narrow search range left and right by one.
-     * Time complexity: Worst case O(n).
+     * Before find the middle value in normal binary search, remove all duplicated elements at left-most or right-most.
+     * After that, the approach is almost same as search in array without duplicated elements.
      *
      * @param nums   input int array
      * @param target search int
@@ -38,7 +36,6 @@ public class Search_81 {
             }
 
             int mid = left + (right - left) / 2;
-
 
             if (nums[mid] == target) {      // after excludes duplicated elements, it is same as rotated ascending array
                 return true;
