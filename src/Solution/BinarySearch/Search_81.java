@@ -1,6 +1,5 @@
 package Solution.BinarySearch;
 
-
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
  * (i.e., [0,0,1,2,2,5,6] might become [5,6,0,0,1,2,2]).
@@ -26,24 +25,25 @@ public class Search_81 {
     public boolean search(int[] nums, int target) {
 
         /* Corner case */
-        if (nums.length < 1) {
+        if (nums.length == 0) {
             return false;
         }
 
-        int left = 0;
-        int right = nums.length - 1;
+        int left = 0, right = nums.length - 1;
 
-        while (left < right) {
+        while (left <= right) {     // assure to check last element in array
 
-            while (left < right && nums[left] == nums[right]) {     // avoid duplicated
+            while (left < right && nums[left] == nums[right]) {     // excludes duplicated elements
                 left++;
             }
-            int mid = (left + right) / 2;
+
+            int mid = left + (right - left) / 2;
+
 
             if (nums[mid] == target) {      // after excludes duplicated elements, it is same as rotated ascending array
                 return true;
-            } else if (nums[mid] >= nums[left]) {       // left part
-                if (nums[left] <= target && target < nums[mid]) {
+            } else if (nums[left] <= nums[mid]) {
+                if (nums[left] <= target && target < nums[mid]) {       // target can be at left or right, but not mid
                     right = mid - 1;
                 } else {
                     left = mid + 1;
@@ -57,22 +57,18 @@ public class Search_81 {
             }
         }
 
-        /*
-         * Check if last element in array is target.
-         * If left is larger than array length, then target is not possible in array.
-         * */
-        return (left != nums.length) && nums[left] == target;
+        return false;
     }
 
     public static void main(String[] args) {
         Search_81 test = new Search_81();
         System.out.println(test.search(new int[]{1, 1}, 0));
-
         System.out.println(test.search(new int[]{2, 5, 6, 0, 0, 1, 2}, 0));
         System.out.println(test.search(new int[]{2, 5, 6, 0, 0, 1, 2}, 3));
         System.out.println(test.search(new int[]{0}, 0));
         System.out.println(test.search(new int[]{0, 0, 0}, 0));
         System.out.println(test.search(new int[]{0, 1, 2, 3, 4, 5, 90}, 0));
         System.out.println(test.search(new int[]{1, 2, 3, 4, 5, 90}, 0));
+        System.out.println(test.search(new int[]{1, 3, 1, 1, 1}, 3));
     }
 }
