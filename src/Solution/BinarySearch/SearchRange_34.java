@@ -14,52 +14,50 @@ import java.util.Arrays;
 
 public class SearchRange_34 {
     /**
-     * Normal binary search problem.
-     * After the target is found, search left and right of target position to find range.
+     * Two rounds of binary search.
+     * First round find the lower bound of target, and second bound find higher bound of target.
      *
      * @param nums   input int array
      * @param target target int
      * @return starting and ending position, return [-1, -1] if target is not found
      */
     public int[] searchRange(int[] nums, int target) {
-        int[] res = {-1, -1};
+        int[] result = new int[2];
+        result[0] = findFirstLast(nums, target, true);
+        result[1] = findFirstLast(nums, target, false);
+        return result;
+    }
 
-        /* Corner case */
-        if (nums.length < 1) {
-            return res;
-        }
-
-        int left = 0, right = nums.length - 1;
+    /**
+     * Find boundary of target.
+     *
+     * @param nums   given array
+     * @param target target
+     * @param first  is finding first element
+     * @return index of start or end of target
+     */
+    private int findFirstLast(int[] nums, int target, boolean first) {
+        int index = -1;
+        int left = 0;
+        int right = nums.length - 1;
 
         while (left <= right) {
+            int mid = left + (right - left) / 2;
 
-            int mid = (right + left) / 2;
-
-            if (nums[mid] == target) {
-
-                /* Find all elements same as target */
-                while (mid > 0 && nums[mid - 1] == target) {
-                    mid--;
-                }
-                res[0] = mid;
-                while (mid < nums.length - 1 && nums[mid + 1] == target) {
-                    mid++;
-                }
-                res[1] = mid;
-                return res;
-            } else if (nums[mid] > target) {
+            if (target < nums[mid] || (first && target == nums[mid])) {     // find lower bound in first binary search
                 right = mid - 1;
             } else {
                 left = mid + 1;
             }
-        }
 
-        return res;
+            if (nums[mid] == target) {
+                index = mid;
+            }
+        }
+        return index;
     }
 
     public static void main(String[] args) {
-
-//        /* Search Range */
         SearchRange_34 searchRangeTest = new SearchRange_34();
         int[] nums = {0, 1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 8, 9, 12, 30};
         System.out.println(Arrays.toString(searchRangeTest.searchRange(nums, 4)));
