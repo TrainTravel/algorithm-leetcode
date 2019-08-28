@@ -14,6 +14,10 @@ package Solution.BinarySearch;
 public class FindMin_154 {
     /**
      * Modified binary search.
+     * Originally, to find min value in rotate sorted array is to find the lower part each time.
+     * To avoid the duplicated value, simply shrink the right bound when mid of array is equal to right.
+     * In this situation, the min value will either be in the right, or the duplicated one is the min value.
+     * Either way, the right duplicated one can be ignored.
      *
      * @param nums given array
      * @return minimum value in array
@@ -33,8 +37,7 @@ public class FindMin_154 {
 
             /*
              * Rightmost should be larger than middle value in array if in normal ascending array.
-             * Therefore, if mid value is larger than rightmost value in array, then the minimum element is at right.
-             * */
+             * Therefore, if mid value is larger than rightmost value in array, then the minimum element is at right. */
             if (nums[right] < nums[mid]) {      // abnormal sub array
                 left = mid + 1;
             } else if (nums[mid] < nums[right]) {
