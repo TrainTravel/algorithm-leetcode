@@ -26,25 +26,21 @@ public class SearchMatrix_74 {
         if (matrix.length == 0) {
             return false;
         }
-
-        int left = 0;
-        int right = matrix.length * matrix[0].length - 1;
+        int left = 0, right = matrix.length * matrix[0].length - 1;
 
         while (left <= right) {
-
             int mid = left + (right - left) / 2;
-            int row = mid / matrix[0].length;
-            int col = mid % matrix[0].length;
+            int midValue = matrix[mid / matrix[0].length][mid % matrix[0].length];
 
-            if (matrix[row][col] == target) {
+            if (target == midValue) {
                 return true;
-            }
-            if (matrix[row][col] < target) {
-                left = mid + 1;
-            } else {
+            } else if (target < midValue) {
                 right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
+
         return false;
     }
 }

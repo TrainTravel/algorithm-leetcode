@@ -23,19 +23,15 @@ public class BuyAndSell {
         if (currency.length <= 1) return 0;
         double res = 0;
         double high = currency[0];
-        double low = currency[0];
-        for (int i = 0; i < currency.length; i++) {
-            if (currency[i] > high) {
-                res = Math.max(res, 1000 * high / low);
+//        double low = currency[0];
+        for (int i = 1; i < currency.length; i++) {
+            if (currency[i] < high) {
+                res = Math.max(res, 1000 * high / currency[i] - 1000);
+            } else {
                 high = currency[i];
-                low = currency[i];
-            }
-            if (currency[i] < low) {
-                low = currency[i];
-                res = Math.max(res, 1000 * high / low);
             }
         }
-        return res - 1000;
+        return res;
     }
 
     public double buyAndSell(double[] nums) {
