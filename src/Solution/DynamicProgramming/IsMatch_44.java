@@ -1,7 +1,5 @@
 package Solution.DynamicProgramming;
 
-import java.util.Arrays;
-
 /**
  * Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*'.
  * '?' Matches any single character.
@@ -35,33 +33,32 @@ public class IsMatch_44 {
             return false;
         }
 
-        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+        int l1 = s.length(), l2 = p.length();
+        boolean[][] dp = new boolean[l1 + 1][l2 + 1];
         dp[0][0] = true;        // empty string matches empty string
 
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*') {        // only p contains '.' or '*'
-                dp[0][i + 1] = true;        // '*' can match empty string
-            } else {
-                break;
+        for (int i = 1; i <= l2; i++) {
+            if (p.charAt(i - 1) == '*') {
+                dp[0][i] = dp[0][i - 1];        // '*' can match empty string
             }
         }
 
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < p.length(); j++) {
-                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') {
-                    dp[i + 1][j + 1] = dp[i][j];
+        for (int i = 1; i <= l1; i++) {
+            for (int j = 1; j <= l2; j++) {
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
                 }
-                if (p.charAt(j) == '*') {
-                    dp[i + 1][j + 1] = dp[i + 1][j] || dp[i][j + 1];
+                if (p.charAt(j - 1) == '*') {
+
+                    /*
+                     * dp[i + 1][j]: matches any sequence 1 ~ n times.
+                     * dp[i][j + 1]: matches empty sequence. */
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
                 }
             }
         }
-//        for (boolean[] booleans : dp) {
-//
-//            System.out.println(Arrays.toString(booleans));
-//        }
 
-        return dp[s.length()][p.length()];
+        return dp[l1][l2];
     }
 
     public static void main(String[] args) {
@@ -70,6 +67,5 @@ public class IsMatch_44 {
         System.out.println(isMatchTest.isMatch("adceb", "*a*b"));
         System.out.println(isMatchTest.isMatch("acdcb", "a*c?b"));
         System.out.println(isMatchTest.isMatch("aa", "*a"));
-
     }
 }

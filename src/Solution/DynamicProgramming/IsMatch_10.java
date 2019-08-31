@@ -1,7 +1,5 @@
 package Solution.DynamicProgramming;
 
-import java.util.Arrays;
-
 /**
  * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
  * '.' Matches any single character.
@@ -19,11 +17,14 @@ import java.util.Arrays;
 public class IsMatch_10 {
     /**
      * Dynamic programming with 2D table.
-     * Conditions:
+     * Each time, find current matched string and pattern. Check if string matches pattern before current matched part.
+     * State transition:
      * If (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') ->  dp[i + 1][j + 1] = dp[i][j]
      * If (p.charAt(j) == '*'):
-     * 1. p.charAt(j - 1) != s.charAt(i): match previous char in 0 time
-     * 2. p.charAt(j - 1) == s.charAt(i): match either previous char in string or pattern, or match previous char 0 time
+     * 1. p(j - 2) could only be matched for 0 time.
+     * 2. Match p(j - 2) for 1 time.
+     * 3. Match p(j - 1) for n times.
+     * 4. Match p in format as ".*" 0 ~ n times.
      * If no condition satisfied, return false.
      *
      * @param s string
@@ -37,35 +38,55 @@ public class IsMatch_10 {
             return false;
         }
 
-        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
-        dp[0][0] = true;
+        int l1 = s.length();
+        int l2 = p.length();
 
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*' && dp[0][i - 1]) {       // only p contains '.' or '*'
-                dp[0][i + 1] = true;
+        boolean[][] dp = new boolean[l1 + 1][l2 + 1];
+        dp[0][0] = true;
+        for (int i = 1; i <= l2; i++) {
+            if (p.charAt(i - 1) == '*') {
+                dp[0][i] = dp[0][i - 2];        // for the case of pattern starts with .*
             }
         }
 
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < p.length(); j++) {
-                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
-                    dp[i + 1][j + 1] = dp[i][j];        // if previous string & pattern is matched, then it matches now
+        for (int i = 1; i <= l1; i++) {
+            for (int j = 1; j <= l2; j++) {
+
+                /*
+                 * If current char matches, or pattern is '.', then dp[i][j] = dp[i - 1][j - 1].
+                 * Both pattern char and string char is matched, check string and pattern before matched. */
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
+                    dp[i][j] = dp[i - 1][j - 1];
                 }
 
-                if (p.charAt(j) == '*') {
-                    if (p.charAt(j - 1) != s.charAt(i) && p.charAt(j - 1) != '.') {
-                        dp[i + 1][j + 1] = dp[i + 1][j - 1];        // match char before '*' pattern
+                /*
+                 * If p.charAt(j - 1) == '*', then matched pattern will be:
+                 * 1. p(j - 2) could only be matched for 0 time.
+                 * 2. Match p(j - 2) for 1 time.
+                 * 3. Match p(j - 1) for n times.
+                 * 4. Match p in format as ".*" 0 ~ n times. */
+                if (p.charAt(j - 1) == '*') {
+
+                    /*
+                     * If s(i - 1) != p(j - 2) && p(j - 2) != '.', then no match found in p.
+                     * p(j - 2) could only be matched for 0 time.
+                     * Check if string matches pattern before '*' and its previous char. */
+                    if (s.charAt(i - 1) != p.charAt(j - 2) && p.charAt(j - 2) != '.') {
+                        dp[i][j] = dp[i][j - 2];
                     } else {
-                        dp[i + 1][j + 1] = dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1];        // match either previous string or pattern, or 0 time
+
+                        /*
+                         * Otherwise, there are three conditions:
+                         * 1. Match p(j - 2) for 1 time: dp[i][j - 1]
+                         * 2. Match p(j - 1) for n times: dp[i - 1][j] (this is actually only matched in s, not in p)
+                         * 3. Match p in format as ".*" 0 ~ n times: dp[i][j - 2] || dp[i][j - 1] || dp[i - 1][j] */
+                        dp[i][j] = dp[i][j - 1] || dp[i - 1][j] || dp[i][j - 2];
                     }
                 }
             }
         }
 
-        for (boolean[] booleans : dp) {
-            System.out.println(Arrays.toString(booleans));
-        }
-        return dp[s.length()][p.length()];
+        return dp[l1][l2];
     }
 
     public static void main(String[] args) {

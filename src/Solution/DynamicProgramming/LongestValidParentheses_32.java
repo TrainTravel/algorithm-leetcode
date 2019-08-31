@@ -51,10 +51,10 @@ public class LongestValidParentheses_32 {
         right = 0;
 
         for (int i = s.length() - 1; i > -1; i--) {     // traverse from right to left
-            if (s.charAt(i) == '(') {
-                left++;
-            } else {
+            if (s.charAt(i) == ')') {
                 right++;
+            } else {
+                left++;
             }
             if (left == right) {
                 max = Math.max(max, left + right);
@@ -63,6 +63,7 @@ public class LongestValidParentheses_32 {
                 right = 0;
             }
         }
+
         return max;
     }
 
@@ -121,7 +122,7 @@ public class LongestValidParentheses_32 {
      */
     public int longestValidParenthesesDP(String s) {
 
-        int[] arr = new int[s.length()];        // save temp max
+        int[] dp = new int[s.length()];        // save temp max
         int maxParentheses = 0;
 
         for (int i = 1; i < s.length(); i++) {
@@ -130,16 +131,18 @@ public class LongestValidParentheses_32 {
             if (s.charAt(i) == ')') {
                 if (s.charAt(i - 1) == '(') {       // add a new pair
 
-                    arr[i] = (i > 1) ? arr[i - 2] + 2 : 2;
+                    dp[i] = (i > 1) ? dp[i - 2] + 2 : 2;
 
-                } else if (i > arr[i - 1] && s.charAt(i - arr[i - 1] - 1) == '(') {
+                } else if (i > dp[i - 1] && s.charAt(i - dp[i - 1] - 1) == '(') {
 
                     /*
-                     * i - arr[i - 1] - 1: find first '('
-                     * New valid pair immediately next to previous one. */
-                    arr[i] = (i - arr[i - 1] > 1) ? arr[i - 1] + arr[i - arr[i - 1] - 2] + 2 : arr[i - 1] + 2;
+                     * i - dp[i - 1] - 1: find first '('.
+                     * If i - dp[i - 1] - 1 > 0, then there may be previous valid pair. Add to dp[i].
+                     * Otherwise, if i - dp[i - 1] - 1 == 0, then the valid pair starts from start.
+                     * Under this condition, dp[i - 1] + 2 will include all valid pair from start. */
+                    dp[i] = (i - dp[i - 1] > 1) ? dp[i - 1] + dp[i - dp[i - 1] - 2] + 2 : dp[i - 1] + 2;
                 }
-                maxParentheses = Math.max(maxParentheses, arr[i]);
+                maxParentheses = Math.max(maxParentheses, dp[i]);
             }
         }
         return maxParentheses;

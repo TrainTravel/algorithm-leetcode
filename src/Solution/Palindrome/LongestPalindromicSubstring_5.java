@@ -64,33 +64,40 @@ public class LongestPalindromicSubstring_5 {
     /**
      * Dynamic programming.
      * This solution is slower than brute force approach.
+     * dp[i][j]: string(j, i) is palindromic.
+     * dp[i][j] = ((i - j) <= 2 || dp[i - 1][j + 1]) && s.charAt(i) == s.charAt(j)
+     * 1. Only one char
+     * 2. Two bound chars are equal, and string(j+1, i-1) is palindromic.
      *
      * @param s given string
      * @return longest palindromic substring in s
      */
     public String dynamicProgramming(String s) {
-        int n = s.length();
-        int start = 0, length = 0;
 
+        /* Corner case */
+        if (s.length() < 2) {
+            return s;
+        }
+
+        int n = s.length(), start = 0, maxLength = 1;
         boolean[][] dp = new boolean[n][n];
 
-        for (int i = n - 1; i >= 0; i--) { // keep increasing the possible palindrome string
-            for (int j = i; j < n; j++) { // find the max palindrome within this window of (i,j)
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = true;
+        }
 
-                /*
-                 * Check if substring between (i,j) is palindrome.
-                 * If window is less than or equal to 3, just end chars should match
-                 * If window is > 3, substring (i+1, j-1) should be palindrome as well. */
-                dp[i][j] = (s.charAt(i) == s.charAt(j)) && (j - i < 3 || dp[i + 1][j - 1]);
+        for (int i = 1; i < n; i++) {
+            for (int j = i; j >= 0; j--) {
+                dp[i][j] = ((i - j) <= 2 || dp[i - 1][j + 1]) && s.charAt(i) == s.charAt(j);
 
-
-                if (dp[i][j] && (j - i + 1 > length)) {     // update max palindrome string
-                    start = i;
-                    length = j - i + 1;
+                if (dp[i][j] && maxLength < (i - j + 1)) {
+                    start = j;                  // max palindromic substring start position
+                    maxLength = i - j + 1;      // max palindromic substring length
                 }
             }
         }
-        return s.substring(start, start + length);
+
+        return s.substring(start, start + maxLength);
     }
 
     public static void main(String[] args) {
