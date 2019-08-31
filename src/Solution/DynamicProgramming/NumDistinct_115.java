@@ -14,13 +14,15 @@ public class NumDistinct_115 {
     /**
      * Dynamic programming.
      * State transition:
-     * dp[i][j] = dp[i][j - 1], if s.charAt(j - 1) == t.charAt(i - 1), then dp[i][j] += dp[i - 1][j - 1]
-     * dp[i][j]: S(0, j) contains distinct subsequences of T(0, i).
-     * If T[i] != S[j], then dp[i,j] = dp[i,j-1], since current char will not be taken.
-     * If T[i] == S[j], then current char can be taken to make the last char of T.
-     * Under this condition, dp[i][j] = dp[i-1][j-1], which is # of previous condition.
+     * dp[i][j]: Numbers of S(0, j) contains distinct subsequences of T(0, i).
+     * 1. dp[i][j] = dp[i][j - 1].
+     * 2. If s.charAt(j - 1) == t.charAt(i - 1), then dp[i][j] += dp[i - 1][j - 1].
+     * If s.charAt(j - 1) != t.charAt(i - 1), then dp[i, j] = dp[i, j - 1], since current char will not be taken.
+     * If s.charAt(j - 1) == t.charAt(i - 1), then current char can be taken to make the last char of T.
+     * Under this condition, dp[i][j] = dp[i - 1][j - 1], which is # of previous condition.
      * Current char is last char that made up of subsequence, therefore, no extra value needed under this condition.
      * But it is also possible that current char is not taken, which is same as first situation.
+     * Therefore, no matter which condition is triggered, dp[i][j] should be at least dp[i][j-1].
      *
      * @param s string not longer than t
      * @param t second string
