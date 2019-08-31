@@ -1,5 +1,6 @@
 package Solution.OrderedMap;
 
+import java.util.HashMap;
 import java.util.TreeSet;
 
 /**
@@ -25,6 +26,54 @@ public class ContainsNearbyAlmostDuplicate_220 {
      */
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
 
+        /* Corner case */
+        if (k < 1 || t < 0) {
+            return false;
+        }
+
+        HashMap<Long, Long> map = new HashMap<>();
+        long bucketSize = ((long) t + 1);        // avoid 0
+
+        for (int i = 0; i < nums.length; i++) {
+            long num = (long) nums[i] - Integer.MIN_VALUE;      // convert to long number to avoid negative number
+
+            long bucket = num / bucketSize;
+
+            /*
+             * Bucket size is t + 1 (avoid 0).
+             * If bucket already contains element, return true. The max difference between them is t.
+             * Then check two adjacent bucket, if there exist element that difference is at most t, return true. */
+            if (map.containsKey(bucket) || (map.containsKey(bucket - 1) && num - map.get(bucket - 1) <= t) || (map.containsKey(bucket + 1) && map.get(bucket + 1) - num <= t)) {
+                return true;
+            }
+
+            if (i >= k) {
+                long firstNum = ((long) nums[i - k] - Integer.MIN_VALUE) / bucketSize;
+                map.remove(firstNum);
+            }
+            map.put(bucket, num);
+        }
+
+        return false;
+    }
+
+    /**
+     * Bucket sort.
+     * Keep a hash map with size of k.
+     * Each time, convert number into long (avoid negative number) and put into bucket.
+     * Bucket size is t + 1, to avoid t == 0.
+     * If converted number put into a bucket with other elements, return true.
+     * The max difference between two elements in same bucket is t.
+     * Otherwise, check if two adjacent buckets has element that abs(nums[i] - nums[j]) is smaller than t.
+     *
+     * @param nums given array
+     * @param k    largest absolute difference between i and j
+     * @param t    largest absolute difference between nums[i] and nums[j]
+     * @return whether there are two distinct indices i and j in the array satisfy the condition ofn k and t
+     */
+    public boolean treeSet(int[] nums, int k, int t) {
+
+        /* Corner case */
         if (k < 1 || t < 0 || nums.length < 1) {
             return false;
         }
@@ -33,7 +82,9 @@ public class ContainsNearbyAlmostDuplicate_220 {
 
         for (int i = 0; i < nums.length; i++) {
 
-            /* Find closest value in set (use Long to avoid NullPointerException */
+            /*
+             * Find closest value in set.
+             * Use Long to avoid NullPointerException. */
             Long floor = set.floor((long) nums[i]);       // greatest element in this set <= to the given element
             Long ceil = set.ceiling((long) nums[i]);       // least element in this set >= to the given element
 
@@ -43,7 +94,7 @@ public class ContainsNearbyAlmostDuplicate_220 {
 
             set.add((long) nums[i]);
 
-            if (i == k) {
+            if (i >= k) {
                 set.remove((long) nums[i - k]);     // keep size of set
             }
         }
