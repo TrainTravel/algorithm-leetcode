@@ -35,13 +35,13 @@ public class NumDistinct_115 {
 
         Arrays.fill(dp[0], 1);      // empty string is a subsequence
 
-        for (int i = 1; i < dp.length; i++) {     // row: char in t
-            for (int j = 1; j < dp[0].length; j++) {      // column: char in s
+        for (int i = 1; i <= m; i++) {     // row: char in t
+            for (int j = 1; j <= n; j++) {      // column: char in s
 
                 /*
                  * Two conditions:
-                 * 1. If chars in S and T is not matched, then dp[i][j] = dp[i][j-1]. Char in S will not influence [j-1]
-                 * 2. If two chars is matched, then based on condition 1, dp[i][j] += dp[i - 1][j - 1].
+                 * 1. If chars in S and T is not matched, dp[i][j] = dp[i][j - 1]. Char in S will not influence [j - 1].
+                 * 2. If two chars are matched, then based on condition 1, dp[i][j] += dp[i - 1][j - 1].
                  * dp[i - 1][j - 1]: S(0, j - 1) contains distinct subsequences of T(0, i - 1) */
                 dp[i][j] = dp[i][j - 1];
 
