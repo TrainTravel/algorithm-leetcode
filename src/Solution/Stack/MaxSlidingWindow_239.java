@@ -38,7 +38,7 @@ public class MaxSlidingWindow_239 {
 
         for (int i = 0; i < n; i++) {
 
-            while (!q.isEmpty() && i - q.peek() + 1 > k) {
+            if (!q.isEmpty() && i - q.peek() + 1 > k) {
                 q.poll();
             }
 

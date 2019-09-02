@@ -91,8 +91,8 @@ public class LowestCommonAncestor_236 {
             return root;
         }
 
-        TreeNode left = lowestCommonAncestor(root.left, p, q);      // search in left sub tree
-        TreeNode right = lowestCommonAncestor(root.right, p, q);        // search in right sub tree
+        TreeNode left = recursion(root.left, p, q);      // search in left sub tree
+        TreeNode right = recursion(root.right, p, q);        // search in right sub tree
 
         if (left != null && right != null) {
             return root;        // found node in both left sub tree and right sub tree
