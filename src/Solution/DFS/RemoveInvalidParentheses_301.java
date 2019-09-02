@@ -22,27 +22,27 @@ public class RemoveInvalidParentheses_301 {
      * @return all possible results.
      */
     public List<String> removeInvalidParentheses(String s) {
-        List<String> output = new ArrayList<>();
-        checkInvalid(output, s, 0, 0, '(', ')');
-        return output;
+        List<String> out = new ArrayList<>();
+        checkInvalid(out, s, 0, 0, '(', ')');
+        return out;
     }
 
     /**
      * If found invalid parenthesis, then use backtracking to find all possible substrings.
      *
-     * @param output output list
-     * @param s      parentheses string
-     * @param a      index of parentheses string
-     * @param b      index of invalid parenthesis right part
-     * @param open   left part of parenthesis
-     * @param close  right part of parenthesis
-     *               when traverse from end to beginning, open and close will be swapped
+     * @param output  output list
+     * @param s       parentheses string
+     * @param valid   start of valid parentheses string, initially starts at 0
+     * @param invalid start of invalid parenthesis right part, initially starts at 0
+     * @param open    left part of parenthesis
+     * @param close   right part of parenthesis
+     *                when traverse from end to beginning, open and close will be swapped
      */
-    private void checkInvalid(List<String> output, String s, int a, int b, char open, char close) {
+    private void checkInvalid(List<String> output, String s, int valid, int invalid, char open, char close) {
 
         int left = 0, right = 0;
 
-        for (int i = a; i < s.length(); i++) {
+        for (int i = valid; i < s.length(); i++) {      // start at valid position
 
             if (s.charAt(i) == open) {
                 left++;
@@ -52,14 +52,21 @@ public class RemoveInvalidParentheses_301 {
 
             if (right > left) {     // if right is more than left, then current parenthesis is invalid pair
 
-                for (int j = b; j <= i; j++) {      // backtracking to find all possibility
+                for (int j = invalid; j <= i; j++) {      // find all possible position to remove one invalid pair
 
-                    /* Try every possible substring without one invalid right parenthesis */
-                    if (s.charAt(j) == close && (j == b || s.charAt(j - 1) != close)) {     // avoid duplication
+                    /*
+                     * Each time, remove only one invalid parenthesis and pass it without this char into backtracking.
+                     * Hence, avoid duplicated close parenthesis.
+                     * This problem requires all valid output, therefore, use backtracking to find all.
+                     * From s(0, i), right part is more than left part by 1.
+                     * Try to remove one right part each time to make s(0, i) valid.
+                     * The next iteration starts at valid part, since it is not necessary to check valid part of string.
+                     * If later there exist invalid pair, repeat this process starts at previous removing position. */
+                    if (s.charAt(j) == close && (j == invalid || s.charAt(j - 1) != close)) {     // avoid duplication
                         checkInvalid(output, s.substring(0, j) + s.substring(j + 1), i, j, open, close);
                     }
                 }
-                return;
+                return;     // if current string is invalid, it should not be added to result
             }
         }
 
