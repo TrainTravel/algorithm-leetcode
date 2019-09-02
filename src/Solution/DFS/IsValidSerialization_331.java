@@ -1,4 +1,5 @@
-package Solution.Stack;
+package Solution.DFS;
+
 
 import java.util.Stack;
 
@@ -7,11 +8,56 @@ import java.util.Stack;
  * Find an algorithm without reconstructing the tree.
  *
  * @author BorisMirage
- * Time: 2019/06/27 16:27
+ * Time: 2019/09/02 14:54
  * Created with IntelliJ IDEA
  */
 
 public class IsValidSerialization_331 {
+    /**
+     * Pre order traversal to "build" the tree.
+     * The basic rule is, each non-empty node creates two slots for null node (left, right child).
+     * Each non-empty node requires one slot, and null node consume one slot of node.
+     * Therefore, use "," as one slot is used.
+     * If one non-empty node is found, slot + 2.
+     * If one null node is found, slot remains unchanged.
+     * If meet a ",", regraded as one node is used, slot - 1.
+     *
+     * @param preorder given preorder nodes
+     * @return whether it is a correct preorder traversal serialization of a binary tree
+     */
+    public boolean isValidSerialization(String preorder) {
+        int count = 1;
+        int n = preorder.length();
+
+        for (int i = 0; i < n; ++i) {
+
+            /*
+             * ",": use one node
+             * number: create two slot for nodes (null & non-empty)
+             * "#": null node does not take node, combine with "," to use one slot. */
+            if (preorder.charAt(i) == ',') {
+
+                count--;        // one node takes one slot
+
+                if (count < 0) {        // no more slots available
+                    return false;
+                }
+
+
+                if (preorder.charAt(i - 1) != '#') {         // non-empty node creates two children slots
+                    count += 2;
+                }
+            }
+        }
+
+        /*
+         * Check the last node.
+         * Since last node does not have ",", it requires extra check. */
+        count = (preorder.charAt(n - 1) == '#') ? count - 1 : count + 1;
+
+        return count == 0;      // all slots should be used up
+    }
+
     /**
      * Using stack to store nodes including "#".
      * Case 1: number -> push it to the stack.
@@ -22,7 +68,7 @@ public class IsValidSerialization_331 {
      * @param preorder given preorder nodes
      * @return whether it is a correct preorder traversal serialization of a binary tree
      */
-    public boolean isValidSerialization(String preorder) {
+    public boolean stack(String preorder) {
 
         /* Corner case */
         if (preorder.charAt(0) == '#' && preorder.length() > 1) {
@@ -48,9 +94,9 @@ public class IsValidSerialization_331 {
     }
 
     /**
-     * All non-null node provides 2 outdegree and 1 indegree (2 children and 1 parent), except root
+     * All non-null node provides 2 outdegree and 1 indegree (2 children and 1 parent), except root.
      * All null node provides 0 outdegree and 1 indegree (0 child and 1 parent).
-     * Difference between out degree and in degree: outdegree - indegree
+     * Difference between out degree and in degree: outdegree - indegree.
      * If the node is not null, increase diff by 2, because it provides two out degrees.
      * If a serialization is correct, outdegree - indegree should never be negative and diff will be zero when finished.
      *
