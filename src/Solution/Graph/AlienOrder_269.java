@@ -62,14 +62,10 @@ public class AlienOrder_269 {
 
             if (index == current.length && previous.length != current.length) {
                 return "";
+            } else if (index != previous.length) {
+                graph[previous[index] - 'a'][current[index] - 'a'] = true;
+                previous = current;
             }
-
-            if (index == previous.length) {
-                continue;
-            }
-
-            graph[previous[index] - 'a'][current[index] - 'a'] = true;
-            previous = current;
         }
 
         int count = 0;

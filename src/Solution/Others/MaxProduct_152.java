@@ -17,26 +17,30 @@ public class MaxProduct_152 {
      */
     public int maxProduct(int[] nums) {
 
+        /* Corner case */
         if (nums.length == 0) {
             return 0;
         }
 
-        int maxPre = nums[0];
-        int minPre = nums[0];
-        int max = nums[0];
-        int tempMax, tempMin;
+        /*
+         * Store the previous max and previous min.
+         * Max value is product of both positive number or both negative number.
+         * Min value is the product of one positive number and one negative number.
+         * During the traverse, next value in array may turn max into min, and min into max. */
+        int preMax = nums[0], preMin = nums[0], max = nums[0];
+        int tempMax, tempMin;       // max value and min value
 
         for (int i = 1; i < nums.length; i++) {
 
             /* Find current max value */
-            tempMax = Math.max(Math.max(maxPre * nums[i], minPre * nums[i]), nums[i]);
+            tempMax = Math.max(Math.max(preMax * nums[i], preMin * nums[i]), nums[i]);
 
             /* Find min subarray in case next value is negative so the product may become max */
-            tempMin = Math.min(Math.min(maxPre * nums[i], minPre * nums[i]), nums[i]);
+            tempMin = Math.min(Math.min(preMax * nums[i], preMin * nums[i]), nums[i]);
 
             max = Math.max(tempMax, max);
-            maxPre = tempMax;
-            minPre = tempMin;
+            preMax = tempMax;
+            preMin = tempMin;
         }
 
         return max;
