@@ -13,7 +13,16 @@ import java.util.Arrays;
 
 public class SingleNumber_260 {
     /**
-     * Get the XOR of the two numbers we need to find.
+     * XOR all numbers in array (a xor b).
+     * (a xor b) must be non-zero, otherwise they are equal.
+     * If bit_i in (a xor b) is 1, bit_i at a and b are different.
+     * Find bit_i using the low bit formula m & -m.
+     * Partition the numbers into two groups: one group with bit_i == 1 and the other group with bit_i == 0.
+     * a is in one group and b is in the other.
+     * a is the only single number in its group.
+     * b is also the only single number in its group.
+     * XOR all numbers in a's group to get a, XOR all numbers in b's group to get b
+     * Alternatively, XOR (a xor b) with a gets b.
      *
      * @param nums given array
      * @return two elements that appear only once
@@ -25,16 +34,23 @@ public class SingleNumber_260 {
             diff ^= num;
         }
 
+        /*
+         * diff &= -diff => ~(diff - 1) = - (diff - 1) - 1 = -diff
+         * This is to get the last set bit (last bit of 1, all bits at this bit's right are 0).
+         * diff - 1 will set all bits right at last set bit to 0.
+         * Then the ~ will reverse all bits, and then + 1.
+         * In this way, the last set bit can be found. */
         diff &= -diff;      // get its last set bit
 
         int[] result = {0, 0};        // this array stores the two numbers we will return
 
         for (int num : nums) {
-            if ((num & diff) == 0) {        // the bit is not set
-                result[0] ^= num;
-            } else {        // the bit is set
-                result[1] ^= num;
-            }
+
+            /*
+             * XOR = 1 means this bits in two numbers will contains one 0 and one 1.
+             * If diff & num is 0, then this number may be one of two single numbers, that contains last set bit of 0.
+             * If diff & num is 0, then this number may contains last set bit of 1. */
+            result[((num & diff) == 0) ? 0 : 1] ^= num;
         }
 
         return result;

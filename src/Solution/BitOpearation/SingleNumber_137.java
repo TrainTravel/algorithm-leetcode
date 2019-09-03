@@ -17,11 +17,12 @@ public class SingleNumber_137 {
      * @return number appears only once
      */
     public int singleNumber(int[] nums) {
-        int a = 0, b = 0;
+        int once = 0, twice = 0;
+
         for (int num : nums) {
-            a = (a ^ num) & ~b;        // ~ bitwise compliment, & bitwise and
-            b = (b ^ num) & ~a;
+            once = (once ^ num) & ~twice;        // ~ bitwise compliment, & bitwise and
+            twice = (twice ^ num) & ~once;
         }
-        return a;
+        return once;
     }
 }
