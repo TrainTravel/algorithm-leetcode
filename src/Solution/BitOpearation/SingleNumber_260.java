@@ -14,9 +14,9 @@ import java.util.Arrays;
 public class SingleNumber_260 {
     /**
      * XOR all numbers in array (a xor b).
-     * (a xor b) must be non-zero, otherwise they are equal.
-     * If bit_i in (a xor b) is 1, bit_i at a and b are different.
-     * Find bit_i using the low bit formula m & -m.
+     * (a xor b) must be non-zero, otherwise they are equal, and a ^ b differ in at least one bit.
+     * The different bit in a ^ b result will be 1. Hence, find the last bit set in a ^ b.
+     * Find last bit set using the low bit formula m & -m.
      * Partition the numbers into two groups: one group with bit_i == 1 and the other group with bit_i == 0.
      * a is in one group and b is in the other.
      * a is the only single number in its group.
