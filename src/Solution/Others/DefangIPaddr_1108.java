@@ -20,11 +20,7 @@ public class DefangIPaddr_1108 {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < address.length(); i++) {
-            if (address.charAt(i) == '.') {
-                sb.append("[").append(".").append("]");
-            } else {
-                sb.append(address.charAt(i));
-            }
+            sb.append((address.charAt(i) == '.') ? "[.]" : address.charAt(i));
         }
 
         return sb.toString();

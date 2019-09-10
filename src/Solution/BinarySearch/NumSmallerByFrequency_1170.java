@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.BinarySearch;
 
 import java.util.Arrays;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Created with IntelliJ IDEA
  */
 
-public class NumSmallerByFrequency {
+public class NumSmallerByFrequency_1170 {
     /**
      * Use binary search to find how many string in words has higher score.
      *
