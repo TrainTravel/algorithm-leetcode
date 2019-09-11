@@ -1,8 +1,6 @@
 package Solution.BitOpearation;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: "ACGAATTCCG".
@@ -19,36 +17,52 @@ public class FindRepeatedDnaSequences_187 {
      * Encoding each 'A', 'C', 'G', 'T' into binary digit, such as 00, 01, 10, 11.
      * In this way, each 10-letter-long sequences will be 20 bits long, which is under size of an int.
      * Map each subsequence into bits and check if each sequence has been shown before.
+     * Note that to set n-th bit of bitmask equal to 0: bitmask &= ~(1 << n).
      *
      * @param s given DNA molecule
      * @return all the 10-letter-long sequences in s
      */
     public List<String> findRepeatedDnaSequences(String s) {
 
-        List<String> out = new ArrayList<>();
-        HashSet<Integer> sequence = new HashSet<>();                // save previous sequence
-        HashSet<Integer> duplicatedSequence = new HashSet<>();      // save previous result added into list
-        char[] map = new char[26];
+        /* Corner case */
+        if (s.length() < 10) {
+            return new ArrayList<>();
+        }
 
-        map['C' - 'A'] = 1;     // mapping 'C' to 01, 'A' is 00
-        map['G' - 'A'] = 2;     // mapping 'G' to 10
-        map['T' - 'A'] = 3;     // mapping 'T' to 11
+        int n = s.length();
 
-        for (int i = 0; i < s.length() - 9; i++) {
-            int v = 0;
+        HashMap<Character, Integer> m = new HashMap<>();        // save mapping relation
+        m.put('A', 0);
+        m.put('C', 1);
+        m.put('G', 2);
+        m.put('T', 3);
 
-            for (int j = i; j < i + 10; j++) {      // search 10 chars ahead
-                v <<= 2;                            // left shift 2 digit for new incoming char
-                v |= map[s.charAt(j) - 'A'];        // add coding to the end to extend
-            }
+        int mask = 0;
+        Set<Integer> sequence = new HashSet<>();        // save previous sequence
+        Set<String> out = new HashSet<>();
 
-            /*
-             * 1. This sequence is not a new sequence (duplicated)
-             * 2. This duplicated sequence has not been added to result (avoid duplicated result in output list) */
-            if (!sequence.add(v) && duplicatedSequence.add(v)) {
+        for (int i = 0; i < 10; i++) {      // first sequence
+            mask <<= 2;
+            mask |= m.get(s.charAt(i));
+        }
+        sequence.add(mask);
+
+        for (int i = 1; i < n - 9; i++) {           // rolling hash
+
+            mask <<= 2;                             // left shift to free the last 2 bit
+            mask |= m.get(s.charAt(i + 9));         // add a new 2-bits number in the last two bits
+            mask &= ~(3 << 20);                     // unset first two bits: 2L-bit and (2L + 1)-bit
+
+            if (sequence.contains(mask)) {
                 out.add(s.substring(i, i + 10));
             }
+            sequence.add(mask);
         }
-        return out;
+
+        return new ArrayList<>(out);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new FindRepeatedDnaSequences_187().findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
     }
 }
