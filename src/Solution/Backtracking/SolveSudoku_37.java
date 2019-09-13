@@ -10,7 +10,6 @@ import java.util.Arrays;
  * Each of the digits 1-9 must occur exactly once in each column.
  * Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
  * Empty cells are indicated by the character '.'.
- * <p>
  * Note:
  * The given board contain only digits 1-9 and the character '.'.
  * You may assume that the given Sudoku puzzle will have a single unique solution.
@@ -23,7 +22,7 @@ import java.util.Arrays;
 
 public class SolveSudoku_37 {
     /**
-     * Use recursion with IsValidSudoku_36.
+     * Use backtracking to construct board and check if current Sudoku board is valid.
      *
      * @param board input Sudoku board
      */
