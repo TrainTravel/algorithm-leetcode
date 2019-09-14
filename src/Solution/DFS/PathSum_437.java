@@ -15,7 +15,7 @@ import Lib.Tree.TreeNode;
 
 public class PathSum_437 {
     /**
-     * DFS recursion.
+     * DFS post order traversal. Not only current node, but also all child nodes.
      *
      * @param root root node
      * @param sum  target sum
