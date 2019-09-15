@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Tricky;
 
 /**
  * Validate if a given string can be interpreted as a decimal number.
