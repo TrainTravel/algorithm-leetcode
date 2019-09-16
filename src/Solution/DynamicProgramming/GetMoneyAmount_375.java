@@ -18,6 +18,7 @@ public class GetMoneyAmount_375 {
      * Dynamic programming.
      * dp[i][j]: from i to j, the min money required to guarantee a win
      * dp[i][j] = max(dp[start][i - 1], dp[i + 1][end]), where start <= i <= end, 1 <= start <= end.
+     * This solution is top-down version.
      *
      * @param n number from 1 to n
      * @return how much money you need to have to guarantee a win
@@ -61,5 +62,40 @@ public class GetMoneyAmount_375 {
         }
 
         return max;
+    }
+
+    /**
+     * Dynamic programming with same idea, but this is a bottom-up version.
+     * dp[i][j]: from i to j, the min money required to guarantee a win
+     * dp[i][j] = max(dp[start][i - 1], dp[i + 1][end]), where start <= i <= end, 1 <= start <= end.
+     * This solution is top-down version.
+     *
+     * @param n number from 1 to n
+     * @return how much money you need to have to guarantee a win
+     */
+    public int bottomUp(int n) {
+
+        /* Corner case */
+        if (n == 1) {
+            return 0;
+        }
+
+        int[][] dp = new int[n + 1][n + 1];
+
+        for (int length = 1; length <= n; length++) {       // length of subarray
+            for (int i = 1; i <= n - length; i++) {
+
+                int j = i + length;
+                dp[i][j] = Integer.MAX_VALUE;
+
+                for (int k = i; k <= j; k++) {
+                    int left = (k - 1 >= i) ? dp[i][k - 1] : 0;
+                    int right = (j >= k + 1) ? dp[k + 1][j] : 0;
+                    dp[i][j] = Math.min(dp[i][j], k + Math.max(left, right));
+                }
+            }
+        }
+
+        return dp[1][n];
     }
 }
