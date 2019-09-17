@@ -1,4 +1,4 @@
-package Solution.Others;
+package Solution.Array;
 
 /**
  * Given an integer array arr and an integer k, modify the array by repeating it k times.
