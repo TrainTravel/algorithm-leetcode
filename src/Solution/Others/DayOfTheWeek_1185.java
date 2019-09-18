@@ -1,5 +1,8 @@
 package Solution.Others;
 
+import java.time.Month;
+import java.time.Year;
+
 /**
  * Given a date, return the corresponding day of the week for that date.
  * The input is given as three integers representing the day, month and year respectively.
@@ -29,6 +32,12 @@ public class DayOfTheWeek_1185 {
         year = year % 100;
         int w = (c / 4 - 2 * c + year + year / 4 + 13 * (month + 1) / 5 + day - 1) % 7;
         return days[(w + 7) % 7];
+    }
+
+    public String api(int day, int month, int year) {
+        String[] weeks = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        int week = Year.of(year).atMonth(Month.of(month)).atDay(day).getDayOfWeek().getValue() - 1;
+        return weeks[week];
     }
 
     public static void main(String[] args) {

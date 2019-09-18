@@ -1,5 +1,7 @@
 package Solution.Others;
 
+import java.time.LocalDate;
+
 /**
  * Given a string date representing a Gregorian calendar date formatted as YYYY-MM-DD, return the day number of the year.
  *
@@ -37,6 +39,11 @@ public class DayOfYear_1154 {
 
         out += day;
         return out;
+    }
+
+
+    public int api(String date) {
+        return LocalDate.parse(date).getDayOfYear();
     }
 
     public static void main(String[] args) {
