@@ -1,6 +1,5 @@
 package Solution.DynamicProgramming;
 
-
 /**
  * Given n balloons, indexed from 0 to n-1.
  * Each balloon is painted with a number on it represented by array nums.
@@ -24,9 +23,9 @@ package Solution.DynamicProgramming;
 
 public class MaxCoins_312 {
     /**
-     * This problem can be solved by dynamic programming.
-     * However, it can be easier understood by using divide and conquer with memoization.
-     * This solution use recursion to construct a table from 1 to n.
+     * Divide and conquer with memoization.
+     * The sub problem is to select the current balloon as the last one to shoot.
+     * In this way, recursively find its left and right max coins.
      *
      * @param nums input int array
      * @return max score
@@ -46,12 +45,24 @@ public class MaxCoins_312 {
         return findMax(new int[coins.length][coins.length], coins, 0, coins.length - 1);
     }
 
+    /**
+     * Divide and conquer with memoization.
+     * Recursively, find the max coins in left part and in right part, with current balloon scores.
+     *
+     * @param mem   memorization array
+     * @param coins given coin array
+     * @param left  left bound
+     * @param right right bound
+     * @return max coins from left to right
+     */
     private int findMax(int[][] mem, int[] coins, int left, int right) {
+
         if (left + 1 == right) {
-            return 0;       // Out of boundary
+            return 0;       // out of boundary
         }
+
         if (mem[left][right] > 0) {
-            return mem[left][right];        // Return current max
+            return mem[left][right];        // return current max (memorization)
         }
         int maxCoins = 0;
 
@@ -59,16 +70,49 @@ public class MaxCoins_312 {
             maxCoins = Math.max(coins[i] * coins[left] * coins[right] + findMax(mem, coins, left, i) + findMax(mem, coins, i, right), maxCoins);
         }
         mem[left][right] = maxCoins;
-        return maxCoins;
 
+        return maxCoins;
     }
 
+    /**
+     * Dynamic programming solution.
+     * dp[i][j]: max coins can be obtained from i to j.
+     * dp[i][j] = max(dp[i][j], dp[i][k - 1] + dp[k + 1][j] + nums[i] * nums[j] * nums[j]), where i <= k <= j.
+     *
+     * @param nums given array
+     * @return max score
+     */
+    public int dp(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int n = nums.length;
+        int[][] dp = new int[n][n];
+
+        for (int len = 1; len <= n; len++) {
+            for (int i = 0; i + len <= n; i++) {
+                int j = i + len - 1;
+
+                for (int k = i; k <= j; k++) {
+
+                    /*
+                     * If current element is the first or last element in array, the value that out of array count as 1.
+                     * But this 1 will not be added into max score. */
+                    int coins = nums[k] * ((i > 0) ? nums[i - 1] : 1) * ((j < nums.length - 1) ? nums[j + 1] : 1);
+                    coins += (k > i) ? dp[i][k - 1] : 0;
+                    coins += (k < j) ? dp[k + 1][j] : 0;
+                    dp[i][j] = Math.max(dp[i][j], coins);
+                }
+            }
+        }
+
+        return dp[0][n - 1];
+    }
 
     public static void main(String[] args) {
         int[] arr = {3, 1, 5, 8};
         MaxCoins_312 test = new MaxCoins_312();
         System.out.println(test.maxCoins(arr));
     }
-
-
 }
