@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class CoinChange_322 {
     /**
      * Dynamic programming.
-     * State transformation:
+     * State transition:
      * dp[i] = Math.min(dp[i - j] + 1), if i - coins[k] >= 0 && dp[i - coin] != Integer.MAX_VALUE
      *
      * @param coins  given coins list

@@ -12,7 +12,7 @@ package Solution.DynamicProgramming;
 public class NumRollsToTarget_1155 {
     /**
      * Dynamic programming.
-     * State transformation:
+     * State transition:
      * If j <= i * f (target # should at least be # of dices)
      * dp[i][j] = dp[i][j] + dp[i - 1][j - k], where k from [1, f] and j - k >= 0.
      *
