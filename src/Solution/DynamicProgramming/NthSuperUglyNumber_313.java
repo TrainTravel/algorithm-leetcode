@@ -34,24 +34,28 @@ public class NthSuperUglyNumber_313 {
     public int nthSuperUglyNumber(int n, int[] primes) {
 
         int length = primes.length;
-        int[] index = new int[length], res = new int[n];
-        res[0] = 1;
+        int[] index = new int[length], out = new int[n];
+        out[0] = 1;
 
         for (int i = 1; i < n; i++) {
             int min = Integer.MAX_VALUE;
 
             for (int j = 0; j < length; j++) {
-                min = Math.min(res[index[j]] * primes[j], min);
+                min = Math.min(out[index[j]] * primes[j], min);
             }
 
-            res[i] = min;
+            out[i] = min;
 
             for (int j = 0; j < length; j++) {
-                if (res[i] % primes[j] == 0) index[j]++;
+                if (out[i] % primes[j] == 0) index[j]++;
             }
         }
 
-        return res[n - 1];
+        return out[n - 1];
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new NthSuperUglyNumber_313().nthSuperUglyNumber(6, new int[]{2, 11, 13}));
     }
 }
 
