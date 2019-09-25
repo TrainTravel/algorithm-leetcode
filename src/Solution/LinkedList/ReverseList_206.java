@@ -19,17 +19,41 @@ public class ReverseList_206 {
      * @return reversed list
      */
     public ListNode reverseList(ListNode head) {
+
+        /* Corner case */
         if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode newHead = null;
+        ListNode dummy = null;
+
         while (head != null) {
             ListNode next = head.next;
-            head.next = newHead;
-            newHead = head;
+            head.next = dummy;
+            dummy = head;
             head = next;
         }
-        return newHead;
+
+        return dummy;
+    }
+
+    /**
+     * Recursion to solve the problem.
+     *
+     * @param head head node
+     * @return new head of reversed list
+     */
+    public ListNode recursion(ListNode head) {
+
+        /* Corner case */
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode next = head.next;
+        ListNode dummy = reverseList(next);
+        next.next = head;
+        head.next = null;
+        return dummy;
     }
 }
