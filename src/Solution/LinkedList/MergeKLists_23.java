@@ -67,6 +67,7 @@ public class MergeKLists_23 {
      * @return next smaller node
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+
         if (l1 == null) {
             return l2;
         }
@@ -98,7 +99,12 @@ public class MergeKLists_23 {
             return lists[0];
         }
 
-        PriorityQueue<ListNode> q = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+        PriorityQueue<ListNode> q = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
+        });
 
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
