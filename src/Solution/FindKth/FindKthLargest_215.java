@@ -94,7 +94,7 @@ public class FindKthLargest_215 {
     }
 
     /**
-     * Use min heap to store k largest element in array.
+     * Use max heap to store k largest element in array.
      *
      * @param nums given number
      * @param k    kth largest element
