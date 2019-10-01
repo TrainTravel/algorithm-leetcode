@@ -1,5 +1,7 @@
 package Solution.FindKth;
 
+import java.util.PriorityQueue;
+
 /**
  * Find the kth largest element in an unsorted array.
  * Note that it is the kth largest element in the sorted order, not the kth distinct element.
@@ -89,6 +91,28 @@ public class FindKthLargest_215 {
         int temp = array[left];
         array[left] = array[right];
         array[right] = temp;
+    }
+
+    /**
+     * Use min heap to store k largest element in array.
+     *
+     * @param nums given number
+     * @param k    kth largest element
+     * @return kth largest element in an unsorted array
+     */
+    public int minHeap(int[] nums, int k) {
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for (int i : nums) {
+
+            pq.add(i);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        return pq.poll();
     }
 
     public static void main(String[] args) {
