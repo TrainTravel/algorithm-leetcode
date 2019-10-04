@@ -87,7 +87,9 @@ public class MissingNumber_268 {
     }
 
     /**
-     * Use index mapping to mapping each occurred element from 0 to n.
+     * Use index mapping to mapping each occurred element from 0 to n by mark each element into negative.
+     * To avoid 0, the mapping should minus 1 to assure each element in array after mapping is negative.
+     * Then check which element in array is not mapped.
      *
      * @param nums input int array
      * @return missing number
