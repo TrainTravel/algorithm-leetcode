@@ -1,5 +1,6 @@
 package Lib.Graph;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -11,9 +12,21 @@ import java.util.LinkedList;
 public class GraphNode {
     int value;
     LinkedList<GraphNode> neighbor;
+    HashMap<GraphNode, Weight> weightHashMap;       // avoid duplicated in weight graph
 
     public GraphNode(int val) {
         this.value = val;
         neighbor = new LinkedList<>();
+    }
+
+    class Weight {
+        int weight;
+        GraphNode n1;
+        GraphNode n2;
+
+        public void setWeight(int weight) {
+            this.weight = weight;
+        }
+
     }
 }
