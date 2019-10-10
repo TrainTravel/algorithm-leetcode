@@ -15,6 +15,8 @@ public class MinCut_132 {
      * Assume i, j are the index in string, cut[i] is the min cut time for s(0, i).
      * 1. If s(j, i) is palindrome, cut[i] is the minimum of cut[j - 1] + 1 (j <= i)
      * 2. If s(j, i) is palindrome, then [j + 1, i - 1] is palindrome, and c[j] == c[i].
+     * Time complexity: O(n^3) -> O(n^2)
+     * Space complexity: O(n^2)
      *
      * @param s given string
      * @return min cuts for a palindrome partitioning of s
@@ -39,6 +41,7 @@ public class MinCut_132 {
                 }
             }
         }
+
         return min[s.length() - 1];
     }
 

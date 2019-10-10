@@ -78,6 +78,8 @@ public class MaxCoins_312 {
      * Dynamic programming solution.
      * dp[i][j]: max coins can be obtained from i to j.
      * dp[i][j] = max(dp[i][j], dp[i][k - 1] + dp[k + 1][j] + nums[i] * nums[j] * nums[j]), where i <= k <= j.
+     * Time complexity: O(n^3)
+     * Space complexity: O(n^2)
      *
      * @param nums given array
      * @return max score
