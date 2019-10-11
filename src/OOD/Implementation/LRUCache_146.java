@@ -16,10 +16,10 @@ import java.util.*;
 
 public class LRUCache_146 {
     private int capacity;
-    private Cache head;
-    private Cache end;
+    private DoubleLinkedNode head;
+    private DoubleLinkedNode end;
     private int c = 0;      // count total cache size
-    private HashMap<Integer, Cache> cache = new HashMap<>();
+    private HashMap<Integer, DoubleLinkedNode> map = new HashMap<>();
 
     /**
      * Structure of cache:
@@ -33,10 +33,8 @@ public class LRUCache_146 {
      */
     public LRUCache_146(int capacity) {
         this.capacity = capacity;
-        this.head = new Cache();
-        head.previous = null;
-        this.end = new Cache();
-        end.next = null;
+        this.head = new DoubleLinkedNode();
+        this.end = new DoubleLinkedNode();
         head.next = end;
         end.previous = head;
     }
@@ -48,10 +46,11 @@ public class LRUCache_146 {
      * @return corresponding value, or -1.
      */
     public int get(int key) {
-        Cache temp = cache.get(key);
+        DoubleLinkedNode temp = map.get(key);
         if (temp == null) {
             return -1;
         }
+
         lastUsed(temp);
         return temp.val;
     }
@@ -65,26 +64,34 @@ public class LRUCache_146 {
      */
     public void put(int key, int value) {
 
-        Cache node = cache.get(key);
+        DoubleLinkedNode node = map.get(key);
 
         if (node == null) {
-            Cache add = new Cache();
+            DoubleLinkedNode add = new DoubleLinkedNode();
             add.key = key;
             add.val = value;
             c++;
             if (c > capacity) {
-                cache.remove(popEnd().key);
-                addNode(add);
-                cache.put(key, add);
+                map.remove(popEnd().key);
                 c--;
-            } else {
-                addNode(add);
-                cache.put(key, add);
             }
+            map.put(key, add);
+            addNode(add);
         } else {
-            cache.get(key).val = value;
-            lastUsed(cache.get(key));
+            map.get(key).val = value;
+            lastUsed(map.get(key));
         }
+    }
+
+    /**
+     * Move given node next to head node.
+     * Note that this node will be removed.
+     *
+     * @param node last node in list
+     */
+    private void lastUsed(DoubleLinkedNode node) {
+        removeNode(node);
+        addNode(node);
     }
 
     /**
@@ -92,22 +99,11 @@ public class LRUCache_146 {
      *
      * @param node given Cache
      */
-    private void removeNode(Cache node) {
-        Cache pre = node.previous;
-        Cache next = node.next;
+    private void removeNode(DoubleLinkedNode node) {
+        DoubleLinkedNode pre = node.previous;
+        DoubleLinkedNode next = node.next;
         pre.next = next;
         next.previous = pre;
-    }
-
-    /**
-     * Move given node next to head node.
-     * Note that this node will be removed.
-     *
-     * @param node
-     */
-    private void lastUsed(Cache node) {
-        removeNode(node);
-        addNode(node);
     }
 
     /**
@@ -115,7 +111,7 @@ public class LRUCache_146 {
      *
      * @param node Cache to be moved
      */
-    private void addNode(Cache node) {
+    private void addNode(DoubleLinkedNode node) {
         node.previous = head;
         node.next = head.next;
         head.next.previous = node;
@@ -128,8 +124,8 @@ public class LRUCache_146 {
      *
      * @return pop node
      */
-    private Cache popEnd() {
-        Cache old = end.previous;
+    private DoubleLinkedNode popEnd() {
+        DoubleLinkedNode old = end.previous;
         this.removeNode(old);
         return old;
     }
@@ -138,11 +134,11 @@ public class LRUCache_146 {
      * Definition of Cache.
      * Worked as double linked list.
      */
-    class Cache {
-        public int key;     // cache key
-        public int val;     // value store in cache
-        public Cache previous;      // previous cache block pointer
-        public Cache next;          // next cache block pointer
+    static class DoubleLinkedNode {
+        public int key;                        // cache key
+        public int val;                        // value store in cache
+        public DoubleLinkedNode previous;      // previous cache block pointer
+        public DoubleLinkedNode next;          // next cache block pointer
     }
 
     public static void main(String[] args) {

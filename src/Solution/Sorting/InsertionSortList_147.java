@@ -17,6 +17,10 @@ import Lib.ListNode;
 public class InsertionSortList_147 {
     /**
      * Implement the insertion sort.
+     * Use two list nodes works as the smallest (head) and largest (tail) in list.
+     * Then traverse the list. If element is smaller than head or larger than tail, insert the node.
+     * Otherwise, use a temporary pointer and the pointer will pass all elements smaller than current element.
+     * Finally, insert the node into correct position.
      *
      * @param head head of list
      * @return sorted list
@@ -27,7 +31,7 @@ public class InsertionSortList_147 {
             return head;
         }
 
-        ListNode sortedHead = head, sortedTail = head;
+        ListNode sortedHead = head, sortedTail = head;      // initially, sorted list only contains first element
         head = head.next;
         sortedHead.next = null;
 
@@ -44,7 +48,7 @@ public class InsertionSortList_147 {
                 sortedTail = sortedTail.next;
             } else {        // new val is somewhere in the middle
                 ListNode current = sortedHead;
-                while (current.next != null && current.next.val < temp.val) {
+                while (current.next.val < temp.val) {
                     current = current.next;
                 }
                 temp.next = current.next;
