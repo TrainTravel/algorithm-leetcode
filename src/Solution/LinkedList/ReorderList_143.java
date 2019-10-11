@@ -19,36 +19,47 @@ public class ReorderList_143 {
      */
     public void reorderList(ListNode head) {
 
-        if (head == null || head.next == null) {
+        /* Corner case */
+        if (head == null) {
+            return;
+        }
+        if (head.next == null || head.next.next == null) {
             return;
         }
 
-        ListNode last = head, middle = head;
+        ListNode slow = head, fast = head;
 
-        while (last.next != null && last.next.next != null) {
-            middle = middle.next;
-            last = last.next.next;
+
+        while (fast.next != null && fast.next.next != null) {       // find the middle of list
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        /* Reverse the second half of list.
-         * Then insert every element in second half to first half. */
-        ListNode dummy = middle;
-        ListNode start = middle.next;
-        while (start != null && start.next != null) {
-            ListNode next = start.next;
-            start.next = next.next;     // set to next start as dummy
-            next.next = dummy.next;     // reverse node
-            dummy.next = next;
+        ListNode middle = slow;
+        ListNode current = slow.next;
+
+        /*
+         * Reverse the second half of list in-place.
+         * Each time, move pointer of current node into next node's next node.
+         * This pointer will be the reference of next round.
+         * Then move pointer of next node's next node to current node, as reverse operation.
+         * Finally, move head node's next node to next node in this round. */
+        while (current != null && current.next != null) {
+            ListNode next = current.next;       // temporary store next node
+            current.next = next.next;           // current node's next node is next of next node
+            next.next = middle.next;            // next node's next now revert to middle's next node (reverse)
+            middle.next = next;                 // middle node's next now move to next node, as previous node
         }
 
-        middle = head;      // reset middle to head of list
-        last = dummy.next;     // after reverse second half, p1 point at the end of list
-        while (middle != dummy) {      // insert second half to first half
-            dummy.next = last.next;
-            last.next = middle.next;
-            middle.next = last;
-            middle = last.next;
-            last = dummy.next;
+        slow = head;
+        fast = middle.next;
+
+        while (slow != middle) {        // insert each node in first half of list into second half
+            middle.next = fast.next;
+            fast.next = slow.next;
+            slow.next = fast;
+            slow = fast.next;
+            fast = middle.next;
         }
     }
 }
