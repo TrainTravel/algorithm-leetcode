@@ -76,7 +76,7 @@ public class LRUCache_146 {
                 c--;
             }
             map.put(key, add);
-            addNode(add);
+            insertHead(add);
         } else {
             map.get(key).val = value;
             lastUsed(map.get(key));
@@ -91,13 +91,13 @@ public class LRUCache_146 {
      */
     private void lastUsed(DoubleLinkedNode node) {
         removeNode(node);
-        addNode(node);
+        insertHead(node);
     }
 
     /**
-     * Remove given Cache.
+     * Remove given node.
      *
-     * @param node given Cache
+     * @param node given node
      */
     private void removeNode(DoubleLinkedNode node) {
         DoubleLinkedNode pre = node.previous;
@@ -107,11 +107,11 @@ public class LRUCache_146 {
     }
 
     /**
-     * Add a new Cache next to head.
+     * Insert a new node to head.
      *
-     * @param node Cache to be moved
+     * @param node node to be moved
      */
-    private void addNode(DoubleLinkedNode node) {
+    private void insertHead(DoubleLinkedNode node) {
         node.previous = head;
         node.next = head.next;
         head.next.previous = node;
@@ -119,7 +119,7 @@ public class LRUCache_146 {
     }
 
     /**
-     * Remove last Cache.
+     * Remove last node in cache based on LRU policy.
      * Hash map needs to know which key to remove, hence pop node is required.
      *
      * @return pop node
@@ -131,8 +131,7 @@ public class LRUCache_146 {
     }
 
     /**
-     * Definition of Cache.
-     * Worked as double linked list.
+     * Node in cache, which is a double linked list.
      */
     static class DoubleLinkedNode {
         public int key;                        // cache key
