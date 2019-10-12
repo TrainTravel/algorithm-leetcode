@@ -17,7 +17,8 @@ public class HammingWeight_191 {
      */
     public int hammingWeight(int n) {
         int count = 0;
-        while (n > 0) {
+
+        while (n != 0) {
             count = count + (1 & n);
             n >>>= 1;
         }
