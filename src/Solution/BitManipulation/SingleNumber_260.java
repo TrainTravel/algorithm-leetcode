@@ -1,4 +1,4 @@
-package Solution.BitOpearation;
+package Solution.BitManipulation;
 
 import java.util.Arrays;
 

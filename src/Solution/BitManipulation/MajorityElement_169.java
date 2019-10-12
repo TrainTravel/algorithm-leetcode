@@ -1,4 +1,4 @@
-package Solution.BitOpearation;
+package Solution.BitManipulation;
 
 /**
  * Given an array of size n, find the majority element.

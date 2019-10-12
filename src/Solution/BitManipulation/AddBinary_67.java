@@ -1,4 +1,4 @@
-package Solution.BitOpearation;
+package Solution.BitManipulation;
 
 /**
  * Given two binary strings, return their sum (also a binary string).

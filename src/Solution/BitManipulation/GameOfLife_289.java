@@ -1,4 +1,4 @@
-package Solution.BitOpearation;
+package Solution.BitManipulation;
 
 /**
  * Given a board with m by n cells, each cell has an initial state live (1) or dead (0).

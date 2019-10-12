@@ -1,4 +1,4 @@
-package Solution.BitOpearation;
+package Solution.BitManipulation;
 
 /**
  * Given a non negative integer number num.
