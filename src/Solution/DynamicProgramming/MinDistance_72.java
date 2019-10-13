@@ -1,5 +1,7 @@
 package Solution.DynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
  * 3 operations permitted on a word:
@@ -58,8 +60,79 @@ public class MinDistance_72 {
         return dp[l1][l2];
     }
 
+    /**
+     * Use DFS to find the min edit distance, with a 2D int array as pruning (without that would cause TLE).
+     *
+     * @param word1 string 1
+     * @param word2 target converted string
+     * @return min edit distance
+     */
+    public int dfsImpl(String word1, String word2) {
+
+        int n1 = word1.length(), n2 = word2.length();
+
+        /* Corner case */
+        if (n1 == 0 || n2 == 0) {
+            return word1.length() | word2.length();     // if one is empty, then the min distance is the other word
+        }
+        int[][] mem = new int[n1 + 1][n2 + 1];
+
+        for (int[] m : mem) {
+            Arrays.fill(m, -1);
+        }
+
+        return dfs(word1, word2, n1, n2, mem);
+    }
+
+    /**
+     * DFS search.
+     * The branch of searching is to check if current character is matched.
+     * If matched, then both string move one char forward.
+     * Otherwise, three branches: insert, update, delete.
+     *
+     * @param s1  first string
+     * @param s2  target string
+     * @param i   index of s1
+     * @param j   index of s2
+     * @param mem memorization array
+     * @return min edit distance
+     */
+    private int dfs(String s1, String s2, int i, int j, int[][] mem) {
+        if (i == 0 || j == 0) {
+            return j + i;
+        }
+
+        if (mem[i][j] != -1) {
+            return mem[i][j];
+        }
+
+        int insert = dfs(s1, s2, i, j - 1, mem) + 1;
+        int delete = dfs(s1, s2, i - 1, j, mem) + 1;
+
+        /*
+         * If two chars are matched, then the cost will not change.
+         * But both pointer will moving forward (same as replacement)
+         * Otherwise, replace operation will cost one. */
+        int replace = (s1.charAt(i - 1) == s2.charAt(j - 1)) ? dfs(s1, s2, i - 1, j - 1, mem) : dfs(s1, s2, i - 1, j - 1, mem) + 1;
+
+        int min = Math.min(insert, Math.min(delete, replace));
+        mem[i][j] = min;
+
+        return min;
+    }
+
     public static void main(String[] args) {
         MinDistance_72 test = new MinDistance_72();
-        System.out.println(test.minDistance("zoologicoarchaeologist", "zoogeologist"));
+        long startTime = System.nanoTime();
+        System.out.println(test.dfsImpl("zoologicoarchaeologist", "zoogeologist"));     // 10
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
+
+        startTime = System.nanoTime();
+        System.out.println(test.dfsImpl("dinitrophenylhydrazine", "acetylphenylhydrazine"));     // 6
+        endTime = System.nanoTime();
+        totalTime = endTime - startTime;
+        System.out.println(totalTime);
     }
 }
