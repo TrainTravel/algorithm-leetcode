@@ -1,4 +1,4 @@
-package OOD.Implementation;
+package Solution.Design;
 
 import Lib.NestedInteger;
 

@@ -1,4 +1,4 @@
-package OOD.Implementation;
+package Solution.Design;
 
 /**
  * Design your implementation of the linked list.
