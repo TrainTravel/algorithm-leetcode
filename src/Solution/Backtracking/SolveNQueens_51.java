@@ -72,8 +72,9 @@ public class SolveNQueens_51 {
     private boolean isValid(char[][] temp, int r, int c) {
         for (int i = 0; i < temp.length; i++) {
             for (int j = 0; j < c; j++) {
-                if (temp[i][j] == 'Q' && (r + j == c + i || r + c == i + j || i == r))
+                if (temp[i][j] == 'Q' && (r + j == c + i || r + c == i + j || i == r)) {
                     return false;
+                }
             }
         }
         return true;
