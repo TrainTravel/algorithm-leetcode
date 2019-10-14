@@ -1,8 +1,5 @@
 package Solution.DynamicProgramming;
 
-import java.util.Arrays;
-import java.util.HashMap;
-
 /**
  * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
  * '.' Matches any single character.
@@ -106,18 +103,11 @@ public class IsMatch_10 {
         if (p == null || s == null) {
             return false;
         }
+
         int[][] mem = new int[s.length() + 1][p.length() + 1];
 
-        for (int[] i : mem) {
-            Arrays.fill(i, -1);
-        }
-
-        for (int i = p.length(); i >= 0; i -= 2) {
-            if (i == p.length() || (i < p.length() && p.charAt(i + 1) == '*')) {
-                mem[s.length()][i] = 1;
-            } else {
-                break;
-            }
+        for (int i = p.length(); i >= 0 && (i == p.length() || (i < p.length() && p.charAt(i + 1) == '*')); i -= 2) {
+            mem[s.length()][i] = 1;
         }
 
         return dfs(s, p, 0, 0, mem);
@@ -135,7 +125,7 @@ public class IsMatch_10 {
      */
     private boolean dfs(String s, String p, int i, int j, int[][] mem) {
 
-        if (mem[i][j] != -1) {      // reuse previous result
+        if (mem[i][j] != 0) {      // reuse previous result
             return mem[i][j] == 1;
         }
 
@@ -158,9 +148,11 @@ public class IsMatch_10 {
                 }
             }
         } else if (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')) {
-            return dfs(s, p, i + 1, j + 1, mem);
+            mem[i][j] = dfs(s, p, i + 1, j + 1, mem) ? 1 : -1;
+            return mem[i][j] == 1;
         } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {      // match previous char more than 1 time
-            return dfs(s, p, i, j + 2, mem);
+            mem[i][j] = dfs(s, p, i, j + 2, mem) ? 1 : -1;
+            return mem[i][j] == 1;
         }
 
         return false;
