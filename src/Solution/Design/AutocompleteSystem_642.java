@@ -56,12 +56,14 @@ public class AutocompleteSystem_642 {
             l = new LinkedList<>();
             tmp = root;
             p = 0;
+
             return new LinkedList<>();
         }
 
         l.add(c);
         for (int i = p; i < l.size(); i++) {
             if (!tmp.child.containsKey(l.get(p))) {
+
                 return new LinkedList<>();
             }
             tmp = tmp.child.get(l.get(p++));
@@ -97,10 +99,12 @@ public class AutocompleteSystem_642 {
         for (int i = 0; i < sentences.length; i++) {
             String s = sentences[i];
             TrieNode tmp = root;
+
             for (int j = 0; j < s.length(); j++) {
                 if (!tmp.child.containsKey(s.charAt(j))) {
                     tmp.child.put(s.charAt(j), new TrieNode());
                 }
+
                 tmp = tmp.child.get(s.charAt(j));
                 tmp.sentence.put(s, tmp.sentence.getOrDefault(s, 0) + times[i]);
             }
@@ -112,7 +116,7 @@ public class AutocompleteSystem_642 {
     /**
      * Constructor of trie node.
      */
-    class TrieNode {
+    static class TrieNode {
         HashMap<Character, TrieNode> child = new HashMap<>();       // save child node of current node
         HashMap<String, Integer> sentence = new HashMap<>();        // save each node's relating sentence and count
     }
