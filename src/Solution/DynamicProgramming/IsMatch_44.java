@@ -61,11 +61,77 @@ public class IsMatch_44 {
         return dp[l1][l2];
     }
 
+    public boolean dfsImple(String s, String p) {
+
+        /* Corner case */
+        if (p == null || s == null) {
+            return false;
+        }
+
+        int l1 = s.length(), l2 = p.length();
+
+        /*
+         * mem[i][j]: whether string (0, i) and pattern(0, j) is matched.
+         * -1: not matched
+         * 1: matched
+         * 0: don't know */
+        int[][] mem = new int[l1 + 1][l2 + 1];
+
+        /*
+         * 1. last cell (mem[l1][l2]) should be true (end point of both string and pattern reaches the end)
+         * 2. If last char in pattern is '*', then it can match all subsequence as long as previous part is matched. */
+        for (int i = l2; i >= 0 && (i == l2 || (i < l2 && p.charAt(i) == '*')); i--) {
+            mem[l1][i] = 1;
+        }
+
+        return dfs(s, p, 0, 0, mem);
+    }
+
+    /**
+     * DFS searching with a 2D int table to accomplish pruning.
+     * During the searching process, if the table cell has been filled, return the value.
+     * mem[i][j]: whether string (0, i) and pattern(0, j) is matched. -1: not matched; 1: matched; 0: don't know
+     *
+     * @param s   string
+     * @param p   pattern string
+     * @param i   current index of string
+     * @param j   current index of pattern
+     * @param mem 2D boolean array to store the previous result
+     * @return if string is matched to pattern
+     */
+    private boolean dfs(String s, String p, int i, int j, int[][] mem) {
+
+        if (mem[i][j] != 0) {      // reuse previous result
+            return mem[i][j] == 1;
+        }
+
+        if (j >= p.length()) {      // avoid overflow
+            return false;
+        }
+
+        if (p.charAt(j) == '*') {
+            if ((i < s.length() && dfs(s, p, i + 1, j, mem)) || dfs(s, p, i, j + 1, mem)) {
+                mem[i][j] = 1;
+                return true;
+            }
+        } else if (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')) {
+            mem[i][j] = dfs(s, p, i + 1, j + 1, mem) ? 1 : -1;      // if
+            return mem[i][j] == 1;
+        }
+
+        mem[i][j] = -1;
+        return false;
+    }
+
     public static void main(String[] args) {
         IsMatch_44 isMatchTest = new IsMatch_44();
-        System.out.println(isMatchTest.isMatch("aab", "c*a*b"));
-        System.out.println(isMatchTest.isMatch("adceb", "*a*b"));
-        System.out.println(isMatchTest.isMatch("acdcb", "a*c?b"));
-        System.out.println(isMatchTest.isMatch("aa", "*a"));
+        System.out.println(isMatchTest.dfsImple("aaaabaaaabbbbaabbbaabbaababbabbaaaababaaabbbbbbaabbbabababbaaabaabaaaaaabbaabbbbaababbababaabbbaababbbba", "*****b*aba***babaa*bbaba***a*aaba*b*aa**a*b**ba***a*a*"));           // true
+        System.out.println(isMatchTest.dfsImple("ab", "?*"));           // true
+        System.out.println(isMatchTest.dfsImple("aa", "*"));           // true
+        System.out.println(isMatchTest.dfsImple("cb", "?a"));           // false
+        System.out.println(isMatchTest.dfsImple("aab", "c*a*b"));       // false
+        System.out.println(isMatchTest.dfsImple("adceb", "*a*b"));      // true
+        System.out.println(isMatchTest.dfsImple("acdcb", "a*c?b"));     // false
+        System.out.println(isMatchTest.dfsImple("aa", "*a"));           // true
     }
 }
