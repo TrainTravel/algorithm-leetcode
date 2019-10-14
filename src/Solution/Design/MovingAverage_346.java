@@ -17,9 +17,9 @@ import java.util.LinkedList;
  */
 
 public class MovingAverage_346 {
-    private int size;
-    private LinkedList<Integer> q = new LinkedList<>();
-    private double sum = 0;
+    private int size, head = 0, count = 0;
+    private int sum = 0;
+    private int[] arr;
 
     /**
      * Data structure initialize.
@@ -28,21 +28,32 @@ public class MovingAverage_346 {
      */
     public MovingAverage_346(int size) {
         this.size = size;
+        arr = new int[size];
     }
 
     /**
-     * Add int to queue and return ave of all value in queue.
-     * If queue size is larger than limit, poll first element of queue.
+     * Use circular queue with array to store and add/remove elements in array.
+     * Tail is next to head.
+     * Each time, fill tail cell with new incoming value and move head to the previous tail position.
+     * In this way, the head will always stands at the newest elements and the replaced element is always the oldest.
      *
      * @param val given value
      * @return average of queue
      */
     public double next(int val) {
-        sum += val;
-        q.add(val);
-        if (q.size() > size && !q.isEmpty()) {
-            sum -= q.poll();
+        if (count <= size) {
+            count++;
         }
-        return sum / q.size();
+
+        /*
+         * Tail is next to head.
+         * Use mod to avoid overflow and convert out bound tail/head to the start of array. */
+        int tail = (head + 1) % size;
+        sum = sum - arr[tail] + val;
+
+        head = (head + 1) % size;       // move head to next position
+        arr[head] = val;
+
+        return (double) sum / Math.min(size, count);
     }
 }
