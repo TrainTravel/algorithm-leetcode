@@ -1,5 +1,8 @@
 package Solution.Map;
 
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+
 /**
  * Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
  *
@@ -30,5 +33,34 @@ public class FirstUniqChar_387 {
         }
 
         return -1;
+    }
+
+    /**
+     * Use a linked hash map to store char and its frequency. If a char occurred twice, remove it in map.
+     *
+     * @param s given string
+     * @return first non-repeating character's index
+     */
+    public int linkedHashMap(String s) {
+        if (s == null) {
+            return -1;
+        }
+
+        if (s.length() == 1) {
+            return 0;
+        }
+
+        LinkedHashMap<Character, Integer> m = new LinkedHashMap<>();
+        HashSet<Character> set = new HashSet<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (set.add(s.charAt(i))) {
+                m.put(s.charAt(i), i);
+            } else {
+                m.remove(s.charAt(i));
+            }
+        }
+
+        return (m.size() > 0) ? m.entrySet().iterator().next().getValue() : -1;
     }
 }
