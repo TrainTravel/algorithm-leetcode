@@ -35,7 +35,7 @@ public class CriticalConnections_1192 {
     /**
      * Graph.
      */
-    class Graph {
+    static class Graph {
         private int V;      // # of vertices
         private ArrayList<ArrayList<Integer>> connections = new ArrayList<>();
         int time = 0;       // discover time (as increasing id for nodes)

@@ -19,7 +19,7 @@ import Lib.Node;
 public class Connect_116 {
     /**
      * BFS.
-     * It is a perfect binary tree. Hence, simply point next layer's sub node to its right node.
+     * Each level in perfect binary search is full.
      * left sub node -> right sub node
      * right sub node -> next left sub node
      * If reach the end of current layer node, do nothing. The default next is null.
@@ -33,14 +33,12 @@ public class Connect_116 {
             Node cur = level;
             while (cur != null) {
 
-                /* Link left and right sub node under same parent node */
                 if (cur.left != null) {
-                    cur.left.next = cur.right;
+                    cur.left.next = cur.right;      // link left and right sub node under same parent node
                 }
 
-                /* Link right sub node to next parent node's left sub node */
                 if (cur.right != null && cur.next != null) {
-                    cur.right.next = cur.next.left;
+                    cur.right.next = cur.next.left;     // link right sub node to next parent node's left sub node
                 }
                 cur = cur.next;     // next node
             }
