@@ -16,7 +16,6 @@ import Lib.Tree.TreeNode;
  */
 
 public class IsValidBST_98 {
-
     /**
      * In-order traversal with each root's value. Compare left subtree and right subtree.
      *
@@ -43,5 +42,48 @@ public class IsValidBST_98 {
             return false;
         }
         return recursion(root.left, min, root.val) && recursion(root.right, root.val, max);
+    }
+
+    /**
+     * Inorder traversal.
+     *
+     * @param root root node
+     * @return is this tree a BST
+     */
+    public boolean inOrder(TreeNode root) {
+
+        /* Corner case */
+        if (root == null || (root.left == null && root.right == null)) {
+            return true;
+        }
+
+        long[] arr = new long[]{Long.MIN_VALUE};
+
+        return helper(root, arr);
+    }
+
+    /**
+     * In order traversal to traverse all nodes.
+     * Inorder traversal can traverse all nodes by increasing order if the tree is a valid BST.
+     *
+     * @param r        current node
+     * @param previous previous node value
+     * @return is this tree a BST
+     */
+    private boolean helper(TreeNode r, long[] previous) {
+        if (r == null) {
+            return true;
+        }
+
+        boolean out;
+        out = helper(r.left, previous);
+
+        if ((long) r.val <= previous[0]) {
+            return false;
+        }
+
+        previous[0] = r.val;
+
+        return out & helper(r.right, previous);
     }
 }
