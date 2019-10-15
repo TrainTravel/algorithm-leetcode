@@ -103,7 +103,7 @@ public class NumIslands_200 {
     /**
      * Union find class specially implemented for this problem.
      */
-    class UnionFind {
+    static class UnionFind {
         int[] father;
         int count = 0;
 

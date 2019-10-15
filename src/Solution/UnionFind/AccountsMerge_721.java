@@ -92,7 +92,7 @@ public class AccountsMerge_721 {
     /**
      * Union find.
      */
-    class UnionFind {
+    static class UnionFind {
         int count;
         int[] parent;       // save each node's parent
 
