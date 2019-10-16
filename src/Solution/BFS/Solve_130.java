@@ -1,8 +1,7 @@
 package Solution.BFS;
 
-import Lib.Point;
-
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
@@ -26,58 +25,58 @@ public class Solve_130 {
      * @param board given board
      */
     public void solve(char[][] board) {
-        if (board.length < 2 || board[0].length < 2) {
+
+        /* Corner case */
+        if (board.length == 0) {
             return;
         }
 
-        /* Find all 'O' on wall of board and all relating 'O'. These 'O' will not be flipped. */
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if ((i == 0 || j == 0 || i == board.length - 1 || j == board[0].length - 1) && board[i][j] == 'O') {
-                    board[i][j] = 'T';
-                    LinkedList<Point> q = new LinkedList<>();
-                    q.offer(new Point(i, j));
+        int[] d = new int[]{1, -1, 0, 0, 0, 0, 1, -1};
+        int row = board.length - 1;
+        int col = board[0].length - 1;
 
-                    while (!q.isEmpty()) {
-                        Point temp = q.remove();
-                        int r = temp.x;
-                        int c = temp.y;
-
-                        /* left */
-                        if (r - 1 > -1 && board[r - 1][c] == 'O') {
-                            board[r - 1][c] = 'T';
-                            q.offer(new Point(r - 1, c));
-                        }
-
-                        /* right */
-                        if (r + 1 < board.length && board[r + 1][c] == 'O') {
-                            board[r + 1][c] = 'T';
-                            q.offer(new Point(r + 1, c));
-                        }
-
-                        /* top */
-                        if (c - 1 > -1 && board[r][c - 1] == 'O') {
-                            board[r][c - 1] = 'T';
-                            q.offer(new Point(r, c - 1));
-                        }
-
-                        /* bottom */
-                        if (c + 1 < board[0].length && board[r][c + 1] == 'O') {
-                            board[r][c + 1] = 'T';
-                            q.add(new Point(r, c + 1));
-                        }
-                    }
+        for (int i = 0; i <= row; i++) {
+            for (int j = 0; j <= col; j++) {
+                if ((i == 0 || j == 0 || i == row || j == col) && board[i][j] == 'O') {
+                    bfs(board, i, j, d);        // do BFS to find all 'O' on board
                 }
             }
         }
 
-        /* Flip other 'O' to 'X' */
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == 'T') {
-                    board[i][j] = 'O';
-                } else if (board[i][j] == 'O') {
+        for (int i = 0; i <= row; i++) {
+            for (int j = 0; j <= col; j++) {
+                if (board[i][j] == 'O') {
                     board[i][j] = 'X';
+                }
+                if (board[i][j] == '-') {
+                    board[i][j] = 'O';
+                }
+            }
+        }
+    }
+
+    /**
+     * BFS to find all cells connected to 'O' on board.
+     *
+     * @param board given board
+     * @param i     'O' index
+     * @param j     'O' index
+     * @param d     directions array
+     */
+    private void bfs(char[][] board, int i, int j, int[] d) {
+        Queue<int[]> q = new LinkedList<>();
+        q.add(new int[]{i, j});
+        board[i][j] = '-';      // mark first
+        while (!q.isEmpty()) {
+            int[] tmp = q.poll();
+
+            for (int k = 0; k < 4; k++) {
+                int xx = tmp[0] + d[k];
+                int yy = tmp[1] + d[k + 4];
+
+                if (xx >= 0 && xx < board.length && yy >= 0 && yy < board[0].length && board[xx][yy] == 'O') {
+                    board[xx][yy] = '-';
+                    q.add(new int[]{xx, yy});
                 }
             }
         }
