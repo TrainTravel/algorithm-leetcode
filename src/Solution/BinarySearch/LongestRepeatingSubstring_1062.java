@@ -62,10 +62,8 @@ public class LongestRepeatingSubstring_1062 {
 
     /**
      * Rabin-Karp with polynomial rolling hash.
-     * Search a substring of given length
-     * that occurs at least 2 times.
-     * Return start position if the substring exits.
-     * If no such position, return -1.
+     * Search a substring of given length that occurs at least 2 times.
+     * Return start position if the substring exits. If no such position, return -1.
      *
      * @param s      given string
      * @param length length of duplicated string to be found
@@ -89,6 +87,7 @@ public class LongestRepeatingSubstring_1062 {
 
         for (int i = 1; i < s.length() - length + 1; i++) {
             hash = ((hash * base % mod - arr[i - 1] * al % mod + mod) % mod + arr[i + length - 1]) % mod;
+
             if (m.containsKey(hash)) {
                 for (Integer h : m.get(hash)) {
                     if (s.substring(h, h + length).equals(s.substring(i, i + length))) {
@@ -98,6 +97,7 @@ public class LongestRepeatingSubstring_1062 {
             } else {
                 m.put(hash, new ArrayList<>());
             }
+
             m.get(hash).add(i);
         }
 

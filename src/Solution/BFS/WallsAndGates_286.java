@@ -18,50 +18,42 @@ import java.util.Queue;
  */
 
 public class WallsAndGates_286 {
-
     /**
      * Find each cell that is 0. BFS based on each 0.
      *
      * @param rooms 2D int array
      */
     public void wallsAndGates(int[][] rooms) {
+
+        /* Corner case */
+        if (rooms == null) {
+            return;
+        }
         if (rooms.length == 0) {
             return;
         }
-        Queue<int[]> l = new LinkedList<>();
 
-        int r = rooms.length;
-        int c = rooms[0].length;
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
-
-                if (rooms[i][j] == 0) {     // find one door
-                    l.offer(new int[]{i, j});
-
+        int[] directions = new int[]{1, -1, 0, 0, 0, 0, 1, -1};
+        int row = rooms.length;
+        int col = rooms[0].length;
+        Queue<int[]> q = new LinkedList<>();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (rooms[i][j] == 0) {
+                    q.add(new int[]{i, j});
                 }
             }
         }
-        while (!l.isEmpty()) {
-            int[] t = l.remove();
-            int x = t[0];
-            int y = t[1];
 
-            if (x + 1 < r && rooms[x + 1][y] > 0 && (rooms[x + 1][y] == Integer.MAX_VALUE || rooms[x + 1][y] > rooms[x][y] + 1)) {
-                l.add(new int[]{x + 1, y});
-                rooms[x + 1][y] = rooms[x][y] + 1;
-            }
-
-            if (x - 1 > -1 && rooms[x - 1][y] > 0 && (rooms[x - 1][y] == Integer.MAX_VALUE || rooms[x - 1][y] > rooms[x][y] + 1)) {
-                l.add(new int[]{x - 1, y});
-                rooms[x - 1][y] = rooms[x][y] + 1;
-            }
-            if (y + 1 < c && rooms[x][y + 1] > 0 && (rooms[x][y + 1] == Integer.MAX_VALUE || rooms[x][y + 1] > rooms[x][y] + 1)) {
-                l.add(new int[]{x, y + 1});
-                rooms[x][y + 1] = rooms[x][y] + 1;
-            }
-            if (y - 1 > -1 && rooms[x][y - 1] > 0 && (rooms[x][y - 1] == Integer.MAX_VALUE || rooms[x][y - 1] > rooms[x][y] + 1)) {
-                l.add(new int[]{x, y - 1});
-                rooms[x][y - 1] = rooms[x][y] + 1;
+        while (!q.isEmpty()) {
+            int[] tmp = q.poll();
+            for (int m = 0; m < 4; m++) {
+                int xx = tmp[0] + directions[m];
+                int yy = tmp[1] + directions[m + 4];
+                if (xx >= 0 && xx < row && yy >= 0 && yy < col && rooms[xx][yy] != -1 && (rooms[xx][yy] == Integer.MAX_VALUE || rooms[xx][yy] >= rooms[tmp[0]][tmp[1]] + 1)) {
+                    rooms[xx][yy] = rooms[tmp[0]][tmp[1]] + 1;
+                    q.add(new int[]{xx, yy});
+                }
             }
         }
     }

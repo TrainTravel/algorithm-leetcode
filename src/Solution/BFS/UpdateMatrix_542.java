@@ -23,44 +23,38 @@ public class UpdateMatrix_542 {
     public int[][] updateMatrix(int[][] matrix) {
 
         /* Corner case */
-        if (matrix.length == 0) {
+        if (matrix == null) {
+            return matrix;
+        }
+        if (matrix.length == 0 || matrix[0].length == 0) {
             return matrix;
         }
 
-        Queue<int[]> l = new LinkedList<>();
-        int r = matrix.length;
-        int c = matrix[0].length;
+        Queue<int[]> q = new LinkedList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
 
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
                 if (matrix[i][j] == 0) {
-                    l.offer(new int[]{i, j});
+                    q.add(new int[]{i, j});
                 } else {
                     matrix[i][j] = Integer.MAX_VALUE;
                 }
             }
         }
-        while (!l.isEmpty()) {
-            int[] t = l.remove();
-            int x = t[0];
-            int y = t[1];
+        int[] d = new int[]{1, -1, 0, 0, 0, 0, 1, -1};
+        while (!q.isEmpty()) {
+            int[] tmp = q.poll();
 
-            if (x + 1 < r && matrix[x + 1][y] > 0 && (matrix[x + 1][y] > matrix[x][y] + 1)) {
-                l.add(new int[]{x + 1, y});
-                matrix[x + 1][y] = matrix[x][y] + 1;
-            }
+            for (int i = 0; i < 4; i++) {
+                int xx = tmp[0] + d[i];
+                int yy = tmp[1] + d[i + 4];
 
-            if (x - 1 > -1 && matrix[x - 1][y] > 0 && (matrix[x - 1][y] > matrix[x][y] + 1)) {
-                l.add(new int[]{x - 1, y});
-                matrix[x - 1][y] = matrix[x][y] + 1;
-            }
-            if (y + 1 < c && matrix[x][y + 1] > 0 && (matrix[x][y + 1] > matrix[x][y] + 1)) {
-                l.add(new int[]{x, y + 1});
-                matrix[x][y + 1] = matrix[x][y] + 1;
-            }
-            if (y - 1 > -1 && matrix[x][y - 1] > 0 && (matrix[x][y - 1] > matrix[x][y] + 1)) {
-                l.add(new int[]{x, y - 1});
-                matrix[x][y - 1] = matrix[x][y] + 1;
+                if (xx >= 0 && xx < row && yy >= 0 && yy < col && matrix[xx][yy] > matrix[tmp[0]][tmp[1]] + 1) {
+                    matrix[xx][yy] = matrix[tmp[0]][tmp[1]] + 1;
+                    q.add(new int[]{xx, yy});
+                }
             }
         }
 
@@ -71,6 +65,5 @@ public class UpdateMatrix_542 {
         int[][] r = {{0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}};
         UpdateMatrix_542 test = new UpdateMatrix_542();
         System.out.println(Arrays.deepToString(test.updateMatrix(r)));
-        ;
     }
 }
