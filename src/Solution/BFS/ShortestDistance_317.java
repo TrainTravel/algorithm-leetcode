@@ -20,10 +20,10 @@ import java.util.Queue;
 
 public class ShortestDistance_317 {
     /**
-     * Traverse the matrix.
-     * For each building, use BFS to compute the shortest distance from each '0' to this building.
-     * After searching every building, the sum of shortest distance can be found from every '0' to all reachable buildings.
+     * If current cell is 1, then do BFS starts at current cell, calculate distance from current cell to each 0.
+     * Add the distance from each 1 to each 0.
      * This value is stored in 'distance[][]'.
+     * Finally, find min distance from each possible cell.
      * Time complexity: O(number of 1) * O(number of 0) ~ O(m^2n^2)
      *
      * @param grid given grid
@@ -32,15 +32,18 @@ public class ShortestDistance_317 {
     public int shortestDistance(int[][] grid) {
 
         /* Corner case */
-        if (grid.length == 0) {
+        if (grid == null) {
+            return -1;
+        }
+        if ((grid.length == 0 || grid[0].length == 0) || (grid.length == 1 && grid[0].length == 1)) {
             return -1;
         }
 
         int row = grid.length;
         int column = grid[0].length;
-        int total = 0;      // find total 1 on grid
-        int[][] distance = new int[row][column];       // distance sum
-        int[][] reach = new int[row][column];      // each 0 should be capable to reach every 1 on grid
+        int total = 0;                                  // find total 1 on grid
+        int[][] distance = new int[row][column];        // distance sum
+        int[][] reach = new int[row][column];           // each 0 should be capable to reach every 1 on grid
 
         for (int[] ints : grid) {
             for (int j = 0; j < column; j++) {
@@ -71,11 +74,10 @@ public class ShortestDistance_317 {
         return min == Integer.MAX_VALUE ? -1 : min;
     }
 
-    private boolean bfs(int[][] grid, int[][] d, int t, int[][] r, int x, int y) {
+    private boolean bfs(int[][] grid, int[][] distance, int total, int[][] r, int x, int y) {
 
         /* Directions */
-        int[] dx = {1, -1, 0, 0};
-        int[] dy = {0, 0, 1, -1};
+        int[] d = new int[]{1, -1, 0, 0, 0, 0, 1, -1};     // directions
 
         int count = 0;      // count reachable 1, if count is not equal to total 1 on grid, then return false
         int level = 0;      // distance is determined by level in bfs
@@ -88,30 +90,27 @@ public class ShortestDistance_317 {
             int s = q.size();
             level++;
 
-            /* Level iteration */
-            for (int i = 0; i < s; i++) {
-                int[] cur = q.remove();
+            for (int i = 0; i < s; i++) {       // iterate each cell under current level
+                int[] tmp = q.remove();
                 for (int j = 0; j < 4; j++) {
 
-                    /* New coord */
-                    int cx = cur[0] + dx[j];
-                    int cy = cur[1] + dy[j];
+                    int xx = tmp[0] + d[j];
+                    int yy = tmp[1] + d[j + 4];
 
-                    /* Neighbour iteration */
-                    if (cx > -1 && cy > -1 && cx < grid.length && cy < grid[0].length && !isVisited[cx][cy]) {
-                        if (grid[cx][cy] == 0) {
-                            d[cx][cy] += level;     // count sum of distance from each 1
-                            r[cx][cy]++;            // 0 can be reach by current iteration
-                            isVisited[cx][cy] = true;
-                            q.offer(new int[]{cx, cy});
-                        } else if (grid[cx][cy] == 1) {
+                    if (xx > -1 && yy > -1 && xx < grid.length && yy < grid[0].length && !isVisited[xx][yy]) {
+                        if (grid[xx][yy] == 0) {
+                            distance[xx][yy] += level;      // count sum of distance from each 1
+                            r[xx][yy]++;                    // 0 can be reach by current iteration
+                            isVisited[xx][yy] = true;
+                            q.offer(new int[]{xx, yy});
+                        } else if (grid[xx][yy] == 1) {
                             count++;
-                            isVisited[cx][cy] = true;
+                            isVisited[xx][yy] = true;
                         }
                     }
                 }
             }
         }
-        return count == t;
+        return count == total;
     }
 }

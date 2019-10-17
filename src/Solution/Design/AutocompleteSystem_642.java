@@ -22,8 +22,8 @@ import java.util.*;
 public class AutocompleteSystem_642 {
     private List<Character> l = new LinkedList<>();     // history list
     private TrieNode root;      // root node of trie
-    private TrieNode tmp;
-    private int p = 0;
+    private TrieNode tmp;       // current trie node for next search
+    private int p = 0;          // pointer point at current char for searching
 
     /**
      * Use a trie to save all chars and its relating sentence/frequency.
@@ -39,6 +39,8 @@ public class AutocompleteSystem_642 {
 
     /**
      * Based on given input char, return the result list.
+     * Each TrieNode contains the string that all its sub trie node containing via a hash map.
+     * When a new char comes in, search the trie to find the
      * If input is '#', update trie as new history.
      *
      * @param c given char
@@ -61,13 +63,15 @@ public class AutocompleteSystem_642 {
         }
 
         l.add(c);
-        for (int i = p; i < l.size(); i++) {
-            if (!tmp.child.containsKey(l.get(p))) {
 
-                return new LinkedList<>();
-            }
-            tmp = tmp.child.get(l.get(p++));
+        /*
+         * If input char is not in trie, stop moving pointer forward.
+         * The history list will not reset until accept a '#'.
+         * Therefore, if a input char is not found in trie, then the later input char will always return empty list. */
+        if (!tmp.child.containsKey(l.get(p))) {
+            return new LinkedList<>();
         }
+        tmp = tmp.child.get(l.get(p++));
 
         PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -78,9 +82,9 @@ public class AutocompleteSystem_642 {
                 return (o2.getValue()).compareTo(o1.getValue());
             }
         });
-        pq.addAll(tmp.sentence.entrySet());
+        pq.addAll(tmp.sentence.entrySet());     // use a heap to add all entries in each trie node, then sort them
 
-        for (int i = 0; !pq.isEmpty() && i < 3; i++) {
+        for (int i = 0; !pq.isEmpty() && i < 3; i++) {      // find top 3 most visited
             out.add(pq.poll().getKey());
         }
 
@@ -89,6 +93,7 @@ public class AutocompleteSystem_642 {
 
     /**
      * Build trie based on given sentences and count.
+     * Also, this build method can update frequency if the sentence can be found in trie.
      *
      * @param sentences given sentences list
      * @param times     given sentences count

@@ -36,27 +36,30 @@ public class PacificAtlantic_417 {
             return res;
         }
 
-        boolean[][] visitedPacific = new boolean[matrix.length][matrix[0].length], visitedAtlantic = new boolean[matrix.length][matrix[0].length];
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        boolean[][] visitedPacific = new boolean[row][col], visitedAtlantic = new boolean[row][col];
         Queue<int[]> Pacific = new LinkedList<>(), Atlantic = new LinkedList<>();
 
-        for (int i = 0; i < matrix.length; i++) {       // mark all edges to corresponding map as visited
+        for (int i = 0; i < row; i++) {       // mark all edges to corresponding map as visited
             Pacific.add(new int[]{i, 0});
-            Atlantic.add(new int[]{i, matrix[0].length - 1});
+            Atlantic.add(new int[]{i, col - 1});
             visitedPacific[i][0] = true;
-            visitedAtlantic[i][matrix[0].length - 1] = true;
+            visitedAtlantic[i][col - 1] = true;
         }
-        for (int i = 0; i < matrix[0].length; i++) {        // mark all edges to corresponding map as visited
+        for (int i = 0; i < col; i++) {        // mark all edges to corresponding map as visited
             Pacific.add(new int[]{0, i});
-            Atlantic.add(new int[]{matrix.length - 1, i});
+            Atlantic.add(new int[]{row - 1, i});
             visitedPacific[0][i] = true;
-            visitedAtlantic[matrix.length - 1][i] = true;
+            visitedAtlantic[row - 1][i] = true;
         }
 
         bfs(visitedPacific, matrix, Pacific);       // find all points can be accessed from upper and left edge
         bfs(visitedAtlantic, matrix, Atlantic);     // find all points can be accessed from right and bottom edge
 
-        for (int i = 0; i < matrix.length; i++) {       // find points that is both accessible
-            for (int j = 0; j < matrix[0].length; j++) {
+        for (int i = 0; i < row; i++) {       // find points that is both accessible
+            for (int j = 0; j < col; j++) {
                 if (visitedPacific[i][j] && visitedAtlantic[i][j]) {
                     res.add(new int[]{i, j});
                 }
@@ -75,6 +78,9 @@ public class PacificAtlantic_417 {
      */
     private void bfs(boolean[][] isVisited, int[][] matrix, Queue<int[]> q) {
         int[] xy = {1, -1, 0, 0, 0, 0, 1, -1};
+        int row = matrix.length;
+        int col = matrix[0].length;
+
         while (!q.isEmpty()) {
             int[] c = q.remove();
             int x = c[0];
@@ -82,7 +88,7 @@ public class PacificAtlantic_417 {
             for (int i = 0; i < 4; i++) {
                 int xx = x + xy[i];
                 int yy = y + xy[i + 4];
-                if (xx > -1 && xx < matrix.length && yy > -1 && yy < matrix[0].length && !isVisited[xx][yy] && matrix[xx][yy] >= matrix[x][y]) {
+                if (xx > -1 && xx < row && yy > -1 && yy < col && !isVisited[xx][yy] && matrix[xx][yy] >= matrix[x][y]) {
                     q.add(new int[]{xx, yy});
                     isVisited[xx][yy] = true;
                 }
