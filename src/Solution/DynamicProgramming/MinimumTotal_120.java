@@ -11,11 +11,12 @@ import java.util.List;
  */
 
 public class MinimumTotal_120 {
-
     /**
      * Dynamic programming that find path from bottom to top.
      * Note that only adjacent numbers on the row below is reachable.
      * Therefore, simply compare two adjacent element will suffice.
+     * dp[j] = min(dp[j], dp[j + 1]) + triangle.get(i).get(j)
+     * i is the $ of level, j is the # of element.
      *
      * @param triangle given triangle
      * @return min distance
@@ -23,23 +24,28 @@ public class MinimumTotal_120 {
     public int minimumTotal(List<List<Integer>> triangle) {
 
         /* Corner case */
-        if (triangle.size() == 0) {
+        if (triangle == null) {
             return 0;
         }
-
-        int[] dp = new int[triangle.get(triangle.size() - 1).size()];       // get last level of triangle
-
-        for (int i = 0; i < triangle.get(triangle.size() - 1).size(); i++) {
-            dp[i] = triangle.get(triangle.size() - 1).get(i);       // fill value with last level of triangle
+        int n = triangle.size();
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return triangle.get(0).get(0);
         }
 
-        for (int i = triangle.size() - 2; i > -1; i--) {
+        int[] dp = new int[triangle.get(n - 1).size()];
+
+        for (int i = 0; i < triangle.get(n - 1).size(); i++) {
+            dp[i] = triangle.get(n - 1).get(i);
+        }
+
+        for (int i = n - 2; i >= 0; i--) {
             for (int j = 0; j < triangle.get(i).size(); j++) {
                 dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);
             }
         }
-
         return dp[0];
     }
-
 }

@@ -21,13 +21,11 @@ import java.util.*;
 
 public class FindLadders_126 {
     /**
-     * Save each path while completing BFS using hash map.
-     * Three Hash Sets are using in this solution:
-     * 1. wordSet: save available words for next BFS search
-     * 2. layer: save current layer words, update before each BFS search loop
-     * 3. nextLayer: save current layer words, update in each BFS search loop
-     * One Hash Map to store all possible path. Key is newest added word in path, value are all paths to this word.
-     * Therefore, after each single word BFS, all old path based on this word should be removed to avoid repeated path.
+     * Save each path while completing BFS using hash map and two hash sets.
+     * Hash map stores the path from begin word to current word.
+     * Hash set stores all words in given word list and all words during each layer of BFS (to avoid duplication).
+     * Each time, if word poll out from queue can form up a new word in list, add new word to the end of each list.
+     * Based on character of BFS, if end word is reached, the path will be the shortest.
      *
      * @param beginWord begin word
      * @param endWord   target word
@@ -35,72 +33,62 @@ public class FindLadders_126 {
      * @return all shortest transformation sequence(s) in ListNode
      */
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-        List<List<String>> res = new LinkedList<>();
+
         Set<String> wordSet = new HashSet<>(wordList);
 
         /* Corner case */
         if (wordList.size() == 0 || !wordList.contains(endWord)) {
-            return res;
+            return new LinkedList<>();
         }
 
-        /* First layer */
-        Set<String> layer = new HashSet<>();        // save current layer words
-        layer.add(beginWord);
+        Queue<String> q = new LinkedList<>();
+        q.add(beginWord);
 
-        /* First path */
         HashMap<String, List<List<String>>> m = new HashMap<>();
-        List<String> path = new LinkedList<>();
-        path.add(beginWord);
+        List<String> init = new LinkedList<>();
+        init.add(beginWord);
         m.put(beginWord, new LinkedList<>());
-        m.get(beginWord).add(path);
+        m.get(beginWord).add(init);
+        boolean found = false;
 
-        boolean found = false;      // if endWord is reached, terminate searching loop
+        while (!q.isEmpty() && !wordSet.isEmpty() && !found) {
+            int size = q.size();
+            HashSet<String> current = new HashSet<>();      // save current layer's visited word
 
-        while (!layer.isEmpty() && !wordSet.isEmpty() && !found) {
-            wordSet.removeAll(layer);       // avoid repeated words
-            Set<String> nextLayer = new HashSet<>();        // save next layer words
+            for (int n = 0; n < size; n++) {
+                String word = q.poll();
+                List<List<String>> tmp = m.get(word);
+                for (int i = 0; i < word.length(); i++) {
+                    char[] arr = word.toCharArray();
+                    for (int j = 0; j < 26; j++) {
 
-            for (String s : layer) {        // iter all words in current layer
-                List<List<String>> currentPath = m.get(s);      // path based on current word
-
-                /* BFS to find next layer */
-                for (int i = 0; i < s.length(); i++) {
-                    char[] arr = s.toCharArray();
-
-                    for (char j = 'a'; j <= 'z'; j++) {
-                        arr[i] = j;
+                        arr[i] = (char) (j + 'a');
                         String w = new String(arr);
-
-                        if (wordSet.contains(w)) {
-                            nextLayer.add(w);
-
-                            /* Iter all possible path and add word to its end */
-                            for (List<String> p : currentPath) {
-                                List<String> nextPath = new LinkedList<>(p);
-                                nextPath.add(w);
-                                m.putIfAbsent(w, new LinkedList<>());       // update key to current word
-                                m.get(w).add(nextPath);                     // add path including current word
-                                if (endWord.equals(w)) {
-                                    res.add(nextPath);
-                                    found = true;
-                                }
+                        if (wordSet.contains(w) && !w.equals(word) && tmp != null) {
+                            q.add(w);
+                            for (List<String> path : tmp) {
+                                List<String> next = new LinkedList<>(path);
+                                next.add(w);
+                                m.putIfAbsent(w, new LinkedList<>());
+                                m.get(w).add(next);
+                                current.add(w);
+                                found |= endWord.equals(w);
                             }
                         }
                     }
                 }
-                m.remove(s);        // remove paths using previous layer's word as key, avoid repeated paths
+                m.remove(word);
             }
-
-            layer.clear();                  // clean current layer
-            layer.addAll(nextLayer);        // add next layer
+            wordSet.removeAll(current);
         }
 
-        return res;
+        return m.getOrDefault(endWord, new LinkedList<>());
     }
 
     public static void main(String[] args) {
         String b = "hit";
         String e = "cog";
+        FindLadders_126 test = new FindLadders_126();
         List<String> l = new LinkedList<>();
         l.add("hot");
         l.add("lov");
@@ -109,7 +97,6 @@ public class FindLadders_126 {
         l.add("log");
         l.add("cog");
 
-        FindLadders_126 test = new FindLadders_126();
         System.out.println(test.findLadders(b, e, l));
 
         b = "a";
@@ -120,6 +107,34 @@ public class FindLadders_126 {
         l.add("c");
 
         test = new FindLadders_126();
+        System.out.println(test.findLadders(b, e, l));
+
+        b = "red";
+        e = "tax";
+        l = new LinkedList<>();
+        l.add("ted");
+        l.add("tex");
+        l.add("red");
+        l.add("tax");
+        l.add("tad");
+        l.add("den");
+        l.add("rex");
+        l.add("pee");
+
+        test = new FindLadders_126();
+        System.out.println(test.findLadders(b, e, l));
+
+        b = "hit";
+        e = "cog";
+        test = new FindLadders_126();
+        l = new LinkedList<>();
+        l.add("hot");
+        l.add("dot");
+        l.add("dog");
+        l.add("lot");
+        l.add("log");
+        l.add("cog");
+
         System.out.println(test.findLadders(b, e, l));
     }
 }

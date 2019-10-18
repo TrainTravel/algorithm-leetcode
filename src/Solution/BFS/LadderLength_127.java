@@ -35,30 +35,29 @@ public class LadderLength_127 {
             return 0;
         }
 
-        Queue<String> layer = new LinkedList<>();
-        Set<String> wordSet = new HashSet<>(wordList);
-        layer.add(beginWord);
+        Queue<String> q = new LinkedList<>();
+        Set<String> s = new HashSet<>(wordList);
+        q.add(beginWord);
 
-        while (!layer.isEmpty()) {
-            int s = layer.size();
+        while (!q.isEmpty()) {
+            int size = q.size();
 
-            for (int i = 0; i < s; i++) {
-                String current = layer.remove();
+            for (int i = 0; i < size; i++) {
+                String current = q.remove();
 
                 if (current.equals(endWord)) {
                     return result;
                 }
+
                 for (int j = 0; j < current.length(); j++) {
                     char[] arr = current.toCharArray();
 
                     for (char l = 'a'; l <= 'z'; l++) {
                         arr[j] = l;
                         String t = new String(arr);
-                        if (wordSet.contains(t)) {
-
-                            layer.offer(t);
-                            // System.out.println("add!");
-                            wordSet.remove(t);
+                        if (s.contains(t)) {
+                            q.offer(t);
+                            s.remove(t);
                         }
                     }
                 }

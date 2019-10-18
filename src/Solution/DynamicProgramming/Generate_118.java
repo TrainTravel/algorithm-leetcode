@@ -5,16 +5,6 @@ import java.util.List;
 
 /**
  * Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
- * Example:
- * Input: 5
- * Output:
- * [
- * [1],
- * [1,1],
- * [1,2,1],
- * [1,3,3,1],
- * [1,4,6,4,1]
- * ]
  *
  * @author BorisMirage
  * Time: 2019/01/09 19:32
@@ -24,7 +14,7 @@ import java.util.List;
 public class Generate_118 {
     /**
      * Dynamic programming.
-     * (i,j) = (i-1, j-1) + (i-1, j)
+     * dp(i, j) = dp(i - 1, j - 1) + dp(i - 1, j)
      *
      * @param numRows number of total rows
      * @return Pascal's triangle in linked list
@@ -33,7 +23,7 @@ public class Generate_118 {
 
         List<List<Integer>> res = new LinkedList<>();
 
-
+        /* Corner case */
         if (numRows == 0) {
             return res;
         }
@@ -41,11 +31,7 @@ public class Generate_118 {
         for (int i = 0; i < numRows; i++) {
             List<Integer> temp = new LinkedList<>();
             for (int j = 0; j <= i - 1; j++) {
-                if (j == 0) {
-                    temp.add(1);
-                } else {
-                    temp.add(res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));
-                }
+                temp.add((j == 0) ? 1 : res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));     // first line has one element
             }
             temp.add(1);
             res.add(temp);
