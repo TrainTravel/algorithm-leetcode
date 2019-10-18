@@ -1,9 +1,6 @@
 package Solution.DynamicProgramming;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words
@@ -54,6 +51,55 @@ public class WordBreak_139 {
         }
 
         return dp[s.length()];
+    }
+
+    /**
+     * Use DFS with memorization to find if s can be segmented.
+     * Use an integer array as memorization to avoid TLE.
+     * mem[i] means if s(0, i) can be segmented, where -1 is false, 0 is unknown, 1 is true.
+     *
+     * @param s        given string
+     * @param wordDict given dictionary
+     * @return if s can be segmented into a space-separated sequence of one or more dictionary words
+     */
+    public boolean dfsWithMem(String s, List<String> wordDict) {
+
+        /* Corner case */
+        if (s.length() == 0 || wordDict.size() == 0) {
+            return false;
+        }
+
+        HashSet<String> dict = new HashSet<>(wordDict);
+
+        return dfs(s, dict, new int[s.length()], 0);
+    }
+
+    /**
+     * Use DFS with memorization to find if s can be segmented. Use an integer array as memorization to avoid TLE.
+     *
+     * @param s          given string
+     * @param dictionary given dictionary
+     * @param mem        memorization array
+     * @param start      start index
+     * @return if s can be segmented into a space-separated sequence of one or more dictionary words
+     */
+    private boolean dfs(String s, HashSet<String> dictionary, int[] mem, int start) {
+        if (dictionary.contains(s)) {
+            return true;
+        }
+        if (mem[start] != 0) {
+            return mem[start] == 1;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            if (dictionary.contains(s.substring(i)) && dfs(s.substring(0, i), dictionary, mem, i)) {
+                mem[i] = 1;
+                return true;
+            }
+        }
+
+        mem[start] = -1;
+        return false;
     }
 
 
