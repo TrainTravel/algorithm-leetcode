@@ -59,10 +59,8 @@ public class LongestDupSubstring_1044 {
 
     /**
      * Rabin-Karp with polynomial rolling hash.
-     * Search a substring of given length
-     * that occurs at least 2 times.
-     * Return start position if the substring exits.
-     * If no such position, return -1.
+     * Search a substring of given length that occurs at least 2 times.
+     * Return start position if the substring exits. If no such position, return -1.
      *
      * @param s      given string
      * @param length given length for searching
@@ -87,7 +85,7 @@ public class LongestDupSubstring_1044 {
             if (m.containsKey(hash)) {
                 for (int start : m.get(hash)) {
                     if (s.substring(start, start + length).equals(s.substring(i, i + length))) {
-                        return i;       // start position if the duplicated substring exits
+                        return i;       // return start position if the duplicated substring exits
                     }
                 }
             } else {

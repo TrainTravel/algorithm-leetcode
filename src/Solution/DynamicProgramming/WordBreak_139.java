@@ -102,7 +102,6 @@ public class WordBreak_139 {
         return false;
     }
 
-
     public static void main(String[] args) {
         String[] wordDict = {"call", "of", "duty"};
         List<String> l = new ArrayList<>(Arrays.asList(wordDict));
