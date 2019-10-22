@@ -21,15 +21,23 @@ public class Jump_45 {
      */
     public int jump(int[] nums) {
 
-        int start = 0, end = 0, currentMax = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            currentMax = Math.max(currentMax, nums[i] + i);     // find max next length in current available range
-            if (i == end) {
-                start++;
-                end = currentMax;
+        /* Corner case */
+        if (nums.length == 1) {
+            return 0;
+        }
+
+        int step = 0, maxJump = 0, end = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {     // end condition is length - 1, avoid standing at last index
+            maxJump = Math.max(maxJump, nums[i] + i);
+
+            if (i == end) {     // if reaches the current max step jump
+                step++;
+                end = maxJump;
             }
         }
-        return start;
+
+        return step;
     }
 
     public static void main(String[] args) {
