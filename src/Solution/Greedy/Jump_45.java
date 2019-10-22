@@ -15,6 +15,7 @@ package Solution.Greedy;
 public class Jump_45 {
     /**
      * Greedy, before each jump, find max next length in current available range.
+     * Then move to the next longest jumped position, until reaches (or over) the end point.
      *
      * @param nums input int array
      * @return minimum number of jumps
