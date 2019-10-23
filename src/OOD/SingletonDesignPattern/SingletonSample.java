@@ -1,4 +1,4 @@
-package OOD.Implementation;
+package OOD.SingletonDesignPattern;
 
 /**
  * A sample of singleton class.
