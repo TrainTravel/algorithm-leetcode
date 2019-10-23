@@ -22,6 +22,7 @@ public class SpiralOrder_54 {
 
         List<Integer> out = new ArrayList<>();
 
+        /* Corner case */
         if (matrix.length == 0) {
             return out;
         }

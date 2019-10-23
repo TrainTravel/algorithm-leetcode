@@ -42,7 +42,7 @@ public class Candy_135 {
 
                 /*
                  * If there is no decreasing array, then check current rating and previous rating.
-                 * If rating is the same, previous largest candies can be set to 1.
+                 * If two rating values are same, previous largest candies can be set to 1.
                  * If later part is decreasing array, sum will be recalculated.
                  * Otherwise, 1 candy will suffice, since only higher rating get more candies than their neighbors. */
                 if (decreasing == 0) {
@@ -54,6 +54,7 @@ public class Candy_135 {
                         totalCandy += previousCandy;
                     }
                 } else {
+
                     /*
                      * If reaches the end of decreasing array, then there are two conditions:
                      * If decreasing part is shorter than most previous candies , simply add sum of length to total candies.
@@ -75,7 +76,8 @@ public class Candy_135 {
             }
         }
 
-        /* If decreasing sub array reaches the end of array, then the sum of this sub array will not be added to total.
+        /*
+         * If decreasing sub array reaches the end of array, then the sum of this sub array will not be added to total.
          * Therefore, complete the decreasing array calculation process again to finish it. */
         if (decreasing > 0) {
             totalCandy += (1 + decreasing) * decreasing / 2;

@@ -17,7 +17,7 @@ public class TotalNQueens_52 {
      */
     public int totalNQueens(int n) {
 
-        int[] res = {0};
+        int[] count = {0};
         char[][] chessBoard = new char[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -25,8 +25,8 @@ public class TotalNQueens_52 {
             }
         }
 
-        backtracking(chessBoard, 0, res);
-        return res[0];
+        backtracking(chessBoard, 0, count);
+        return count[0];
     }
 
     /**
@@ -37,9 +37,12 @@ public class TotalNQueens_52 {
      * @param count      counter
      */
     private void backtracking(char[][] chessBoard, int c, int[] count) {
-        if (c == chessBoard.length) {
-            count[0] += 1;
+
+        if (c == chessBoard.length) {       // end point
+            count[0]++;
+            return;
         }
+
         for (int i = 0; i < chessBoard.length; i++) {
             if (isValid(chessBoard, i, c)) {
                 chessBoard[i][c] = 'Q';
@@ -47,7 +50,6 @@ public class TotalNQueens_52 {
                 chessBoard[i][c] = '.';
             }
         }
-
     }
 
     /**
@@ -56,17 +58,19 @@ public class TotalNQueens_52 {
      * 1. r1 + c2 == r2 + c1
      * 2. r1 + c1 == r2 + c2
      * And also, two position should not be in same row and column.
+     * The column will not be duplicated since the backtracking process is started column by column.
      *
-     * @param temp chess board
-     * @param r    current row
-     * @param c    current column
+     * @param board chess board
+     * @param r     current row
+     * @param c     current column
      * @return true if valid, false otherwise
      */
-    private boolean isValid(char[][] temp, int r, int c) {
-        for (int i = 0; i < temp.length; i++) {
+    private boolean isValid(char[][] board, int r, int c) {
+        for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < c; j++) {
-                if (temp[i][j] == 'Q' && (r + j == c + i || r + c == i + j || i == r))
+                if (board[i][j] == 'Q' && (r + j == c + i || r + c == i + j || i == r)) {
                     return false;
+                }
             }
         }
         return true;
