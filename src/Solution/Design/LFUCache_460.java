@@ -18,8 +18,8 @@ import java.util.LinkedHashSet;
 
 public class LFUCache_460 {
     private HashMap<Integer, Integer> pair;       // store key-value pair
-    private HashMap<Integer, Integer> count;      // store frequency as key-count pair
-    private HashMap<Integer, LinkedHashSet<Integer>> frequency;        // key is the frequency, value is cache key under this frequency
+    private HashMap<Integer, Integer> frequency;      // store frequency as key-count pair
+    private HashMap<Integer, LinkedHashSet<Integer>> keyUnderSameFrequency;        // key is the frequency, value is cache key under this frequency
     private int min = -1;
     private int capacity;
 
@@ -31,9 +31,9 @@ public class LFUCache_460 {
     public LFUCache_460(int capacity) {
         this.capacity = capacity;
         this.pair = new HashMap<>();
-        this.count = new HashMap<>();
         this.frequency = new HashMap<>();
-        this.frequency.put(1, new LinkedHashSet<>());     // first value
+        this.keyUnderSameFrequency = new HashMap<>();
+        this.keyUnderSameFrequency.put(1, new LinkedHashSet<>());     // first value
     }
 
     /**
@@ -48,18 +48,18 @@ public class LFUCache_460 {
         if (!this.pair.containsKey(key)) {
             return -1;      // key does not exist
         }
-        int f = this.count.get(key);
-        this.count.put(key, f + 1);      // update frequency
+        int f = this.frequency.get(key);
+        this.frequency.put(key, f + 1);      // update frequency
 
         /* Update hash map frequency for later eviction policy */
-        this.frequency.get(f).remove(key);        // current key's frequency has updated, recreate key-frequency pair
-        if (f == this.min && this.frequency.get(f).size() == 0) {
+        this.keyUnderSameFrequency.get(f).remove(key);        // current key's frequency has updated, recreate key-frequency pair
+        if (f == this.min && this.keyUnderSameFrequency.get(f).size() == 0) {
             this.min++;      // Update min if min frequency in map has changed
         }
-        if (!this.frequency.containsKey(f + 1)) {
-            this.frequency.put(f + 1, new LinkedHashSet<>());
+        if (!this.keyUnderSameFrequency.containsKey(f + 1)) {
+            this.keyUnderSameFrequency.put(f + 1, new LinkedHashSet<>());
         }
-        this.frequency.get(f + 1).add(key);
+        this.keyUnderSameFrequency.get(f + 1).add(key);
 
         return this.pair.get(key);
     }
@@ -83,16 +83,16 @@ public class LFUCache_460 {
             return;
         }
         if (this.pair.size() >= this.capacity) {
-            int removeLeast = this.frequency.get(this.min).iterator().next();
-            this.frequency.get(this.min).remove(removeLeast);
-            this.count.remove(removeLeast);
+            int removeLeast = this.keyUnderSameFrequency.get(this.min).iterator().next();
+            this.keyUnderSameFrequency.get(this.min).remove(removeLeast);
+            this.frequency.remove(removeLeast);
             this.pair.remove(removeLeast);
         }
 
         this.pair.put(key, value);
-        this.count.put(key, 1);
+        this.frequency.put(key, 1);
         this.min = 1;
-        this.frequency.get(1).add(key);
+        this.keyUnderSameFrequency.get(1).add(key);
     }
 
     public static void main(String[] args) {

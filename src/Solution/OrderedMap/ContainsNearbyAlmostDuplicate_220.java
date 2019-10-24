@@ -16,8 +16,13 @@ import java.util.TreeSet;
 
 public class ContainsNearbyAlmostDuplicate_220 {
     /**
-     * Tree set to save the value and keep size of tree set equals to k.
-     * Find closest numbers in set and check if it is in the range of t.
+     * Bucket sort.
+     * Keep a hash map with size of k.
+     * Each time, convert number into long (avoid negative number) and put into bucket.
+     * Bucket size is t + 1, to avoid t == 0.
+     * If converted number put into a bucket with other elements, return true.
+     * The max difference between two elements in same bucket is t.
+     * Otherwise, check if two adjacent buckets has element that abs(nums[i] - nums[j]) is smaller than t.
      *
      * @param nums given array
      * @param k    largest absolute difference between i and j
@@ -58,13 +63,8 @@ public class ContainsNearbyAlmostDuplicate_220 {
     }
 
     /**
-     * Bucket sort.
-     * Keep a hash map with size of k.
-     * Each time, convert number into long (avoid negative number) and put into bucket.
-     * Bucket size is t + 1, to avoid t == 0.
-     * If converted number put into a bucket with other elements, return true.
-     * The max difference between two elements in same bucket is t.
-     * Otherwise, check if two adjacent buckets has element that abs(nums[i] - nums[j]) is smaller than t.
+     * Tree set to save the value and keep size of tree set equals to k.
+     * Find closest numbers in set and check if it is in the range of t.
      *
      * @param nums given array
      * @param k    largest absolute difference between i and j
@@ -85,8 +85,8 @@ public class ContainsNearbyAlmostDuplicate_220 {
             /*
              * Find closest value in set.
              * Use Long to avoid NullPointerException. */
-            Long floor = set.floor((long) nums[i]);       // greatest element in this set <= to the given element
-            Long ceil = set.ceiling((long) nums[i]);       // least element in this set >= to the given element
+            Long floor = set.floor((long) nums[i]);       // greatest element in this set <= given element
+            Long ceil = set.ceiling((long) nums[i]);       // least element in this set >=given element
 
             if ((floor != null && nums[i] - floor <= t) || (ceil != null && ceil - nums[i] <= t)) {
                 return true;
@@ -94,8 +94,12 @@ public class ContainsNearbyAlmostDuplicate_220 {
 
             set.add((long) nums[i]);
 
+            /*
+             * Keep size of set.
+             * No need to consider duplicated problem.
+             * If there is a duplicated element, it will directly return true (0 < k). */
             if (i >= k) {
-                set.remove((long) nums[i - k]);     // keep size of set
+                set.remove((long) nums[i - k]);
             }
         }
 
