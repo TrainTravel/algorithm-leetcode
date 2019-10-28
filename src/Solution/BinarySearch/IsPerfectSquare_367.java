@@ -1,12 +1,21 @@
 package Solution.BinarySearch;
 
 /**
+ * Given a positive integer num, write a function which returns True if num is a perfect square else False.
+ * Note: Do not use any built-in library function such as sqrt.
+ *
  * @author BorisMirage
  * Time: 2019/10/25 12:58
  * Created with IntelliJ IDEA
  */
 
 public class IsPerfectSquare_367 {
+    /**
+     * Binary search to narrow the search range.
+     *
+     * @param num given int
+     * @return returns True if num is a perfect square else False
+     */
     public boolean isPerfectSquare(int num) {
         long left = 0, right = num;
 

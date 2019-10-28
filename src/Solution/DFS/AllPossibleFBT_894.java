@@ -17,41 +17,40 @@ import java.util.List;
  */
 
 public class AllPossibleFBT_894 {
-
     /**
-     * Generate all subtrees with fixed size by recursively calling this function itself.
+     * Recursively generate subtree, then attach to the previous node.
+     * The parameter passing during the recursion is the remaining number of nodes in tree.
      *
-     * @param N number of nodes in tree
+     * @param n number of nodes in tree
      * @return list of all possible full binary trees with N nodes
      */
-    public List<TreeNode> allPossibleFBT(int N) {
-
-        List<TreeNode> out = new LinkedList<>();
+    public List<TreeNode> allPossibleFBT(int n) {
 
         /* Corner case */
-        if (N % 2 == 0) {
-            return out;     // if N is even, there will always be one more node that violate FBT
+        if (n % 2 == 0) {
+            return new LinkedList<>();
         }
-        if (N == 1) {
+        List<TreeNode> out = new LinkedList<>();
+
+        if (n == 1) {
             out.add(new TreeNode(0));
             return out;
         }
 
-        N--;
-
-        for (int i = 1; i < N; i += 2) {        // construct all possible size of sub tree
-            List<TreeNode> left = allPossibleFBT(N - i);
-            List<TreeNode> right = allPossibleFBT(i);
+        for (int i = 1; i < n - 1; i += 2) {        // note that the # remaining node should reduce 1 of current root
+            List<TreeNode> left = allPossibleFBT(i);
+            List<TreeNode> right = allPossibleFBT(n - i - 1);
 
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
-                    TreeNode current = new TreeNode(0);
-                    current.left = l;
-                    current.right = r;
-                    out.add(current);
+                    TreeNode tmp = new TreeNode(0);
+                    tmp.left = l;
+                    tmp.right = r;
+                    out.add(tmp);
                 }
             }
         }
+
         return out;
     }
 }

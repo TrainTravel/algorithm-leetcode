@@ -17,26 +17,29 @@ public class NumTrees_96 {
      * G(0) = 1, G(1) = 1.
      * F(i, n), 1 <= i <= n: the number of unique BST, where i is the root of BST, and the sequence ranges from 1 to n.
      * F(i, n) = G(i - 1) * G(n - i)
-     * ==> G(n) = G(0) * G(n - 1) + G(1) * G(n - 2) + … + G(n - 1) * G(0)
+     * => G(n) = G(0) * G(n - 1) + G(1) * G(n - 2) + ... + G(n - 1) * G(0)
      *
      * @param n given n
      * @return number of unique BST
      */
     public int numTrees(int n) {
 
-        int[] g = new int[n + 1];
-        g[0] = 1;
-        g[1] = 1;
+        /* Corner case */
+        if (n < 3) {
+            return n;
+        }
 
-        /* First loop: all root in (0, n) */
-        for (int i = 2; i <= n; i++) {
+        int[] dp = new int[n + 1];
 
-            /* Second loop,: (0, i) */
-            for (int j = 1; j < i + 1; j++) {
-                g[i] += g[j - 1] * g[i - j];
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; i++) {      // first loop: all root in (0, n)
+            for (int j = 1; j <= i; j++) {      // second loop: (0, i)
+                dp[i] = dp[i] + dp[j - 1] * dp[i - j];
             }
         }
 
-        return g[n];
+        return dp[n];
     }
 }

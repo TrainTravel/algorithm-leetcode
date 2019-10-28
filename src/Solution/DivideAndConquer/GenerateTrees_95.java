@@ -23,14 +23,11 @@ public class GenerateTrees_95 {
      */
     public List<TreeNode> generateTrees(int n) {
 
-        List<TreeNode> res = new LinkedList<>();
-
         /* Corner case */
         if (n == 0) {
-            return res;
+            return new LinkedList<>();
         }
-
-        return generate(1, n);
+        return helper(1, n);
     }
 
     /**
@@ -42,40 +39,33 @@ public class GenerateTrees_95 {
      * @param end   end int
      * @return generate all structurally unique BST
      */
-    private List<TreeNode> generate(int start, int end) {
-        List<TreeNode> out = new ArrayList<>();
+    private List<TreeNode> helper(int start, int end) {
+        List<TreeNode> out = new LinkedList<>();
 
         if (start > end) {      // empty tree
             out.add(null);
             return out;
         }
-        if (start == end) {     // leaf node
+
+        if (start == end) {     // only this node when start == end
             out.add(new TreeNode(start));
             return out;
         }
 
-        List<TreeNode> left;
-        List<TreeNode> right;
-
-        for (int i = start; i <= end; i++) {        // select every i as root node
-
-            left = generate(start, i - 1);      // left: less than i
-            right = generate(i + 1, end);       // right: larger than i
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> left = helper(start, i - 1);     // left subtree
+            List<TreeNode> right = helper(i + 1, end);      // right subtree
 
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
-                    TreeNode root = new TreeNode(i);
-                    root.left = l;
-                    root.right = r;
-                    out.add(root);
+                    TreeNode tmp = new TreeNode(i);         // current tree's root node
+                    tmp.left = l;
+                    tmp.right = r;
+                    out.add(tmp);
                 }
             }
         }
 
         return out;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new GenerateTrees_95().generateTrees(3));
     }
 }

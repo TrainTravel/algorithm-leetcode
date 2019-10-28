@@ -2,12 +2,14 @@ package Solution.DFS;
 
 import Lib.Tree.TreeNode;
 
+import java.util.Stack;
+
 /**
  * Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
  * The successor of a node p is the node with the smallest key greater than p.val.
  * Note:
- * If the given node has no in-order successor in the tree, return null.
- * It's guaranteed that the values of the tree are unique.
+ * 1. If the given node has no in-order successor in the tree, return null.
+ * 2. It's guaranteed that the values of the tree are unique.
  *
  * @author BorisMirage
  * Time: 2019/06/13 10:27
@@ -15,6 +17,54 @@ import Lib.Tree.TreeNode;
  */
 
 public class InorderSuccessor_285 {
+    /**
+     * Time complexity: O(n).
+     * Space complexity: O(h), height of BST.
+     *
+     * @param root root node
+     * @param p    target node
+     * @return in-order successor of that node in the BST
+     */
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+
+        /* Corner case */
+        if (root == null) {
+            return null;
+        }
+        if (root.val == p.val) {
+            return root.right;
+        }
+
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode tmp;
+        while (root != null) {
+            s.push(root);
+            root = root.left;
+        }
+
+        while (!s.isEmpty()) {
+            tmp = s.pop();
+            if (tmp.val == p.val) {
+                return (tmp.right == null) ? ((s.size() == 0) ? null : s.pop()) : findSmallest(tmp.right);
+            } else {
+                TreeNode n = tmp.right;
+                while (n != null) {
+                    s.push(n);
+                    n = n.left;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private TreeNode findSmallest(TreeNode r) {
+        while (r.left != null) {
+            r = r.left;
+        }
+        return r;
+    }
+
     /**
      * Successor will be at right sub tree, or previous root, or null.
      * The target is to find p's closest node (in inorder traversal) and the node's value is larger than p's value.
@@ -24,7 +74,7 @@ public class InorderSuccessor_285 {
      * @param p    target node
      * @return in-order successor in the tree, or null
      */
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+    public TreeNode recursion(TreeNode root, TreeNode p) {
 
         return successor(root, p);
     }
@@ -65,8 +115,9 @@ public class InorderSuccessor_285 {
      * @return in-order predecessor, or null
      */
     private TreeNode predecessor(TreeNode root, TreeNode p) {
-        if (root == null)
+        if (root == null) {
             return null;
+        }
 
         if (root.val >= p.val) {
             return predecessor(root.left, p);       // find smaller number

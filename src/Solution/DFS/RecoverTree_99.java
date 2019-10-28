@@ -71,7 +71,7 @@ public class RecoverTree_99 {
 
     private TreeNode wrong1 = null;
     private TreeNode wrong2 = null;
-    private TreeNode t = new TreeNode(Integer.MIN_VALUE);        // avoid null when "root" is the deepest left node
+    private TreeNode previous = new TreeNode(Integer.MIN_VALUE);        // avoid null when root is the deepest left node
 
     /**
      * Normal in-order traversal approach. This method takes O(n) space.
@@ -102,14 +102,14 @@ public class RecoverTree_99 {
 
         traverse(r.left);
 
-        if (wrong1 == null && t.val >= r.val) {
-            wrong1 = t;      // left incorrect node, based on in order traversal (left -> root -> right)
+        if (wrong1 == null && previous.val >= r.val) {
+            wrong1 = previous;      // left incorrect node, based on in order traversal (left -> root -> right)
         }
-        if (wrong1 != null && t.val >= r.val) {
+        if (wrong1 != null && previous.val >= r.val) {
             wrong2 = r;      // right incorrect node, based on in order traversal (left -> root -> right)
         }
 
-        t = r;
+        previous = r;
         traverse(r.right);
     }
 }

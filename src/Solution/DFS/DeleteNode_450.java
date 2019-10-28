@@ -17,18 +17,13 @@ import Lib.Tree.TreeNode;
 
 public class DeleteNode_450 {
     /**
-     * The key is to handle the situation after find the node in BST.
-     * First, recursively find the node that has the same value as the key.
-     * Once the node is found, 4 cases should be considered:
-     * node doesn't have left or right subtree -> return null
-     * left subtree only -> return the left subtree, as they follow BST rule.
-     * right subtree only -> return the right subtree, same as left subtree only
-     * If node has two subtrees, the situation is complicated:
-     * 1. right has no left tree -> left is smaller than right, replace node with root of right subtree.
-     * 2. right has left subtree -> the left subtree will be the left subtree of smallest element in right subtree.
-     * The reason is that all elements in left is smaller than right in BST, and right subtree is larger than root.
-     * Therefore, to follow this rule, the parent of left subtree should be the smallest node in right subtree.
-     * And the right subtree of this new root, is the original right subtree, except with this smallest node.
+     * This is actually to remove the target node and return the next greater value of delete node in BST.
+     * First of all, find the target node in tree.
+     * Handle the simple case first: if left subtree or right subtree is empty, return the non-empty subtree.
+     * Otherwise, find the next greater value of current node.
+     * The left subtree of delete node is smaller than next greater value.
+     * Therefore, the left subtree will be the next greater value's subtree.
+     * Return the right subtree, since the left subtree has been attached and right subtree is the root of new subtree.
      *
      * @param root root node in tree
      * @param key  node to be delete
@@ -41,54 +36,98 @@ public class DeleteNode_450 {
             return null;
         }
 
-        /* Searching in tree */
-        if (root.val < key) {
-            root.right = deleteNode(root.right, key);
-            return root;
-        } else if (root.val > key) {
-            root.left = deleteNode(root.left, key);
-            return root;
-        }
-
-        /* Find the target node and do the delete operation */
-        if (root.left == null && root.right == null) {
-            return null;        // no subtree on current node
-        } else if (root.left == null) {
-            return root.right;      // no left subtree
-        } else if (root.right == null) {
-            return root.left;       // no right subtree
-        }
-
-        if (root.right.left == null) {      // all elements in right subtree is larger than current node
-            root.right.left = root.left;        // all elements in left subtree is smaller than right child
-            return root.right;      // right child replace current node as root
+        /*
+         * If key is smaller than root's value, then only consider the left subtree.
+         * If key is larger than root's value, only consider the right subtree.
+         * Otherwise, delete this node. */
+        if (key < root.val) {
+            root.left = deleteNode(root.left, key);     // attach result node to left subtree
+        } else if (key > root.val) {
+            root.right = deleteNode(root.right, key);   // // attach result node to right subtree
         } else {
 
-            TreeNode smallest = finSubtreeRoot(root.right);     // find leftmost node
+            /*
+             * If the left subtree is empty, return the right subtree and the node is delete.
+             * Return right subtree if left subtree is empty. */
+            if (root.left == null) {
+                return root.right;
+            }
+            if (root.right == null) {
+                return root.left;
+            }
 
-            /* Smallest node in right tree will replace current root node */
-            smallest.left = root.left;
-            smallest.right = root.right;
-            return smallest;
+            /*
+             * If left subtree and right subtree are both non-empty, then find the smallest value in right subtree.
+             * This smallest node will replace the current node as delete.
+             * Link the left subtree of deleted node to the smallest node in right subtree.
+             * Return the  */
+            TreeNode tmp = root.right;
+            while (tmp.left != null) {
+                tmp = tmp.left;
+            }
+            tmp.left = root.left;
+            return root.right;
+
         }
+
+        return root;
     }
 
     /**
-     * Find left most node in tree. In BST, leftmost node is smallest node in tree.
+     * Iterative approach.
      *
-     * @param root root node
-     * @return leftmost node with its sub tree
+     * @param root root node in tree
+     * @param key  node to be delete
+     * @return BST after delete operation
      */
-    private TreeNode finSubtreeRoot(TreeNode root) {
-        TreeNode cur = root.left;
-        TreeNode pre = root;
-        while (cur.left != null) {
-            pre = cur;
-            cur = cur.left;
+    public TreeNode iterative(TreeNode root, int key) {
+        TreeNode current = root;
+        TreeNode previous = null;
+
+        while (current != null && current.val != key) {
+            previous = current;
+            if (key < current.val) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
         }
 
-        pre.left = cur.right;       // replace leftmost node with its right subtree (or null)
+        if (previous == null) {
+            return deleteRootNode(current);
+        }
+        if (previous.left == current) {
+            previous.left = deleteRootNode(current);
+        } else {
+            previous.right = deleteRootNode(current);
+        }
 
-        return cur;
+        return root;
+    }
+
+    /**
+     * Remove node and attach the subtree to previous node.
+     *
+     * @param root node
+     * @return tree with node removed
+     */
+    private TreeNode deleteRootNode(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.left == null) {
+            return root.right;
+        }
+        if (root.right == null) {
+            return root.left;
+        }
+
+        TreeNode tmp = root.right;
+        while (tmp.left != null) {
+            tmp = tmp.left;
+        }
+        tmp.left = root.left;
+        return root.right;
     }
 }

@@ -14,42 +14,74 @@ import Lib.Tree.TreeNode;
 
 public class LongestConsecutive_298 {
 
-    private int max = 0;        // global max
+//    private int max = 0;        // global max
+//
+//    /**
+//     * DFS traversal.
+//     *
+//     * @param root root node
+//     * @return length of longest consecutive path
+//     */
+//    public int longestConsecutive(TreeNode root) {
+//        if (root == null) {
+//            return 0;
+//        }
+//        dfs(root, root.val, 0);
+//        return max;
+//    }
+//
+//    /**
+//     * Check nodes if current node value is equal to target value (previous node value + 1).
+//     * If not matched, reset local max path length to 1 and keep doing DFS.
+//     *
+//     * @param r          root node
+//     * @param val        value of consecutive path
+//     * @param currentMax current max length of consecutive path
+//     */
+//    private void dfs(TreeNode r, int val, int currentMax) {
+//
+//        /* End point */
+//        if (r == null) {
+//            return;
+//        }
+//
+//        currentMax = (r.val == val ? currentMax + 1 : 1);       // reset current max to 1 if value is not matched
+//
+//        max = Math.max(max, currentMax);
+//
+//        dfs(r.left, r.val + 1, currentMax);
+//        dfs(r.right, r.val + 1, currentMax);
+//    }
 
-    /**
-     * DFS traversal.
-     *
-     * @param root root node
-     * @return length of longest consecutive path
-     */
+    private int max = 1;
+
     public int longestConsecutive(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        dfs(root, root.val, 0);
+        dfs(root);
+
         return max;
     }
 
-    /**
-     * Check nodes if current node value is equal to target value (previous node value + 1).
-     * If not matched, reset local max path length to 1 and keep doing DFS.
-     *
-     * @param r          root node
-     * @param val        value of consecutive path
-     * @param currentMax current max length of consecutive path
-     */
-    private void dfs(TreeNode r, int val, int currentMax) {
-
-        /* End point */
+    private int dfs(TreeNode r) {
         if (r == null) {
-            return;
+            return 0;
         }
 
-        currentMax = (r.val == val ? currentMax + 1 : 1);       // reset current max to 1 if value is not matched
+        int left = dfs(r.left);
+        int right = dfs(r.right);
+        int local = 1;
 
-        max = Math.max(max, currentMax);
+        if (r.left != null && r.left.val == r.val + 1) {
+            local = Math.max(left + 1, local);
+        }
+        if (r.right != null && r.right.val == r.val + 1) {
+            local = Math.max(right + 1, local);
+        }
 
-        dfs(r.left, r.val + 1, currentMax);
-        dfs(r.right, r.val + 1, currentMax);
+        max = Math.max(local, max);
+
+        return local;
     }
 }
