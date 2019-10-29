@@ -19,10 +19,10 @@ import java.util.*;
  * Created with IntelliJ IDEA
  */
 
-public class FindClosestLeaf {
+public class FindClosestLeaf_742 {
     /**
      * This is actually not a tree problem, it is a graph problem.
-     * First do the dfs from root node to find node k in tree.
+     * First do the DFS from root node to find target node in tree.
      * Then do BFS from node k to obtain the nearest leave node.
      * The is actually based on undirected graph, where nodes has a double-way connection with other nodes.
      *
@@ -32,36 +32,20 @@ public class FindClosestLeaf {
      */
     public int findClosestLeaf_742(TreeNode root, int k) {
 
-        HashMap<TreeNode, TreeNode> m = new HashMap<>();
-
-        TreeNode target = dfs(root, k, m);
-
-        Queue<TreeNode> q = new LinkedList<>();
-        Set<TreeNode> visited = new HashSet<>();             // store all visited nodes
-        q.add(target);
-        visited.add(target);
-
-        /* BFS to find nearest leaf node to target k in the tree */
-        while (!q.isEmpty()) {
-            TreeNode current = q.poll();
-
-            if (current.left == null && current.right == null) {
-                return current.val;
-            }
-
-            /* Add all connected nodes that has not visited before */
-            if (current.left != null && visited.add(current.left)) {        // Set().add return false if element exists
-                q.add(current.left);
-            }
-            if (current.right != null && visited.add(current.right)) {
-                q.add(current.right);
-            }
-            if (m.containsKey(current) && visited.add(m.get(current))) {
-                q.add(m.get(current));
-            }
+        /* Corner case */
+        if (root == null) {
+            return -1;
+        }
+        if (root.right == null && root.left == null) {
+            return root.val;
         }
 
-        return -1;      // k is not found in tree (based on the problem description it will not happen)
+        HashMap<TreeNode, TreeNode> m = new HashMap<>();
+        HashSet<TreeNode> s = new HashSet<>();
+
+        TreeNode tmp = dfs(root, k, m);
+
+        return bfs(tmp, s, m);      // k is not found in tree (based on the problem description, it will not happen)
     }
 
     /**
@@ -89,5 +73,42 @@ public class FindClosestLeaf {
             return dfs(r.right, k, m);
         }
         return null;
+    }
+
+    /**
+     * Use BFS to find closest leaf in tree.
+     *
+     * @param n target node
+     * @param s hash set stores previous visited node
+     * @param m hash map stores child-parent pair
+     * @return closest leaf
+     */
+    private int bfs(TreeNode n, HashSet<TreeNode> s, HashMap<TreeNode, TreeNode> m) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(n);
+        int size;
+
+        while (!q.isEmpty()) {
+            size = q.size();
+
+            for (int i = 0; i < size; i++) {
+                TreeNode tmp = q.poll();
+                if (tmp.left == null && tmp.right == null) {
+                    return tmp.val;
+                }
+
+                if (tmp.left != null & s.add(tmp.left)) {
+                    q.add(tmp.left);
+                }
+                if (tmp.right != null & s.add(tmp.right)) {
+                    q.add(tmp.right);
+                }
+                if (m.containsKey(tmp) && s.add(m.get(tmp))) {
+                    q.add(m.get(tmp));
+                }
+            }
+        }
+
+        return -1;
     }
 }
