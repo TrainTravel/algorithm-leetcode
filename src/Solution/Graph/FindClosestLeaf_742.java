@@ -30,7 +30,7 @@ public class FindClosestLeaf_742 {
      * @param k    target node
      * @return nearest leaf node to target k in the tree
      */
-    public int findClosestLeaf_742(TreeNode root, int k) {
+    public int findClosestLeaf(TreeNode root, int k) {
 
         /* Corner case */
         if (root == null) {
