@@ -22,7 +22,7 @@ public class CanPartition_416 {
      */
     public boolean canPartition(int[] nums) {
 
-        /* */
+        /* Corner case */
         if (nums.length < 2) {
             return false;
         }

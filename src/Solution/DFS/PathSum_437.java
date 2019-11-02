@@ -2,6 +2,9 @@ package Solution.DFS;
 
 import Lib.Tree.TreeNode;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * You are given a binary tree in which each node contains an integer value.
  * Find the number of paths that sum to a given value.
@@ -46,5 +49,29 @@ public class PathSum_437 {
         }
 
         return (n.val == sum ? 1 : 0) + dfs(n.left, sum - n.val) + dfs(n.right, sum - n.val);
+    }
+
+    private int count = 0;
+
+    public int DFSWithMap(TreeNode root, int sum) {
+        HashMap<Integer, Integer> prefixSumCount = new HashMap<>();
+        prefixSumCount.put(0, 1);
+        dfs(root, 0, sum, prefixSumCount);
+        return count;
+    }
+
+    public void dfs(TreeNode node, int pathSum, int target, HashMap<Integer, Integer> map) {
+        if (node == null) return;
+        pathSum += node.val;
+        if (map.containsKey(pathSum - target)) {
+            count += map.get(pathSum - target);
+        }
+        map.put(pathSum, map.getOrDefault(pathSum, 0) + 1);
+
+        dfs(node.left, pathSum, target, map);
+        dfs(node.right, pathSum, target, map);
+
+        map.put(pathSum, map.get(pathSum) - 1); // setback!!!!!!!!!
+
     }
 }

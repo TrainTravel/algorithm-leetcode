@@ -43,12 +43,13 @@ public class DeleteNode_450 {
         if (key < root.val) {
             root.left = deleteNode(root.left, key);     // attach result node to left subtree
         } else if (key > root.val) {
-            root.right = deleteNode(root.right, key);   // // attach result node to right subtree
-        } else {
+            root.right = deleteNode(root.right, key);   // attach result node to right subtree
+        } else {        // if found the target node (no duplicate here), delete it
 
             /*
              * If the left subtree is empty, return the right subtree and the node is delete.
-             * Return right subtree if left subtree is empty. */
+             * Return right subtree if left subtree is empty.
+             * These two cases do not require to consider the predecessor/successor. */
             if (root.left == null) {
                 return root.right;
             }
@@ -58,9 +59,10 @@ public class DeleteNode_450 {
 
             /*
              * If left subtree and right subtree are both non-empty, then find the smallest value in right subtree.
+             * Find the largest element in left subtree is also fine.
              * This smallest node will replace the current node as delete.
              * Link the left subtree of deleted node to the smallest node in right subtree.
-             * Return the  */
+             * Return the modified tree. */
             TreeNode tmp = root.right;
             while (tmp.left != null) {
                 tmp = tmp.left;
@@ -84,7 +86,7 @@ public class DeleteNode_450 {
         TreeNode current = root;
         TreeNode previous = null;
 
-        while (current != null && current.val != key) {
+        while (current != null && current.val != key) {     // find target node
             previous = current;
             if (key < current.val) {
                 current = current.left;
@@ -96,6 +98,7 @@ public class DeleteNode_450 {
         if (previous == null) {
             return deleteRootNode(current);
         }
+
         if (previous.left == current) {
             previous.left = deleteRootNode(current);
         } else {

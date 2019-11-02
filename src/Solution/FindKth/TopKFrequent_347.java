@@ -28,7 +28,7 @@ public class TopKFrequent_347 {
 
         Map<Integer, Integer> hm = new HashMap<>();
         List<Integer>[] bucket = new List[nums.length + 1];     // index is the frequency, value is elements with this frequency
-        List<Integer> res = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();
 
         for (int num : nums) {
             hm.put(num, hm.getOrDefault(num, 0) + 1);
@@ -36,17 +36,55 @@ public class TopKFrequent_347 {
 
         for (int key : hm.keySet()) {
             int frequency = hm.get(key);
-            if (bucket[frequency] == null)
+            if (bucket[frequency] == null) {
                 bucket[frequency] = new ArrayList<>();
+            }
             bucket[frequency].add(key);
         }
         for (int pos = bucket.length - 1; pos >= 0; pos--) {
             if (bucket[pos] != null) {
-                for (int i = 0; i < bucket[pos].size() && res.size() < k; i++)
-                    res.add(bucket[pos].get(i));
+                for (int i = 0; i < bucket[pos].size() && out.size() < k; i++) {
+                    out.add(bucket[pos].get(i));
+                }
             }
         }
-        return res;
+        return out;
+    }
+
+    /**
+     * Use min heap to find top k frequent elements. Note that the heap size should be kept to less than k.
+     * Time complexity: O(nlogk).
+     *
+     * @param nums given array
+     * @param k    k most frequent elements
+     * @return k most frequent elements
+     */
+    public List<Integer> heap(int[] nums, int k) {
+        List<Integer> out = new LinkedList<>();
+        HashMap<Integer, Integer> m = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            m.put(nums[i], m.getOrDefault(nums[i], 0) + 1);
+        }
+
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<Integer, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                return o1.getValue() - o2.getValue();
+            }
+        });
+
+        for (Map.Entry<Integer, Integer> e : m.entrySet()) {
+            pq.add(e);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+
+        for (int i = 0; i < k; i++) {
+            out.add(pq.poll().getKey());
+        }
+
+        return out;
     }
 
     /**

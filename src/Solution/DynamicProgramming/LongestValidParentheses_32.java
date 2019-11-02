@@ -85,11 +85,9 @@ public class LongestValidParentheses_32 {
             return 0;
         }
 
-        /* Stack that store left parentheses */
-        Stack<Integer> leftStack = new Stack<>();
+        Stack<Integer> leftStack = new Stack<>();       // stack that store left parentheses
 
-        /* -1 can be regarded as “extended” start position */
-        leftStack.push(-1);
+        leftStack.push(-1);     // -1 can be regarded as “extended” start position
 
         int maxLength = 0;
 
@@ -99,14 +97,13 @@ public class LongestValidParentheses_32 {
             } else {
                 leftStack.pop();
                 if (leftStack.size() == 0) {
-
-                    /* Start position for next valid parentheses length counting */
-                    leftStack.push(i);
+                    leftStack.push(i);      // start position for next valid parentheses length counting
                 } else {
                     maxLength = Math.max(maxLength, i - leftStack.peek());
                 }
             }
         }
+
         return maxLength;
     }
 

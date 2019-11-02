@@ -30,9 +30,12 @@ public class HasPath_490 {
      * @return whether the ball could stop at the destination
      */
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+
+        /* Corner case */
         if (maze.length == 0 || maze[0].length == 0) {
             return false;
         }
+
         return dfs(maze, start, destination, new boolean[maze.length][maze[0].length]);
     }
 
