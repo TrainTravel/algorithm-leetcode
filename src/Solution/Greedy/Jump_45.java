@@ -42,6 +42,9 @@ public class Jump_45 {
     }
 
     public static void main(String[] args) {
+
+//        System.out.println(new Jump_45().jump(new int[]{1, 2, 3, 4, 5}));
+
         Jump_45 jumpTest = new Jump_45();
         System.out.println("Min step: " + jumpTest.jump(new int[]{2, 3, 1, 1, 1}));
         System.out.println("Min step: " + jumpTest.jump(new int[]{1, 3, 2}));

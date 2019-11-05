@@ -40,8 +40,8 @@ public class SegmentTree {
         int mid = (left + right) / 2;
         root.left = treeBuilder(left, mid, nums);
         root.right = treeBuilder(mid + 1, right, nums);
-        return root;
 
+        return root;
     }
 
     /**
@@ -61,7 +61,7 @@ public class SegmentTree {
         }
 
         for (int i = left; i <= right; i++) {
-            min = (nums[i] < min) ? nums[i] : min;
+            min = Math.min(nums[i], min);
         }
         return min;
     }
@@ -89,9 +89,9 @@ public class SegmentTree {
     }
 
     /**
-     * Unit test
+     * Unit test.
      *
-     * @param args
+     * @param args given arguments
      */
     public static void main(String[] args) {
 
@@ -109,6 +109,7 @@ public class SegmentTree {
  * 2. right bound of current node
  * 3. min/max value
  * The value is the min/max value in array[left, right]. And the left/right is where "segment" comes from.
+ * One improvement: add a lazy propagation in node of segment tree, to reduce update time.
  */
 class SegmentTreeNode {
 
