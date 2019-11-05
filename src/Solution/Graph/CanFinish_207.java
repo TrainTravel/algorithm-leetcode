@@ -29,7 +29,7 @@ public class CanFinish_207 {
             return true;
         }
 
-        HashMap<Integer, List<Integer>> m = new HashMap<>();        // prerequisite - course pair
+        HashMap<Integer, List<Integer>> m = new HashMap<>();        // prerequisite -> course pair
         int[] indegree = new int[numCourses];
         Queue<Integer> q = new LinkedList<>();
 
@@ -39,7 +39,6 @@ public class CanFinish_207 {
                 m.put(arr[1], new LinkedList<>());
             }
             m.get(arr[1]).add(arr[0]);
-
         }
 
         for (int i = 0; i < indegree.length; i++) {
@@ -54,19 +53,18 @@ public class CanFinish_207 {
             int course = q.poll();
             count++;
 
-            /* Remove the connections with nodes that indegree is 0 (indegree - 1) */
-            for (int i = 0; m.get(course) != null && i < m.get(course).size(); i++) {     // avoid Null pointer when reaches end of graph
-
-                if (--indegree[m.get(course).get(i)] == 0) {
+            for (int i = 0; m.get(course) != null && i < m.get(course).size(); i++) {     // avoid null when reaches end of graph
+                if (--indegree[m.get(course).get(i)] == 0) {        // remove nodes with 0 indegree
                     q.add(m.get(course).get(i));        // add 0 indegree node after removing
                 }
             }
         }
+
         return count == numCourses;
     }
 
     /**
-     * Use 2D array to store connections. This method is slower and consume more memory. But easy to understand.
+     * Use 2D array to store connections. This method is slower and consumes more memory. But easy to understand.
      *
      * @param numCourses    # of total courses
      * @param prerequisites course - prerequisite pair
