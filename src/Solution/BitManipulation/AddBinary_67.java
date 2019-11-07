@@ -11,8 +11,7 @@ package Solution.BitManipulation;
 
 public class AddBinary_67 {
     /**
-     * Traverse all char in string.
-     * Use XOR as addition.
+     * Traverse all char in string. Use XOR as addition.
      * Be aware of carry.
      *
      * @param a first binary string
@@ -23,25 +22,23 @@ public class AddBinary_67 {
 
         char[] aArray = a.toCharArray();
         char[] bArray = b.toCharArray();
-        StringBuilder res = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         int i = aArray.length - 1;
         int j = bArray.length - 1;
-        int aByte;
-        int bByte;
-        int carry = 0;
-        int sum;
+        int aByte, bByte;
+        int carry = 0, sum;
 
         while (i > -1 || j > -1 || carry == 1) {
-            aByte = (i > -1) ? Character.getNumericValue(aArray[i--]) : 0;
-            bByte = (j > -1) ? Character.getNumericValue(bArray[j--]) : 0;
+            aByte = (i > -1) ? Character.getNumericValue(aArray[i--]) : 0;      // get current digit
+            bByte = (j > -1) ? Character.getNumericValue(bArray[j--]) : 0;      // get current digit
 
-            /* Use XOR as addition */
-            sum = aByte ^ bByte ^ carry;
+            sum = aByte ^ bByte ^ carry;        // XOR as addition
 
             carry = ((aByte + bByte + carry) > 1) ? 1 : 0;
-            res.append(sum);
+            sb.append(sum);
         }
-        return res.reverse().toString();
+
+        return sb.reverse().toString();
     }
 }

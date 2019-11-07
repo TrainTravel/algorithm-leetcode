@@ -21,11 +21,13 @@ public class Flatten_114 {
      */
     public void flatten(TreeNode root) {
 
+        /* Corner case */
         if (root == null) {
             return;
         }
         Stack<TreeNode> s = new Stack<>();
         s.push(root);
+
         while (!s.isEmpty()) {
             TreeNode current = s.pop();
             if (current.right != null) {

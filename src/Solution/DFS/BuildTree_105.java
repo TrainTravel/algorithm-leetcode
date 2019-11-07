@@ -5,11 +5,12 @@ import Lib.Tree.TreeNode;
 import java.util.HashMap;
 
 /**
+ * Given preorder and inorder traversal of a tree, construct the binary tree.
+ *
  * @author BorisMirage
  * Time: 2019/06/10 14:56
  * Created with IntelliJ IDEA
  */
-
 public class BuildTree_105 {
     /**
      * preorder[0] is the root node.
@@ -38,14 +39,13 @@ public class BuildTree_105 {
             m.put(inorder[i], i);
         }
 
-
         return traverse(preorder, 0, preorder.length - 1, 0, inorder.length - 1, m);
     }
 
     /**
      * Find root of children in inorder array and in this way to find their left and right children.
      *
-     * @param preorder pre order traversal array
+     * @param preorder preorder traversal array
      * @param preStart root in preorder traverse array
      * @param preEnd   end of tree in preorder array
      * @param inStart  start of left children

@@ -27,7 +27,7 @@ public class CriticalConnections_1192 {
      */
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
         Graph g = new Graph(n);
-        g.addEdge(connections);
+        g.buildGraph(connections);
 
         return g.findBridge();
     }
@@ -58,7 +58,7 @@ public class CriticalConnections_1192 {
          *
          * @param connections given list contains connections between nodes in graph
          */
-        void addEdge(List<List<Integer>> connections) {
+        void buildGraph(List<List<Integer>> connections) {
             for (List<Integer> list : connections) {
                 this.connections.get(list.get(0)).add(list.get(1));
                 this.connections.get(list.get(1)).add(list.get(0));
@@ -72,13 +72,13 @@ public class CriticalConnections_1192 {
          */
         List<List<Integer>> findBridge() {
             boolean[] isVisited = new boolean[V];
-            int[] discovery = new int[V], low = new int[V], parent = new int[V];
+            int[] timestamp = new int[V], low = new int[V], parent = new int[V];
 
             Arrays.fill(parent, -1);        // initially, all nodes has no parent
 
             for (int i = 0; i < V; i++) {
                 if (!isVisited[i]) {
-                    dfs(i, isVisited, discovery, low, parent);
+                    dfs(i, isVisited, timestamp, low, parent);
                 }
             }
 
@@ -92,19 +92,19 @@ public class CriticalConnections_1192 {
          *
          * @param id        current node
          * @param isVisited boolean array records if current node has been visited
-         * @param discovery discover time (as increasing id for nodes)
+         * @param timestamp discover time (as increasing id for nodes)
          * @param low       array records lowest parent that contains more than one path to current node
          * @param parent    parent of current node that direct connect to it
          */
-        void dfs(int id, boolean[] isVisited, int[] discovery, int[] low, int[] parent) {
+        void dfs(int id, boolean[] isVisited, int[] timestamp, int[] low, int[] parent) {
             isVisited[id] = true;
-            discovery[id] = ++time;     // mark each node uniquely in order of reached time
+            timestamp[id] = ++time;     // mark each node uniquely in order of reached time
             low[id] = ++time;           // initially, mark each node's lowest parent in order of reached time
 
             for (int vertex : connections.get(id)) {
                 if (!isVisited[vertex]) {
                     parent[vertex] = id;
-                    dfs(vertex, isVisited, discovery, low, parent);
+                    dfs(vertex, isVisited, timestamp, low, parent);
                     low[id] = Math.min(low[id], low[vertex]);
 
                     /*
@@ -112,14 +112,14 @@ public class CriticalConnections_1192 {
                      * discovery[id]: current node id.
                      * If child node has only one path to current node's parent, then this edge is bridge in graph.
                      * Since there is only one way from current node's lowest parent to this child. */
-                    if (low[vertex] > discovery[id]) {
+                    if (low[vertex] > timestamp[id]) {
                         ArrayList<Integer> tmp = new ArrayList<>();
                         tmp.add(id);
                         tmp.add(vertex);
                         bridges.add(tmp);
                     }
                 } else if (vertex != parent[id]) {
-                    low[id] = Math.min(low[id], discovery[vertex]);
+                    low[id] = Math.min(low[id], timestamp[vertex]);
                 }
             }
         }
