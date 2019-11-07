@@ -1,9 +1,6 @@
 package Solution.Array;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given two arrays, find their unique common element.
@@ -15,7 +12,7 @@ import java.util.Set;
 
 public class Intersection_349 {
     /**
-     * One set store first array element without duplication, use one linked list to store common element.
+     * Sort both array, use a hash set to store elements store in both array to avoid duplication.
      *
      * @param nums1 first int array
      * @param nums2 second int array
@@ -23,23 +20,30 @@ public class Intersection_349 {
      */
     public int[] intersection(int[] nums1, int[] nums2) {
 
-        Set<Integer> s1 = new HashSet<>();
-        LinkedList<Integer> l2 = new LinkedList<>();
+        Set<Integer> s = new HashSet<>();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
 
-        for (int n1 : nums1) {
-            s1.add(n1);
-        }
-        for (int n2 : nums2) {
-            if (s1.contains(n2)) {
-                l2.add(n2);
-                s1.remove(n2);
+        int p1 = 0, p2 = 0;
+
+        while (p1 < nums1.length && p2 < nums2.length) {
+            if (nums1[p1] < nums2[p2]) {
+                p1++;
+            } else if (nums1[p1] > nums2[p2]) {
+                p2++;
+            } else {
+                s.add(nums1[p1]);
+                p1++;
+                p2++;
             }
         }
 
-        int[] out = new int[l2.size()];
-        for (int i = 0; i < out.length; i++) {
-            out[i] = l2.pop();
+        int[] out = new int[s.size()];
+        int k = 0;
+        for (Integer num : s) {
+            out[k++] = num;
         }
+
         return out;
     }
 

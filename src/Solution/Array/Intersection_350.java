@@ -24,10 +24,9 @@ public class Intersection_350 {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
-        int p1 = 0;
-        int p2 = 0;
+        int p1 = 0, p2 = 0;
 
-        LinkedList<Integer> l = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
 
         while ((p1 < nums1.length) && (p2 < nums2.length)) {
             if (nums1[p1] < nums2[p2]) {
@@ -35,16 +34,17 @@ public class Intersection_350 {
             } else if (nums1[p1] > nums2[p2]) {
                 p2++;
             } else {
-                l.add(nums1[p1]);
+                list.add(nums1[p1]);
                 p1++;
                 p2++;
             }
         }
+        int[] out = new int[list.size()];
 
-        int[] res = new int[l.size()];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = l.pop();
+        for (int i = 0; i < list.size(); i++) {
+            out[i] = list.get(i);
         }
-        return res;
+
+        return out;
     }
 }
