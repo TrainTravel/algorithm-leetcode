@@ -2,7 +2,7 @@ package Solution.DFS;
 
 import Lib.Tree.TreeNode;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -20,11 +20,11 @@ public class InorderTraversal_94 {
      * Use stack to temporary store node during the process.
      *
      * @param root root node
-     * @return in order traversal node value
+     * @return list of nodes in inorder traversal order
      */
     public List<Integer> inorderTraversal(TreeNode root) {
 
-        LinkedList<Integer> res = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
         Stack<TreeNode> s = new Stack<>();
         TreeNode cur = root;
 
