@@ -1,6 +1,5 @@
 package Solution.DivideAndConquer;
 
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.List;
  * Time: 2019/06/12 10:17
  * Created with IntelliJ IDEA
  */
-
 public class DiffWaysToCompute_241 {
     /**
      * Convert given string to a list that contains numbers and operators in order.
@@ -33,8 +31,7 @@ public class DiffWaysToCompute_241 {
 
         List<String> elements = new ArrayList<>();
 
-        /* Pre parse given string to string list */
-        for (int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {      // pre parse given string to string list
 
             int j = i;
             while (j < input.length() && Character.isDigit(input.charAt(j))) {
@@ -94,6 +91,7 @@ public class DiffWaysToCompute_241 {
                 }
             }
         }
+
         return out;
     }
 }
