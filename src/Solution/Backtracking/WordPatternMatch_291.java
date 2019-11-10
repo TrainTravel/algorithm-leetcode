@@ -11,10 +11,12 @@ import java.util.HashSet;
  * Time: 2019/09/10 21:00
  * Created with IntelliJ IDEA
  */
-
 public class WordPatternMatch_291 {
     /**
      * Backtracking with hash map and hash set as pruning.
+     * Each char in pattern should be mapping to one or more consecutive substring in string.
+     * Therefore, each char in pattern can be mapped into a substring, if if str follows the same pattern.
+     * The length is not fixed, therefore, use backtracking to try every substring and check if they can match.
      *
      * @param pattern given pattern string
      * @param str     given string
@@ -27,6 +29,12 @@ public class WordPatternMatch_291 {
     }
 
     /**
+     * Basically, each char in pattern should be mapping to one or more consecutive substring in string.
+     * Therefore, backtracking all possible substring and check if they can be matched into pattern.
+     * Each time in backtracking, check if current pattern char can be found in hash map.
+     * If current char in pattern has been mapped, check if current string starts with this pattern.
+     * Otherwise, enlarge one char in string each time and mapping it to pattern char.
+     *
      * @param s   given string
      * @param p   given pattern string
      * @param m   hash map stores pattern char and corresponding string
