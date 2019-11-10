@@ -12,117 +12,82 @@ import java.util.*;
  * Time: 2019/09/14 20:25
  * Created with IntelliJ IDEA
  */
-
 public class CriticalConnections_1192 {
+    private int time = 1;       // global time
+
     /**
-     * In Tarjan algorithm, keep two arrays DFN and LOW in DFS procedure.
-     * DFN array records the order of DFS for each node, as an id assigned to each node.
-     * LOW array records the lowest order of each node's neighbor except its direct parent.
-     * Initially, LOW[i] equals to DFN[i].
-     * After DFS, find edge(u,v) where DFN(u) < LOW(v) and get all the bridges.
+     * Tarjan algorithm, use timestamp that records the order of vertices visited to find all cycles on graph.
+     * Critical edges are the edges not on cycle (connections between cycle).
+     * Use a global timestamp to record the reach order of nodes on graph via DFS.
+     * And return the min timestamp that can be reached by one-time DFS traversal.
+     * If node is on cycle, the min timestamp it can get is the first reached node on cycle.
+     * Otherwise, the min timestamp is the node's initially timestamp itself.
+     * Therefore, if minTimestamp >= timestamp[current], then edge (previous - current) is a critical edge.
      *
      * @param n           # of vertices
      * @param connections given list contains connections between nodes in graph
      * @return all critical connections in the network in any order
      */
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
-        Graph g = new Graph(n);
-        g.buildGraph(connections);
+        List<List<Integer>> graph = new ArrayList<>();
 
-        return g.findBridge();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (List<Integer> c : connections) {       // build graph
+            graph.get(c.get(0)).add(c.get(1));
+            graph.get(c.get(1)).add(c.get(0));
+        }
+
+        List<List<Integer>> out = new LinkedList<>();
+
+        int[] timestamp = new int[n];
+
+        dfs(out, graph, 0, -1, timestamp);
+
+        return out;
     }
 
     /**
-     * Graph.
+     * DFS search, if current node is reached before, directly return the timestamp on this node.
+     * In this case, there is a cycle in graph.
+     * Otherwise, return the min time stamp that can be reached.
+     * It will either be the first reached node in cycle, or the current node timestamp itself when there is no cycle.
+     *
+     * @param out       output list
+     * @param graph     graph edges
+     * @param current   current node id
+     * @param previous  previous node id
+     * @param timestamp previous timestamp
+     * @return min timestamp can be reached if on a cycle
      */
-    static class Graph {
-        private int V;      // # of vertices
-        private ArrayList<ArrayList<Integer>> connections = new ArrayList<>();
-        int time = 0;       // discover time (as increasing id for nodes)
-        private List<List<Integer>> bridges = new LinkedList<>();
+    private int dfs(List<List<Integer>> out, List<List<Integer>> graph, int current, int previous, int[] timestamp) {
 
-        /**
-         * Constructor of graph.
-         *
-         * @param v # of vertices
-         */
-        Graph(int v) {
-            V = v;
-            for (int i = 0; i < v; i++) {
-                connections.add(new ArrayList<>());
+        if (timestamp[current] > 0) {       // avoid add extra edges into output result
+            return timestamp[current];
+        }
+
+        timestamp[current] = time++;        // set current node timestamp
+
+        int minTimestamp = time;            // the min timestamp current node is original timestamp
+
+        for (int next : graph.get(current)) {
+            if (next != previous) {
+                int neighborTimestamp = dfs(out, graph, next, current, timestamp);      // obtain min timestamp
+                minTimestamp = Math.min(minTimestamp, neighborTimestamp);
             }
         }
 
-        /**
-         * Add edges into graph.
-         *
-         * @param connections given list contains connections between nodes in graph
-         */
-        void buildGraph(List<List<Integer>> connections) {
-            for (List<Integer> list : connections) {
-                this.connections.get(list.get(0)).add(list.get(1));
-                this.connections.get(list.get(1)).add(list.get(0));
-            }
+        /*
+         * Condition of critical edge:
+         * If current node min timestamp is larger than current node time stamp, then previous node is not on cycle.
+         * Therefore, this edge (previous - current) is a critical edge. */
+        if (minTimestamp >= timestamp[current] && previous >= 0) {
+            out.add(Arrays.asList(previous, current));
         }
 
-        /**
-         * Find bridges in graph.
-         *
-         * @return bridges in this graph
-         */
-        List<List<Integer>> findBridge() {
-            boolean[] isVisited = new boolean[V];
-            int[] timestamp = new int[V], low = new int[V], parent = new int[V];
-
-            Arrays.fill(parent, -1);        // initially, all nodes has no parent
-
-            for (int i = 0; i < V; i++) {
-                if (!isVisited[i]) {
-                    dfs(i, isVisited, timestamp, low, parent);
-                }
-            }
-
-            return bridges;
-        }
-
-        /**
-         * DFS search to find bridge in graph.
-         * If child node has only one path to current node's parent, then this edge is bridge in graph.
-         * (low[vertex] > discovery[id])
-         *
-         * @param id        current node
-         * @param isVisited boolean array records if current node has been visited
-         * @param timestamp discover time (as increasing id for nodes)
-         * @param low       array records lowest parent that contains more than one path to current node
-         * @param parent    parent of current node that direct connect to it
-         */
-        void dfs(int id, boolean[] isVisited, int[] timestamp, int[] low, int[] parent) {
-            isVisited[id] = true;
-            timestamp[id] = ++time;     // mark each node uniquely in order of reached time
-            low[id] = ++time;           // initially, mark each node's lowest parent in order of reached time
-
-            for (int vertex : connections.get(id)) {
-                if (!isVisited[vertex]) {
-                    parent[vertex] = id;
-                    dfs(vertex, isVisited, timestamp, low, parent);
-                    low[id] = Math.min(low[id], low[vertex]);
-
-                    /*
-                     * low[vertex]: child node's lowest parent with more than one route to it.
-                     * discovery[id]: current node id.
-                     * If child node has only one path to current node's parent, then this edge is bridge in graph.
-                     * Since there is only one way from current node's lowest parent to this child. */
-                    if (low[vertex] > timestamp[id]) {
-                        ArrayList<Integer> tmp = new ArrayList<>();
-                        tmp.add(id);
-                        tmp.add(vertex);
-                        bridges.add(tmp);
-                    }
-                } else if (vertex != parent[id]) {
-                    low[id] = Math.min(low[id], timestamp[vertex]);
-                }
-            }
-        }
+        return Math.min(timestamp[current], minTimestamp);      // if there is a cycle, update return timestamp
     }
 }
 
