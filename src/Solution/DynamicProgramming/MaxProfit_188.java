@@ -10,6 +10,96 @@ package Solution.DynamicProgramming;
  */
 
 public class MaxProfit_188 {
+    /**
+     * Dynamic programming with 2D table.
+     * dp[i, j] = max(dp[i, j - 1], prices[j] - prices[m] + dp[i - 1, m])
+     * i: ith transaction
+     * j: prices[j], index in int array price
+     * m: in range of [0, j-1]
+     * => [i, j] = max([i, j - 1], prices[j] + max([i - 1, m] - prices[m]))  (efficient for looping)
+     * Base case:
+     * dp[0, j] = 0
+     * dp[i, 0] = 0
+     *
+     * @param k      at most k transactions
+     * @param prices int array
+     * @return max profit
+     */
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
+
+        /* Corner case */
+        if (n < 2) {
+            return 0;
+        }
+
+        if (k >= n / 2) {       // k is sufficient for comparing each adjacent value in array
+            int max = 0;
+            for (int i = 1; i < n; i++) {
+                if (prices[i] - prices[i - 1] > 0) {
+                    max += prices[i] - prices[i - 1];
+                }
+            }
+            return max;
+        }
+
+        int[][] dp = new int[k + 1][n];
+
+        for (int i = 1; i <= k; i++) {        // buy and sell
+            int max = -prices[0];
+            for (int j = 1; j < n; j++) {     // stock prices
+
+                dp[i][j] = Math.max(prices[j] + max, dp[i][j - 1]);     // sell with highest price
+                max = Math.max(dp[i - 1][j] - prices[j], max);          // buy with lowest price
+            }
+        }
+
+        return dp[k][n - 1];
+    }
+
+    /**
+     * DP solution with space optimized.
+     *
+     * @param k      k times transaction limit
+     * @param prices prices array
+     * @return max profit from the array
+     */
+    public int dpOptimized(int k, int[] prices) {
+
+        /* Corner case */
+        if (prices.length < 2) {
+            return 0;
+        }
+
+        if (k >= prices.length / 2) {       // k is sufficient for comparing each adjacent value in array
+            int max = 0;
+            for (int i = 1; i < prices.length; i++) {
+                if (prices[i] - prices[i - 1] > 0) {
+                    max += prices[i] - prices[i - 1];
+                }
+            }
+            return max;
+        }
+
+        int[] r1 = new int[prices.length];
+        int[] r2 = new int[prices.length];
+
+        for (int i = 1; i < k + 1; i++) {
+            int base = -prices[0];
+
+            for (int j = 1; j < r1.length; j++) {
+                r2[j] = Math.max(r2[j - 1], prices[j] + base);
+                base = Math.max(base, r1[j] - prices[j]);
+            }
+
+            for (int j = 0; j < prices.length; j++) {       // mem compress
+                r1[j] = r2[j];
+                r2[j] = 0;
+            }
+        }
+
+        return r1[prices.length - 1];
+    }
 
     /**
      * Use a state machine to save state.
@@ -54,58 +144,6 @@ public class MaxProfit_188 {
             }
         }
 
-        return Integer.max(0, state[state.length - 1]);
-    }
-
-    /**
-     * Dynamic programming with table.
-     * [i, j] = max([i, j - 1], prices[j] - prices[j'] + [i - 1, j'])
-     * i: ith transaction
-     * j: prices[j], index in int array price
-     * j': in range of [0, j-1]
-     * => [i, j] = max([i, j - 1], prices[j] + max([i - 1, j'] - prices[j']))  (efficient for looping)
-     * dp[0, j] = 0
-     * dp[i, 0] = 0
-     *
-     * @param k      at most k transactions
-     * @param prices int array
-     * @return max profit
-     */
-    public int dp(int k, int[] prices) {
-
-        /* Corner case */
-        if (prices.length < 2) {
-            return 0;
-        }
-
-        /* Corner case: compare between current and previous value in array */
-        if (k >= prices.length / 2) {       // k is sufficient for comparing each adjacent value in array
-            int max = 0;
-            for (int i = 1; i < prices.length; i++) {
-                if (prices[i] - prices[i - 1] > 0) {
-                    max += prices[i] - prices[i - 1];
-                }
-            }
-            return max;
-        }
-
-        int[] r1 = new int[prices.length];
-        int[] r2 = new int[prices.length];
-
-        for (int i = 0; i < k + 1; i++) {
-            int base = -prices[0];
-            for (int j = 0; j < r1.length; j++) {
-                r2[j] = Integer.max(r2[j - 1], prices[j] + base);
-                base = Integer.max(base, r1[j] - prices[j]);
-            }
-
-            /* Reduce memory usage */
-            for (int j = 0; j < prices.length; j++) {
-                r1[j] = r2[j];
-                r2[j] = 0;
-            }
-        }
-
-        return r2[prices.length - 1];
+        return Math.max(0, state[state.length - 1]);
     }
 }

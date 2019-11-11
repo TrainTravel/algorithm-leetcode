@@ -10,8 +10,43 @@ package Solution.DynamicProgramming;
  * Time: 2019/01/22 21:14
  * Created with IntelliJ IDEA
  */
-
 public class MaxProfit_123 {
+    /**
+     * Dynamic programming.
+     * The general state transition to solve this kind of problem is as following:
+     * dp[i, j] = max(dp[i, j - 1], prices[j] - prices[j'] + dp[i - 1, j'])
+     * i: ith transaction (in this case, i <= 2)
+     * j: prices[j], index in int array price
+     * j': in range of [0, j-1]
+     * => [i, j] = max([i, j - 1], prices[j] + max([i - 1, j'] - prices[j']))  (efficient for looping)
+     * Base case:
+     * dp[0, j] = 0
+     * dp[i, 0] = 0
+     *
+     * @param prices given price array
+     * @return maximum profit based on two transactions
+     */
+    public int maxProfit(int[] prices) {
+
+        /* Corner case */
+        if (prices.length < 2) {
+            return 0;
+        }
+
+        int n = prices.length;
+        int[][] dp = new int[3][n];
+
+        for (int k = 1; k < 3; k++) {
+            int min = prices[0];
+            for (int i = 1; i < n; i++) {
+                min = Math.min(min, prices[i] - dp[k - 1][i - 1]);
+                dp[k][i] = Math.max(dp[k][i - 1], prices[i] - min);
+            }
+        }
+
+        return dp[2][n - 1];
+    }
+
     /**
      * Use a state machine to describes the problem statement.
      * State 0: do nothing or buy stock
@@ -24,7 +59,7 @@ public class MaxProfit_123 {
      * @param prices price int array
      * @return max profit
      */
-    public int maxProfit(int[] prices) {
+    public int stateMachine(int[] prices) {
 
         /* Corner case */
         if (prices.length == 0) {
@@ -38,6 +73,6 @@ public class MaxProfit_123 {
             s2 = Integer.max(s2, s1 - prices[i]);       // second buy -> turn to state 2 or do nothing
             s3 = Integer.max(s3, s2 + prices[i]);       // final state, sell or do nothing
         }
-        return Integer.max(s3, 0);      // if the stock price is monotonically decreasing, return 0
+        return Math.max(s3, 0);      // if the stock price is monotonically decreasing, return 0
     }
 }
