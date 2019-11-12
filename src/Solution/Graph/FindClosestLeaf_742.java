@@ -93,18 +93,20 @@ public class FindClosestLeaf_742 {
 
             for (int i = 0; i < size; i++) {
                 TreeNode tmp = q.poll();
+
                 if (tmp.left == null && tmp.right == null) {
                     return tmp.val;
                 }
-
                 if (tmp.left != null & s.add(tmp.left)) {
                     q.add(tmp.left);
                 }
                 if (tmp.right != null & s.add(tmp.right)) {
                     q.add(tmp.right);
                 }
-                if (m.containsKey(tmp) && s.add(m.get(tmp))) {
-                    q.add(m.get(tmp));
+
+                TreeNode next = m.get(tmp);
+                if (next != null && s.add(next)) {
+                    q.add(next);
                 }
             }
         }
