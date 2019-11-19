@@ -40,7 +40,7 @@ public class CharacterReplacement_424 {
              * During traverse, the max possible window is the most occurred char + k.
              * k is the largest possible replacement. And the char count is under current window size.
              * The initially window size is 1. To extend the window size, there are two conditions:
-             * 1. There are replacement left for different char.
+             * 1. There are replacement operations left for different char.
              * 2. Find a new char that is either the current most occurred char, or new max count.
              * If window size is larger than max possible size (max char + k), then the window size should be narrowed.
              * When narrowing the window size, reduce char count that will be excluded from window . */

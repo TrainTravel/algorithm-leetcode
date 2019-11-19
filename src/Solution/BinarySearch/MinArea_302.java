@@ -14,6 +14,10 @@ package Solution.BinarySearch;
 public class MinArea_302 {
     /**
      * Binary search to find the bottom, top, left right bound of rectangle based on given coord.
+     * top = search row [0...x], find first row contain 1,
+     * bottom = search row[x+1, row], find first row with all 0
+     * left = search col[0...y], find first column contain 1,
+     * right = search col[y+1, col], find first col with all 0
      *
      * @param image given 2D matrix
      * @param x     row of one of the black pixels
