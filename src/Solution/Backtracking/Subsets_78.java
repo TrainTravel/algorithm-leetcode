@@ -17,12 +17,40 @@ import java.util.List;
 
 public class Subsets_78 {
     /**
-     * Backtracking.
+     * Bit manipulation.
+     * Index in array can be represented as a bit map, select ith element can be represented as 1, otherwise 0.
+     * Therefore, the whole array can be represented as a 2^n - 1 int, that each bit represent the element in array.
+     * Then loop from 0 to 1 << n, each 1 represent the jth element is selected into current subset.
      *
      * @param nums input int array
      * @return list that contains all subsets
      */
     public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> out = new LinkedList<>();
+        int n = nums.length;
+
+        for (int i = 0; i < 1 << n; i++) {
+            List<Integer> tmp = new LinkedList<>();
+
+            for (int j = 0; j < nums.length; j++) {
+                if (((i >> j) & 1) == 1) {
+                    tmp.add(nums[j]);
+                }
+            }
+
+            out.add(tmp);
+        }
+
+        return out;
+    }
+
+    /**
+     * Normal backtracking.
+     *
+     * @param nums input int array
+     * @return list that contains all subsets
+     */
+    public List<List<Integer>> backtracking(int[] nums) {
         List<List<Integer>> output = new LinkedList<>();
 
         if (nums.length == 0) {
