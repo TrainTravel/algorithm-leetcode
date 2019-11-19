@@ -29,35 +29,23 @@ public class CanCompleteCircuit_134 {
     public int canCompleteCircuit(int[] gas, int[] cost) {
 
         /* Corner case */
-        if (gas.length == 1) {
-            return (gas[0] >= cost[0]) ? 0 : -1;
+        if (gas == null || cost == null || gas.length == 0 || cost.length == 0) {
+            return -1;
         }
 
-        int tank = 0;
+        int size = gas.length, sum = 0, count = 0, total = 0;
 
-        for (int i = 0; i < gas.length; i++) {
-            tank = tank + gas[i] - cost[i];
-        }
-
-        if (tank < 0) {
-            return -1;      // total gas can not cover total cost
-        }
-
-        /* There will be a solution, try from beginning */
-        int start = 0;
-        tank = 0;
-
-        for (int i = 0; i < gas.length; i++) {
-
-            tank = tank + gas[i] - cost[i];
-
-            /* Reset location and tank */
-            if (tank < 0) {
-                tank = 0;
-                start = i + 1;
+        for (int i = 0; i < size; ++i) {
+            sum += gas[i] - cost[i];
+            if (sum < 0) {
+                total += sum;
+                sum = 0;
+                count = i + 1;
             }
         }
 
-        return start;
+        total += sum;
+
+        return total < 0 ? -1 : count;
     }
 }
