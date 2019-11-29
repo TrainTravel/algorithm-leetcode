@@ -1,8 +1,8 @@
 package Solution.FindKth;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import com.sun.jndi.ldap.Ber;
+
+import java.util.*;
 
 /**
  * Given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
@@ -34,8 +34,7 @@ public class KSmallestPairs_373 {
 
         PriorityQueue<Tuple> q = new PriorityQueue<>();
 
-        /*
-         * Add sum of first element in nums1 (smallest in nums1) and each element in nums2.
+        /* Add sum of first element in nums1 (smallest in nums1) and each element in nums2.
          * Assume these values are smallest in array. */
         for (int j = 0; j < nums2.length; j++) {
             q.offer(new Tuple(0, j, nums1[0] + nums2[j]));
@@ -43,8 +42,7 @@ public class KSmallestPairs_373 {
 
         while (k-- > 0 && !q.isEmpty()) {
 
-            /*
-             * First polled element is nums1[0] + nums2[0]. This is smallest sum in two arrays.
+            /* First polled element is nums1[0] + nums2[0]. This is smallest sum in two arrays.
              * Add nums1[1] + nums[0] to queue, based on heap comparator, it will be inserted to correct position.
              * Then poll the second smallest element in queue, and keep it until find k smallest pairs. */
             Tuple current = q.poll();
@@ -62,10 +60,12 @@ public class KSmallestPairs_373 {
     /**
      * Based on given index, save the sum of it.
      */
-    class Tuple implements Comparable<Tuple> {
+    static class Tuple implements Comparable<Tuple> {
         int x, y, val;
 
         /**
+         * Constructor of Tuple.
+         *
          * @param x   index in array1
          * @param y   index in array2
          * @param val sum of two elements in array
@@ -77,6 +77,9 @@ public class KSmallestPairs_373 {
         }
 
         /**
+         * Override compare method.
+         * The tuple with smaller sum has higher priority in queue.
+         *
          * @param b the other Tuple object
          * @return priority of two Tuples
          */

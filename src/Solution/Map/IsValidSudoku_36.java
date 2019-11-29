@@ -30,18 +30,19 @@ public class IsValidSudoku_36 {
      */
     public boolean isValidSudoku(char[][] board) {
 
-        /* Use Set to store each int in board's position */
-        Set<String> boardSet = new HashSet<>();
+        /* Corner case */
+        if (board == null || board.length == 0 || board[0].length == 0) {
+            return false;
+        }
 
-        /* Traverse each element in board */
-        for (int i = 0; i < 9; i++) {
+        Set<String> boardSet = new HashSet<>();     // use set to store each int in board's position
+
+        for (int i = 0; i < 9; i++) {       // traverse each element in board
             for (int j = 0; j < 9; j++) {
 
-                /* Check every position in board */
-                if (board[i][j] != '.') {
+                if (board[i][j] != '.') {       // check every position in board
 
-                    /* board record format(in String): column(char), (char)row, block(char)block */
-                    String current = "(" + board[i][j] + ")";
+                    String current = "(" + board[i][j] + ")";       // board record format(in String): column(char), (char)row, block(char)block
                     if (!boardSet.add(i + current) || !boardSet.add(current + j) || !boardSet.add(i / 3 + current + j / 3)) {
                         return false;
                     }

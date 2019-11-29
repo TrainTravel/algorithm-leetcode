@@ -53,29 +53,36 @@ public class CountSmaller_315 {
 
         while (true) {
 
-            /* If larger than root value, insert to right child */
-            if (val > root.val) {
+            if (val > root.val) {       // if current value is larger than root value, insert to right child
                 count += root.count;        // add all elements that are smaller than current root
                 if (root.right == null) {
-
-                    /* Reaches the end and insert node */
-                    root.right = new BinaryTreeCount(val);
+                    root.right = new BinaryTreeCount(val);      // reaches the end and insert node
                     break;
                 }
                 root = root.right;
             } else {        // insert to left child if small or equal to root
                 root.count++;
-
                 if (root.left == null) {
-
-                    /* Reaches the end and insert node */
-                    root.left = new BinaryTreeCount(val);
+                    root.left = new BinaryTreeCount(val);       // reaches the end and insert node
                     break;
                 }
                 root = root.left;
             }
         }
         return count;
+    }
+
+    /**
+     * This is a binary tree node.
+     * However, unlike normal binary tree, it has a counter that counts the elements smaller than current node.
+     */
+    static class BinaryTreeCount {
+        int val, count = 1;
+        BinaryTreeCount left, right;
+
+        BinaryTreeCount(int val) {
+            this.val = val;
+        }
     }
 
     /**
@@ -102,19 +109,6 @@ public class CountSmaller_315 {
             out.add(small);
         }
         return out;
-    }
-
-    /**
-     * This is a binary tree node.
-     * However, unlike normal binary tree, it has a counter that counts the elements smaller than current node.
-     */
-    private class BinaryTreeCount {
-        int val, count = 1;
-        BinaryTreeCount left, right;
-
-        BinaryTreeCount(int val) {
-            this.val = val;
-        }
     }
 
     public static void main(String[] args) {
