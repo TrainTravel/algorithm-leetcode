@@ -17,10 +17,10 @@ public class MinMeetingRooms_253 {
      * Since it is only the end time conflict that requires one more room, therefore, use a heap to save ending time.
      * They are several cases:
      * 1. Heap is empty
-     * 2. two intervals has same start
-     * 3. interval ends with a time smaller than top of heap (start before the other end)
-     * 4. interval ends with a time larger than top of heap (start after the end)
-     * 5. interval ends with a time smaller than top of heap
+     * 2. Two intervals has same start
+     * 3. Interval ends with a time smaller than top of heap (start before the other end)
+     * 4. Interval ends with a time larger than top of heap (start after the end)
+     * 5. Interval ends with a time smaller than top of heap
      * For situation 1,2,3, add current interval end to heap and one more room is required.
      * For situation 4, their is no conflict, hence add the end time to heap.
      * For situation 5, assume no extra room is required, continue, do nothing.
