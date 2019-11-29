@@ -31,6 +31,13 @@ public class Merge_56 {
 
         Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));     // sort based on intervals[i][0]
 
+//        Arrays.sort(intervals, new Comparator<int[]>() {
+//            @Override
+//            public int compare(int[] o1, int[] o2) {
+//                return o1[0] - o2[0];
+//            }
+//        });
+
         List<int[]> out = new ArrayList<>();
         int[] temp = intervals[0];
         out.add(temp);
