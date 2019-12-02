@@ -1,7 +1,7 @@
 package Solution.Sorting;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -16,10 +16,11 @@ import java.util.List;
 
 public class Insert_57 {
     /**
-     * Starts from new interval. New interval is the temporary value.
-     * If given internal's right bound is smaller than left bound of new interval, insert given interval into list.
-     * If new interval is smaller than given internal, insert new interval into list, replace temp value by given interval.
-     * These two situations are both non-overlapping. If found a overlapping, find larger bound of each value and continue.
+     * The input interval is sorted. Therefore, starts at the first element in intervals.
+     * There are three conditions:
+     * 1. new interval is later than current interval: directly add current interval to output
+     * 2. new interval is at front of interval: directly add current interval to output and set interval to current one
+     * 3. overlap: merge two intervals and wait for later interval to check if there is more overlap
      * Finally, after the iteration, add final temp value into list.
      *
      * @param intervals   interval list
@@ -28,22 +29,28 @@ public class Insert_57 {
      */
     public int[][] insert(int[][] intervals, int[] newInterval) {
 
-        List<int[]> out = new ArrayList<>();
-        int[] temp = newInterval;
+        /* Corner case */
+        if (intervals == null || newInterval == null || newInterval.length == 0) {
+            return intervals;
+        }
 
-        for (int[] interval : intervals) {      // during the iteration, interval[i][0] <= interval[i+1][0]
+        // Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
+        List<int[]> out = new LinkedList<>();
+        int[] tmp = newInterval;
 
-            if (temp[0] > interval[1]) {
-                out.add(interval);
-            } else if (temp[1] < interval[0]) {
-                out.add(temp);
-                temp = interval;
+        for (int[] i : intervals) {
+            if (tmp[0] > i[1]) {
+                out.add(i);
+            } else if (tmp[1] < i[0]) {     // interval has been merged or no overlap
+                out.add(tmp);
+                tmp = i;                    // set tmp to current interval
             } else {
-                temp[0] = Math.min(temp[0], interval[0]);
-                temp[1] = Math.max(temp[1], interval[1]);
+                tmp[0] = Math.min(tmp[0], i[0]);
+                tmp[1] = Math.max(tmp[1], i[1]);
             }
         }
-        out.add(temp);
+        out.add(tmp);
+
         return out.toArray(new int[out.size()][]);
     }
 
