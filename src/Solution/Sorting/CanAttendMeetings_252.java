@@ -19,19 +19,20 @@ public class CanAttendMeetings_252 {
     public boolean canAttendMeetings(int[][] intervals) {
 
         /* Corner case */
-        if (intervals.length < 2) {
+        if (intervals == null || intervals.length == 0 || intervals.length == 1) {
             return true;
         }
+
         Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
-        int[] temp = intervals[0];
+        int[] tmp = intervals[0];
 
         for (int i = 1; i < intervals.length; i++) {
-            if (intervals[i][0] < temp[1]) {
+            if (tmp[1] > intervals[i][0]) {
                 return false;
-            } else {
-                temp = intervals[i];
             }
+            tmp = intervals[i];
         }
+
         return true;
     }
 
