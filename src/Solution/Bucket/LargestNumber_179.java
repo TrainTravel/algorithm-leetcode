@@ -1,9 +1,11 @@
-package Solution.Sorting;
+package Solution.Bucket;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 /**
+ * Given a list of non negative integers, arrange them such that they form the largest number.
+ *
  * @author BorisMirage
  * Time: 2019/07/06 15:56
  * Created with IntelliJ IDEA

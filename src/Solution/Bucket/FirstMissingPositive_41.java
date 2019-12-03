@@ -1,4 +1,4 @@
-package Solution.IndexMapping;
+package Solution.Bucket;
 
 /**
  * Given an unsorted integer array, find the smallest missing positive integer.

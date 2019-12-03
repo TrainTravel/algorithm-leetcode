@@ -1,4 +1,4 @@
-package Solution.Sorting;
+package Solution.Bucket;
 
 import java.util.Arrays;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class MaximumGap_164 {
     /**
-     * Buck sort.
+     * Bucket sort.
      * Put n - 2 numbers (remove max and min in array) into n - 1 buckets.
      * The bucket size is (int) Math.ceil((double) (max - min) / (nums.length - 1)), which will be larger than max gap.
      * In this way, each bucket will be at most 2 elements.

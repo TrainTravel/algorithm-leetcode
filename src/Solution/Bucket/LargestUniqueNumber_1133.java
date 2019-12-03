@@ -1,4 +1,4 @@
-package Solution.IndexMapping;
+package Solution.Bucket;
 
 /**
  * Given an array of integers A, return the largest integer that only occurs once.

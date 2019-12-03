@@ -1,8 +1,6 @@
-package Solution.Sorting;
+package Solution.Intervals;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei).
@@ -14,6 +12,87 @@ import java.util.PriorityQueue;
  */
 public class MinMeetingRooms_253 {
     /**
+     * Define a "time point" to represent each meeting's start and end time.
+     * Then sort the list that contains all time points of meeting.
+     * Iterate all points in list. If there is continues start point, then there is overlap.
+     * Otherwise, one meeting is over and the room is cleaned for next meeting (see comparator for details).
+     *
+     * @param intervals given time interval
+     * @return minimum non-overlapped number
+     */
+    public int minMeetingRooms(int[][] intervals) {
+
+        /* Corner case */
+        if (intervals == null) {
+            return 0;
+        }
+        if (intervals.length <= 1) {
+            return intervals.length;
+        }
+
+        List<Point> list = new LinkedList<>();
+        for (int[] i : intervals) {
+            list.add(new Point(i[0], false));
+            list.add(new Point(i[1], true));
+        }
+
+        Collections.sort(list);
+
+        int count = 0, max = 0;
+        for (Point p : list) {
+            if (!p.isEnd) {     // there is overlap
+                count++;
+            } else {            // one meeting is over, no overlap here
+                count--;
+            }
+
+            max = Math.max(max, count);
+        }
+
+        return max;
+    }
+
+    /**
+     * Point that represent each time stamp.
+     * Each point has following fields:
+     * val: time of current point.
+     * isEnd: is current time a end time.
+     */
+    static class Point implements Comparable<Point> {
+        int val;
+        boolean isEnd;
+
+        /**
+         * Constructor of time point.
+         *
+         * @param val   time of current point
+         * @param isEnd is current time a end time
+         */
+        Point(int val, boolean isEnd) {
+            this.val = val;
+            this.isEnd = isEnd;
+        }
+
+        /**
+         * Compare two points.
+         * If they have different time, then point with earlier time has higher priority.
+         * Otherwise, end point has higher priority.
+         *
+         * @param p other point
+         * @return -1, 0, or 1 as the first argument is less than, equal to, or greater than the second
+         */
+        @Override
+        public int compareTo(Point p) {
+            if (this.val != p.val) {
+                return this.val - p.val;
+            } else {
+                return this.isEnd ? -1 : 1;     // if identical end time is considered as overlap, the order should be reversed
+            }
+        }
+    }
+
+    /**
+     * Solution II.
      * Since it is only the end time conflict that requires one more room, therefore, use a heap to save ending time.
      * They are several cases:
      * 1. Heap is empty
@@ -28,7 +107,7 @@ public class MinMeetingRooms_253 {
      * @param intervals given time interval
      * @return minimum non-overlapped number
      */
-    public int minMeetingRooms(int[][] intervals) {
+    public int heap(int[][] intervals) {
 
         /* Corner case */
         if (intervals.length < 2) {
@@ -52,6 +131,7 @@ public class MinMeetingRooms_253 {
     }
 
     /**
+     * Solution III.
      * Sort start time and end time separately.
      * Then one pointer point at start time, one point at end time.
      * If start time < end time, then one more room is required.

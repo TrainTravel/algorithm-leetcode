@@ -1,4 +1,4 @@
-package Solution.Sorting;
+package Solution.Intervals;
 
 import java.util.Arrays;
 import java.util.LinkedList;
