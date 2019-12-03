@@ -42,7 +42,7 @@ public class MinHeap {
 
     /**
      * Heapify.
-     * Start at middle of array, percolate up each element.
+     * Start at middle of array (the last level will be swapped if not in correct position), percolate up each element.
      */
     private void heapify() {
         for (int i = (size - 2) / 2; i >= 0; i--) {
@@ -69,6 +69,7 @@ public class MinHeap {
 
     /**
      * Move element from certain position to its correct position by swap with element smaller than it.
+     * If two children are both smaller than current element, select smaller one between them, then swap it.
      *
      * @param index position of element
      */
