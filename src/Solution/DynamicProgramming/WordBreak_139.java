@@ -37,6 +37,7 @@ public class WordBreak_139 {
 
         for (int i = 1; i < dp.length; i++) {       // iter string
             for (int j = i - 1; j >= 0; j--) {
+
                 /*
                  * Split string into s(0, j) and s(j, i).
                  * There are two conditions:
