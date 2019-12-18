@@ -48,18 +48,18 @@ public class EmployeeFreeTime_759 {
         Collections.sort(list);
 
         int count = 0;
-        int start = Integer.MIN_VALUE, end = 0;
+        int start = Integer.MIN_VALUE, end;
 
         for (Point p : list) {
             if (p.isStart) {
-                if (count++ == 0) {
-                    end = p.val;
+                if (count++ == 0) {     // if count == 0, then there is no overlap here
+                    end = p.val;        // if there is a new free interval, then current point should be end point
                     if (start > Integer.MIN_VALUE && start < end) {
-                        out.add(new Interval(start, end));
+                        out.add(new Interval(start, end));      // found a new free interval
                     }
                 }
-            } else {
-                if (--count == 0) {
+            } else {        // current point is the end of employee interval
+                if (--count == 0) {     // if --count == 0, then there may be a new free interval based on next point
                     start = p.val;
                 }
             }
