@@ -85,9 +85,11 @@ public class WordBreak_139 {
      * @return if s can be segmented into a space-separated sequence of one or more dictionary words
      */
     private boolean dfs(String s, HashSet<String> dictionary, int[] mem, int start) {
+
         if (dictionary.contains(s)) {
             return true;
         }
+
         if (mem[start] != 0) {
             return mem[start] == 1;
         }

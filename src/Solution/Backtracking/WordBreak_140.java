@@ -1,9 +1,6 @@
 package Solution.Backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words.
@@ -62,6 +59,7 @@ public class WordBreak_140 {
                 }
             }
         }
+
         m.put(s, out);
         return out;
     }
