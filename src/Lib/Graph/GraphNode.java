@@ -1,7 +1,6 @@
 package Lib.Graph;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author BorisMirage
@@ -27,6 +26,5 @@ public class GraphNode {
         public void setWeight(int weight) {
             this.weight = weight;
         }
-
     }
 }
