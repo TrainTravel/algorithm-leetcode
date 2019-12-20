@@ -15,7 +15,6 @@ import Lib.ListNode;
  * Created with IntelliJ IDEA
  */
 
-
 public class AddTwoNumbers_2 {
     /**
      * Sum two nodes and return the sum node until list is empty.
@@ -25,6 +24,11 @@ public class AddTwoNumbers_2 {
      * @return result in ListNode
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        /* Corner case */
+        if (l1 == null && l2 == null) {
+            return null;
+        }
 
         int carry = 0;
         ListNode dummy = new ListNode(0);
@@ -87,7 +91,8 @@ public class AddTwoNumbers_2 {
         }
 
         ListNode current = new ListNode(carry % 10);        // create a node to store this digit
-        current.next = helper(n1 == null ? null : n1.next, n2 == null ? null : n2.next, carry / 10);
+        current.next = helper((n1 == null) ? null : n1.next, (n2 == null) ? null : n2.next, carry / 10);
+
         return current;
     }
 }
