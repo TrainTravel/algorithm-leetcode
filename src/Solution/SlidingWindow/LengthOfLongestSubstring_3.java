@@ -24,20 +24,22 @@ public class LengthOfLongestSubstring_3 {
     public int lengthOfLongestSubstring(String s) {
 
         /* Corner case */
-        if (s.length() < 2) {
-            return s.length();
+        if (s == null || s.length() == 0) {
+            return 0;
         }
 
-        int max = 0;
         HashMap<Character, Integer> m = new HashMap<>();
-
-        for (int i = 0, start = 0; i < s.length(); i++) {      // i is the end of window, start point at window start
+        int last = -1;      // index of last duplicated character
+        int max = 0;
+        for (int i = 0; i < s.length(); i++) {
             if (m.containsKey(s.charAt(i))) {
-                start = Math.max(start, m.get(s.charAt(i)));        // update start to largest to avoid duplicate
+                last = Math.max(last, m.get(s.charAt(i)));
             }
-            m.put(s.charAt(i), i + 1);
-            max = Math.max(i - start + 1, max);
+
+            m.put(s.charAt(i), i);
+            max = Math.max(i - last, max);
         }
+
         return max;
     }
 
@@ -46,7 +48,7 @@ public class LengthOfLongestSubstring_3 {
         System.out.println(test.lengthOfLongestSubstring("abcabcbb"));       // 3
         System.out.println(test.lengthOfLongestSubstring("tmmzuxt"));       // 5
         System.out.println(test.lengthOfLongestSubstring("a"));
-        System.out.println(test.lengthOfLongestSubstring("dvdf"));      // answer: 3
+        System.out.println(test.lengthOfLongestSubstring("dvdf"));      // 3
     }
 }
 
