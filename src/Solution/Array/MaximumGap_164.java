@@ -1,4 +1,4 @@
-package Solution.Bucket;
+package Solution.Array;
 
 import java.util.Arrays;
 
