@@ -1,4 +1,4 @@
-package Solution.Bucket;
+package Solution.Array;
 
 /**
  * Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive).
@@ -17,20 +17,26 @@ package Solution.Bucket;
 
 public class FindDuplicate_287 {
     /**
-     * Index mapping. Mark nums[nums[i]] to negative. If meet any nums[i] that is negative, then the duplicated # is found.
+     * Index mapping. Mark nums[nums[i]] to negative.
+     * If meet any nums[i] that is negative, then the duplicated # is found.
      *
      * @param nums given array
      * @return duplicate number in array
      */
     public int findDuplicate(int[] nums) {
 
-        for (int i = 0; i < nums.length; i++) {
+        int n = nums.length;
 
-            if (nums[Math.abs(nums[i])] < 0) {
+        for (int i = 0; i < n; i++) {
+            int index = Math.abs(nums[i]) - 1;      // find position of index that should be marked to negative
+
+            if (nums[index] < 0) {
                 return Math.abs(nums[i]);
             }
-            nums[Math.abs(nums[i])] = -nums[Math.abs(nums[i])];
+
+            nums[index] = -Math.abs(nums[index]);
         }
+
         return -1;
     }
 }

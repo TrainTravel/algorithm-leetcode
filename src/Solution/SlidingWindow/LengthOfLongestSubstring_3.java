@@ -13,10 +13,10 @@ import java.util.HashMap;
 public class LengthOfLongestSubstring_3 {
     /**
      * Sliding window problem.
-     * Use a pointer to point at the start position, and a hash map to save each char's position.
-     * If current char does not exist in map, then store this char and its next position.
-     * If current char exists in map, reset the position to current char's next. (No duplication)
-     * Compare current non-repeating substring length to max length and find longer one.
+     * The begin of sliding window should be the next index of last duplicated character.
+     * Each time, right pointer is trying to enlarge window size by one.
+     * If it contains a duplicated char, then the left bound should be set to largest index without duplicated char.
+     * The largest index of current char is saved in map, and the window without duplicated one should be next of it.
      *
      * @param s input string
      * @return max sub-string length
@@ -29,11 +29,12 @@ public class LengthOfLongestSubstring_3 {
         }
 
         HashMap<Character, Integer> m = new HashMap<>();
-        int last = -1;      // index of last duplicated character
+        int last = -1;      // index of latest duplicated character
         int max = 0;
+
         for (int i = 0; i < s.length(); i++) {
-            if (m.containsKey(s.charAt(i))) {
-                last = Math.max(last, m.get(s.charAt(i)));
+            if (m.containsKey(s.charAt(i))) {       // if current char is duplicated
+                last = Math.max(last, m.get(s.charAt(i)));      // update sliding window to later one of duplicated char
             }
 
             m.put(s.charAt(i), i);
