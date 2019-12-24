@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DFS;
 
 import Lib.NestedInteger;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DepthSum_339 {
     /**
-     * Recursion with level until find individual number of nested list.
+     * DFS.
      *
      * @param nestedList given nested list
      * @return sum of all integers in the list weighted by depth
@@ -40,6 +40,7 @@ public class DepthSum_339 {
                 sum = sum(i.getList(), sum, level + 1);
             }
         }
+
         return sum;
     }
 }

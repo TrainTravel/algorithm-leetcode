@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.BinarySearch;
 
 /**
  * Given a ascending order integer array nums of n elements and a target value.

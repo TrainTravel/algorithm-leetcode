@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.DFS;
 
 import Lib.Tree.TreeNode;
 
@@ -24,14 +24,16 @@ public class Rob_337 {
 
     public int[] postOrderTraversal(TreeNode r) {
         int[] max = new int[2];     // max[0]: sum without current node r; max[1]: sum with current node r value
+
         if (r == null) {
             return max;
         }
+
         int[] leftMax = postOrderTraversal(r.left);
         int[] rightMax = postOrderTraversal(r.right);
         max[0] = Math.max(leftMax[0], leftMax[1]) + Math.max(rightMax[0], rightMax[1]);
         max[1] = leftMax[0] + rightMax[0] + r.val;
-        return max;
 
+        return max;
     }
 }

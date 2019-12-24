@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.Heap;
 
 import java.util.PriorityQueue;
 
@@ -27,6 +27,8 @@ public class TrapRainWater_407 {
      * @return volume of water it is able to trap
      */
     public int trapRainWater(int[][] heightMap) {
+
+        /* Corner case */
         if (heightMap.length <= 2 || heightMap[0].length <= 2) {
             return 0;
         }
@@ -57,8 +59,7 @@ public class TrapRainWater_407 {
         while (!queue.isEmpty()) {
             Cell cell = queue.poll();       // obtain shortest cell in queue
 
-            /* Searching neighbor (BFS) */
-            for (int[] coord : xy) {
+            for (int[] coord : xy) {        // BFS to find all neighbor
                 int newRow = cell.row + coord[0];
                 int newCol = cell.col + coord[1];
                 if (newRow > 0 && newRow < r && newCol > 0 && newCol < c && !visited[newRow][newCol]) {
@@ -71,7 +72,7 @@ public class TrapRainWater_407 {
         return max;
     }
 
-    class Cell implements Comparable<Cell> {
+    static class Cell implements Comparable<Cell> {
         int row, col, height;
 
         Cell(int row, int col, int height) {
