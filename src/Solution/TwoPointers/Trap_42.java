@@ -70,7 +70,44 @@ public class Trap_42 {
         return max;
     }
 
+    /**
+     * Use a stack to store the decreasing subarray index.
+     * The idea of this solution is to calculate area level by level vertically.
+     * The width of water trapped depends on distance from left to right, so stack save index rather than height.
+     * If the decreasing subarray ends, find each area based on end of decreasing array.
+     * Each decreasing element can trap width * height amount of water.
+     * Width is the distance from bottom to stack pop out element (and that's the reason stack stores index).
+     * Height is the difference from left bound to bottom.
+     * Bottom will update at each level, to avoid duplicated calculation.
+     *
+     * @param height int array of elevation map
+     * @return max trap space
+     */
+    public int stack(int[] height) {
 
+        /* Corner case */
+        if (height == null || height.length < 2) {
+            return 0;
+        }
+        Stack<Integer> stack = new Stack<>();
+        int max = 0, left, bottom;
+
+        for (int i = 0; i < height.length; i++) {
+
+            while (!stack.isEmpty() && height[stack.peek()] < height[i]) {      // find each "level" trapped water
+                bottom = stack.pop();       // update bottom to calculate new "level"
+                if (stack.isEmpty()) {
+                    break;
+                }
+                left = stack.peek();
+                max += (Math.min(height[i], height[left]) - height[bottom]) * (i - left - 1);
+            }
+
+            stack.push(i);      // push non-increasing or first element index (next height is unknown) into stack
+        }
+
+        return max;
+    }
 
     public static void main(String[] args) {
         Trap_42 trapTest = new Trap_42();
