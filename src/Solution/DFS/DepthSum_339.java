@@ -16,6 +16,8 @@ import java.util.List;
 public class DepthSum_339 {
     /**
      * DFS.
+     * The structure of nested integer is similar to a rootless tree, where the actual root is an "invisible" node.
+     * Therefore, to calculate all nodes sum in tree with their depth, DFS/BFS is the most straight approach.
      *
      * @param nestedList given nested list
      * @return sum of all integers in the list weighted by depth
