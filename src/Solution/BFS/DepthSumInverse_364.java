@@ -1,4 +1,4 @@
-package Solution.Search;
+package Solution.BFS;
 
 import Lib.NestedInteger;
 
@@ -18,20 +18,19 @@ import java.util.List;
 
 public class DepthSumInverse_364 {
     /**
-     * Iterate list, calculation process starts at root node.
-     * During the iter process, from root to leaf node, the sum should be duplicated calculated as "layer".
-     * root + root + root.next + root + root.next + root.next.next ...
+     * BFS.
      *
      * @param nestedList given nested list
      * @return sum of all integers in the list weighted by depth
      */
     public int depthSumInverse(List<NestedInteger> nestedList) {
+
+        /* Corner case */
         if (nestedList == null) {
             return 0;
         }
 
-        int sum = 0;
-        int previousSum = 0;
+        int sum = 0, previousSum = 0;
 
         while (!nestedList.isEmpty()) {
             List<NestedInteger> nextLayer = new LinkedList<>();
@@ -43,9 +42,11 @@ public class DepthSumInverse_364 {
                     nextLayer.addAll(l.getList());
                 }
             }
+
             sum += previousSum;
             nestedList = (nextLayer);
         }
+
         return sum;
     }
 }
