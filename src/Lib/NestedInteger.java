@@ -14,7 +14,6 @@ public interface NestedInteger {
      */
     public boolean isInteger();
 
-
     /**
      * @return the single integer that this NestedInteger holds, if it holds a single integer. Return null if this NestedInteger holds a nested list
      */
@@ -33,7 +32,6 @@ public interface NestedInteger {
      * @param ni new NestedInteger
      */
     public void add(NestedInteger ni);
-
 
     /**
      * @return the nested list that this NestedInteger holds, if it holds a nested list. Return null if this NestedInteger holds a single integer
