@@ -30,6 +30,7 @@ public class WordBreak_139 {
         if (s.length() == 0 || wordDict.size() == 0) {
             return false;
         }
+
         HashSet<String> dict = new HashSet<>(wordDict);
 
         boolean[] dp = new boolean[s.length() + 1];
@@ -114,6 +115,5 @@ public class WordBreak_139 {
         wordDict = new String[]{"car", "ca", "rs"};
         l = Arrays.asList(wordDict);
         System.out.println(test.wordBreak("cars", l));
-
     }
 }
