@@ -14,8 +14,10 @@ import Lib.Tree.TreeNode;
 
 public class UpsideDownBinaryTree_156 {
     /**
-     * "Upside down" first is to turn previous left most child to new root node.
-     * Then move previous root to its left child's right node, and move root's left child to new root's left.
+     * For each node, this "upside down" operates same.
+     * Convert left child of current node to its parent, and current node becomes left child's right child.
+     * Current node's right child becomes left child's (now converted to current node's parent) left child.
+     * Note that in this problem, right child will either be leave node, or empty.
      *
      * @param root root node of given tree
      * @return flipped tree
