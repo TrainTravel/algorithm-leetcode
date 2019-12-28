@@ -19,6 +19,7 @@ public class MinCost_256 {
      * Dynamic programming.
      * State transition:
      * dp[i][j] = min(dp[i - 1][k]), where k != j
+     * Time complexity: O(nk), where k is the number of color (in this problem, it's 3)
      *
      * @param costs cost of painting
      * @return minimum cost to paint all houses
@@ -30,25 +31,35 @@ public class MinCost_256 {
             return 0;
         }
 
-        int colors = 3;
+        /*
+         * min1 is the minimum cost in previous row, min2 is the second minimum.
+         * Select min value for each house. But if previous house select same color, use second minimum.
+         * previousMinIndex is the min value index in previous row */
+        int min1 = 0, min2 = 0, previousMinIndex = -1, house = costs.length, colors = costs[0].length;
 
-        for (int i = 1; i < costs.length; i++) {
+        for (int i = 0; i < house; i++) {
+            int tmpMin1 = Integer.MAX_VALUE, tmpMin2 = Integer.MAX_VALUE, currentMinIndex = -1;
             for (int j = 0; j < colors; j++) {
-                int tmp = Integer.MAX_VALUE;
-                for (int k = 0; k < colors; k++) {
-                    if (k != j) {
-                        tmp = Math.min(costs[i - 1][k], tmp);
-                    }
+
+                /*
+                 * If previous house select same color, select second minimum cost instead.
+                 * Otherwise, select minimum value. */
+                int tmp = costs[i][j] + (j != previousMinIndex ? min1 : min2);
+
+                if (tmp < tmpMin1) {     // find new min cost in current row, update min value and index in current row
+                    tmpMin2 = tmpMin1;
+                    tmpMin1 = tmp;
+                    currentMinIndex = j;
+                } else if (tmp < tmpMin2) {      // find new second minimum value in current row
+                    tmpMin2 = tmp;       // second min cost does not require to update index
                 }
-                costs[i][j] += tmp;
             }
-        }
-        int min = Integer.MAX_VALUE;
+            min1 = tmpMin1;
+            min2 = tmpMin2;
+            previousMinIndex = currentMinIndex;
 
-        for (int i = 0; i < costs[0].length; i++) {
-            min = Math.min(costs[colors - 1][i], min);
         }
 
-        return min;
+        return min1;
     }
 }

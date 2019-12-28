@@ -16,37 +16,43 @@ package Solution.DynamicProgramming;
 
 public class MinCostII_265 {
     /**
-     * Dynamic programming.
+     * Naive dynamic programming.
      * State transition:
      * dp[i][j] = min(dp[i - 1][k]), where k != j
+     * Time complexity: O(n * k ^ 2)
      *
      * @param costs cost of painting
      * @return minimum cost to paint all houses
      */
-    public int minCostII(int[][] costs) {
+    public int naiveDP(int[][] costs) {
 
         /* Corner case */
         if (costs.length == 0) {
             return 0;
         }
 
-        int colors = costs.length;
+        int colors = costs.length, min;
+        int[][] dp = new int[costs.length][costs[0].length];        // do not modify input
+        dp[0] = costs[0];
 
-        for (int i = 1; i < costs.length; i++) {
-            for (int j = 0; j < costs[0].length; j++) {
-                int tmp = Integer.MAX_VALUE;
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                min = Integer.MAX_VALUE;
+
                 for (int k = 0; k < costs[0].length; k++) {
                     if (k != j) {
-                        tmp = Math.min(costs[i - 1][k], tmp);
+                        min = Math.min(dp[i - 1][k] + costs[i][j], min);
                     }
                 }
-                costs[i][j] += tmp;
+
+                dp[i][j] = min;
             }
         }
-        int min = Integer.MAX_VALUE;
 
-        for (int i = 0; i < costs[0].length; i++) {
-            min = Math.min(costs[colors - 1][i], min);
+        min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < costs[0].length; i++) {     // find min value in last row
+            min = Math.min(dp[colors - 1][i], min);
         }
 
         return min;
