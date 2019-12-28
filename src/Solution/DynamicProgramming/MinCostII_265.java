@@ -16,6 +16,56 @@ package Solution.DynamicProgramming;
 
 public class MinCostII_265 {
     /**
+     * State transition is same as naive DP solution, which is dp[i][j] = min(dp[i - 1][k]), where k != j
+     * However, use two integers to store the min value in previous row to reduce the loop of searching previous row.
+     * The reason is that two consecutive houses should use different color.
+     * If previous house select current color, select second minimum cost instead.
+     * Otherwise, select min cost from previous row.
+     * Time complexity: O(nk)
+     *
+     * @param costs cost of painting
+     * @return minimum cost to paint all houses
+     */
+    public int minCostII(int[][] costs) {
+
+        /* Corner case */
+        if (costs.length == 0) {
+            return 0;
+        }
+
+        /*
+         * min1 is the minimum cost in previous row, min2 is the second minimum.
+         * Select min value for each house. But if previous house select same color, use second minimum.
+         * previousMinIndex is the min value index in previous row */
+        int min1 = 0, min2 = 0, previousMinIndex = -1, colors = costs[0].length;
+
+        for (int[] cost : costs) {
+
+            int tmpMin1 = Integer.MAX_VALUE, tmpMin2 = Integer.MAX_VALUE, currentMinIndex = -1;
+            for (int j = 0; j < colors; j++) {
+
+                /*
+                 * If previous house select same color, select second minimum cost instead.
+                 * Otherwise, select minimum value. */
+                int tmp = cost[j] + (j != previousMinIndex ? min1 : min2);
+
+                if (tmp < tmpMin1) {     // find new min cost in current row, update min value and index in current row
+                    tmpMin2 = tmpMin1;
+                    tmpMin1 = tmp;
+                    currentMinIndex = j;
+                } else if (tmp < tmpMin2) {      // find new second minimum value in current row
+                    tmpMin2 = tmp;       // second min cost does not require to update index
+                }
+            }
+            min1 = tmpMin1;
+            min2 = tmpMin2;
+            previousMinIndex = currentMinIndex;
+        }
+
+        return min1;
+    }
+
+    /**
      * Naive dynamic programming.
      * State transition:
      * dp[i][j] = min(dp[i - 1][k]), where k != j
