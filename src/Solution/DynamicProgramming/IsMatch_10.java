@@ -38,19 +38,19 @@ public class IsMatch_10 {
             return false;
         }
 
-        int l1 = s.length();
-        int l2 = p.length();
+        int ls = s.length();
+        int lp = p.length();
 
-        boolean[][] dp = new boolean[l1 + 1][l2 + 1];
+        boolean[][] dp = new boolean[ls + 1][lp + 1];
         dp[0][0] = true;
-        for (int i = 1; i <= l2; i++) {
+        for (int i = 1; i <= lp; i++) {
             if (p.charAt(i - 1) == '*') {
                 dp[0][i] = dp[0][i - 2];        // for the case of pattern starts with .*
             }
         }
 
-        for (int i = 1; i <= l1; i++) {
-            for (int j = 1; j <= l2; j++) {
+        for (int i = 1; i <= ls; i++) {
+            for (int j = 1; j <= lp; j++) {
 
                 /*
                  * If current char matches, or pattern is '.', then dp[i][j] = dp[i - 1][j - 1].
@@ -79,25 +79,28 @@ public class IsMatch_10 {
                          * Otherwise, there are three conditions:
                          * 1. Match p(j - 2) for 1 time: dp[i][j - 1]
                          * 2. Match p(j - 1) for n times: dp[i - 1][j] (this is actually only matched in s, not in p)
-                         * 3. Match p in format as ".*" 0 ~ n times: dp[i][j - 2] || dp[i][j - 1] || dp[i - 1][j] */
-                        dp[i][j] = dp[i][j - 1] || dp[i - 1][j] || dp[i][j - 2];
+                         * 3. Match p in format as ".*" 0 ~ n times: dp[i - 1][j] || dp[i][j - 1] || dp[i][j - 2] */
+                        dp[i][j] = dp[i - 1][j] || dp[i][j - 1] || dp[i][j - 2];
                     }
                 }
             }
         }
 
-        return dp[l1][l2];
+        return dp[ls][lp];
     }
 
     /**
-     * Use DFS searching to find if s is matched to p.
+     * Use DFS to find whether s is matched to p.
      * During the searching process, use a 2D int array to record previous result as pruning.
+     * Branch of DFS:
+     * If (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.'), return dfs(s, p, i + 1, j + 1, mem)
+     * If
      *
      * @param s string
      * @param p pattern string
      * @return if string is matched to pattern
      */
-    public boolean dfsImpl(String s, String p) {
+    public boolean dfsImplementation(String s, String p) {
 
         /* Corner case */
         if (p == null || s == null) {
@@ -105,57 +108,61 @@ public class IsMatch_10 {
         }
 
         int[][] mem = new int[s.length() + 1][p.length() + 1];
+        mem[s.length()][p.length()] = 1;
+
+        /*
+         * Set base case when DFS reaches the end of s. Two cases will be marked as matched:
+         * 1. Pattern ends with '*'. '*' can match empty substring, hence, the second last character can be ignored.
+         * 2. Last character. If last character is not matched, it will not be moving to next position in matrix. */
 
         for (int i = p.length(); i >= 0 && (i == p.length() || (i < p.length() && p.charAt(i + 1) == '*')); i -= 2) {
             mem[s.length()][i] = 1;
         }
 
-        return dfs(s, p, 0, 0, mem);
+        return dfs(s, p, 0, 0, mem) == 1;
     }
 
     /**
-     * DFS searching with a 2D int table to accomplish pruning (can be done by hash map).
+     * DFS searching with a 2D int table for pruning (can be replaced by hash map).
+     * Compare one character each time.
      *
      * @param s   string
      * @param p   pattern string
      * @param i   current index of string
      * @param j   current index of pattern
      * @param mem 2D boolean array to store the previous result
-     * @return if string is matched to pattern
+     * @return if string is matched to pattern, return 1, otherwise return -1
      */
-    private boolean dfs(String s, String p, int i, int j, int[][] mem) {
+    private int dfs(String s, String p, int i, int j, int[][] mem) {
 
-        if (mem[i][j] != 0) {      // reuse previous result
-            return mem[i][j] == 1;
+        if (mem[i][j] != 0) {      // memorization
+            return mem[i][j];
         }
 
-        if (j >= p.length()) {      // avoid overflow
-            return false;
+        if (j >= p.length()) {      // avoid out of bound
+            return -1;
         }
 
-        if (p.charAt(j) == '*') {
-            int n = i - 2;
+        if (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')) {     // match single char
+            mem[i][j] = dfs(s, p, i + 1, j + 1, mem);
+            return mem[i][j];
+        } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {      // match empty substring with '*'
+            mem[i][j] = dfs(s, p, i, j + 2, mem);
+            return mem[i][j];
+        } else if (p.charAt(j) == '*') {        // match previous char in p 2 ~ n times
+            int previous = i - 2;
 
-            /*
-             * n - 2: char in pattern before * and one char ahead. This is to handle the case where * matches 0 times.
-             * 1. If '*' is the second char in pattern: n == i - 2
-             * 2. If '*' matches 0 times in s
-             * If char before '*' is '.', then it can match for any char for any times: p.charAt(j - 1) == '.' */
-            while (n < s.length() && (n == i - 2 || s.charAt(n) == p.charAt(j - 1) || p.charAt(j - 1) == '.')) {
-                if (dfs(s, p, ++n, j + 1, mem)) {
+            while (previous < s.length() && (previous == i - 2 || s.charAt(previous) == p.charAt(j - 1) || p.charAt(j - 1) == '.')) {
+                previous++;
+                if (dfs(s, p, previous, j + 1, mem) == 1) {
                     mem[i][j] = 1;
-                    return true;
+                    return mem[i][j];
                 }
             }
-        } else if (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')) {
-            mem[i][j] = dfs(s, p, i + 1, j + 1, mem) ? 1 : -1;
-            return mem[i][j] == 1;
-        } else if (j + 1 < p.length() && p.charAt(j + 1) == '*') {      // match previous char more than 1 time
-            mem[i][j] = dfs(s, p, i, j + 2, mem) ? 1 : -1;
-            return mem[i][j] == 1;
         }
 
-        return false;
+        mem[i][j] = -1;
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -163,15 +170,14 @@ public class IsMatch_10 {
         IsMatch_10 test = new IsMatch_10();
         String s = "ab";
         String p = ".*";
-        System.out.println(test.dfsImpl(s, p));     // T
+        System.out.println(test.dfsImplementation(s, p));     // T
 
         s = "mississippi";
         p = "mis*is*p*.";
-        System.out.println(test.dfsImpl(s, p));     // F
+        System.out.println(test.dfsImplementation(s, p));     // F
 
         s = "aasdfasdfasdfasdfas";
         p = "aasdf.*asdf.*asdf.*asdf.*s";
-        System.out.println(test.dfsImpl(s, p));     // T
+        System.out.println(test.dfsImplementation(s, p));     // T
     }
-
 }
