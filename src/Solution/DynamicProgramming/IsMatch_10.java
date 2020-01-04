@@ -93,7 +93,7 @@ public class IsMatch_10 {
      * Use DFS to find whether s is matched to p.
      * During the searching process, use a 2D int array to record previous result as pruning.
      * Branch of DFS:
-     * If (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.'), return dfs(i + 1, j + 1).
+     * If (s(i) == p(j) || p(j) == '.'), return dfs(i + 1, j + 1).
      * Else, s(i) can not match p(j), if p(j + 1) is '*', then '*' matches empty substring, move to dfs(i, j + 2).
      * Finally, if p(j) == '*', then current character could be matched from 2 to n times.
      * Under this condition, try dfs(i - 1, j + 1) and move i forward, find the end of repeating character.
@@ -132,7 +132,10 @@ public class IsMatch_10 {
 
     /**
      * DFS searching with a 2D int table for pruning (can be replaced by hash map).
-     * Compare one character each time.
+     * Compare one character each time. There are three branches.
+     * 1. A char is matched: s(i) == p(j) || p(j) == '.'
+     * 2. Matched an empty substring: j + 1 < p.length() && p(j + 1) == '*'. Move to next char in p after '*'.
+     * 3. Match char ahead of '*' more than 1 time: from s(i - 1) to find char in s matched to next char in p after '*'.
      *
      * @param s   string
      * @param p   pattern string
