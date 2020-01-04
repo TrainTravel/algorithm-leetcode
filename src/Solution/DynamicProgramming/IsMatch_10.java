@@ -93,8 +93,12 @@ public class IsMatch_10 {
      * Use DFS to find whether s is matched to p.
      * During the searching process, use a 2D int array to record previous result as pruning.
      * Branch of DFS:
-     * If (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.'), return dfs(s, p, i + 1, j + 1, mem)
-     * If
+     * If (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.'), return dfs(i + 1, j + 1).
+     * Else, s(i) can not match p(j), if p(j + 1) is '*', then '*' matches empty substring, move to dfs(i, j + 2).
+     * Finally, if p(j) == '*', then current character could be matched from 2 to n times.
+     * Under this condition, try dfs(i - 1, j + 1) and move i forward, find the end of repeating character.
+     * If the next character of repeating char is matched to next char in p after '*', continue until reaches the end.
+     * Otherwise, s is not matched with p.
      *
      * @param s string
      * @param p pattern string
@@ -107,6 +111,11 @@ public class IsMatch_10 {
             return false;
         }
 
+        /*
+         * mem[i][j]: if s(0, i) can be matched with p.
+         * If mem[i][j] can be matched with p(0, j), then move i and j forward until reaches the end of s and p.
+         * If s finally matches with p, set mem[i][j] to 1 and return 1.
+         * Otherwise, set mem[i][j] to -1 and return -1. */
         int[][] mem = new int[s.length() + 1][p.length() + 1];
         mem[s.length()][p.length()] = 1;
 
@@ -114,7 +123,6 @@ public class IsMatch_10 {
          * Set base case when DFS reaches the end of s. Two cases will be marked as matched:
          * 1. Pattern ends with '*'. '*' can match empty substring, hence, the second last character can be ignored.
          * 2. Last character. If last character is not matched, it will not be moving to next position in matrix. */
-
         for (int i = p.length(); i >= 0 && (i == p.length() || (i < p.length() && p.charAt(i + 1) == '*')); i -= 2) {
             mem[s.length()][i] = 1;
         }
@@ -152,6 +160,13 @@ public class IsMatch_10 {
         } else if (p.charAt(j) == '*') {        // match previous char in p 2 ~ n times
             int previous = i - 2;
 
+            /*
+             * To match a char for 1 ~ n times, only requires to find the next char of repeating character.
+             * For instance, "abcddddef" can be matched to "abcd*ef".
+             * First 'd' matches first 'd' in pattern, and the next and repeating 'd' matches '*'.
+             * If s and p are matched, the next character in s should be same to the char next to '*' in p.
+             * Therefore, find the next char in s after the repeating character.
+             * If reaches the end of s, then the mem will handle it, since mem has been processed. */
             while (previous < s.length() && (previous == i - 2 || s.charAt(previous) == p.charAt(j - 1) || p.charAt(j - 1) == '.')) {
                 previous++;
                 if (dfs(s, p, previous, j + 1, mem) == 1) {
