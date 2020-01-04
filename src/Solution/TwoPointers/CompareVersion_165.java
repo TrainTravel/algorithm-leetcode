@@ -26,18 +26,27 @@ public class CompareVersion_165 {
      */
     public int compareVersion(String version1, String version2) {
 
-        String[] l1 = version1.split("\\."), l2 = version2.split("\\.");
+        int p1 = 0, p2 = 0, l1 = version1.length(), l2 = version2.length(), current1, current2;
 
-        for (int i = 0; i < Math.max(l1.length, l2.length); i++) {
-            int v1 = i < l1.length ? Integer.valueOf(l1[i]) : 0;        // avoid point moving out of list
-            int v2 = i < l2.length ? Integer.valueOf(l2[i]) : 0;        // avoid point moving out of list
+        while (p1 < l1 || p2 < l2) {
+            current1 = 0;
+            current2 = 0;
 
-            if (v1 > v2) {
-                return 1;
-            } else if (v1 < v2) {
+            while (p1 < l1 && Character.isDigit(version1.charAt(p1))) {
+                current1 = current1 * 10 + version1.charAt(p1++) - 48;
+            }
+            p1++;
+            while (p2 < l2 && Character.isDigit(version2.charAt(p2))) {
+                current2 = current2 * 10 + version2.charAt(p2++) - 48;
+            }
+            p2++;
+            if (current1 < current2) {
                 return -1;
+            } else if (current1 > current2) {
+                return 1;
             }
         }
+
         return 0;
     }
 
