@@ -20,7 +20,7 @@ public class SortedArrayToBST_108 {
      */
     public TreeNode sortedArrayToBST(int[] nums) {
 
-        /* */
+        /* Corner case */
         if (nums.length < 2) {
             return (nums.length == 0 ? null : new TreeNode(nums[0]));
         }
@@ -29,7 +29,7 @@ public class SortedArrayToBST_108 {
     }
 
     /**
-     * Pre-order traversal.
+     * Pre-order traverse.
      *
      * @param num   given num array
      * @param start start index
@@ -38,8 +38,7 @@ public class SortedArrayToBST_108 {
      */
     private TreeNode builder(int[] num, int start, int end) {
 
-        /* End point */
-        if (start > end) {
+        if (start > end) {      // end point of recursion
             return null;
         }
 
