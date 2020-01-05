@@ -16,8 +16,12 @@ package Solution.Others;
 
 public class MultiplyString_43 {
     /**
-     * Divide multiply into steps, it can be regarded as one digit multi one digit in each time, finally sum all result.
-     * Hence, simply apply this process.
+     * Divide multiply into steps, it can be regarded as one digit multi one digit in each time.
+     * Starting at last digit of two numbers, which is the basic unit of two numbers.
+     * Then move to the beginning of two strings, which is the highest digit.
+     * Under each multiplication, multiply two digits and add previous carry (tens place).
+     * Then calculate units place and tens place.
+     * Note that the larger index in temporary array is unit place, and smaller one is tens place.
      *
      * @param num1 first input number in string format
      * @param num2 second input number in string format
@@ -30,29 +34,28 @@ public class MultiplyString_43 {
             return "0";
         }
 
-        /* Store each result's position.
-         * All elements will be combined as a string for string output */
-        int[] index = new int[num1.length() + num2.length()];
+        int n1 = num1.length(), n2 = num2.length(), current;
+        int[] tmp = new int[n1 + n2];
 
-        for (int i = num1.length() - 1; i >= 0; i--) {
-            for (int j = num2.length() - 1; j >= 0; j--) {
-                int currentMultiply = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+        for (int i = n1 - 1; i >= 0; i--) {         // starts from the last digit of given string
+            for (int j = n2 - 1; j >= 0; j--) {
 
-                int sum = currentMultiply + index[i + j + 1];       // add nums through previous calculation
+                current = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');      // current two digits multiplication
+                current += tmp[i + j + 1];      // add carry from previous multiplication
 
-                /* Put basic and tens into correct position */
-                index[i + j] += sum / 10;
-                index[i + j + 1] = sum % 10;
+                tmp[i + j + 1] = current % 10;  // units place of multiplication
+                tmp[i + j] += current / 10;     // tens place of multiplication
             }
         }
 
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < index.length; i++) {
-            if (!(i == 0 && index[i] == 0)) {       // avoid leading 0
-                res.append(index[i]);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tmp.length; i++) {      // first digit in array (w/o leading 0) is the highest digit
+            if (i != 0 || tmp[i] != 0) {        // avoid leading 0
+                sb.append(tmp[i]);
             }
         }
-        return res.toString();
+
+        return sb.toString();
     }
 
     public static void main(String[] args) {
