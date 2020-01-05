@@ -17,6 +17,8 @@ public class LongestValidParentheses_32 {
      * First from left to right, if left equals to right and none of them are 0, then one valid length is found.
      * Compare current length to max length. If larger then switch it. Then reset both counters.
      * When first traverse completed, traverse string from right to left with same process.
+     * The second traverse is to avoid that right parenthesis is more than left parenthesis in given string.
+     * For example, when string is )))))()(), then the max counter will never be triggered.
      * Final max length is the result.
      * Analysis:
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
@@ -32,33 +34,34 @@ public class LongestValidParentheses_32 {
             return 0;
         }
 
+        return Math.max(helper(s, 0, s.length(), '('), helper(s, -s.length() + 1, 0, ')'));
+    }
+
+    /**
+     * Find length of longest valid parentheses substring by traversing given string.
+     * Use a for loop to traverse string.
+     * Therefore, if starts from left to right, start index is 0, end index is string's length.
+     * If traverse from right to left, start index is -(string's length + 1), since for loop is fixed.
+     * End index under this situation is 0.
+     *
+     * @param s     given string
+     * @param start start index of string
+     * @param end   end index of string
+     * @param c     left parenthesis
+     * @return length of longest valid parentheses substring
+     */
+    private int helper(String s, int start, int end, char c) {
         int left = 0, right = 0, max = 0;
-        for (int i = 0; i < s.length(); i++) {      // traverse from left to right
-            if (s.charAt(i) == '(') {
+
+        for (int i = start; i < end; i++) {
+            if (s.charAt(Math.abs(i)) == c) {
                 left++;
             } else {
                 right++;
             }
             if (left == right) {
-                max = Math.max(max, left + right);
+                max = Math.max(left + right, max);
             } else if (right > left) {
-                left = 0;
-                right = 0;
-            }
-        }
-
-        left = 0;
-        right = 0;
-
-        for (int i = s.length() - 1; i > -1; i--) {     // traverse from right to left
-            if (s.charAt(i) == ')') {
-                right++;
-            } else {
-                left++;
-            }
-            if (left == right) {
-                max = Math.max(max, left + right);
-            } else if (right < left) {
                 left = 0;
                 right = 0;
             }
