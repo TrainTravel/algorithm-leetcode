@@ -81,7 +81,7 @@ public class LongestValidParentheses_32 {
      * @param s input parentheses string
      * @return longest valid parentheses length
      */
-    public int longestValidParenthesesStack(String s) {
+    public int stack(String s) {
 
         /* Corner case */
         if (s.length() < 2) {
@@ -111,8 +111,13 @@ public class LongestValidParentheses_32 {
     }
 
     /**
-     * Using dynamic programming to solve this problem.
-     * This approach is faster than previous one.
+     * DP solution.
+     * State transition:
+     * If s.charAt(i) == ')', then there may be possible valid pair.
+     * If s.charAt(i - 1) == '(', then dp[i] = dp[i - 2] + 2 (required to check if i - 2 is out of boundary).
+     * Otherwise, if s.charAt(i - dp[i - 1] - 1) == '(', which shows current ')' matches a '('.
+     * dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2
+     * If i - dp[i - 1] <= 1, then start position of current pair is start of string, dp[i] = dp[i - 1] + 2.
      * Analysis:
      * Time complexity: O(n). Single traversal of string to fill dp array is done.
      * Space complexity: O(n). dp array of size n is used.
@@ -120,15 +125,14 @@ public class LongestValidParentheses_32 {
      * @param s input string
      * @return longest valid parentheses length
      */
-    public int longestValidParenthesesDP(String s) {
+    public int dp(String s) {
 
         int[] dp = new int[s.length()];        // save temp max
         int maxParentheses = 0;
 
         for (int i = 1; i < s.length(); i++) {
 
-            /* If current char is ')', then find previous state */
-            if (s.charAt(i) == ')') {
+            if (s.charAt(i) == ')') {       // if current char is ')', then there may be valid pair
                 if (s.charAt(i - 1) == '(') {       // add a new pair
 
                     dp[i] = (i > 1) ? dp[i - 2] + 2 : 2;
