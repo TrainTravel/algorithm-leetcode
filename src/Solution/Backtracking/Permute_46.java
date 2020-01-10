@@ -21,38 +21,39 @@ public class Permute_46 {
      * @return all possible permutations
      */
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
+
+        List<List<Integer>> out = new LinkedList<>();
 
         /* Corner case */
         if (nums.length == 0) {
-            return res;
+            return out;
         }
 
         Arrays.sort(nums);
-        backtracking(nums, new ArrayList<>(), res);
+        backtracking(nums, new ArrayList<>(), out);
 
-        return res;
+        return out;
     }
 
     /**
      * Backtracking to find all possible permutations.
      * The end point is when current temporary list reaching the size of given array.
      *
-     * @param nums  given array
-     * @param cache temporary list
-     * @param res   output list
+     * @param nums given array
+     * @param tmp  temporary list
+     * @param res  output list
      */
-    private void backtracking(int[] nums, List<Integer> cache, List<List<Integer>> res) {
-        if (cache.size() == nums.length) {
-            res.add(new ArrayList<>(cache));
+    private void backtracking(int[] nums, List<Integer> tmp, List<List<Integer>> res) {
+
+        if (tmp.size() == nums.length) {
+            res.add(new ArrayList<>(tmp));
         } else {
 
-            /* Traverse elements in array */
-            for (int num : nums) {
-                if (!cache.contains(num)) {
-                    cache.add(num);
-                    backtracking(nums, cache, res);
-                    cache.remove(cache.size() - 1);
+            for (int num : nums) {      // backtracking each element
+                if (!tmp.contains(num)) {
+                    tmp.add(num);
+                    backtracking(nums, tmp, res);
+                    tmp.remove(tmp.size() - 1);
                 }
             }
         }
