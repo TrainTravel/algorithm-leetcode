@@ -12,7 +12,10 @@ import java.util.HashMap;
 
 public class SubarraySum_560 {
     /**
-     * Calculate the prefix sum and then find that if previous array contain the prefix that equals to current value.
+     * Calculate the prefix sum of array.
+     * Array may contains negative numbers. Therefore, use a hash map to save numbers of subarray with this sum.
+     * At each element in array, find if sum - k exist in hash map.
+     * If so, then there are m.get(sum - k) subarray sum equals to k.
      *
      * @param nums given int array
      * @param k    target number
@@ -37,5 +40,9 @@ public class SubarraySum_560 {
         }
 
         return out;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new SubarraySum_560().subarraySum(new int[]{4, 1, 3, 7}, 4));
     }
 }
