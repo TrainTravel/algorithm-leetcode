@@ -1,5 +1,8 @@
 package Solution.Design;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Design a HashMap without using any built-in hash table libraries.
  * To be specific, your design should include these functions:
@@ -14,13 +17,15 @@ package Solution.Design;
  */
 
 public class MyHashMap_706 {
-    private int[] map;
+    private LinkedList<Cell>[] map;
+    int MAX_SIZE = 256;
+    int size;
 
     /**
      * Initialize map.
      */
     public MyHashMap_706() {
-        this.map = new int[1000001];
+        this.map = new LinkedList[MAX_SIZE];
     }
 
     /**
@@ -30,7 +35,27 @@ public class MyHashMap_706 {
      * @param value given value
      */
     public void put(int key, int value) {
-        map[key] = value + 1;
+        int index = key % MAX_SIZE;
+        if (map[index] == null) {
+            map[index] = new LinkedList<>();
+        }
+
+        Cell tmp = new Cell(key, value);
+        LinkedList<Cell> l = map[index];
+
+        for (Cell c : l) {
+            if (c.key == key) {
+                l.remove(c);
+                break;
+            }
+        }
+
+        l.add(tmp);
+        size++;
+
+        if (size >= MAX_SIZE * 0.75) {
+            rehashing();
+        }
     }
 
     /**
@@ -40,7 +65,20 @@ public class MyHashMap_706 {
      * @return corresponding value
      */
     public int get(int key) {
-        return map[key] - 1;
+        int index = key % MAX_SIZE;
+        if (map[index] == null) {
+            return -1;
+        }
+
+        LinkedList<Cell> l = map[index];
+
+        for (Cell c : l) {
+            if (c.key == key) {
+                return c.val;
+            }
+        }
+
+        return -1;
     }
 
     /**
@@ -49,6 +87,57 @@ public class MyHashMap_706 {
      * @param key given key
      */
     public void remove(int key) {
-        map[key] = 0;
+        int index = key % MAX_SIZE;
+        if (map[index] == null) {
+            return;
+        }
+
+        LinkedList<Cell> l = map[index];
+
+        l.removeIf(c -> c.key == key);
+
+        size--;
+    }
+
+    /**
+     * Rehashing to make hash set more balanced.
+     */
+    private void rehashing() {
+        MAX_SIZE *= 2;
+
+        LinkedList<Cell>[] tmp = new LinkedList[MAX_SIZE];
+
+        for (List<Cell> l : map) {
+            if (l != null) {
+                for (Cell c : l) {
+                    int index = c.key % MAX_SIZE;
+                    if (tmp[index] == null) {
+                        tmp[index] = new LinkedList<>();
+                    }
+                    tmp[index].add(c);
+                }
+            }
+        }
+
+        map = tmp;
+    }
+
+    /**
+     * Cell used in map.
+     */
+    static class Cell {
+        int key;
+        int val;
+
+        public Cell(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+
+    public static void main(String[] args) {
+        MyHashMap_706 test = new MyHashMap_706();
+        test.put(1, 1);
+        System.out.println(test.get(1));
     }
 }
