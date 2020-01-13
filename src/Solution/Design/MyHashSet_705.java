@@ -69,6 +69,7 @@ public class MyHashSet_705 {
         if (arr[index] == null) {
             return;
         }
+
         for (int i = 0; i < arr[index].size(); i++) {
             if (arr[index].get(i).equals(key)) {
                 arr[index].remove(i);
@@ -86,13 +87,16 @@ public class MyHashSet_705 {
         LinkedList<Integer>[] newArr = new LinkedList[MAX_SIZE];
 
         for (List<Integer> l : arr) {
-            for (int i : l) {
-                int index = i % MAX_SIZE;
-                if (newArr[index] == null) {
-                    newArr[index] = new LinkedList<>();
+            if (l != null) {
+                for (int i : l) {
+                    int index = i % MAX_SIZE;
+                    if (newArr[index] == null) {
+                        newArr[index] = new LinkedList<>();
+                    }
+                    newArr[index].add(i);
                 }
-                newArr[index].add(i);
             }
+
         }
         arr = newArr;
     }
@@ -102,15 +106,16 @@ public class MyHashSet_705 {
      */
     public boolean contains(int key) {
         int index = key % MAX_SIZE;
-
         if (arr[index] == null) {
             return false;
         }
+
         for (int i : arr[index]) {
             if (i == key) {
                 return true;
             }
         }
+
         return false;
     }
 }
