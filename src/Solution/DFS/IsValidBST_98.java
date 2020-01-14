@@ -1,7 +1,8 @@
 package Solution.DFS;
 
-
 import Lib.Tree.TreeNode;
+
+import java.util.Stack;
 
 /**
  * Given a binary tree, determine if it is a valid binary search tree (BST).
@@ -19,11 +20,11 @@ public class IsValidBST_98 {
     /**
      * In-order traversal with each root's value. Compare left subtree and right subtree.
      *
-     * @param root root TreeNode
-     * @return is this tree a BST
+     * @param root root of tree
+     * @return if given tree is a valid BST
      */
     public boolean isValidBST(TreeNode root) {
-        return recursion(root, Long.MIN_VALUE, Long.MAX_VALUE);     // avoid int overflow
+        return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);     // avoid int overflow
     }
 
     /**
@@ -32,23 +33,23 @@ public class IsValidBST_98 {
      * @param root current root
      * @param min  min value
      * @param max  max value
-     * @return is current root a BST
+     * @return if given tree is a valid BST
      */
-    private boolean recursion(TreeNode root, long min, long max) {
+    private boolean dfs(TreeNode root, long min, long max) {
         if (root == null) {
             return true;
         }
         if (root.val >= max || root.val <= min) {       // no duplicate node as well
             return false;
         }
-        return recursion(root.left, min, root.val) && recursion(root.right, root.val, max);
+        return dfs(root.left, min, root.val) && dfs(root.right, root.val, max);
     }
 
     /**
      * Inorder traversal.
      *
-     * @param root root node
-     * @return is this tree a BST
+     * @param root root of tree
+     * @return if given tree is a valid BST
      */
     public boolean inOrder(TreeNode root) {
 
@@ -59,7 +60,7 @@ public class IsValidBST_98 {
 
         long[] arr = new long[]{Long.MIN_VALUE};
 
-        return helper(root, arr);
+        return dfs(root, arr);
     }
 
     /**
@@ -68,15 +69,15 @@ public class IsValidBST_98 {
      *
      * @param r        current node
      * @param previous previous node value
-     * @return is this tree a BST
+     * @return if given tree is a valid BST
      */
-    private boolean helper(TreeNode r, long[] previous) {
+    private boolean dfs(TreeNode r, long[] previous) {
         if (r == null) {
             return true;
         }
 
         boolean out;
-        out = helper(r.left, previous);
+        out = dfs(r.left, previous);
 
         if ((long) r.val <= previous[0]) {
             return false;
@@ -84,6 +85,34 @@ public class IsValidBST_98 {
 
         previous[0] = r.val;
 
-        return out & helper(r.right, previous);
+        return out & dfs(r.right, previous);
+    }
+
+    /**
+     * Iterative solution based on in-order traversal and stack.
+     *
+     * @param root root of tree
+     * @return if given tree is a valid BST
+     */
+    public boolean stack(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
+        TreeNode previous = null;
+
+        while (!stack.isEmpty() || current != null) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+            } else {
+                TreeNode p = stack.pop();
+                if (previous != null && p.val <= previous.val) {
+                    return false;
+                }
+                previous = p;
+                current = p.right;
+            }
+        }
+
+        return true;
     }
 }
