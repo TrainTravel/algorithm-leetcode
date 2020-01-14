@@ -13,9 +13,12 @@ import java.util.Stack;
 
 public class Calculate_224 {
     /**
-     * Use a stack to store calculate result of each operator and Operand.
-     * Pop the sum of previous calculation with each operand.
-     * If found a bracket, push a 0 to stack as an initially sum, and keep calculation.
+     * Use a stack to store calculate result of each operator and operand.
+     * Normally, parse current integer and calculate it with previous sum and sign.
+     * If reaches brackets, then consider the expression within brackets is a new expression.
+     * Push the sign before bracket pair for final evaluation for whole expression within brackets.
+     * Push a new initially sum 0 into stack, since the expression within brackets is a new expression.
+     * Due to sign is pushed into stack, when reaches the right part of bracket, pop out sign for calculation.
      * After the bracket is end, pop the previous sum in bracket and before bracket to calculate the result.
      *
      * @param s given expression string
@@ -24,29 +27,39 @@ public class Calculate_224 {
     public int calculate(String s) {
 
         Stack<Integer> stack = new Stack<>();
-        stack.push(0);                          // always keep most recent sum at top
 
-        for (int i = 0, sign = 1; i < s.length(); i++) {
+        stack.push(0);
+        int sign = 1, num;      // initially, sign will always be positive
+
+        for (int i = 0; i < s.length(); i++) {
 
             if (Character.isDigit(s.charAt(i))) {
-                int num = s.charAt(i) - '0';
+                num = s.charAt(i) - '0';
                 while (i < s.length() - 1 && Character.isDigit(s.charAt(i + 1))) {      // calculate current numbers
                     num = num * 10 + (s.charAt(++i) - '0');     // ++i is equivalent to i = i + 1
                 }
-                stack.push(stack.pop() + sign * num);       // calculate previous sum and current integer
+
+                stack.push(stack.pop() + sign * num);      // calculate previous sum and current integer with sign
             } else if (s.charAt(i) == '+') {
                 sign = 1;
             } else if (s.charAt(i) == '-') {
                 sign = -1;
-            } else if (s.charAt(i) == '(') {        // calculate the sum in brackets, and push the
+            } else if (s.charAt(i) == '(') {        // calculate the sum in brackets, push the initially sum 0
                 stack.push(sign);
-                stack.push(0);      // initial sum in brackets are 0
-                sign = 1;       // initial operator in brackets is positive
-            } else if (s.charAt(i) == ')') {    // update last sum = current sum * sign
+                stack.push(0);      // bracket should be considered as a new calculation, and push a new init 0
+                sign = 1;               // initial operator in brackets is positive
+            } else if (s.charAt(i) == ')') {
+
+                /*
+                 * Pop out three items to calculate sum within current bracket pair.
+                 * First item: current sum within brackets.
+                 * Second item: sign of whole bracket pair.
+                 * Third item: previous sum outside of bracket pair. */
                 stack.push(stack.pop() * stack.pop() + stack.pop());
             }
         }
-        return stack.pop();
+
+        return stack.pop();     // top of stack is always the result of current expression
     }
 
     public static void main(String[] args) {

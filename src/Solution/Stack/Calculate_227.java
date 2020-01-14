@@ -1,7 +1,5 @@
 package Solution.Stack;
 
-import java.util.Stack;
-
 /**
  * Implement a basic calculator to evaluate a simple expression string.
  * The expression string contains only non-negative integers, +, -, *, / operators and empty spaces .
@@ -14,9 +12,11 @@ import java.util.Stack;
 
 public class Calculate_227 {
     /**
-     * Use a stack to store each number in string, and assign sign based on previous operator: '+', '-'.
-     * If found a '*' or '/', pop the last element and do the corresponding calculation, then push the result.
-     * Finally, calculate sum of all values in stack.
+     * Use integers to store previous operand, current operand, and use character to store operator.
+     * If the operator is + or -, then add previous number to sum, and set current number to positive or negative.
+     * If the operator is * or /, then multiply or divide two operands, and set previous number to this result.
+     * The reason is that * and / has higher priority, and can not involve previous result to multiply or divide.
+     * Finally, add previous number to final result.
      *
      * @param s expression string
      * @return calculation result of s
@@ -24,45 +24,52 @@ public class Calculate_227 {
     public int calculate(String s) {
 
         /* Corner case */
-        if (s.length() < 1) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
-        Stack<Integer> stack = new Stack<>();
 
-        int num = 0;
-        char sign = '+';
+        long previousNumber = 0;        //
+        int sum = 0, currentNumber;
+        char previousOperator = '+';
+
         for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
 
-            if (Character.isDigit(s.charAt(i))) {
-                num = num * 10 + s.charAt(i) - '0';     // find operand
-            }
+            if (c != ' ') {     // trim string to remove redundant space
+                if (Character.isDigit(c)) {
+                    currentNumber = c - '0';
+                    while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                        currentNumber = currentNumber * 10 + (s.charAt(i + 1) - '0');
+                        i++;
+                    }
 
-            if (s.charAt(i) != ' ' && !Character.isDigit(s.charAt(i)) || i == s.length() - 1) {     // find operator after operand
-                switch (sign) {
-                    case '+':
-                        stack.push(num);
-                        break;
-                    case '-':
-                        stack.push(-num);
-                        break;
-                    case '*':
-                        stack.push(stack.pop() * num);      // * have higher priority
-                        break;
-                    case '/':
-                        stack.push(stack.pop() / num);
-                        break;
+                    switch (previousOperator) {
+                        case '+':
+                            sum += previousNumber;          // add previous number
+                            previousNumber = currentNumber; // set current number to positive
+                            break;
+                        case '-':
+                            sum += previousNumber;              // add previous number
+                            previousNumber = -currentNumber;    // set previous number to negative
+                            break;
+                        case '*':       // multiplication has higher priority, can not involve previous sum
+                            previousNumber = previousNumber * currentNumber;        // current multiplication result
+                            break;
+                        case '/':       // division is same as multiplication
+                            previousNumber = previousNumber / currentNumber;        // current division result
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Invalid character!");
+                    }
+                } else {
+                    previousOperator = c;        // if current digit is not operand, then it is an operator
                 }
-                sign = s.charAt(i);
-                num = 0;
             }
         }
 
-        num = 0;
-        for (Integer i : stack) {
-            num += i;
-        }
+        sum += previousNumber;      // final result
 
-        return num;
+        return sum;
     }
 
     public static void main(String[] args) {
