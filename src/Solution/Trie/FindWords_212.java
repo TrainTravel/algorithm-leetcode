@@ -97,7 +97,7 @@ public class FindWords_212 {
     /**
      * Node in trie.
      */
-    class TrieNode {
+    static class TrieNode {
         TrieNode[] next = new TrieNode[26];
         String word;
     }
