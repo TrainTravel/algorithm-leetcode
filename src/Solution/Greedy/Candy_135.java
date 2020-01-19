@@ -1,5 +1,7 @@
 package Solution.Greedy;
 
+import java.util.Arrays;
+
 /**
  * There are N children standing in a line. Each child is assigned a rating value.
  * Giving candies to these children subjected to the following requirements:
@@ -86,5 +88,50 @@ public class Candy_135 {
         }
 
         return totalCandy;
+    }
+
+    /**
+     * Two pass to find each position's minimum candies.
+     * First pass, from left to right, find the min candies that each increasing order subarray needed.
+     * Second pass, from right to left, find the required candies for decreasing order subarray.
+     * During second pass, candies depends on the larger one between previous candies plus one, or the origin candies.
+     *
+     * @param ratings given rating array
+     * @return minimum total candies to give
+     */
+    public int twoPass(int[] ratings) {
+
+        /* Corner case */
+        if (ratings.length < 2) {
+            return ratings.length;
+        }
+
+        int n = ratings.length;
+        int[] tmp = new int[n];
+        Arrays.fill(tmp, 1);
+
+        for (int i = 1; i < n; i++) {
+            if (ratings[i] > ratings[i - 1]) {      // if current rating is larger than left one
+                tmp[i] = tmp[i - 1] + 1;
+            }
+        }
+        int out = 0;
+        for (int i = n - 1; i > 0; i--) {
+            if (ratings[i - 1] > ratings[i]) {      // if left one is larger than current rating
+                tmp[i - 1] = Math.max(tmp[i] + 1, tmp[i - 1]);
+            }
+            out += tmp[i];
+        }
+
+        out += tmp[0];
+
+        return out;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Candy_135().twoPass(new int[]{1, 1, 2, 3, 7, 4, 6}));        // 14
+        System.out.println(new Candy_135().twoPass(new int[]{1, 1, 2}));        // 4
+        System.out.println(new Candy_135().twoPass(new int[]{1, 0, 2}));        // 5
+        System.out.println(new Candy_135().twoPass(new int[]{1, 1, 2, 3, 7, 6, 5, 4, 3, 2, 1}));        // 35
     }
 }
