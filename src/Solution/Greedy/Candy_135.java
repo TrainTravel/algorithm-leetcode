@@ -30,9 +30,9 @@ public class Candy_135 {
             return ratings.length;
         }
 
-        int decreasing = 0;     // length of decreasing sub array
+        int decreasing = 0;         // length of decreasing sub array
         int previousCandy = 1;      // largest candies give to a child in previous array
-        int totalCandy = 1;     // sum of candies
+        int totalCandy = 1;         // sum of candies
 
         for (int i = 1; i < ratings.length; i++) {
 
@@ -48,11 +48,10 @@ public class Candy_135 {
                 if (decreasing == 0) {
                     if (ratings[i] == ratings[i - 1]) {
                         previousCandy = 1;
-                        totalCandy += previousCandy;
                     } else {        // normal increasing array
                         previousCandy++;
-                        totalCandy += previousCandy;
                     }
+                    totalCandy += previousCandy;
                 } else {
 
                     /*
