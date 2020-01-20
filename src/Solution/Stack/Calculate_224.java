@@ -66,6 +66,5 @@ public class Calculate_224 {
         Calculate_224 test = new Calculate_224();
         System.out.println(test.calculate("(11+(42 + 15 + 2)-3)+(6+8)"));       // 81
         System.out.println(test.calculate("2147483647"));
-
     }
 }
