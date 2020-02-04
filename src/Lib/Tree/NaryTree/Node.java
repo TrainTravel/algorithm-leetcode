@@ -8,7 +8,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  */
 
-class Node {
+public class Node {
     public int val;
     public List<Node> children;
 
