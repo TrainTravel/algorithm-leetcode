@@ -15,43 +15,6 @@ import java.util.*;
 
 public class TopKFrequent_347 {
     /**
-     * Bucket sorting.
-     * The bucket is the frequency of each element.
-     * After adding all elements with their frequency into hash map, iterate the map and add all frequency to list.
-     * Iterate the bucket list, find k elements that are most frequent.
-     *
-     * @param nums given array
-     * @param k    k most frequent elements
-     * @return k most frequent elements
-     */
-    public List<Integer> topKFrequent(int[] nums, int k) {
-
-        Map<Integer, Integer> hm = new HashMap<>();
-        List<Integer>[] bucket = new List[nums.length + 1];     // index is the frequency, value is elements with this frequency
-        List<Integer> out = new ArrayList<>();
-
-        for (int num : nums) {
-            hm.put(num, hm.getOrDefault(num, 0) + 1);
-        }
-
-        for (int key : hm.keySet()) {
-            int frequency = hm.get(key);
-            if (bucket[frequency] == null) {
-                bucket[frequency] = new ArrayList<>();
-            }
-            bucket[frequency].add(key);
-        }
-        for (int pos = bucket.length - 1; pos >= 0; pos--) {
-            if (bucket[pos] != null) {
-                for (int i = 0; i < bucket[pos].size() && out.size() < k; i++) {
-                    out.add(bucket[pos].get(i));
-                }
-            }
-        }
-        return out;
-    }
-
-    /**
      * Use min heap to find top k frequent elements. Note that the heap size should be kept to less than k.
      * Time complexity: O(nlogk).
      *
@@ -88,8 +51,46 @@ public class TopKFrequent_347 {
     }
 
     /**
-     * Direct approach by two hash map. One hash map save each element in array with its frequency.
-     * The other hash map store the frequency and its elements.
+     * Bucket sorting. The bucket index is the frequency of each element.
+     * Number of bucket should be the length of array to avoid out of boundary exception.
+     * After adding all elements with their frequency into hash map, iterate the map and add all frequency to list.
+     * Iterate the bucket list, find k elements that are most frequent.
+     *
+     * @param nums given array
+     * @param k    k most frequent elements
+     * @return k most frequent elements
+     */
+    public List<Integer> topKFrequent(int[] nums, int k) {
+
+        Map<Integer, Integer> m = new HashMap<>();
+        List<Integer>[] bucket = new List[nums.length + 1];     // index is the frequency, value is elements with this frequency
+        List<Integer> out = new ArrayList<>();
+
+        for (int n : nums) {
+            m.put(n, m.getOrDefault(n, 0) + 1);
+        }
+
+        for (int key : m.keySet()) {
+            int frequency = m.get(key);
+            if (bucket[frequency] == null) {
+                bucket[frequency] = new ArrayList<>();
+            }
+            bucket[frequency].add(key);
+        }
+        for (int pos = bucket.length - 1; pos >= 0; pos--) {
+            if (bucket[pos] != null) {
+                for (int i = 0; i < bucket[pos].size() && out.size() < k; i++) {
+                    out.add(bucket[pos].get(i));
+                }
+            }
+        }
+
+        return out;
+    }
+
+    /**
+     * Direct approach.
+     * Use a hash map to count the element frequency. Sort the map by value after the traverse.
      *
      * @param nums given array
      * @param k    k most frequent elements
@@ -100,12 +101,12 @@ public class TopKFrequent_347 {
 
         HashMap<Integer, Integer> m = new HashMap<>();     // save the key - frequency pair
 
-        for (int i = 0; i < nums.length; i++) {
-            m.put(nums[i], m.getOrDefault(nums[i], 0) - 1);
+        for (int num : nums) {
+            m.put(num, m.getOrDefault(num, 0) - 1);
         }
 
         List<Map.Entry<Integer, Integer>> list = new LinkedList<>(m.entrySet());
-        list.sort(Comparator.comparing(Map.Entry::getValue));       // sort map based on value instead of key
+        list.sort(Map.Entry.comparingByValue());       // sort map based on value instead of key
 
         for (int i = 0; i < k; i++) {
             out.add(list.get(i).getKey());
