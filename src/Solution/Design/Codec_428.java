@@ -1,4 +1,4 @@
-package Solution.DFS;
+package Solution.Design;
 
 import Lib.Tree.NaryTree.Node;
 
