@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given two binary trees, write a function to check if they are the same tree.

@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).

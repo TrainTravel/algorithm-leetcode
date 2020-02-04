@@ -1,6 +1,6 @@
 package Solution.Greedy;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a binary tree, we install cameras on the nodes of the tree.

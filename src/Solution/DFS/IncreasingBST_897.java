@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree.

@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a non-empty binary tree, find the maximum path sum.

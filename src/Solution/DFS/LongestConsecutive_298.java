@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a binary tree, find the length of the longest consecutive sequence path.

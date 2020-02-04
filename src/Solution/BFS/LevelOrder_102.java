@@ -1,6 +1,6 @@
 package Solution.BFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

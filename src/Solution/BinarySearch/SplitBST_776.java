@@ -1,6 +1,6 @@
 package Solution.BinarySearch;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package Lib.Tree;
+package Lib.Tree.BinaryTree;
 
 /**
  * TreeNode structure

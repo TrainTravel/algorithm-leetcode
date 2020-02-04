@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given the root of a binary tree with N nodes, each node in the tree has node.val coins, and there are N coins total.

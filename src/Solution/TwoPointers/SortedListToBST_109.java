@@ -1,7 +1,7 @@
 package Solution.TwoPointers;
 
 import Lib.ListNode;
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.

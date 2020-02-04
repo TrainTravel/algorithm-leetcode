@@ -1,9 +1,8 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * You are given a binary tree in which each node contains an integer value.

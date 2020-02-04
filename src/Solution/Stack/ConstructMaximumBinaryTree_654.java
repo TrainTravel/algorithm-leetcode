@@ -1,6 +1,6 @@
 package Solution.Stack;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 import java.util.Arrays;
 import java.util.Stack;

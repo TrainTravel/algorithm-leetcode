@@ -1,6 +1,6 @@
 package Solution.DFS;
 
-import Lib.Tree.TreeNode;
+import Lib.Tree.BinaryTree.TreeNode;
 
 /**
  * Given the root node of a binary search tree (BST) and a value to be inserted into the tree, insert it into the BST.
