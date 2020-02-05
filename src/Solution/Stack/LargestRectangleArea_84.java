@@ -13,7 +13,7 @@ import java.util.Stack;
 
 public class LargestRectangleArea_84 {
     /**
-     * Faster solution with stack.
+     * Monotone stack problem.
      * Traverse all elements in array and find each increasing subarray.
      * If increasing subarray is ended, then calculate rectangle size starts from largest element in subarray.
      * The initially length of rectangle is 1 (itself).
@@ -27,7 +27,7 @@ public class LargestRectangleArea_84 {
      */
     public int largestRectangleArea(int[] heights) {
 
-        Stack<Integer> stack = new Stack<>();       // store index of array
+        Stack<Integer> stack = new Stack<>();       // store index of increasing array
         int max = 0;
 
         for (int i = 0; i <= heights.length; i++) {

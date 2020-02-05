@@ -37,11 +37,10 @@ public class MaxArea_11 {
 
             max = Math.max(max, (right - left) * Math.max(height[left], height[right]));
 
-            /* Choose pointer that has smaller value to move */
             if (height[left] > height[right]) {     // area size is depend on smaller one
-                right--;
+                right--;        // if left larger than right, move right
             } else {
-                left++;
+                left++;         // otherwise, move left
             }
         }
 

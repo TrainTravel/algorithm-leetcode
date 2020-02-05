@@ -21,23 +21,23 @@ public class Generate_118 {
      */
     public List<List<Integer>> generate(int numRows) {
 
-        List<List<Integer>> res = new LinkedList<>();
+        List<List<Integer>> out = new LinkedList<>();
 
         /* Corner case */
         if (numRows == 0) {
-            return res;
+            return out;
         }
 
         for (int i = 0; i < numRows; i++) {
             List<Integer> temp = new LinkedList<>();
             for (int j = 0; j <= i - 1; j++) {
-                temp.add((j == 0) ? 1 : res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));     // first line has one element
+                temp.add((j == 0) ? 1 : out.get(i - 1).get(j - 1) + out.get(i - 1).get(j));     // first line has one element
             }
             temp.add(1);
-            res.add(temp);
+            out.add(temp);
         }
 
-        return res;
+        return out;
     }
 
     public static void main(String[] args) {

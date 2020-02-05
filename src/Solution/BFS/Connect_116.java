@@ -29,21 +29,23 @@ public class Connect_116 {
      */
     public Node connect(Node root) {
         Node level = root;
+
         while (level != null) {
-            Node cur = level;
-            while (cur != null) {
+            Node current = level;
+            while (current != null) {
 
-                if (cur.left != null) {
-                    cur.left.next = cur.right;      // link left and right sub node under same parent node
+                if (current.left != null) {
+                    current.left.next = current.right;      // link left and right sub node under same parent node
                 }
 
-                if (cur.right != null && cur.next != null) {
-                    cur.right.next = cur.next.left;     // link right sub node to next parent node's left sub node
+                if (current.right != null && current.next != null) {
+                    current.right.next = current.next.left;     // link right sub node to next parent node's left sub node
                 }
-                cur = cur.next;     // next node
+                current = current.next;     // next node
             }
             level = level.left;     // next layer
         }
+
         return root;
     }
 }
