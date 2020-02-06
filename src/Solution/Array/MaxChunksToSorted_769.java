@@ -13,28 +13,30 @@ package Solution.Array;
 
 public class MaxChunksToSorted_769 {
     /**
-     * The basic idea is to use max[] array to keep track of the max value until the current position.
-     * Compare it to the sorted array (indexes from 0 to arr.length - 1).
-     * If the max[i] equals the element at index i in the sorted array, then the final count + 1.
-     * Then, the numbers range from 0 to arr.length - 1.
-     * So there is no need to sort the arr, simply use the index for comparison, which will finally be O(n).
+     * Note that in this problem:
+     * 1. The concatenation of sorted subarray should be a sorted array.
+     * 2. The array only contains a permutation of [0, 1, ..., arr.length - 1].
+     * Hence, it is to find the # of subarray that max value in subarray is smaller than the largest index.
+     * i.e., find all subarray that max[0, i] = i.
+     * Each subarray is a chunk.
      *
      * @param arr given array
      * @return most number of chunks could have made
      */
     public int maxChunksToSorted(int[] arr) {
+        int n = arr.length;
 
         /* Corner case */
-        if (arr.length == 0) {
-            return 0;
+        if (n < 2) {
+            return n;
         }
-
         int max = 0, count = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            max = Math.max(arr[i], max);
-            if (max == i) {
-                count++;
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, arr[i]);
+
+            if (max == i) {     // array is the permutation of [0, 1, ..., arr.length - 1]
+                count++;        // find a new chunk that max[0, i] = i
             }
         }
 
