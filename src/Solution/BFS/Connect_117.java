@@ -1,6 +1,6 @@
 package Solution.BFS;
 
-import Lib.Node;
+import Lib.Tree.Node;
 
 /**
  * Given a binary tree (not perfect).

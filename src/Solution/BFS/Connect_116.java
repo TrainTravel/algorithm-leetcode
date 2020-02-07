@@ -1,6 +1,6 @@
 package Solution.BFS;
 
-import Lib.Node;
+import Lib.Tree.Node;
 
 /**
  * A perfect binary tree is given where all leaves are on the same level, and every parent has two children.
