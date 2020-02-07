@@ -14,10 +14,10 @@ import java.util.Stack;
 
 public class IsValidSerialization_331 {
     /**
-     * Pre order traversal to "build" the tree.
-     * The basic rule is, each non-empty node creates two slots for null node (left, right child).
-     * Each non-empty node requires one slot, and null node consume one slot of node.
-     * Therefore, use "," as one slot is used.
+     * Follow pre order traverse rule to "build" the tree.
+     * 1. Each non-empty node creates two slots for null node (left, right child).
+     * 2. Each non-empty node requires one slot, and null node consume one slot of node.
+     * Therefore, use "," as the mark that one slot is used.
      * If one non-empty node is found, slot + 2.
      * If one null node is found, slot remains unchanged.
      * If meet a ",", regraded as one node is used, slot - 1.
@@ -26,7 +26,7 @@ public class IsValidSerialization_331 {
      * @return whether it is a correct preorder traversal serialization of a binary tree
      */
     public boolean isValidSerialization(String preorder) {
-        int count = 1;
+        int slot = 1;
         int n = preorder.length();
 
         for (int i = 0; i < n; ++i) {
@@ -37,15 +37,13 @@ public class IsValidSerialization_331 {
              * "#": null node does not take node, combine with "," to use one slot. */
             if (preorder.charAt(i) == ',') {
 
-                count--;        // one node takes one slot
-
-                if (count < 0) {        // no more slots available
+                slot--;        // one node takes one slot
+                if (slot < 0) {        // no more slots available
                     return false;
                 }
 
-
                 if (preorder.charAt(i - 1) != '#') {         // non-empty node creates two children slots
-                    count += 2;
+                    slot += 2;
                 }
             }
         }
@@ -53,9 +51,9 @@ public class IsValidSerialization_331 {
         /*
          * Check the last node.
          * Since last node does not have ",", it requires extra check. */
-        count = (preorder.charAt(n - 1) == '#') ? count - 1 : count + 1;
+        slot = (preorder.charAt(n - 1) == '#') ? slot - 1 : slot + 1;
 
-        return count == 0;      // all slots should be used up
+        return slot == 0;      // all slots should be used up
     }
 
     /**
@@ -120,6 +118,7 @@ public class IsValidSerialization_331 {
                 diff += 2;
             }
         }
+
         return diff == 0;
     }
 }
