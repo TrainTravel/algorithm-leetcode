@@ -15,8 +15,7 @@ import java.util.Arrays;
 
 public class PlusOne_66 {
     /**
-     * Be careful about carry of last digit.
-     * If last digit is not 9, then directly return input array.
+     * Be careful about carry of last digit. If last digit is not 9, then directly return input array.
      * Otherwise, calculate each digit if carry is required.
      * Finally, add a new int at front of array as carry.
      *
@@ -35,12 +34,11 @@ public class PlusOne_66 {
             digits[i] = 0;
         }
 
-        /* If each digit is 9, then a new array with size of n + 1 should be returned.
-         * New array starts with 1. */
-        int[] res = new int[digits.length + 1];
-        res[0] = 1;
 
-        return res;
+        int[] out = new int[digits.length + 1];     // if all digits are 9, then add a carry at beginning of output
+        out[0] = 1;                                 // carry at top
+
+        return out;
     }
 
     public static void main(String[] args) {

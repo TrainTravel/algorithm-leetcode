@@ -14,15 +14,16 @@ import java.util.*;
 
 public class MinTotalDistance_296 {
     /**
-     * Calculate sum of position in row and column respectively.
-     * The way to find a min distance is to find median in row and column to minimize Manhattan distance.
+     * The travel distance is Manhattan distance.
+     * Therefore, to find the min distance, collect all position's row and column #.
+     * To reach the min best meeting point, both people has to travel the Manhattan distance.
+     * Hence, calculate the Manhattan distance by calculating the Manhattan distance in row and column after sorting.
      *
      * @param grid given grid
      * @return minimize Manhattan distance
      */
     public int minTotalDistance(int[][] grid) {
-        int r = grid.length;
-        int c = grid[0].length;
+        int r = grid.length, c = grid[0].length;
 
         List<Integer> row = new ArrayList<>();      // total value in each row
         List<Integer> col = new ArrayList<>();      // total value in each column
@@ -40,19 +41,20 @@ public class MinTotalDistance_296 {
     }
 
     /**
-     * Find min sum in given list
+     * Calculate the min Manhattan distance based on row # and column #.
      *
-     * @param a list
+     * @param list list
      * @return minimize sum of given list
      */
-    private int minSum(List<Integer> a) {
-        int d = 0;
-        Collections.sort(a);
-        int l = 0;
-        int r = a.size() - 1;
-        while (l < r) {
-            d = d + a.get(r--) - a.get(l++);
+    private int minSum(List<Integer> list) {
+
+        int sum = 0, left = 0, right = list.size() - 1;
+        Collections.sort(list);
+
+        while (left < right) {
+            sum = sum + list.get(right--) - list.get(left++);
         }
-        return d;
+
+        return sum;
     }
 }
