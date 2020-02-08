@@ -13,13 +13,12 @@ import java.util.Stack;
 
 public class VerifyPreorder_255 {
     /**
-     * Follow the pre-order traversal rule.
+     * Follow the pre-order traversal rule. In BST, left children is always smaller than root node.
      * If current element is smaller than top of stack, current node is still in left sub tree.
      * Otherwise, current node is previous node's right child.
      * Update min value to current subtree's root when traverse to right subtree.
      * Each time, check if current node is smaller than current tree's root node.
      * Since the traversal process is to find left child in BST, if current node is smaller than root, return false.
-     * In BST, left children is always smaller than root node.
      *
      * @param preorder given array
      * @return whether it is the correct preorder traversal sequence of a binary search tree
@@ -35,8 +34,10 @@ public class VerifyPreorder_255 {
             while (!s.empty() && i > s.peek()) {        // if i > s.peek(), then i is in right subtree
                 min = s.pop();      // update min value to current subtree's root when traverse to right subtree
             }
-            s.push(i);
+
+            s.push(i);      // current root value in subtree
         }
+
         return true;
     }
 
