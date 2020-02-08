@@ -17,13 +17,15 @@ import Lib.Tree.BinaryTree.TreeNode;
 
 public class DeleteNode_450 {
     /**
-     * This is actually to remove the target node and return the next greater value of delete node in BST.
-     * First of all, find the target node in tree.
-     * Handle the simple case first: if left subtree or right subtree is empty, return the non-empty subtree.
-     * Otherwise, find the next greater value of current node.
-     * The left subtree of delete node is smaller than next greater value.
-     * Therefore, the left subtree will be the next greater value's subtree.
-     * Return the right subtree, since the left subtree has been attached and right subtree is the root of new subtree.
+     * There are two sub tasks in this problem.
+     * First, find the node in tree.
+     * Second, find the successor in sub tree and replace the target node with this successor.
+     * Find the node in BST: based on character of BST, basic in-order traverse in BST.
+     * Second, there are two basic conditions: child is null or child is not null.
+     * If any child is null, return the not null child.
+     * If both child is null, return null.
+     * If node has two subtrees, then find the left-most child in right subtree.
+     * This is similar to the process of finding successor in BST.
      *
      * @param root root node in tree
      * @param key  node to be delete
@@ -69,7 +71,6 @@ public class DeleteNode_450 {
             }
             tmp.left = root.left;
             return root.right;
-
         }
 
         return root;
@@ -131,6 +132,7 @@ public class DeleteNode_450 {
             tmp = tmp.left;
         }
         tmp.left = root.left;
+
         return root.right;
     }
 }

@@ -18,7 +18,7 @@ import java.util.Stack;
 
 public class SplitBST_776 {
     /**
-     * Recursively complete this problem.
+     * DFS with BST character.
      * If the target is larger than root, the only consider the right subtree.
      * Otherwise, only consider the left subtree.
      * The first tree in array is the smaller one, and the second is larger one.
