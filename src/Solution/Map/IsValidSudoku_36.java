@@ -42,7 +42,7 @@ public class IsValidSudoku_36 {
 
                 if (board[i][j] != '.') {       // check every position in board
 
-                    String current = "(" + board[i][j] + ")";       // board record format(in String): column(char), (char)row, block(char)block
+                    String current = "(" + board[i][j] + ")";       // board record format(in String)
                     if (!boardSet.add(i + current) || !boardSet.add(current + j) || !boardSet.add(i / 3 + current + j / 3)) {
                         return false;
                     }
