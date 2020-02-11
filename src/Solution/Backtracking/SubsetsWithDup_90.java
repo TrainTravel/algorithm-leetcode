@@ -55,30 +55,34 @@ public class SubsetsWithDup_90 {
      * @return list that contains all subsets
      */
     public List<List<Integer>> backtracking(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
+        List<List<Integer>> out = new LinkedList<>();
         Arrays.sort(nums);
-        backtracking(res, new ArrayList<>(), nums, 0);
-        return res;
+        backtracking(out, new ArrayList<>(), nums, 0);
+        return out;
     }
 
     /**
      * Basic backtracking.
      * Pass all duplicated elements except first appeared one.
      *
-     * @param res  output list
-     * @param temp temp list
-     * @param nums int array
-     * @param k    each recursion start position
+     * @param out   output list
+     * @param temp  temp list
+     * @param nums  int array
+     * @param start each recursion start position
      */
-    private void backtracking(List<List<Integer>> res, List<Integer> temp, int[] nums, int k) {
-        res.add(new ArrayList<>(temp));
-        for (int i = k; i < nums.length; i++) {
+    private void backtracking(List<List<Integer>> out, List<Integer> temp, int[] nums, int start) {
+        out.add(new ArrayList<>(temp));
+        for (int i = start; i < nums.length; i++) {
 
-            if (i <= k || nums[i] != nums[i - 1]) {     // avoid duplicate subsets
+            if (i == start || nums[i] != nums[i - 1]) {     // avoid duplicate subsets
                 temp.add(nums[i]);
-                backtracking(res, temp, nums, i + 1);
+                backtracking(out, temp, nums, i + 1);
                 temp.remove(temp.size() - 1);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new SubsetsWithDup_90().backtracking(new int[]{1, 2, 2, 2, 2}));
     }
 }
