@@ -25,8 +25,9 @@ public class TopKFrequent_347 {
     public List<Integer> heap(int[] nums, int k) {
         List<Integer> out = new LinkedList<>();
         HashMap<Integer, Integer> m = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            m.put(nums[i], m.getOrDefault(nums[i], 0) + 1);
+
+        for (int n : nums) {
+            m.put(n, m.getOrDefault(n, 0) + 1);
         }
 
         PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(new Comparator<Map.Entry<Integer, Integer>>() {
