@@ -18,8 +18,6 @@ import java.util.*;
  */
 
 public class VerticalTraversal_987 {
-    private PriorityQueue<int[]> q;     // save node value based on horizon distance and node height
-
     /**
      * DFS.
      * During the DFS traversal, pass the horizon distance and node height to next node.
@@ -31,7 +29,7 @@ public class VerticalTraversal_987 {
      * @return list of non-empty reports in order of X coordinate
      */
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-        q = new PriorityQueue<>(new Comparator<int[]>() {
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {      // save node value based on horizon distance and node height
             @Override
             public int compare(int[] o1, int[] o2) {
                 if (o1[0] == o2[0]) {
@@ -44,23 +42,22 @@ public class VerticalTraversal_987 {
             }
         });
 
-        dfs(root, 0, 0);
+        dfs(root, 0, 0, pq);
 
         List<List<Integer>> out = new LinkedList<>();
         List<Integer> l = new ArrayList<>();
 
-        if (q.size() != 0) {
-            int distance = q.peek()[0];
-            while (!q.isEmpty()) {
-                int[] arr = q.poll();
-                if (distance == arr[0]) {
-                    l.add(arr[2]);
-                } else {
+        if (pq.size() != 0) {
+            int distance = pq.peek()[0];
+            while (!pq.isEmpty()) {
+                int[] arr = pq.poll();
+
+                if (distance != arr[0]) {
                     distance = arr[0];
                     out.add(new ArrayList<>(l));
                     l = new ArrayList<>();
-                    l.add(arr[2]);
                 }
+                l.add(arr[2]);
             }
             if (l.size() != 0) {
                 out.add(l);
@@ -76,14 +73,16 @@ public class VerticalTraversal_987 {
      * @param distance horizon distance
      * @param height   height of current node
      */
-    private void dfs(TreeNode root, int distance, int height) {
+    private void dfs(TreeNode root, int distance, int height, PriorityQueue<int[]> pq) {
+
+        /* Corner case */
         if (root == null) {
             return;
         }
 
-        q.add(new int[]{distance, height, root.val});
+        pq.add(new int[]{distance, height, root.val});
 
-        dfs(root.left, distance - 1, height + 1);
-        dfs(root.right, distance + 1, height + 1);
+        dfs(root.left, distance - 1, height + 1, pq);
+        dfs(root.right, distance + 1, height + 1, pq);
     }
 }

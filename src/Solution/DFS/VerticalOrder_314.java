@@ -11,8 +11,6 @@ import java.util.*;
  */
 
 public class VerticalOrder_314 {
-    private LinkedList<int[]> list = new LinkedList<>();
-
     /**
      * DFS.
      * During the DFS traversal, pass the horizon distance and node height to next node.
@@ -26,7 +24,9 @@ public class VerticalOrder_314 {
      */
     public List<List<Integer>> verticalOrder(TreeNode root) {
 
-        dfs(root, 0, 0);
+        LinkedList<int[]> list = new LinkedList<>();
+
+        dfs(root, 0, 0, list);
 
         List<List<Integer>> out = new LinkedList<>();
         List<Integer> l = new ArrayList<>();
@@ -42,40 +42,40 @@ public class VerticalOrder_314 {
 
         if (list.size() != 0) {
             int distance = list.getFirst()[0];
+
             while (!list.isEmpty()) {
                 int[] arr = list.getFirst();
                 list.removeFirst();
-                if (distance == arr[0]) {
-                    l.add(arr[2]);
-                } else {
+                if (distance != arr[0]) {
                     distance = arr[0];
                     out.add(new ArrayList<>(l));
                     l = new ArrayList<>();
-                    l.add(arr[2]);
                 }
+                l.add(arr[2]);
             }
             if (l.size() != 0) {
                 out.add(l);
             }
         }
+
         return out;
     }
 
     /**
-     * DFS. During the DFS, add current node to heap.
+     * DFS. During the DFS, add current node to list.
      *
      * @param root     root node
      * @param distance horizon distance
      * @param height   height of current node
      */
-    private void dfs(TreeNode root, int distance, int height) {
+    private void dfs(TreeNode root, int distance, int height, LinkedList<int[]> list) {
         if (root == null) {
             return;
         }
 
         list.add(new int[]{distance, height, root.val});
 
-        dfs(root.left, distance - 1, height + 1);
-        dfs(root.right, distance + 1, height + 1);
+        dfs(root.left, distance - 1, height + 1, list);
+        dfs(root.right, distance + 1, height + 1, list);
     }
 }
