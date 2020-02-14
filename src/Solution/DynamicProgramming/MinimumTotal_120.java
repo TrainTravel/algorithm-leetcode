@@ -16,7 +16,7 @@ public class MinimumTotal_120 {
      * Note that only adjacent numbers on the row below is reachable.
      * Therefore, simply compare two adjacent element will suffice.
      * dp[j] = min(dp[j], dp[j + 1]) + triangle.get(i).get(j)
-     * i is the $ of level, j is the # of element.
+     * i is the # of level, j is the # of element.
      *
      * @param triangle given triangle
      * @return min distance
