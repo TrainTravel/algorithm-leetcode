@@ -28,15 +28,13 @@ public class MaximalRectangle_85 {
 
         int[] row = new int[matrix[0].length];
 
-        /* Init first line */
-        for (int i = 0; i < row.length; i++) {
+        for (int i = 0; i < row.length; i++) {      // search in first line
             if (matrix[0][i] == '1') {
                 row[i] += 1;
             }
         }
         int max = largestRectangleArea(row);
 
-        /* Find max in other rows */
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == '1') {
@@ -45,8 +43,9 @@ public class MaximalRectangle_85 {
                     row[j] = 0;
                 }
             }
-            max = Math.max(max, largestRectangleArea(row));
+            max = Math.max(max, largestRectangleArea(row));     // find max in other rows
         }
+
         return max;
     }
 
@@ -66,19 +65,16 @@ public class MaximalRectangle_85 {
 
         for (int i = 0; i <= heights.length; i++) {
 
-            /* Set each calculation's bar height. If out of bound, set 0 to pop all elements in stack. */
-            h = (i == heights.length ? 0 : heights[i]);
+            h = (i == heights.length ? 0 : heights[i]);     // set each calculation's bar height. If out of bound, set 0 to pop all elements in stack.
             if (temp.empty() || h > heights[temp.peek()]) {
 
-                /* Push index into stack to record position */
-                temp.push(i);
+                temp.push(i);       // push index into stack to record position
 
             } else {
                 int top = temp.pop();
                 maxArea = Math.max(maxArea, heights[top] * (temp.empty() ? i : i - 1 - temp.peek()));
 
-                /* i - 1 so that the highest bar can be pushed to the end of stack */
-                i--;
+                i--;        // i - 1 so that the highest bar can be pushed to the end of stack
             }
         }
 
