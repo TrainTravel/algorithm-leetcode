@@ -23,8 +23,8 @@ public class ThreeSum_15 {
      * If the sum is larger than 0, then move the right element to its left.
      * Move two pointers toward center.
      *
-     * @param nums input array
-     * @return list that contain results
+     * @param nums given array
+     * @return all unique triplets in the array which gives the sum of zero
      */
     public List<List<Integer>> threeSum(int[] nums) {
 
@@ -34,10 +34,7 @@ public class ThreeSum_15 {
         if (nums.length < 3) {
             return out;
         }
-
         Arrays.sort(nums);      // sort array
-
-        /* Corner case */
         if (nums[0] > 0 || nums[nums.length - 1] < 0) {
             return out;     // if all elements are positive, then it is not possible to have a three sum equals 0
         }
@@ -55,8 +52,7 @@ public class ThreeSum_15 {
                         p2--;        // make sum smaller
                     } else {
 
-                        /* Find one triplet */
-                        List<Integer> temp = new ArrayList<>();
+                        List<Integer> temp = new ArrayList<>();     // find one triplet
                         temp.add(nums[i]);
                         temp.add(nums[p1]);
                         temp.add(nums[p2]);
@@ -64,8 +60,7 @@ public class ThreeSum_15 {
                         p1++;
                         p2--;
 
-                        /* Avoid duplication */
-                        while (p1 < p2 && nums[p1] == nums[p1 - 1]) {
+                        while (p1 < p2 && nums[p1] == nums[p1 - 1]) {       // avoid duplication
                             p1++;
                         }
                         while (p1 < p2 && nums[p2] == nums[p2 + 1]) {
@@ -75,7 +70,63 @@ public class ThreeSum_15 {
                 }
             }
         }
+
         return out;
+    }
+
+    /**
+     * A more generalize approach using backtracking. However, it will cause TLE.
+     *
+     * @param nums given array
+     * @return all unique triplets in the array which gives the sum of zero
+     */
+    public List<List<Integer>> threeSumBacktracking(int[] nums) {
+
+        List<List<Integer>> out = new ArrayList<>();
+
+        /* Corner case */
+        if (nums == null || nums.length == 0) {
+            return out;
+        }
+
+        Arrays.sort(nums);
+        backtracking(out, new ArrayList<>(), nums, 3, 0, 0);
+
+        return out;
+    }
+
+    /**
+     * Backtracking.
+     * Each round, remove one element in array and target is subtracted by this element.
+     * If all k elements have been selected, check if current target equals to 0.
+     * One optimize: if target is smaller than current element, it can not be the answer.
+     *
+     * @param out      final result
+     * @param tmp      temporary list
+     * @param arr      given array
+     * @param k        k elements required
+     * @param target   target number
+     * @param position start position
+     */
+    private void backtracking(List<List<Integer>> out, List<Integer> tmp, int[] arr, int k, int target, int position) {
+
+        if (k <= 0) {
+            if (k == 0 && target == 0) {
+                out.add(new ArrayList<>(tmp));
+            }
+            return;
+        }
+
+        for (int i = position; i < arr.length; i++) {
+            if (arr[i] > 0 && target <= 0) {
+                return;
+            }
+            if (i == position || arr[i] != arr[i - 1]) {
+                tmp.add(arr[i]);
+                backtracking(out, tmp, arr, k - 1, target - arr[i], i + 1);
+                tmp.remove(tmp.size() - 1);
+            }
+        }
     }
 
     public static void main(String[] args) {
