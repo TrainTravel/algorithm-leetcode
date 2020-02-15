@@ -63,7 +63,7 @@ public class AddTwoNumbers_2 {
      * @param l2 second int contains in ListNode
      * @return result in ListNode
      */
-    public ListNode recursion(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbersRecursion(ListNode l1, ListNode l2) {
         return helper(l1, l2, 0);
     }
 
@@ -76,7 +76,7 @@ public class AddTwoNumbers_2 {
      * @param carry carry from previous sum
      * @return sum of two nodes
      */
-    public ListNode helper(ListNode n1, ListNode n2, int carry) {
+    private ListNode helper(ListNode n1, ListNode n2, int carry) {
 
         /* Corner case and end point */
         if (n1 == null && n2 == null && carry == 0) {

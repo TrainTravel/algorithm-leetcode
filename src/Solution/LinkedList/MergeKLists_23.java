@@ -89,7 +89,7 @@ public class MergeKLists_23 {
      * @param lists given K lists
      * @return sorted list
      */
-    public ListNode heap(ListNode[] lists) {
+    public ListNode mergeKListsHeap(ListNode[] lists) {
 
         /* Corner case */
         if (lists.length == 0) {
