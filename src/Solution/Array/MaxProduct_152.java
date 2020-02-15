@@ -32,13 +32,10 @@ public class MaxProduct_152 {
 
         for (int i = 1; i < nums.length; i++) {
 
-            /* Find current max value */
-            tempMax = Math.max(Math.max(preMax * nums[i], preMin * nums[i]), nums[i]);
+            tempMax = Math.max(Math.max(preMax * nums[i], preMin * nums[i]), nums[i]);      // find current max value
+            tempMin = Math.min(Math.min(preMax * nums[i], preMin * nums[i]), nums[i]);      // find min subarray
 
-            /* Find min subarray in case next value is negative so the product may become max */
-            tempMin = Math.min(Math.min(preMax * nums[i], preMin * nums[i]), nums[i]);
-
-            max = Math.max(tempMax, max);
+            max = Math.max(tempMax, max);       // previous min value may become max
             preMax = tempMax;
             preMin = tempMin;
         }
