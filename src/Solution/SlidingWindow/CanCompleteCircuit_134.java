@@ -19,8 +19,9 @@ package Solution.SlidingWindow;
 
 public class CanCompleteCircuit_134 {
     /**
-     * Use pointer to store the start position.
-     * If current tank can not cover the cost at current station, set start location at next point.
+     * If total gas can cover all cost of gas, then there will be a available start location.
+     * Traverse array, if current tank can not cover the cost at current station, set start location at next location.
+     * Finally, if total gas can not cover total cost, then return -1. Otherwise, return start location.
      *
      * @param gas  amount of gas
      * @param cost cost of gas

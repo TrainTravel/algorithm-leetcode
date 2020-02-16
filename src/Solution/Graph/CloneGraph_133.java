@@ -20,7 +20,7 @@ import java.util.*;
 
 public class CloneGraph_133 {
     /**
-     * DFS or BFS.
+     * DFS to access all nodes in graph.
      *
      * @param node start node of original graph
      * @return start node of cloned graph
@@ -32,7 +32,7 @@ public class CloneGraph_133 {
     }
 
     /**
-     * DFS recursion to traverse every node in graph and create a new node to save neighbors.
+     * DFS to traverse every node in graph and create a new node to save neighbors.
      *
      * @param node start node of original graph
      * @param map  map to store previous visited nodes
@@ -68,7 +68,7 @@ public class CloneGraph_133 {
      * @param node root node of original graph
      * @return root node of cloned graph
      */
-    private Node bfs(Node node) {
+    public Node cloneGraphBFS(Node node) {
 
         /* Corner case and end point */
         if (node == null) {
@@ -84,7 +84,7 @@ public class CloneGraph_133 {
         oldNewMap.put(node, cloned);
 
         for (Node n : node.neighbors) {
-            cloned.neighbors.add(cloneGraph(n));        // add all connected nodes into neighbor
+            cloned.neighbors.add(cloneGraphBFS(n));        // add all connected nodes into neighbor
         }
 
         return cloned;
