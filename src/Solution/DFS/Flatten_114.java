@@ -14,12 +14,43 @@ import java.util.Stack;
 
 public class Flatten_114 {
     /**
+     * Morris traversal.
+     * Find the right most node in left sub tree. Its child is the parent of the right child of current node.
+     * Link these two nodes. Then link current node's left child to current node's right child.
+     *
+     * @param root root of tree
+     */
+    public void flatten(TreeNode root) {
+
+        /* Corner case */
+        if (root == null) {
+            return;
+        }
+
+        TreeNode tmp = root;
+
+        while (tmp != null) {
+
+            if (tmp.left != null) {
+                TreeNode rightMost = tmp.left;
+                while (rightMost.right != null) {
+                    rightMost = rightMost.right;
+                }
+                rightMost.right = tmp.right;
+                tmp.right = tmp.left;
+                tmp.left = null;
+            }
+            tmp = tmp.right;
+        }
+    }
+
+    /**
      * Preorder traversal.
      * Use a stack to store the left subtree and right subtree for later traversal.
      *
-     * @param root root node of tree
+     * @param root root of tree
      */
-    public void flatten(TreeNode root) {
+    public void flattenWithStack(TreeNode root) {
 
         /* Corner case */
         if (root == null) {
