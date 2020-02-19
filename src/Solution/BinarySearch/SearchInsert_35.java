@@ -13,6 +13,7 @@ package Solution.BinarySearch;
 public class SearchInsert_35 {
     /**
      * Binary search.
+     * If target does not exist in array, then the last search position is the insert position.
      *
      * @param nums   input int array
      * @param target target int
@@ -28,7 +29,7 @@ public class SearchInsert_35 {
         int left = 0;
         int right = nums.length - 1;
 
-        while (left < right) {
+        while (left <= right) {
             int mid = (left + right) / 2;
             if (target == nums[mid]) {
                 return mid;
@@ -40,16 +41,12 @@ public class SearchInsert_35 {
             }
         }
 
-        /* If target was not found in array, return insert position */
-        int mid = (left + right) / 2;
-        return (target == nums[left]) ? left : (target > nums[mid]) ? mid + 1 : mid;
+        return left;        // if target is not found, then the last search position is the insert position
     }
 
     public static void main(String[] args) {
-
         SearchInsert_35 searchInsertTest = new SearchInsert_35();
         int[] nums = {1, 3};
-
         System.out.println(searchInsertTest.searchInsert(nums, 2));
     }
 }
