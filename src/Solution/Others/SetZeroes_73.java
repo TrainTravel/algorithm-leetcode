@@ -18,9 +18,8 @@ public class SetZeroes_73 {
      */
     public void setZeroes(int[][] matrix) {
 
-        /* Use 2 boolean to mark whether first row and column needs to be set 0 */
-        boolean row0 = false;
-        boolean col0 = false;
+        boolean row0 = false;       // mark if first row should be set to 0
+        boolean col0 = false;       // mark if first column should be set to 0
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
