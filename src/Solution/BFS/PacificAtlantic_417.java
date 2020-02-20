@@ -29,11 +29,11 @@ public class PacificAtlantic_417 {
      * @return all points that could move to diagonal edges
      */
     public List<int[]> pacificAtlantic(int[][] matrix) {
-        List<int[]> res = new LinkedList<>();
+        List<int[]> out = new LinkedList<>();
 
         /* Corner case */
         if (matrix.length == 0) {
-            return res;
+            return out;
         }
 
         int row = matrix.length;
@@ -61,12 +61,12 @@ public class PacificAtlantic_417 {
         for (int i = 0; i < row; i++) {       // find points that is both accessible
             for (int j = 0; j < col; j++) {
                 if (visitedPacific[i][j] && visitedAtlantic[i][j]) {
-                    res.add(new int[]{i, j});
+                    out.add(new int[]{i, j});
                 }
             }
         }
 
-        return res;
+        return out;
     }
 
     /**
