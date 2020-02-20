@@ -20,27 +20,32 @@ public class FindMin_153 {
      * @return min value in array
      */
     public int findMin(int[] nums) {
+
+        /* Corner case */
         if (nums.length == 1) {
             return nums[0];
         }
 
         int left = 0, right = nums.length - 1;
-        while (left < right - 1) {
-            int middle = (left + right) / 2;
 
-            if (nums[middle] > nums[right]) {
-                left = middle;      // middle could be min value
-            } else {        // nums[right] > nums[middle], left part contains minimum element
-                right = middle;     // middle could be min value
+        while (left <= right) {
+            int middle = left + (right - left) / 2;
+
+            if (nums[middle] >= nums[right]) {
+                left = middle + 1;      // middle could be min value
+            } else {                    // nums[right] > nums[middle], left part contains minimum element
+                right = middle;         // middle could be min value
             }
         }
 
-        return Math.min(nums[left], nums[right]);
+        return nums[right];
     }
 
     public static void main(String[] args) {
         FindMin_153 test = new FindMin_153();
         int[] t = {2, 3, 4, 5, 1};
         System.out.println(test.findMin(t));
+        System.out.println(test.findMin(new int[]{4, 5, 6, 7, 0, 1, 2}));
+
     }
 }
