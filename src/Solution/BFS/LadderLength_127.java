@@ -28,7 +28,6 @@ public class LadderLength_127 {
      * @return length of shortest transformation sequence
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        int result = 1;
 
         /* Corner case */
         if (wordList.size() == 0 || !wordList.contains(endWord)) {
@@ -38,6 +37,7 @@ public class LadderLength_127 {
         Queue<String> q = new LinkedList<>();
         Set<String> s = new HashSet<>(wordList);
         q.add(beginWord);
+        int out = 1;
 
         while (!q.isEmpty()) {
             int size = q.size();
@@ -46,49 +46,41 @@ public class LadderLength_127 {
                 String current = q.remove();
 
                 if (current.equals(endWord)) {
-                    return result;
+                    return out;
                 }
 
                 for (int j = 0; j < current.length(); j++) {
                     char[] arr = current.toCharArray();
 
-                    for (char l = 'a'; l <= 'z'; l++) {
-                        arr[j] = l;
-                        String t = new String(arr);
-                        if (s.contains(t)) {
-                            q.offer(t);
-                            s.remove(t);
+                    for (char letter = 'a'; letter <= 'z'; letter++) {
+                        arr[j] = letter;
+                        String tmp = new String(arr);
+                        if (s.contains(tmp)) {
+                            q.offer(tmp);
+                            s.remove(tmp);
                         }
                     }
                 }
             }
-            result++;
+            out++;
         }
+
         return 0;
     }
 
     public static void main(String[] args) {
         String b = "hit";
         String e = "cog";
-        List<String> l = new LinkedList<>();
-        l.add("hot");
-        l.add("dot");
-        l.add("dog");
-        l.add("lot");
-        l.add("log");
-        l.add("cog");
+        String[] tmp = new String[]{"hot", "dot", "dog", "lot", "cog"};
+        List<String> l = Arrays.asList(tmp);
 
         LadderLength_127 test = new LadderLength_127();
         System.out.println(test.ladderLength(b, e, l));
 
         b = "a";
         e = "c";
-        l = new LinkedList<>();
-        l.add("a");
-        l.add("b");
-        l.add("c");
-
-        test = new LadderLength_127();
+        tmp = new String[]{"a", "b", "c"};
+        l = Arrays.asList(tmp);
         System.out.println(test.ladderLength(b, e, l));
     }
 }
