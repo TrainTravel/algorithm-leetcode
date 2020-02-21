@@ -29,31 +29,53 @@ public class LengthOfLIS_300 {
          * Index is the length of LIS in array.
          * Values under corresponding index is the minimum value of last element in each length of LIS.
          * Size is the length in tails[] filled with numbers (length of LIS found). */
-        int[] tails = new int[nums.length];
+        int[] tails = new int[nums.length + 1];
         int size = 0;
+        tails[size++] = nums[0];
 
         for (int num : nums) {
-            int left = 0, right = size;
-
-            /*
-             * Binary search to find correct LIS tail that it should be inserted to.
-             * Each element should be inserted to position where tails[i-1] < x <= tails[i].
-             * If current element is the largest one, then the size will increase 1, as new LIS is found. */
-            while (left < right) {
-
-                int mid = left + (right - left) / 2;
-
-                if (tails[mid] < num) {     // tails[mid] < x, move to right sub array
-                    left = mid + 1;
-                } else {        // otherwise, move to left sub array
-                    right = mid;
-                }
+            if (num > tails[size - 1]) {        // new LIS is found
+                tails[size++] = num;
+            } else {
+                tails[find(tails, size, num)] = num;
             }
-
-            tails[left] = num;      // insert element
-            size = (left == size) ? size + 1 : size;        // if it is larger than all tails, append it, increase size
         }
 
         return size;
+    }
+
+    /**
+     * Binary search to find correct LIS tail that it should be inserted to.
+     * Each element should be inserted to position where tails[i-1] < x <= tails[i].
+     * If current element is the largest one, then the size will increase 1, as new LIS is found.
+     *
+     * @param tails array contains smallest value under each length of increasing subsequence
+     * @param size  size of longest LIS
+     * @param num   current number to be inserted
+     * @return insert position of current element
+     */
+    private int find(int[] tails, int size, int num) {
+        int left = 0, right = size;
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+
+            if (tails[mid] == num) {
+                return mid;
+            }
+
+            if (tails[mid] < num) {     // tails[mid] < x, move to right sub array
+                left = mid + 1;
+            } else {        // otherwise, move to left sub array
+                right = mid - 1;
+            }
+        }
+
+        return left;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new LengthOfLIS_300().lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+        System.out.println(new LengthOfLIS_300().lengthOfLIS(new int[]{10, 9, 2, 5, 3, 4}));
     }
 }
