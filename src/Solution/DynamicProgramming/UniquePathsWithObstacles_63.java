@@ -62,8 +62,7 @@ public class UniquePathsWithObstacles_63 {
         int width = obstacleGrid[0].length;
         int[] dp = new int[width];
 
-        /* Set Start */
-        dp[0] = 1;
+        dp[0] = 1;      // set Start
 
         for (int[] row : obstacleGrid) {
             for (int j = 0; j < width; j++) {
