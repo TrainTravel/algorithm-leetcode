@@ -72,6 +72,6 @@ public class PlaygroundTest {
 //        System.out.println(binarySearchTest.search());
 //        System.out.println(binarySearchTest.where());
 
-
+        System.out.println("Test Complete. ");
     }
 }

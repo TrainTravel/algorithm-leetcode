@@ -2,7 +2,7 @@ package Test;
 
 
 /**
- * This is a test class for unit test in package Solution.
+ * Test class for unit test in package Solution.
  *
  * @author BorisMirage
  * Time: 2018/03/26 14:40
@@ -13,8 +13,6 @@ public class SolutionTest {
 
 
     public static void main(String[] args) {
-        System.out.println("Test Complete. ");
-
 //        /* Permutations */
 //        Permute_46 permuteTest = new Permute_46();
 //        int[] c = {1};
@@ -126,5 +124,6 @@ public class SolutionTest {
 ////        int[] dup = {1};
 //        System.out.println(removeDuplicatesIITest.removeDuplicatesII(dup));
 
+        System.out.println("Test Complete. ");
     }
 }
