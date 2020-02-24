@@ -13,12 +13,22 @@ public class Node {
     public Node next;
     public Node random;
 
+    /**
+     * Constructor of node.
+     */
     public Node() {
     }
 
-    public Node(int _val, Node _next, Node _random) {
-        val = _val;
-        next = _next;
-        random = _random;
+    /**
+     * Overload of constructor.
+     *
+     * @param val    value in node
+     * @param next   next node
+     * @param random next random node
+     */
+    public Node(int val, Node next, Node random) {
+        this.val = val;
+        this.next = next;
+        this.random = random;
     }
 };
