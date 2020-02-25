@@ -28,25 +28,26 @@ public class CountAndSay_38 {
             return (n == 2) ? "11" : "1";
         }
 
-        String res = "11";
+        String out = "11";
 
         for (int i = 2; i < n; i++) {
 
             int count = 1;
             StringBuilder round = new StringBuilder();
 
-            for (int j = 1; j < res.length(); j++) {        // next sequence is based on current sequence
-                if (res.charAt(j - 1) == res.charAt(j)) {
+            for (int j = 1; j < out.length(); j++) {        // next sequence is based on current sequence
+                if (out.charAt(j - 1) == out.charAt(j)) {
                     count++;
                 } else {
-                    round.append(count).append(res.charAt(j - 1));
+                    round.append(count).append(out.charAt(j - 1));
                     count = 1;
                 }
             }
-            round.append(count).append(res.charAt(res.length() - 1));
-            res = round.toString();
+            round.append(count).append(out.charAt(out.length() - 1));
+            out = round.toString();
         }
-        return res;
+
+        return out;
     }
 
     public static void main(String[] args) {
