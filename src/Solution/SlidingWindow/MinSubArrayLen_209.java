@@ -12,31 +12,25 @@ package Solution.SlidingWindow;
 
 public class MinSubArrayLen_209 {
     /**
-     * Two pointers, fast pointer locate the end of subarray where subarray's sum is larger than target.
-     * When sum is larger than target, move the slow pointer to narrow length until find the shortest subarray.
+     * Sliding window.
+     * Shrink the window if current subarray sum is larger than target sum and find the minimum one.
      *
      * @param s    given target sum
      * @param nums given positive array
      * @return minimal length of a contiguous subarray of which the sum ≥ s
      */
     public int minSubArrayLen(int s, int[] nums) {
-        int fast = 0, slow = 0, window = Integer.MAX_VALUE;
-        int sum = 0;
+        int n = nums.length, window = n + 1, start = 0;
 
-
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
-            fast++;
-            if (sum >= s) {
-                while (sum >= s) {
-                    sum -= nums[slow];
-                    slow++;
-                }
-                window = Math.min(window, fast - slow + 1);
+        for (int i = 0; i < n; i++) {
+            s -= nums[i];
+            while (s <= 0) {
+                window = Math.min(i - start + 1, window);
+                s += nums[start++];
             }
         }
 
-        return (window == Integer.MAX_VALUE) ? 0 : window;
+        return window % (n + 1);
     }
 
     public static void main(String[] args) {

@@ -14,8 +14,8 @@ package Solution.SlidingWindow;
 
 public class MinWindow_76 {
     /**
-     * Use two pointers, one find all char in s first, the other one try to narrow the window in s.
-     * Use a int array as hash map.
+     * Sliding window to find minimum window size.
+     * Try to find the minimum window by shrinking the window when all character in S which contains all character in T.
      *
      * @param s first string
      * @param t second string
@@ -28,42 +28,30 @@ public class MinWindow_76 {
             return "";
         }
 
-        int rest = t.length(), start = -1, window = Integer.MAX_VALUE;
+        int m = s.length(), n = t.length(), start = 0, window = Integer.MAX_VALUE, rest = n, minStart = 0;
+        int[] count = new int[256];
 
-        int[] countChar = new int[127];     // contains all printable chars from 32 - 126
-        for (char c : t.toCharArray()) {
-            countChar[c]++;     // count total chars in array
+        for (int i = 0; i < n; i++) {
+            count[t.charAt(i) - 'A']++;
         }
 
-        int fast = 0, slow = 0;      // two pointers
-
-        while (fast < s.length()) {
-
-            /* Each time, if current char is found in T, then reduce pending finding length in T.
-             * If pending length is 0, then try to narrow the searching window.*/
-            if (countChar[s.charAt(fast++)]-- > 0) {
+        for (int i = 0; i < m; i++) {
+            if (count[s.charAt(i) - 'A']-- > 0) {
                 rest--;
             }
-
-            /*
-             * When no more char requires to be found in S, reduce the window to find min window size.
-             * During the narrow process, there are two conditions: remove a char in T or not in T.
-             * If one char in T is removed, the narrow process should stop.
-             * Otherwise, find min window size during narrowing. */
             while (rest == 0) {
-
-                if (countChar[s.charAt(slow++)]++ == 0){
-                    rest++;     // avoid filter out char in T
+                if (count[s.charAt(start++) - 'A']++ == 0) {
+                    rest++;
                 }
 
-                if (fast - slow + 1 < window) {
-                    window = fast - slow + 1;
-                    start = slow - 1;
+                if (i - start + 1 < window) {
+                    window = i - start + 1;
+                    minStart = start;
                 }
             }
         }
 
-        return (start == -1) ? "" : s.substring(start, start + window);
+        return (window == Integer.MAX_VALUE) ? "" : s.substring(minStart - 1, minStart + window);
     }
 
     public static void main(String[] args) {
