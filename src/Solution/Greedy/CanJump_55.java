@@ -13,12 +13,42 @@ package Solution.Greedy;
 
 public class CanJump_55 {
     /**
-     * Start from last to trace back if first can be reached.
+     * Starts at beginning to check if it can reaches the end.
+     * Each time, find the max movement among current reachable cells.
+     * Finally, check if it can reaches the end.
      *
      * @param nums given int array that only contains non-negative int
      * @return if last index can be reached
      */
     public boolean canJump(int[] nums) {
+
+        /* Corner case */
+        if (nums == null || nums.length == 0) {
+            return false;
+        }
+
+        int max = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (max < i) {      // exist cell that is out of current maximum reachable cell
+                return false;
+            }
+            max = Math.max(max, nums[i] + i);
+            if (max >= nums.length - 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Start from last to trace back if first can be reached.
+     *
+     * @param nums given int array that only contains non-negative int
+     * @return if last index can be reached
+     */
+    public boolean canJumpFromEnd(int[] nums) {
         int last = nums.length - 1;
 
         for (int i = nums.length - 2; i >= 0; i--) {
