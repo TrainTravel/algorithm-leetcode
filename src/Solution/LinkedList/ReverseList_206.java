@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Reverse a singly linked list.

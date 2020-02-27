@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a singly linked list, group all odd nodes together followed by the even nodes.

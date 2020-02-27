@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a non-empty, singly linked list with head node head, return a middle node of linked list.

@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Remove all elements from a linked list of integers that have value val.

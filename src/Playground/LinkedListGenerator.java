@@ -1,6 +1,6 @@
 package Playground;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * @author BorisMirage

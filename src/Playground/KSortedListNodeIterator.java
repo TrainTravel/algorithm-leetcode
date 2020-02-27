@@ -1,6 +1,6 @@
 package Playground;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 import java.util.Collections;
 import java.util.Comparator;

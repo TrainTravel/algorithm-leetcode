@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a singly linked list L: L0 -> L1 -> ... -> Ln-1 -> Ln.

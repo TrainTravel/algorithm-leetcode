@@ -1,6 +1,6 @@
 package Solution.LinkedList;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer.

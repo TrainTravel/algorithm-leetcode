@@ -1,6 +1,6 @@
 package Solution.TwoPointers;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a linked list, remove the n-th node from the end of list and return its head.

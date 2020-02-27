@@ -1,6 +1,6 @@
 package Solution.TwoPointers;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 /**
  * Given a sorted linked list, delete all nodes that have duplicate numbers.

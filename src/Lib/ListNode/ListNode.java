@@ -1,4 +1,4 @@
-package Lib;
+package Lib.ListNode;
 
 /**
  * ListNode contains one single value. "next" works as link function.

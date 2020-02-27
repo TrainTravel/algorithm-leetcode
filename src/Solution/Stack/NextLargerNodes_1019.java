@@ -1,6 +1,6 @@
 package Solution.Stack;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 
 import java.util.ArrayList;
 

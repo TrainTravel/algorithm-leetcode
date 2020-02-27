@@ -1,6 +1,6 @@
 package Solution.TwoPointers;
 
-import Lib.ListNode;
+import Lib.ListNode.ListNode;
 import Lib.Tree.BinaryTree.TreeNode;
 
 /**
