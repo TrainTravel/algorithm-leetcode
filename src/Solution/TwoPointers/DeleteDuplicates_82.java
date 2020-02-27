@@ -1,5 +1,6 @@
 package Solution.TwoPointers;
 
+import Lib.ListNode.LinkedListGenerator;
 import Lib.ListNode.ListNode;
 
 /**
@@ -24,21 +25,25 @@ public class DeleteDuplicates_82 {
         ListNode dummy = new ListNode(0);       // cache node
         dummy.next = head;
 
-        ListNode slow = dummy, fast = head;     // two pointers
+        ListNode previous = dummy, current = head;     // two pointers
 
-        while (fast != null) {
-            while (fast.next != null && fast.val == fast.next.val) {     // move pass all duplicated nodes
-                fast = fast.next;
+        while (current != null) {
+            while (current.next != null && current.val == current.next.val) {     // move pass all duplicated nodes
+                current = current.next;
             }
 
-            if (slow.next == fast) {        // no duplicated node found
-                slow = slow.next;
+            if (previous.next == current) {        // no duplicated node found
+                previous = previous.next;
             } else {
-                slow.next = fast.next;      // move previous non-duplicated value to next non-duplicated value
+                previous.next = current.next;      // move previous non-duplicated value to next non-duplicated value
             }
-            fast = fast.next;
+            current = current.next;
         }
 
         return dummy.next;      // return head of list
+    }
+
+    public static void main(String[] args) {
+        LinkedListGenerator.printAll(new DeleteDuplicates_82().deleteDuplicates(LinkedListGenerator.generate(new int[]{1, 2, 3, 3, 4, 5, 5, 5})));
     }
 }

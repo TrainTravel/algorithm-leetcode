@@ -25,16 +25,16 @@ public class ReverseList_206 {
             return head;
         }
 
-        ListNode dummy = null;
+        ListNode previous = null;
 
         while (head != null) {
             ListNode next = head.next;
-            head.next = dummy;
-            dummy = head;
+            head.next = previous;
+            previous = head;
             head = next;
         }
 
-        return dummy;
+        return previous;
     }
 
     /**
@@ -51,9 +51,10 @@ public class ReverseList_206 {
         }
 
         ListNode next = head.next;
-        ListNode dummy = reverseList(next);
+        ListNode previous = reverseList(next);
         next.next = head;
         head.next = null;
-        return dummy;
+
+        return previous;
     }
 }

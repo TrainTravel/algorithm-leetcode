@@ -12,8 +12,11 @@ import Lib.ListNode.ListNode;
 
 public class RemoveNthFromEnd_19 {
     /**
-     * Use two pointers to create a gap that has length of n.
-     * In this way, when fast pointer reaches the end, the slow pointer is at n-th from the end of list.
+     * Two pointers.
+     * First point points at the nth node from the beginning of the list, while second pointer points at head.
+     * This will create a gap with size of n.
+     * Then move both pointers to the end of list.
+     * When reaches the end of list, the second point points at the n-th node from the end of list.
      *
      * @param head head node
      * @param n    n-th node from the end of list to be removed
@@ -22,9 +25,9 @@ public class RemoveNthFromEnd_19 {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
 
-        ListNode cache = new ListNode(0);       // pseudo head
-        ListNode slow = cache, fast = cache;
-        cache.next = head;
+        ListNode dummy = new ListNode(0);       // pseudo head
+        ListNode slow = dummy, fast = dummy;
+        dummy.next = head;
 
         while (n-- != 0) {
             fast = fast.next;     // create a gap that has length of n
@@ -36,7 +39,8 @@ public class RemoveNthFromEnd_19 {
         }
 
         slow.next = slow.next.next;     // when fast reaches the end, slow pointer is at n-th from the end of list
-        return cache.next;
+
+        return dummy.next;
     }
 }
 
