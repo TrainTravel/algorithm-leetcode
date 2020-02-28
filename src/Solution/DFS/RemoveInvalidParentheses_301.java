@@ -70,7 +70,9 @@ public class RemoveInvalidParentheses_301 {
             }
         }
 
-        /* Check reversed string in each iteration to find if left parenthesis is more than right parenthesis */
+        /*
+         * Check reversed string in each iteration.
+         * This is to find if left parenthesis is more than right parenthesis. */
         String reversed = new StringBuilder(s).reverse().toString();
         if (open == '(') {
             checkInvalid(output, reversed, 0, 0, ')', '(');

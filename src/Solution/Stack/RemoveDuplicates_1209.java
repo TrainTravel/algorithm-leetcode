@@ -18,7 +18,7 @@ import java.util.Stack;
 
 public class RemoveDuplicates_1209 {
     /**
-     * Use two stacks to store during the traverse.
+     * Use two stacks during the traverse.
      * First stack store the char of string.
      * Second stack store the same char count under current ith char in s.
      * If the last count in stack is equal to k, then remove k chars in both stack.
@@ -29,31 +29,31 @@ public class RemoveDuplicates_1209 {
      * @return final string after all such duplicate removals have been made
      */
     public String removeDuplicates(String s, int k) {
-        Deque<Character> q = new LinkedList<>();      // final string
+        Deque<Character> dq = new LinkedList<>();      // final string
         Stack<Integer> stack = new Stack<>();         // count of duplicated char
         int n = s.length();
 
         for (int i = 0; i < n; i++) {
-            if (!q.isEmpty() && q.peekLast() == s.charAt(i)) {
+            if (!dq.isEmpty() && dq.peekLast() == s.charAt(i)) {
                 stack.push(stack.peek() + 1);
             } else {
                 stack.push(1);
             }
-            q.addLast(s.charAt(i));
+            dq.addLast(s.charAt(i));
 
             if (stack.peek() == k) {
                 for (int j = 0; j < k; j++) {
-                    q.pollLast();
+                    dq.pollLast();
                     stack.pop();
                 }
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        n = q.size();
+        n = dq.size();
 
         for (int i = 0; i < n; i++) {
-            sb.append(q.pollFirst());
+            sb.append(dq.pollFirst());
         }
 
         return sb.toString();
