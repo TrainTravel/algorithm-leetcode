@@ -31,10 +31,10 @@ public class FindMin_153 {
         while (left <= right) {
             int middle = left + (right - left) / 2;
 
-            if (nums[middle] >= nums[right]) {
-                left = middle + 1;      // middle could be min value
-            } else {                    // nums[right] > nums[middle], left part contains minimum element
-                right = middle;         // middle could be min value
+            if (nums[middle] >= nums[right]) {      // nums[middle] >= nums[right], min value at right part
+                left = middle + 1;
+            } else {                                // nums[middle] < nums[right], left part contains minimum element
+                right = middle;                     // middle could be min value
             }
         }
 
