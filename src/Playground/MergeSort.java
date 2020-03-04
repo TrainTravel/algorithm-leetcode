@@ -94,10 +94,8 @@ public class MergeSort {
             System.out.println("Merge sort result: " + Arrays.toString(new MergeSort(arr).arr));
             Arrays.sort(arr);
             System.out.println("Sorted result: " + Arrays.toString(arr));
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | NullPointerException ex) {
             System.out.println("Illegal input array!");
-        } catch (NullPointerException e) {
-            System.out.println("Null input array!");
         } finally {
             System.out.println(Arrays.toString(tmp));
         }
