@@ -31,7 +31,7 @@ public class FindAllDeadZeros {
         }
 
         int row = matrix.length, column = matrix[0].length, dead = 0;
-        int[][] status = new int[row][column];        // unvisited: 0, visited & unknown: -1, dead: 1, visited & active: 2
+        int[][] status = new int[row][column];        // unvisited: 0, dead: 1, visited & active: 2
         int[] count = new int[1];
         int[][] direction = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
@@ -40,9 +40,8 @@ public class FindAllDeadZeros {
             int yy = j + d[1];
 
             if (xx >= 0 && xx < matrix.length && yy >= 0 && yy < matrix[0].length && matrix[xx][yy] == 0) {
-                int result = dfs(matrix, status, count, xx, yy);
 
-                if (result == 1) {      // if there is one alive 0, then every 0 on this branch is active
+                if (dfs(matrix, status, count, xx, yy) == 1) {      // if there is one alive 0, then every 0 on this branch is active
                     dead += count[0];   // if all 0s are dead 0s, then add number of 0 in this path to result
                 }
                 count = new int[1];     // reset counter, since each branch is individual
@@ -54,6 +53,11 @@ public class FindAllDeadZeros {
 
     /**
      * DFS to check if current 0 is dead 0.
+     * If the next step move out of the matrix, then current 0 is active 0.
+     * If any of the neighbor of current 0 is active 0, then current 0 is active 0.
+     * If every neighbor of current 0 is dead 0, then current 0 is dead 0.
+     * There exists a chance that a branch of current 0 is regarded dead (actually not, if there is an active neighbor).
+     * To handle this case, if every 0 is dead 0 then it will return 1, only count dead 0 under this situation.
      *
      * @param matrix given matrix
      * @param status status of cell, unvisited: 0; visited: 1
@@ -75,15 +79,8 @@ public class FindAllDeadZeros {
         for (int[] d : directions) {
             int xx = i + d[0];
             int yy = j + d[1];
-            if (xx < 0 || xx >= matrix.length || yy < 0 || yy >= matrix[0].length) {
-                return 2;
-            } else {
-                if (matrix[xx][yy] == 0 && status[xx][yy] == 0) {
-                    if (dfs(matrix, status, count, xx, yy) == 2) {
-
-                        return 2;       // if a 0 is active on current branch, then this 0 is active
-                    }
-                }
+            if (xx < 0 || xx >= matrix.length || yy < 0 || yy >= matrix[0].length || (matrix[xx][yy] == 0 && status[xx][yy] == 0 && dfs(matrix, status, count, xx, yy) == 2)) {
+                return 2;       // if a 0 is active on current branch, then this 0 is active
             }
         }
 
