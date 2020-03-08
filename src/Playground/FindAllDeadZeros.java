@@ -11,7 +11,7 @@ package Playground;
  * Created with IntelliJ IDEA
  */
 
-public class FindAllDeadZero {
+public class FindAllDeadZeros {
     /**
      * DFS.
      * Starts at the 4 neighbor of the given cell. If current cell is 0, then start DFS.
@@ -23,7 +23,7 @@ public class FindAllDeadZero {
      * @param j      given cell column
      * @return number of dead 0
      */
-    public int findAllDeadZero(int[][] matrix, int i, int j) {
+    public int findAllDeadZeros(int[][] matrix, int i, int j) {
 
         /* Corner case */
         if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {
@@ -92,14 +92,14 @@ public class FindAllDeadZero {
     }
 
     public static void main(String[] args) {
-        FindAllDeadZero test = new FindAllDeadZero();
+        FindAllDeadZeros test = new FindAllDeadZeros();
         int[][] matrix = new int[][]{
                 {0, 0, 0, 0, 0},
                 {0, 0, 1, 1, 0},
                 {0, 1, 0, 0, 1},
                 {0, 1, 1, 1, 0}
         };
-        System.out.println(test.findAllDeadZero(matrix, 1, 2));     // 2
+        System.out.println(test.findAllDeadZeros(matrix, 1, 2));     // 2
         matrix = new int[][]{
                 {0, 0, 1, 1, 1, 0},     // 0
                 {1, 0, 0, 0, 0, 1},     // 1
@@ -108,7 +108,7 @@ public class FindAllDeadZero {
                 {1, 0, 0, 0, 0, 1},     // 4
                 {0, 1, 1, 1, 1, 0},     // 5
         };
-        System.out.println(test.findAllDeadZero(matrix, 5, 3));     // 0
+        System.out.println(test.findAllDeadZeros(matrix, 5, 3));     // 0
 
         matrix = new int[][]{
                 {0, 1, 1, 1, 1, 0},     // 0
@@ -118,7 +118,7 @@ public class FindAllDeadZero {
                 {1, 0, 0, 0, 0, 1},     // 4
                 {0, 1, 1, 1, 1, 0},     // 5
         };
-        System.out.println(test.findAllDeadZero(matrix, 5, 3));     // 14
+        System.out.println(test.findAllDeadZeros(matrix, 5, 3));     // 14
 
         matrix = new int[][]{
                 {0, 0, 0, 0, 0, 0},     // 0
@@ -128,6 +128,6 @@ public class FindAllDeadZero {
                 {1, 0, 0, 0, 0, 1},     // 4
                 {0, 1, 1, 1, 1, 0},     // 5
         };
-        System.out.println(test.findAllDeadZero(matrix, 0, 0));     // 0
+        System.out.println(test.findAllDeadZeros(matrix, 0, 0));     // 0
     }
 }
