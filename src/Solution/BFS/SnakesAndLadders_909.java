@@ -7,6 +7,12 @@ import java.util.Queue;
  * On an N x N board, the numbers from 1 to N*N are written boustrophedonically starting from the bottom left of the board.
  * Directions are alternating each row.
  * For example, for a 6 x 6 board, the numbers are written as follows:
+ * [-1,-1,-1,-1,-1,-1],
+ * [-1,-1,-1,-1,-1,-1],
+ * [-1,-1,-1,-1,-1,-1],
+ * [-1,35,-1,-1,13,-1],
+ * [-1,-1,-1,-1,-1,-1],
+ * [-1,15,-1,-1,-1,-1]
  * You start on square 1 of the board (which is always in the last row and first column).
  * Each move, starting from square x, consists of the following:
  * You choose a destination square S with number x+1, x+2, x+3, x+4, x+5, or x+6, provided this number is <= N*N.
@@ -37,10 +43,11 @@ public class SnakesAndLadders_909 {
         q.add(1);
         visited[1] = true;
         int step = 1, size = q.size(), end = r * c;
+
         while (!q.isEmpty()) {
             for (int i = 0; i < size; i++) {
                 int tmp = q.poll();
-                for (int j = 0; j < 6; j++) {
+                for (int j = 0; j < 6; j++) {       // x + 1, x + 2, ..., x + 6
                     int next = tmp + j + 1;
                     int[] position = numberToPosition(board, next);
                     if (board[position[0]][position[1]] > 0) {
@@ -58,11 +65,13 @@ public class SnakesAndLadders_909 {
             size = q.size();
             step++;
         }
+
         return -1;
     }
 
     /**
      * Convert the number of cell to 2D board position.
+     * The last row, which is the start position, will always
      *
      * @param board given 2D board
      * @param num   number of current cell
@@ -71,8 +80,9 @@ public class SnakesAndLadders_909 {
     private int[] numberToPosition(int[][] board, int num) {
         int n = board.length;
 
-        int row = (num - 1) / n, col = (num - 1) % n;       // find the row and col #
-        int x = n - 1 - row, y = row % 2 == 0 ? col : n - 1 - col;      // directions are alternating each row
+        int row = (num - 1) / n, col = (num - 1) % n;   // find the row and col #
+        int x = n - 1 - row;
+        int y = row % 2 == 0 ? col : n - 1 - col;       // directions are alternating each row
 
         return new int[]{x, y};
     }
