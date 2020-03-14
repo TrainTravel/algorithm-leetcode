@@ -11,15 +11,20 @@ package Solution.DynamicProgramming;
 
 public class MaxProfit_188 {
     /**
-     * Dynamic programming with 2D table.
-     * dp[i, j] = max(dp[i, j - 1], prices[j] - prices[m] + dp[i - 1, m])
+     * Dynamic programming with 2D table, optimized from O(n^3) to O(n^2).
+     * The original state transition should be:
+     * dp[i, j] = max(dp[i - 1][t - 1] + price[j] - price[t])
+     * dp[i, j]: maximum profit from at most i transactions using prices 0 to j.
      * i: ith transaction
-     * j: prices[j], index in int array price
-     * m: in range of [0, j-1]
-     * => [i, j] = max([i, j - 1], prices[j] + max([i - 1, m] - prices[m]))  (efficient for looping)
+     * j: sell at price[j]
+     * t: buy at price[t]
+     * The time complexity will be O(n^2 * k) (three level looping).
+     * To optimize it, note that in dp[i][j], only dp[i - 1][t - 1] - price[t] is relating to t.
+     * Hence, dp[i][j] = price[j] + max(dp[i - 1][t - 1] - price[t]).
+     * max(dp[i - 1][t - 1] - price[t]) can be found by using a int to store during the loop from 0 to j.
      * Base case:
-     * dp[0, j] = 0
-     * dp[i, 0] = 0
+     * dp[i, 0] = 0, 0 <= i <= k
+     * dp[0, j] = 0, 0 <= j < n
      *
      * @param k      at most k transactions
      * @param prices int array
@@ -43,14 +48,20 @@ public class MaxProfit_188 {
             return max;
         }
 
-        int[][] dp = new int[k + 1][n];
+        int[][] dp = new int[k + 1][n];     // dp[i][j]: maximum profit from at most i transactions using prices 0 to j
 
-        for (int i = 1; i <= k; i++) {        // buy and sell
-            int max = -prices[0];
-            for (int j = 1; j < n; j++) {     // stock prices
+        for (int i = 1; i <= k; i++) {
+            int maxTemp = -prices[0];     // max profit from previous round
+            for (int j = 1; j < n; j++) {           // each row is one more buying taken based on previous max profit
 
-                dp[i][j] = Math.max(prices[j] + max, dp[i][j - 1]);     // sell with highest price
-                max = Math.max(dp[i - 1][j] - prices[j], max);          // buy with lowest price
+                /*
+                 * dp[i, j] = max(dp[i - 1][t - 1] + price[j] - price[t]), where t is from 0 to j
+                 * dp[i][j - 1]: do nothing (or buy) which doesn't change the acquired profit
+                 * prices[j] - buyPrice: sell at current price
+                 * maxTemp is to find max(dp[i - 1][t - 1] - price[t])
+                 * t is from 0 to j. */
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] - maxTemp);
+                maxTemp = Math.max(maxTemp, dp[i - 1][j] - prices[j]);
             }
         }
 
@@ -58,7 +69,7 @@ public class MaxProfit_188 {
     }
 
     /**
-     * DP solution with space optimized.
+     * DP solution with space optimized by rolling array.
      *
      * @param k      k times transaction limit
      * @param prices prices array
@@ -92,7 +103,7 @@ public class MaxProfit_188 {
                 base = Math.max(base, r1[j] - prices[j]);
             }
 
-            for (int j = 0; j < prices.length; j++) {       // mem compress
+            for (int j = 0; j < prices.length; j++) {       // memory compress
                 r1[j] = r2[j];
                 r2[j] = 0;
             }
