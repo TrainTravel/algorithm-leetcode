@@ -68,7 +68,8 @@ public class LargestNumber_179 {
             num[i] = String.valueOf(nums[i]);       // convert int to string for comparator
         }
 
-        /* The principle of comparison is similar to dictionary lexical order.
+        /*
+         * The principle of comparison is similar to dictionary lexical order.
          * Only compare first number between two numbers, place larger one at head of result for a largest number.
          * If two numbers have same first digit, then compare second digit with same rule. */
         Comparator<String> comparator = (str1, str2) -> {
