@@ -11,26 +11,32 @@ package Solution.Others;
 
 public class LongestCommonPrefix_14 {
     /**
+     * Directly loop n words for k times, where k is the index of first word.
+     * Note that the longest common prefix is actually based on shortest word in array.
+     *
      * @param strs input string array
-     * @return string that represent common prefix
+     * @return the longest common prefix string amongst an array of strings
      */
     public String longestCommonPrefix(String[] strs) {
 
-        /* Empty string array */
-        if (strs.length == 0) {
+        /* Corner case */
+        if (strs == null || strs.length == 0 || strs[0].length() == 0) {
             return "";
         }
 
-        /* Traversing all chars of first string in string array */
-        for (int i = 0; i < strs[0].length(); ++i) {
-            for (int j = 1; j < strs.length; ++j) {
+        int n = strs.length;            // total words
+        int m = strs[0].length();       // length of first word, assume this is the shortest word in array
+        StringBuilder sb = new StringBuilder();
 
-                /* If first string has common part that is longer than jth,
-                   or the ith char in jth string is not common char */
-                if (i >= strs[j].length() || strs[j].charAt(i) != strs[0].charAt(i))
-                    return strs[0].substring(0, i);
+        for (int i = 0; i < m; i++) {           // index in each element
+            for (int j = 1; j < n; j++) {       // loop n words
+                if (i >= strs[j].length() || strs[j].charAt(i) != strs[j - 1].charAt(i)) {
+                    return sb.toString();
+                }
             }
+            sb.append(strs[0].charAt(i));
         }
-        return strs[0];
+
+        return sb.toString();
     }
 }

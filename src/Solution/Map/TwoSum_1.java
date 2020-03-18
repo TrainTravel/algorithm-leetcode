@@ -37,7 +37,7 @@ public class TwoSum_1 {
     }
 
     public static void main(String[] args) {
-        Solution.Map.TwoSum_1 test = new Solution.Map.TwoSum_1();
+        TwoSum_1 test = new TwoSum_1();
         int[] testArray = {3, 5, 6, 8, 7};
         int num = 8;
         System.out.println(Arrays.toString(test.twoSum(testArray, num)));
