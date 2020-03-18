@@ -41,7 +41,11 @@ public class DayOfYear_1154 {
         return out;
     }
 
-
+    /**
+     * Use Java API.
+     * @param date given date in string format
+     * @return the day number of the year
+     */
     public int api(String date) {
         return LocalDate.parse(date).getDayOfYear();
     }

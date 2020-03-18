@@ -34,6 +34,14 @@ public class DayOfTheWeek_1185 {
         return days[(w + 7) % 7];
     }
 
+    /**
+     * Use Java API.
+     *
+     * @param day   given day in year
+     * @param month given month in year
+     * @param year  given year
+     * @return corresponding day of the week for that date
+     */
     public String api(int day, int month, int year) {
         String[] weeks = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         int week = Year.of(year).atMonth(Month.of(month)).atDay(day).getDayOfWeek().getValue() - 1;
