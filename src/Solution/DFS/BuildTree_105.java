@@ -26,24 +26,30 @@ public class BuildTree_105 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
 
         /* Corner case */
-        if (preorder.length == 0) {
+        if (preorder == null || inorder == null || inorder.length == 0 || inorder.length != preorder.length) {
             return null;
         }
         if (preorder.length == 1) {
             return new TreeNode(preorder[0]);
         }
 
-        /* Use a hash map to store node value and node index for quicker searching */
-        HashMap<Integer, Integer> m = new HashMap<>();
+        HashMap<Integer, Integer> m = new HashMap<>();      // pair: node and its index in inorder array
         for (int i = 0; i < inorder.length; i++) {
             m.put(inorder[i], i);
         }
 
-        return traverse(preorder, 0, preorder.length - 1, 0, inorder.length - 1, m);
+        return buildTree(preorder, 0, preorder.length - 1, 0, inorder.length - 1, m);
     }
 
     /**
      * Find root of children in inorder array and in this way to find their left and right children.
+     * The start position of preorder array is the root of current tree.
+     * Find the position of current root in inorder array.
+     * Then the size of left subtree can be found, which is the left part of inorder array.
+     * And the root of left subtree is the next value in preorder array.
+     * The size of right subtree can be found as well, which is the right part of inorder array.
+     * Based on size of left subtree, the root of right subtree can be found.
+     * Pass the parameter into the recursion, until start position is larger than end position.
      *
      * @param preorder preorder traversal array
      * @param preStart root in preorder traverse array
@@ -53,18 +59,18 @@ public class BuildTree_105 {
      * @param m        hash map for quickly find root index in inorder array
      * @return root node of current tree
      */
-    private TreeNode traverse(int[] preorder, int preStart, int preEnd, int inStart, int inEnd, HashMap<Integer, Integer> m) {
+    private TreeNode buildTree(int[] preorder, int preStart, int preEnd, int inStart, int inEnd, HashMap<Integer, Integer> m) {
 
         if (preStart > preEnd || inStart > inEnd) {
             return null;        // end point
         }
 
-        TreeNode root = new TreeNode(preorder[preStart]);       // first element in preorder array is root of current tree
-        int inRoot = m.get(preorder[preStart]);     // find index of root in inorder array
+        TreeNode root = new TreeNode(preorder[preStart]);       // first element in preorder is the root of current tree
+        int inRoot = m.get(preorder[preStart]);                 // find index of root in inorder array
         int leftChild = inRoot - inStart;       // left part of root in inorder array is left child of current root node
 
-        root.left = traverse(preorder, preStart + 1, preStart + leftChild, inStart, inRoot - 1, m);
-        root.right = traverse(preorder, preStart + leftChild + 1, preEnd, inRoot + 1, inEnd, m);
+        root.left = buildTree(preorder, preStart + 1, preStart + leftChild, inStart, inRoot - 1, m);
+        root.right = buildTree(preorder, preStart + leftChild + 1, preEnd, inRoot + 1, inEnd, m);
         return root;
     }
 }

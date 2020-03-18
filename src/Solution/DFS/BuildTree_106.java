@@ -13,7 +13,6 @@ import java.util.HashMap;
  */
 
 public class BuildTree_106 {
-
     /**
      * The last element of postorder is always the root of tree.
      *
@@ -36,7 +35,8 @@ public class BuildTree_106 {
         for (int i = 0; i < inorder.length; i++) {
             m.put(inorder[i], i);
         }
-        return rebuild(postorder, postorder.length - 1, 0, 0, inorder.length - 1, m);
+
+        return buildTree(postorder, postorder.length - 1, 0, 0, inorder.length - 1, m);
     }
 
     /**
@@ -44,26 +44,25 @@ public class BuildTree_106 {
      * For better understanding, pStart is the last element in postorder, therefore pStart > pEnd.
      *
      * @param postorder postorder array
-     * @param pStart    postorder start position in current recursion (pStart > pEnd)
-     * @param pEnd      postorder end position in current recursion (pStart > pEnd)
-     * @param inStart   inorder start position in current recursion
-     * @param inEnd     inorder end position in current recursion
+     * @param pStart    postorder start position in current tree (pStart > pEnd)
+     * @param pEnd      postorder end position in current tree (pStart > pEnd)
+     * @param inStart   inorder start position in current tree
+     * @param inEnd     inorder end position in current tree
      * @param m         hash map
      * @return root node of current tree
      */
-    private TreeNode rebuild(int[] postorder, int pStart, int pEnd, int inStart, int inEnd, HashMap<Integer, Integer> m) {
+    private TreeNode buildTree(int[] postorder, int pStart, int pEnd, int inStart, int inEnd, HashMap<Integer, Integer> m) {
 
-        /* End point */
-        if (inStart > inEnd || pEnd > pStart) {
+        if (inStart > inEnd || pEnd > pStart) {     // end point
             return null;
         }
 
         TreeNode root = new TreeNode(postorder[pStart]);
         int inRoot = m.get(postorder[pStart]);
-        int leftChild = inRoot - inStart;
+        int leftChild = inRoot - inStart;       // size of left subtree
 
-        root.right = rebuild(postorder, pStart - 1, pEnd + inRoot - inStart, inRoot + 1, inEnd, m);
-        root.left = rebuild(postorder, pEnd + leftChild - 1, pEnd, inStart, inRoot - 1, m);
+        root.right = buildTree(postorder, pStart - 1, pEnd + inRoot - inStart, inRoot + 1, inEnd, m);
+        root.left = buildTree(postorder, pEnd + leftChild - 1, pEnd, inStart, inRoot - 1, m);
 
         return root;
     }
