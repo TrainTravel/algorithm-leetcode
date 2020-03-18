@@ -1,8 +1,7 @@
 package Playground;
 
-
 /**
- * Binary search implement.
+ * Implementation of binary search.
  *
  * @author BorisMirage
  * Time: 2018/02/25 14:38
@@ -10,62 +9,43 @@ package Playground;
  */
 
 public class BinarySearch {
-    private int[] searchArray;
-    private int target;
-    private int res;
 
     /**
-     * Complete a binary search in a sorted array.
-     *
-     * @param array input array
-     * @param i     int to be found in array
+     * Constructor of class
      */
-    public BinarySearch(int[] array, int i) {
-        searchArray = array;
-        target = i;
-    }
-
-    public boolean search() {
-        if (searchArray.length < 1) {
-            return false;
-        }
-        return find(searchArray.length - 1);
+    public BinarySearch() {
     }
 
     /**
-     * Find target position.
-     *
-     * @param endIndex search end position
-     * @return if found
+     * Implement binary search to find target in sorted array.
+     * @param array  given array
+     * @param target target to be found
+     * @return position of target, or return -1 if not found
      */
-    private boolean find(int endIndex) {
-        int startIndex = 0;
-        while (startIndex <= endIndex) {
-            int mid = (startIndex + endIndex) / 2;
-            if (searchArray[mid] == target) {
-                res = mid;
-                return true;
-            } else if (searchArray[mid] > target) {
-                endIndex = mid - 1;
-            } else {
-                startIndex = mid + 1;
+    public int searchPosition(int[] array, int target) {
+        int start = 0, end = array.length;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (array[mid] == target) {
+                return mid;
             }
 
+            if (array[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
         }
-        return false;
+
+        return -1;
     }
 
-    /**
-     * Find the target position.
-     * If target is not found in array, return -1.
-     *
-     * @return target position, return -1 if target not found
-     */
-    public int where() {
-        if (find(searchArray.length - 1)) {
-            return res;
-        } else {
-            return -1;
-        }
+    public static void main(String[] args) {
+        System.out.println(new BinarySearch().searchPosition(new int[]{1, 4, 5, 6, 7, 8, 9}, 0));       // -1
+        System.out.println(new BinarySearch().searchPosition(new int[]{1, 4, 5, 6, 7, 8, 9}, 1));       // 0
+        System.out.println(new BinarySearch().searchPosition(new int[]{1, 4, 5, 6, 7, 8, 9}, 9));       // 6
+        System.out.println(new BinarySearch().searchPosition(new int[]{1, 4, 5, 6, 7, 8, 9}, 5));       // 2
+        System.out.println(new BinarySearch().searchPosition(new int[]{1, 1, 1, 1, 1, 8, 9}, 8));       // 5
     }
 }
