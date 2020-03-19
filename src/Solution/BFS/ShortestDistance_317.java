@@ -76,7 +76,6 @@ public class ShortestDistance_317 {
 
     private boolean bfs(int[][] grid, int[][] distance, int total, int[][] r, int x, int y) {
 
-        /* Directions */
         int[] d = new int[]{1, -1, 0, 0, 0, 0, 1, -1};     // directions
 
         int count = 0;      // count reachable 1, if count is not equal to total 1 on grid, then return false
@@ -111,6 +110,7 @@ public class ShortestDistance_317 {
                 }
             }
         }
+
         return count == total;
     }
 }
