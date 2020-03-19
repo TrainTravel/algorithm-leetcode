@@ -24,25 +24,32 @@ public class MinCut_132 {
     public int minCut(String s) {
 
         /* Corner case */
-        if (s.length() < 2) {
+        if (s == null || s.length() < 2) {
             return 0;
         }
 
-        int[] min = new int[s.length()];        // min cut at each position of string
-        boolean[][] dp = new boolean[s.length()][s.length()];       // if s(i, j) is palindrome
+        int n = s.length();
+        int[] minCut = new int[n];              // min cut at each position of string
+        boolean[][] dp = new boolean[n][n];     // dp[i][j]: whether s(i, j) is palindrome
 
-        for (int i = 0; i < s.length(); i++) {
-            min[i] = i;       // initial value, assume string is not palindrome
+        for (int i = 0; i < n; i++) {
+            minCut[i] = i;      // at most i cuts
 
-            for (int j = 0; j <= i; j++) {      // iter sub string
-                if (s.charAt(j) == s.charAt(i) && (j + 1 > i - 1 || dp[j + 1][i - 1])) {        // j + 1 > i - 1: adjacent char
+            for (int j = 0; j <= i; j++) {      // from 0 to i
+
+                /*
+                 * Two cases if s.charAt(i) == s.charAt(j):
+                 * 1. If j is the next to or equal to i.
+                 * 2. If dp[j + 1][i - 1] is true.
+                 * If any of two cases matched, then the current substring s(j, i) is palindrome, no cut required. */
+                if (s.charAt(i) == s.charAt(j) && ((j + 1 > i - 1) || dp[j + 1][i - 1])) {
                     dp[j][i] = true;
-                    min[i] = (j == 0) ? 0 : Math.min(min[i], min[j - 1] + 1);     // j == 0: first char always palindrome
+                    minCut[i] = j == 0 ? 0 : Math.min(minCut[i], minCut[j - 1] + 1);        // find min cut of s(0, i)
                 }
             }
         }
 
-        return min[s.length() - 1];
+        return minCut[s.length() - 1];
     }
 
     public static void main(String[] args) {
