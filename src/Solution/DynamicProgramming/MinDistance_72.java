@@ -26,32 +26,37 @@ public class MinDistance_72 {
      * @return min edit distance
      */
     public int minDistance(String word1, String word2) {
-        int l1 = word1.length(), l2 = word2.length();
 
         /* Corner case */
-        if (l1 == 0 || l2 == 0) {
-            return word1.length() | word2.length();     // if one is empty, then the min distance is the other word
+        if (word1 == null || word2 == null) {
+            return 0;
         }
-
         if (word1.equals(word2)) {
             return 0;
         }
 
+        int l1 = word1.length(), l2 = word2.length();
+
         int[][] dp = new int[l1 + 1][l2 + 1];
 
         for (int i = 1; i < l1 + 1; i++) {
-            dp[i][0] = i;
+            dp[i][0] = i;       // at most l1 times deletion
         }
 
         for (int i = 1; i < l2 + 1; i++) {
-            dp[0][i] = i;
+            dp[0][i] = i;       // at most l2 times insertion
         }
 
-        for (int i = 1; i < l1 + 1; i++) {
-            for (int j = 1; j < l2 + 1; j++) {
+        for (int i = 1; i <= l1; i++) {
+            for (int j = 1; j <= l2; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
+
+                    /*
+                     * dp[i - 1][j]: delete char in word1, i -> i + 1
+                     * dp[i][j - 1]: insert char to word1, j -> j + 1
+                     * dp[i - 1][j - 1]: replace */
                     dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
                 }
             }
