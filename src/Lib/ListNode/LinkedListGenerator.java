@@ -4,7 +4,7 @@ package Lib.ListNode;
  * Generate a linked list.
  *
  * @author BorisMirage
- * Time: 2020/02/26 19:03
+ * Time: 2019/10/11 13:15
  * Created with IntelliJ IDEA
  */
 
@@ -20,6 +20,24 @@ public class LinkedListGenerator {
         ListNode current = dummy;
         for (int n : arr) {
             current.next = new ListNode(n);
+            current = current.next;
+        }
+
+        return dummy.next;
+    }
+
+    /**
+     * Generate linked list by range [start, end].
+     *
+     * @param start start value
+     * @param end   end value
+     * @return head node of generated linked list
+     */
+    public static ListNode generate(int start, int end) {
+        ListNode dummy = new ListNode(-1);
+        ListNode current = dummy;
+        for (int i = start; i <= end; i++) {
+            current.next = new ListNode(i);
             current = current.next;
         }
 
