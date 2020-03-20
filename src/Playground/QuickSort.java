@@ -14,20 +14,20 @@ public class QuickSort {
     private int[] arr;
 
     /**
-     * Class initialization.
+     * Class constructor.
      */
     public QuickSort() {
     }
 
-    public int[] sort(int[] arr) {
+    public void sort(int[] arr) {
         this.arr = arr;
 
         /* Corner case */
         if (this.arr.length < 2) {
-            return this.arr;
+            return;
         }
+
         sort(0, this.arr.length - 1);
-        return this.arr;
     }
 
     /**
@@ -71,7 +71,7 @@ public class QuickSort {
                 swap(++i, j);
             }
         }
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
 
         swap(i + 1, right);     // swap arr[i+1] and arr[high] (or pivot)
 
@@ -91,10 +91,19 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1})));
+
+        int[] arr = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1};
+        new QuickSort().sort(arr);
+        System.out.println(Arrays.toString(arr));
         System.out.println("====");
-        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{5, 4, 2, 8, 3, 7, 9, 1, 6})));
+
+        arr = new int[]{5, 4, 2, 8, 3, 7, 9, 1, 6};
+        new QuickSort().sort(arr);
+        System.out.println(Arrays.toString(arr));
         System.out.println("====");
-        System.out.println(Arrays.toString(new QuickSort().sort(new int[]{8, 4, 7, 8, 5, 3, 5, 7, 1})));
+
+        arr = new int[]{8, 4, 7, 8, 5, 3, 5, 7, 1};
+        new QuickSort().sort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }

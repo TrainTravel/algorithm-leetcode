@@ -108,8 +108,9 @@ class MultiMap<K, V> {
      * mapped to the specified value and return true if removed
      */
     public boolean remove(K key, V value) {
-        if (map.get(key) != null) // key exists
+        if (map.get(key) != null) {     // key exists
             return map.get(key).remove(value);
+        }
 
         return false;
     }
@@ -121,8 +122,9 @@ class MultiMap<K, V> {
     public boolean replace(K key, V oldValue, V newValue) {
 
         if (map.get(key) != null) {
-            if (map.get(key).remove(oldValue))
+            if (map.get(key).remove(oldValue)) {
                 return map.get(key).add(newValue);
+            }
         }
         return false;
     }

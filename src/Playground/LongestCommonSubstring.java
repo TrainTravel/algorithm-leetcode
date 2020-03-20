@@ -38,7 +38,8 @@ public class LongestCommonSubstring {
     private String setTable() {
         String result = "";
 
-        /* str1: 2D array's column; str2: 2D array's row.
+        /*
+         * str1: 2D array's column; str2: 2D array's row.
          * First column and row filled with 0 for avoiding out of index error. */
         int[][] table = new int[str1.length() + 1][str2.length() + 1];
 
@@ -53,9 +54,7 @@ public class LongestCommonSubstring {
             }
         }
 
-        /* Trace back */
-
-
+//        /* Trace back */
         return result;
     }
 

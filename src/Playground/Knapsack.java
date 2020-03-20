@@ -11,6 +11,9 @@ package Playground;
 
 public class Knapsack {
     /**
+     * Typical dynamic programming problem.
+     * dp[i][j] = (j >= weight[i]) ? Math.max(dp[i + 1][j - weight[i]] + value[i], dp[i + 1][j]) : dp[i + 1][j]
+     *
      * @param weight    given items weight
      * @param value     given items value
      * @param maxWeight max weight limit of knapsack
