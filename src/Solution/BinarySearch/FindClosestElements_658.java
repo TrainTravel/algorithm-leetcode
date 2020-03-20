@@ -33,7 +33,7 @@ public class FindClosestElements_658 {
         while (left <= right) {      // binary search for start index of k elements
             int mid = left + (right - left) / 2;
 
-            if (x - arr[mid] > arr[mid + k] - x) {      // final arr[i] should be closer to x compare to arr[i + k]
+            if (x - arr[mid] > arr[mid + k] - x) {      // finally, arr[i] should be closer to x compare to arr[i + k]
                 left = mid + 1;     // arr[mid + 1] ~ arr[mid + k] is closer than arr[mid] ~ arr[mid + k - 1]
             } else {
                 right = mid;        // arr[mid] ~ arr[mid + k - 1] is closer than arr[mid + 1] ~ arr[mid + k]
