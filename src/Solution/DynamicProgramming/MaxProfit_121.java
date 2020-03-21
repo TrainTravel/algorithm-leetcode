@@ -26,19 +26,19 @@ public class MaxProfit_121 {
             return 0;
         }
 
-        int min = prices[0], n = prices.length;
+        int n = prices.length, minBuy = prices[0];     // min buy price
         int[] dp = new int[n];
 
         for (int i = 1; i < n; i++) {
-            min = Math.min(min, prices[i]);                 // min buying price
-            dp[i] = Math.max(dp[i - 1], prices[i] + min);
+            minBuy = Math.min(minBuy, prices[i]);
+            dp[i] = Math.max(dp[i - 1], prices[i] - minBuy);       // min buy price and max sell price
         }
 
         return dp[n - 1];
     }
 
     /**
-     * Greedy.
+     * Greedy, actually idea is same as dynamic programming solution.
      *
      * @param prices int array
      * @return max "profit"
