@@ -14,15 +14,48 @@ package Solution.DynamicProgramming;
 
 public class MaxProfit_122 {
     /**
-     * Ignore this problem.
+     * Dynamic programming.
+     * State transition:
+     * buy[i] = max(sell[i - 1] - price[i], buy[i - 1])
+     * sell[i]= max(sell[i - 1], buy[i] + price[i])
+     * Base case:
+     * buy[0] = -prices[0]
+     * sell[0] = 0
      *
-     * @param prices int arr
+     * @param prices given array
      * @return max profit
      */
     public int maxProfit(int[] prices) {
+
+        /* Corner case */
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+
+        int n = prices.length;
+        int[] buy = new int[n];
+        int[] sell = new int[n];
+        buy[0] = -prices[0];
+        sell[0] = 0;
+
+        for (int i = 1; i < n; i++) {
+            buy[i] = Math.max(sell[i - 1] - prices[i], buy[i - 1]);
+            sell[i] = Math.max(sell[i - 1], buy[i] + prices[i]);
+        }
+
+        return sell[n - 1];
+    }
+
+    /**
+     * Greedy.
+     *
+     * @param prices given array
+     * @return max profit
+     */
+    public int maxProfitGreedy(int[] prices) {
         int max = 0;
         for (int i = 1; i < prices.length; i++) {
-            max = prices[i] > prices[i - 1] ? (max + prices[i] - prices[i - 1]) : max;
+            max = prices[i] > prices[i - 1] ? max + prices[i] - prices[i - 1] : max;
         }
 
         return max;
