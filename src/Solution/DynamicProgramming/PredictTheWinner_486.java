@@ -1,5 +1,7 @@
 package Solution.DynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * Given an array of scores that are non-negative integers.
  * Player 1 picks one of the numbers from either end of the array followed by the player 2 and then player 1 and so on.
@@ -15,7 +17,7 @@ package Solution.DynamicProgramming;
 
 public class PredictTheWinner_486 {
     /**
-     * Min-max problem can be solved by dynamic programming.
+     * Min-max problem. Solved by dynamic programming.
      * The key of this problem is to correctly define dp[i][j].
      * State transition:
      * dp[i][j]: how much more scores the first-in-action player will get from i to j than the second player.
@@ -51,6 +53,56 @@ public class PredictTheWinner_486 {
         }
 
         return dp[0][n - 1] >= 0;
+    }
+
+    /**
+     * DFS with pruning.
+     * Find max sum of player from range [i, j].
+     * Use a 2D array to store max score that current player can get as pruning.
+     *
+     * @param nums given int array
+     * @return predict whether player 1 is the winner
+     */
+    public boolean predictTheWinnerDFSWithPruning(int[] nums) {
+        int n = nums.length, sum = Arrays.stream(nums).sum();
+        int[][] memorization = new int[n][n];
+        int first = dfsPruning(memorization, nums, 0, n - 1);       // most score first player can get
+
+        return sum - first <= first;
+    }
+
+    /**
+     * DFS with pruning.
+     *
+     * @param mem   memorization
+     * @param nums  given array
+     * @param left  left bound
+     * @param right right bound
+     * @return max score current player can get
+     */
+    private int dfsPruning(int[][] mem, int[] nums, int left, int right) {
+
+        /* Base cases */
+        if (left == right) {
+            return nums[left];     // if only one element left, then current player always win
+        }
+        if (left > right) {          // no available element
+            return 0;
+        }
+
+        if (mem[left][right] != 0) {
+            return mem[left][right];
+        }
+
+        /*
+         * Current player can select left or right.
+         * The max score is based on next round, select min score of next player. */
+        int selectLeft = nums[left] + Math.min(dfsPruning(mem, nums, left + 2, right), dfsPruning(mem, nums, left + 1, right - 1));
+        int selectRight = nums[right] + Math.min(dfsPruning(mem, nums, left + 1, right - 1), dfsPruning(mem, nums, left, right - 2));
+
+        mem[left][right] = Math.max(selectLeft, selectRight);
+
+        return mem[left][right];
     }
 
     /**
