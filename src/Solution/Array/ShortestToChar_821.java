@@ -31,7 +31,7 @@ public class ShortestToChar_821 {
             out[i] = i - position;
         }
 
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = position - 1; i >= 0; i--) {
             if (s.charAt(i) == c) {
                 position = i;
             }
