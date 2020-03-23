@@ -32,15 +32,15 @@ public class MinMeetingRooms_253 {
 
         List<Point> list = new LinkedList<>();
         for (int[] i : intervals) {
-            list.add(new Point(i[0], false));
-            list.add(new Point(i[1], true));
+            list.add(new Point(i[0], true));
+            list.add(new Point(i[1], false));
         }
 
         Collections.sort(list);
 
         int count = 0, max = 0;
         for (Point p : list) {
-            if (!p.isEnd) {     // there is overlap
+            if (p.isStart) {     // there is overlap
                 count++;
             } else {            // one meeting is over, no overlap here
                 count--;
@@ -60,23 +60,24 @@ public class MinMeetingRooms_253 {
      */
     static class Point implements Comparable<Point> {
         int val;
-        boolean isEnd;
+        boolean isStart;
 
         /**
          * Constructor of time point.
          *
-         * @param val   time of current point
-         * @param isEnd is current time a end time
+         * @param val     time of current point
+         * @param isStart is current time a end time
          */
-        Point(int val, boolean isEnd) {
+        Point(int val, boolean isStart) {
             this.val = val;
-            this.isEnd = isEnd;
+            this.isStart = isStart;
         }
 
         /**
          * Compare two points.
          * If they have different time, then point with earlier time has higher priority.
          * Otherwise, end point has higher priority.
+         * Because if a end point and start point has same time, no extra room is required in this problem.
          *
          * @param p other point
          * @return -1, 0, or 1 as the first argument is less than, equal to, or greater than the second
@@ -85,9 +86,9 @@ public class MinMeetingRooms_253 {
         public int compareTo(Point p) {
             if (this.val != p.val) {
                 return this.val - p.val;
-            } else {
-                return this.isEnd ? -1 : 1;     // if identical end time is considered as overlap, the order should be reversed
             }
+
+            return this.isStart ? 1 : -1;       // end point should be put first
         }
     }
 
