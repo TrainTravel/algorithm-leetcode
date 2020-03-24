@@ -26,21 +26,19 @@ public class MaxArea_11 {
     public int maxArea(int[] height) {
 
         /* Corner case */
-        if (height.length < 1) {
+        if (height == null || height.length < 1) {
             return 0;
         }
 
-        int left = 0, right = height.length - 1;        // two pointers
-        int max = Integer.MIN_VALUE;
+        int max = 0, left = 0, right = height.length - 1;
 
-        while (left <= right) {
-
-            max = Math.max(max, (right - left) * Math.max(height[left], height[right]));
+        while (left < right) {
+            max = Math.max(max, Math.min(height[left], height[right]) * (right - left));
 
             if (height[left] > height[right]) {     // area size is depend on smaller one
-                right--;        // if left larger than right, move right
+                right--;                            // if left larger than right, move right
             } else {
-                left++;         // otherwise, move left
+                left++;                             // otherwise, move left
             }
         }
 
