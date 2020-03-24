@@ -13,11 +13,11 @@ import java.util.*;
 public class Merge_56 {
     /**
      * First of all, sort the array by each interval's first element (interval start).
-     * After sorting, interval[i][0] <= interval[i+1][0]. Therefore, to check overlapping, compare interval[i][1].
-     * If current interval left bound is smaller than previous interval right bound, then there is an overlapping.
-     * Set right bound to larger one.
-     * If two intervals have no overlapping, add it to result and update previous checking interval to current one.
-     * Finally, add one last interval. Since only add intervals when disjoint interval was found.
+     * After sorting, interval[i][0] <= interval[i + 1][0].
+     * If interval[i + 1][0] > interval[i][1], then there is no overlap. Add previous interval to result.
+     * Otherwise, there is an overlap. interval[i + 1][0] will be merged into previous interval.
+     * The end of current interval depends on max(interval[i][1], interval[i + 1][1]).
+     * Note that there is a final interval which should be added to result.
      *
      * @param intervals input Interval list
      * @return merged result
@@ -28,28 +28,27 @@ public class Merge_56 {
         if (intervals.length <= 1) {
             return intervals;
         }
-        Arrays.sort(intervals, new Comparator<int[]>() {        // sort based on interval start
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
-//        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
 
-        List<int[]> list = new LinkedList<>();
-        int[] current = intervals[0];       // first interval
+        List<int[]> out = new LinkedList<>();
 
-        for (int[] tmp : intervals) {
-            if (tmp[0] <= current[1]) {     // if tmp[0] <= current[1], then there must be overlap
-                current[1] = Math.max(tmp[1], current[1]);      // find larger right bound to merge interval
-            } else {                        // otherwise, it is disjoint intervals
-                list.add(current);          // add the new interval to the list
-                current = tmp;              // update temp
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));     // sort intervals by start
+
+        int start = intervals[0][0], end = intervals[0][1];
+
+        for (int[] i : intervals) {
+
+            if (i[0] > end) {               // if next interval's start is larger than previous end, then no overlap
+                out.add(new int[]{start, end});     // previous overlap is ended, add to output
+                start = i[0];                       // new interval's start and end
+                end = i[1];
+            } else {                        // otherwise, there is a overlap
+                end = Math.max(end, i[1]);  // find the end of current overlap based on larger ending value
             }
         }
-        list.add(current);      // add final interval
 
-        return list.toArray(new int[list.size()][]);
+        out.add(new int[]{start, end});     // add last interval
+
+        return out.toArray(new int[out.size()][]);
     }
 
     public static void main(String[] args) {
