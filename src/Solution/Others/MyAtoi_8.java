@@ -1,103 +1,75 @@
 package Solution.Others;
 
-import java.util.LinkedList;
-
-
 /**
+ * Implement atoi which converts a string to an integer.
+ * First, discards as many whitespace characters as necessary until the first non-whitespace character is found.
+ * Then, takes an optional initial plus or minus sign followed by as many numerical digits as possible.
+ * Interprets them as a numerical value.
+ * The string can contain additional characters after those that form the integral number.
+ * They will be ignored and have no effect on the behavior of this function.
+ * If the first sequence of non-whitespace characters in str is not a valid digit, or not +/-, no conversion is performed.
+ * If no valid conversion could be performed, return 0.
+ *
  * @author BorisMirage
- * Date: 2018/03/26
- * Time: 15:28
+ * Time: 2018/03/26 15:28
  * Created with IntelliJ IDEA
  */
 
 public class MyAtoi_8 {
-
     /**
-     * Convert string to integer
+     * Corner cases: (return 0)
+     * 1. The whole string only contains white space.
+     * 2. String like "+-1".
      *
      * @param str input string
      * @return integer that is converted
      */
-
     public int myAtoi(String str) {
-        LinkedList<Integer> parseList = new LinkedList<>();
-        long result = 0;
-        int power = 0;
-        int cache;
-        int plus = 0;
-        int minus = 0;
-        int validStart = 0;
 
-        if (str.length() == 0) {
+        /* Corner case */
+        if (str == null || str.length() == 0) {
             return 0;
         }
 
-        /* Check legitimacy */
-        for (int i = 0; i < str.length(); i++) {
+        int p = 0, sign = 1;
 
-            /* ASCII code stands for integer: 48-57 (included) */
-            if ((int) str.charAt(i) > 47 && (int) str.charAt(i) < 58) {
-                parseList.add((int) str.charAt(i) - 48);
-                validStart = 1;
-            } else if ((int) str.charAt(i) == 43) {
+        while (p < str.length() && str.charAt(p) == ' ') {
+            p++;        // move to first non-space char
+        }
 
-                /* 43: "+" */
-                plus += 1;
-                validStart = 1;
-            } else if ((int) str.charAt(i) == 45) {
-                /* 45: "-" */
-                minus += 1;
-                validStart = 1;
-            }
+        if (p == str.length()) {
+            return 0;
+        }
 
-            if (plus + minus > 1) {
+        if (!Character.isDigit(str.charAt(p))) {
+            if (str.charAt(p) != '+' && str.charAt(p) != '-') {     // if first non-space char is not +, -, or digit
                 return 0;
             }
-            if ((int) str.charAt(i) > 58 || (int) str.charAt(i) < 47) {
-                if ((int) str.charAt(i) != 43 && (int) str.charAt(i) != 45) {
-                    if ((int) str.charAt(i) == 32) {
-                        if (validStart == 1) {
-                            break;
-                        }
-                    } else break;
+            sign = (str.charAt(p++) == '-') ? -1 : 1;       // negative or positive
+        }
 
-                }
+        long tmp = 0;
+
+        while (p < str.length() && Character.isDigit(str.charAt(p))) {      // end loop at first non-digit char
+            tmp = tmp * 10 + str.charAt(p++) - '0';
+            if (tmp * sign > Integer.MAX_VALUE) {       // avoid overflow
+                return Integer.MAX_VALUE;
+            }
+            if (tmp * sign < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
             }
         }
 
-        if (parseList.size() == 0) {
-            return 0;
-        }
-
-        /* Calculate result */
-        while (parseList.size() != 0) {
-            cache = parseList.getLast();
-            result = (long) (cache * Math.pow(10, power) + result);
-            power += 1;
-            parseList.removeLast();
-        }
-
-        if (minus > 0) {
-            result *= -1;
-        }
-
-        if (result > Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        }
-        if (result < Integer.MIN_VALUE) {
-            return Integer.MIN_VALUE;
-        }
-
-        return (int) result;
+        return (int) tmp * sign;
     }
 
     public static void main(String[] args) {
 
-        /* Atoi test */
-        MyAtoi_8 myAtoiTest = new MyAtoi_8();
-        System.out.println(myAtoiTest.myAtoi("   - 321"));
-        System.out.println(myAtoiTest.myAtoi("  -0012a42"));
-        System.out.println(myAtoiTest.myAtoi("   +0 123"));
-        System.out.println(myAtoiTest.myAtoi("    010"));
+        MyAtoi_8 test = new MyAtoi_8();
+        System.out.println(test.myAtoi("   - 321"));      // 0
+        System.out.println(test.myAtoi("  -0012a42"));    // -12
+        System.out.println(test.myAtoi("   +0 123"));     // 0
+        System.out.println(test.myAtoi("    010"));       // 10
+        System.out.println(test.myAtoi("9223372036854775808"));       // 2147483647 (larger than long)
     }
 }
