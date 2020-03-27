@@ -138,7 +138,51 @@ public class IsMatch_44 {
         }
 
         mem[i][j] = -1;
+
         return false;
+    }
+
+    /**
+     * Two pointers & greedy.
+     * If two characters are same or pattern is '?', then move both pointer forward.
+     * Otherwise, if pattern is '*', mark the position of '*' and character in string, then move pattern index forward.
+     * Initially, always assume matches an empty subsequence. Check if current character matches to pattern.
+     * If not, then try to match as much character as possible. This is the subsequence matched by '*'.
+     * Finally, pass all possible '*' in the end of pattern and check if the index can reach the end of pattern.
+     *
+     * @param s string
+     * @param p pattern string
+     * @return if string is matched to pattern
+     */
+    public boolean isMatchGreedy(String s, String p) {
+
+        /* Corner case */
+        if (p.equals("*") || (s.length() == 0 && p.length() == 0)) {
+            return true;
+        }
+
+        int p1 = 0, p2 = 0, star = -1, subsequence = 0;
+
+        while (p1 < s.length()) {
+            if (p2 < p.length() && (s.charAt(p1) == p.charAt(p2) || p.charAt(p2) == '?')) {
+                p1++;
+                p2++;
+            } else if (p2 < p.length() && p.charAt(p2) == '*') {        // initially, assumes matching empty subsequence
+                star = p2++;            // mark the position of '*'
+                subsequence = p1;       // mark the start position of potential subsequence
+            } else if (star != -1) {     // if current char in string is not matched to pattern and there is a'*'
+                p2 = star + 1;             // find the next char in pattern to solid the end of subsequence
+                p1 = ++subsequence;        // move index in string to next character
+            } else {
+                return false;
+            }
+        }
+
+        while (p2 < p.length() && p.charAt(p2) == '*') {
+            p2++;
+        }
+
+        return p2 == p.length();
     }
 
     public static void main(String[] args) {
@@ -151,5 +195,6 @@ public class IsMatch_44 {
         System.out.println(test.dfsImplementation("adceb", "*a*b"));      // true
         System.out.println(test.dfsImplementation("acdcb", "a*c?b"));     // false
         System.out.println(test.dfsImplementation("aa", "*a"));           // true
+        System.out.println(test.dfsImplementation("", ""));           // true
     }
 }
