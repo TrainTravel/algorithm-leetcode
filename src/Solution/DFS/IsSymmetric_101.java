@@ -38,7 +38,7 @@ public class IsSymmetric_101 {
     }
 
     /**
-     * Almost same as IsSameTree_100 problem, only simply modified the recursion to compare left node and right node.
+     * Almost same as Same Tree problem, only simply modified the recursion to compare left node and right node.
      *
      * @param p TreeNode 1
      * @param q TreeNode 2
