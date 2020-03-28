@@ -26,20 +26,21 @@ public class AllPossibleFBT_894 {
      */
     public List<TreeNode> allPossibleFBT(int n) {
 
-        /* Corner case */
-        if (n % 2 == 0) {
-            return new LinkedList<>();
-        }
         List<TreeNode> out = new LinkedList<>();
 
-        if (n == 1) {
+        /* Corner case */
+        if (n % 2 == 0) {
+            return out;
+        }
+
+        if (n == 1) {       // base case
             out.add(new TreeNode(0));
             return out;
         }
 
         for (int i = 1; i < n - 1; i += 2) {        // note that the # remaining node should reduce 1 of current root
-            List<TreeNode> left = allPossibleFBT(i);
-            List<TreeNode> right = allPossibleFBT(n - i - 1);
+            List<TreeNode> left = allPossibleFBT(i);                   // left subtree
+            List<TreeNode> right = allPossibleFBT(n - i - 1);       // right subtree
 
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
