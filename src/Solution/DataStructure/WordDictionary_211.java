@@ -21,7 +21,7 @@ public class WordDictionary_211 {
     private TrieNode root;
 
     /**
-     * Initialization.
+     * Constructor.
      */
     public WordDictionary_211() {
         this.root = new TrieNode();
@@ -84,13 +84,13 @@ public class WordDictionary_211 {
     /**
      * Nodes in trie.
      */
-    class TrieNode {
+    static class TrieNode {
         private char val;       // value of current node
         private HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
         private boolean end = false;
 
         /**
-         * Initialization.
+         * Constructor.
          */
         TrieNode() {
         }
@@ -177,7 +177,6 @@ public class WordDictionary_211 {
         System.out.println(test.search("bad"));
         System.out.println(test.search(".ad"));
         System.out.println(test.search("dap"));
-
     }
 }
 

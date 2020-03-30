@@ -47,6 +47,7 @@ public class PartitionLabels_763 {
                 start = last + 1;
             }
         }
+
         return out;
     }
 }

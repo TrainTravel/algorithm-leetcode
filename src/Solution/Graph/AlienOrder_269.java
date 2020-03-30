@@ -2,6 +2,7 @@ package Solution.Graph;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * There is a new alien language which uses the latin alphabet.
@@ -79,7 +80,7 @@ public class AlienOrder_269 {
             }
         }
 
-        LinkedList<Integer> q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
 
         for (int i = 0; i < 26; i++) {
             if (indegree[i] == 0) {
@@ -113,7 +114,5 @@ public class AlienOrder_269 {
 //        System.out.println(test.alienOrder(new String[]{"z", "x", "z"}));
 //        System.out.println(test.alienOrder(new String[]{"z", "z"}));
         System.out.println(test.alienOrder(new String[]{"za", "zb", "ca", "cb"}));
-
-
     }
 }
