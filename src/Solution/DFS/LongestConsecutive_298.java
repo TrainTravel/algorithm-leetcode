@@ -13,64 +13,39 @@ import Lib.Tree.BinaryTree.TreeNode;
  */
 
 public class LongestConsecutive_298 {
-
-//    private int max = 0;        // global max
-//
-//    /**
-//     * DFS traversal.
-//     *
-//     * @param root root node
-//     * @return length of longest consecutive path
-//     */
-//    public int longestConsecutive(TreeNode root) {
-//        if (root == null) {
-//            return 0;
-//        }
-//        dfs(root, root.val, 0);
-//        return max;
-//    }
-//
-//    /**
-//     * Check nodes if current node value is equal to target value (previous node value + 1).
-//     * If not matched, reset local max path length to 1 and keep doing DFS.
-//     *
-//     * @param r          root node
-//     * @param val        value of consecutive path
-//     * @param currentMax current max length of consecutive path
-//     */
-//    private void dfs(TreeNode r, int val, int currentMax) {
-//
-//        /* End point */
-//        if (r == null) {
-//            return;
-//        }
-//
-//        currentMax = (r.val == val ? currentMax + 1 : 1);       // reset current max to 1 if value is not matched
-//
-//        max = Math.max(max, currentMax);
-//
-//        dfs(r.left, r.val + 1, currentMax);
-//        dfs(r.right, r.val + 1, currentMax);
-//    }
-
-    private int max = 1;
-
+    /**
+     * Postorder traverse.
+     *
+     * @param root root of tree
+     * @return length of longest consecutive path
+     */
     public int longestConsecutive(TreeNode root) {
+
+        /* Corner case */
         if (root == null) {
             return 0;
         }
-        dfs(root);
 
-        return max;
+        int[] max = new int[1];
+        dfs(root, max);
+
+        return max[0];
     }
 
-    private int dfs(TreeNode r) {
+    /**
+     * Postorder traverse.
+     * Check nodes if current node value is equal to target value (previous node value + 1).
+     *
+     * @param r root node
+     */
+    private int dfs(TreeNode r, int[] max) {
+
         if (r == null) {
             return 0;
         }
 
-        int left = dfs(r.left);
-        int right = dfs(r.right);
+        int left = dfs(r.left, max);
+        int right = dfs(r.right, max);
         int local = 1;
 
         if (r.left != null && r.left.val == r.val + 1) {
@@ -80,7 +55,7 @@ public class LongestConsecutive_298 {
             local = Math.max(right + 1, local);
         }
 
-        max = Math.max(local, max);
+        max[0] = Math.max(max[0], local);
 
         return local;
     }
