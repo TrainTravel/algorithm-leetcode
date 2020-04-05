@@ -27,16 +27,12 @@ public class IsAnagram_242 {
         if (s.length() != t.length()) {
             return false;
         }
-        if (s.length() == 1) {
-            return s.charAt(0) == t.charAt(0);
-        }
 
-        /* Array index stands for 26 letter's ASCII, and array value stands for their appear time*/
         int[] store = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
-            store[s.charAt(i) - 97] += 1;
-            store[t.charAt(i) - 97] -= 1;
+            store[s.charAt(i) - 'a']++;
+            store[t.charAt(i) - 'a']--;
         }
 
         for (int i : store) {
@@ -44,6 +40,7 @@ public class IsAnagram_242 {
                 return false;
             }
         }
+
         return true;
     }
 }
