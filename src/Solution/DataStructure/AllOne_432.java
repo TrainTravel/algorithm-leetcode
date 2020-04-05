@@ -25,6 +25,9 @@ public class AllOne_432 {
     /**
      * Constructor.
      * Two hash maps, one hash map stores key and its count, the other hash map stores count and keys under this count.
+     * Achieve O(1) get and remove (increment and decrement): HashMap stores string and count as a pair
+     * Achieve O(1) get max and get min: linked list, index is the frequency and value is the string at this frequency.
+     * Achieve O(1) update frequency without sort: HashMap, key is the frequency, value is the address of node in list.
      */
     public AllOne_432() {
         key = new HashMap<>();
