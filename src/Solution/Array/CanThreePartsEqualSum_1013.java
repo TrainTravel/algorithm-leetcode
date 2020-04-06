@@ -1,4 +1,4 @@
-package Solution.Tricky;
+package Solution.Array;
 
 import java.util.Arrays;
 

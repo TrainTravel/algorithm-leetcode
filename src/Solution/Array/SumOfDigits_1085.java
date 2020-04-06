@@ -1,4 +1,4 @@
-package Solution.Tricky;
+package Solution.Array;
 
 import java.util.Arrays;
 
@@ -30,6 +30,7 @@ public class SumOfDigits_1085 {
                 min /= 10;
             }
         }
+
         return 1 - out % 2;
     }
 }
