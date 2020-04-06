@@ -1,4 +1,4 @@
-package Solution.Array;
+package Solution.DataStructure;
 
 import java.util.HashMap;
 
