@@ -1,4 +1,4 @@
-package Solution.Shuffle;
+package Solution.DataStructure;
 
 import java.util.Random;
 
