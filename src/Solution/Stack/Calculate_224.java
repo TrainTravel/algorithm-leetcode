@@ -36,7 +36,7 @@ public class Calculate_224 {
             if (Character.isDigit(s.charAt(i))) {
                 num = s.charAt(i) - '0';
                 while (i < s.length() - 1 && Character.isDigit(s.charAt(i + 1))) {      // calculate current numbers
-                    num = num * 10 + (s.charAt(++i) - '0');     // ++i is equivalent to i = i + 1
+                    num = num * 10 + (s.charAt(++i) - '0');
                 }
 
                 stack.push(stack.pop() + sign * num);      // calculate previous sum and current integer with sign
@@ -46,8 +46,8 @@ public class Calculate_224 {
                 sign = -1;
             } else if (s.charAt(i) == '(') {        // calculate the sum in brackets, push the initially sum 0
                 stack.push(sign);
-                stack.push(0);      // bracket should be considered as a new calculation, and push a new init 0
-                sign = 1;               // initial operator in brackets is positive
+                stack.push(0);        // bracket should be considered as a new calculation, and push a new init 0
+                sign = 1;                   // initial operator in brackets is positive
             } else if (s.charAt(i) == ')') {
 
                 /*
