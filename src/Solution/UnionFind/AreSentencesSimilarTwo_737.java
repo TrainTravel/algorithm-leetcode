@@ -37,7 +37,7 @@ import java.util.Map;
 
 public class AreSentencesSimilarTwo_737 {
     /**
-     * The relationship is transitive.
+     * The relationship is transitive. Therefore, the intuitive approach is union find.
      * Union-find to find the root of word. If root word is same, then they are similar.
      *
      * @param words1 first sentence
