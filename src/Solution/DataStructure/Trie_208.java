@@ -10,29 +10,33 @@ import java.util.HashMap;
  * Created with IntelliJ IDEA
  */
 public class Trie_208 {
-    private TrieNode root;
+    private final TrieNode root;
 
     /**
      * Initialize of Trie.
      */
     public Trie_208() {
-        root = new TrieNode(' ');
+        root = new TrieNode();
     }
 
     /**
      * Inserts a word into the trie.
+     * Iterate each char in word, if current char does not exist in children, create a new node.
+     * Finally, mark this word as the end of the string for searching.
      *
      * @param word word to be inserted to trie
      */
     public void insert(String word) {
         TrieNode tmp = root;
+
         for (int i = 0; i < word.length(); i++) {
             if (tmp.child.get(word.charAt(i)) == null) {
-                TrieNode n = new TrieNode(word.charAt(i));
+                TrieNode n = new TrieNode();
                 tmp.child.put(word.charAt(i), n);
             }
             tmp = tmp.child.get(word.charAt(i));
         }
+
         tmp.isEnd = true;
     }
 
@@ -83,7 +87,10 @@ public class Trie_208 {
         public HashMap<Character, TrieNode> child = new HashMap<>();
         boolean isEnd = false;
 
-        TrieNode(char val) {
+        /**
+         * Constructor of TrieNode.
+         */
+        TrieNode() {
         }
     }
 
