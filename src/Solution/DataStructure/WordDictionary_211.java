@@ -18,7 +18,7 @@ import java.util.List;
 
 public class WordDictionary_211 {
 
-    private TrieNode root;
+    private final TrieNode root;
 
     /**
      * Constructor.
@@ -34,12 +34,14 @@ public class WordDictionary_211 {
      */
     public void addWord(String word) {
         TrieNode temp = root;
+
         for (int i = 0; i < word.length(); i++) {
             if (!temp.containsChild(word.charAt(i))) {
                 temp.addChild(word.charAt(i));
             }
             temp = temp.getChild(word.charAt(i));
         }
+
         temp.setEnd(true);
     }
 
@@ -86,7 +88,7 @@ public class WordDictionary_211 {
      */
     static class TrieNode {
         private char val;       // value of current node
-        private HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
+        private final HashMap<Character, TrieNode> m = new HashMap<>();       // save children of current trie
         private boolean end = false;
 
         /**
